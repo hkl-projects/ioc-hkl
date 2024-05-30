@@ -1,0 +1,14 @@
+*.swp
+__pycache__
+
+# Files generated during build
+configure/CONFIG.PyDevice
+O.linux*
+O.Common
+envPaths
+bin/
+lib/
+db/
+dbd/
+include/
+*.pyc

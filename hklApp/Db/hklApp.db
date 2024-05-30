@@ -1,0 +1,7 @@
+record(ai, "hklApp:random") {
+    field(DESC, "Random value in range [0,HOPR]")
+    field(HOPR, "10")
+    field(DTYP, "pydev")
+    field(INP, "@ab_test.getRandom(HOPR)")
+}
+
