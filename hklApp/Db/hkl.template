@@ -1,0 +1,15 @@
+# Author: K. Gofron
+# Date: 2024/5/30
+
+##################################################################
+# Define all of your PV records here in the following form:
+#
+##################################################################
+
+record(ai, "$(P)$(R)random") {
+    field(DTYP, "pydev")
+    field(DESC, "Random value in range [0,HOPR]")
+    field(HOPR, "10")
+    field(INP, "@ab_test.getRandom(HOPR)")
+#    field(SCAN, "I/O Intr")
+}
