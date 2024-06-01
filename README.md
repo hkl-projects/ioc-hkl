@@ -40,7 +40,7 @@ make
 
 # To run 
 ```bash
-cd /epics/iocs/iocBoot/iocpydev
+cd /epics/iocs/PyDevice/iocBoot/iocpydev
 ./st.cmd
 ```
 
