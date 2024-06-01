@@ -1,5 +1,50 @@
+# Installation instructions
+
+# Directory structure
+... #TODO include dir tree
+
+# hkl
+hkl - https://repo.or.cz/hkl.git
+
+```bash
+cd /epics/support
+git clone https://repo.or.cz/hkl.git
+git checkout tags/v5.0.0.3357
+cd hkl
+```
+
+```bash
+sudo apt install gtk-doc-tools autoconf libgtkmm-3.0-dev libyaml-dev gettext autopoint gobject-introspection libtool autoconf-archive debhelper gnuplot-nox gobject-introspection gtk-doc-tools libbullet-dev libg3d-dev libg3d-plugins libgirepository1.0-dev libgl-dev libgsl-dev libgtk-3-dev libgtkglext1-dev libhdf5-dev python3-gi python3-pip elpa-htmlize dvipng libhdf5-dev povray asymptote libhdf5-dev libcglm-dev libinih-dev
+```
+
+```bash
+./autogen
+./configure --enable-introspection
+make
+sudo make install
+```
+
+If running hkl outside of PyDevice, you will need to set the following environmental variables in your shell/bashrc:
+```bash
+export GI_TYPELIB_PATH=/usr/local/lib/girepository-1.0 
+export LD_LIBRARY_PATH=LD_LIBRARY_PATH:/usr/local/lib
+```
 
 # PyDevice
+
+Place this repo in /epics/iocs/
+```bash
+cd /epics/iocs/PyDevice
+make
+```
+
+# To run 
+```bash
+cd /epics/iocs/iocBoot/iocpydev
+./st.cmd
+```
+
+# Original PyDevice README
 
 PyDevice is an EPICS device support for Python interpreter. It allows to connect EPICS database records with Python code.
 
@@ -273,4 +318,7 @@ source /home/controls/common/python_env/main/env_scan/bin/activate
 ./st.cmd
 ```
 The packages installed in the virtual environment will then be available to the IOC applcation. 
+
+
+
 

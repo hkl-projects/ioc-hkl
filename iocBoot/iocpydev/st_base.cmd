@@ -21,8 +21,6 @@ dbLoadRecords("${TOP}/db/hkl.template","P=$(PREFIX),R=hb3:")
 cd ${TOP}/iocBoot/${IOC}
 
 pydev("import hklApp")
-pydev("hklApp.test()")
-# pydev("hklApp.forward()")
-# pydev("hklApp.backward()")
+pydev("hklApp.test_object()")
 
 iocInit

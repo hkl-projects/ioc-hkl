@@ -1,7 +1,220 @@
-record(ai, "hklApp:random") {
-    field(DESC, "Random value in range [0,HOPR]")
-    field(HOPR, "10")
+record(ao, "hklApp:hklWavelength") {
+    field(PINI, "YES")
     field(DTYP, "pydev")
-    field(INP, "@ab_test.getRandom(HOPR)")
+    field(OUT, "@hklCalculator.hkl_wavelength='VAL'")
+    info(autosaveFields, "VAL")
 }
+
+record(ao, "hklApp:hklGeom") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hklCalculator.hkl_geom='VAL'")
+    info(autosaveFields, "VAL")
+}
+
+record(ao, "hklApp:hklLatticea1") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hklCalculator.hkl_lattice[0]='VAL'")
+    info(autosaveFields, "VAL")
+}
+
+record(ao, "hklApp:hklLatticea2") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hklCalculator.hkl_lattice[1]='VAL'")
+    info(autosaveFields, "VAL")
+}
+
+record(ao, "hklApp:hklLatticea3") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hklCalculator.hkl_lattice[2]='VAL'")
+    info(autosaveFields, "VAL")
+}
+
+record(ao, "hklApp:hklLatticealpha") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hklCalculator.hkl_lattice[3]='VAL'")
+    info(autosaveFields, "VAL")
+}
+
+record(ao, "hklApp:hklLatticebeta") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hklCalculator.hkl_lattice[4]='VAL'")
+    info(autosaveFields, "VAL")
+}
+
+record(ao, "hklApp:hklLatticegamma") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hklCalculator.hkl_lattice[5]='VAL'")
+    info(autosaveFields, "VAL")
+}
+
+record(ao, "hklApp:hklMu") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hklCalculator.hkl_mu='VAL'")
+    info(autosaveFields, "VAL")
+}
+
+record(ao, "hklApp:hklOmega") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hklCalculator.hkl_omega='VAL'")
+    info(autosaveFields, "VAL")
+}
+
+record(ao, "hklApp:hklChi") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hklCalculator.hkl_chi='VAL'")
+    info(autosaveFields, "VAL")
+}
+
+record(ao, "hklApp:hklPhi") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hklCalculator.hkl_phi='VAL'")
+    info(autosaveFields, "VAL")
+}
+
+record(ao, "hklApp:hklGamma") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hklCalculator.hkl_gamma='VAL'")
+    info(autosaveFields, "VAL")
+}
+
+record(ao, "hklApp:hklDelta") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hklCalculator.hkl_delta='VAL'")
+    info(autosaveFields, "VAL")
+}
+
+record(ao, "hklApp:hklH") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hklCalculator.hkl_h='VAL'")
+    info(autosaveFields, "VAL")
+}
+
+record(ao, "hklApp:hklK") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hklCalculator.hkl_k='VAL'")
+    info(autosaveFields, "VAL")
+}
+
+record(ao, "hklApp:hklL") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hklCalculator.hkl_l='VAL'")
+    info(autosaveFields, "VAL")
+}
+
+record(ao, "hklApp:hklPsi") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hklCalculator.hkl_psi='VAL'")
+    info(autosaveFields, "VAL")
+}
+
+record(ao, "hklApp:hklq") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hklCalculator.hkl_q='VAL'")
+    info(autosaveFields, "VAL")
+}
+
+record(ao, "hklApp:hklAlpha") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hklCalculator.hkl_alpha='VAL'")
+    info(autosaveFields, "VAL")
+}
+
+record(ao, "hklApp:hklQper") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hklCalculator.hkl_qper='VAL'")
+    info(autosaveFields, "VAL")
+}
+
+record(ao, "hklApp:hklQpar") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hklCalculator.hkl_qpar='VAL'")
+    info(autosaveFields, "VAL")
+}
+
+record(ao, "hklApp:hklTth") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hklCalculator.hkl_tth='VAL'")
+    info(autosaveFields, "VAL")
+}
+
+record(ao, "hklApp:hklIncidence") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hklCalculator.hkl_incidence='VAL'")
+    info(autosaveFields, "VAL")
+}
+
+record(ao, "hklApp:hklAzimuth") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hklCalculator.hkl_azimuth='VAL'")
+    info(autosaveFields, "VAL")
+}
+
+record(ao, "hklApp:hklEmergence") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hklCalculator.hkl_emergence='VAL'")
+    info(autosaveFields, "VAL")
+}
+
+
+
+
+#####NOTES:
+# OUT is going to python
+# IN is going to EPICS
+# need to switch ins/out
+# pretty sure I also need to change forward to backward and vice versa
+
+
+##### POSSIBLE INPUTS TO FORWARD/BACKWARD
+# wavelength - input - analog input record (ai)
+# geom (E4CV, etc..) - input - string input record (stringin)
+# lattice (a,b,c,alpha,beta,gamma) - input - analog array input record (aai)
+
+
+##### UB MATRIX CALC
+# 2 reflections recorded before running hkl at all
+# set default crystal to silicon - sets r1, r2, UBmatrix
+
+# r1 - input - the first reflection (h,k,l, 3 motor angles) OR (v_recip, v_real) both expanded
+# r2 - input - the second reflection (h,k,l, 3 motor angles)
+# how do you determine hkl of the r1 and r2?
+#UB matrix - analog array output record (aao) - fixed after calculating from r1 and r2?
+
+# Would we need to store motor rotation states? 
+# Is is (prev motor rotation state) (dot) UBmatrix = (new motor rotation state)?
+
+
+##### FORWARD/BACKWARD
+# v_real - both input and output - aai and aao, depending on forward or backward
+# v_recip (h,k,l) - both input and output - aai and aao
+
+# long in for decimals? 
+
+# waveform type?
+
 
