@@ -31,7 +31,6 @@ export LD_LIBRARY_PATH=LD_LIBRARY_PATH:/usr/local/lib
 ```
 
 # PyDevice
-
 Place this repo in /epics/iocs/
 ```bash
 cd /epics/iocs/PyDevice
@@ -43,6 +42,11 @@ make
 cd /epics/iocs/PyDevice/iocBoot/iocpydev
 ./st.cmd
 ```
+
+# To test communication
+in epics shell: pydev("hklApp.test\_object()")
+in bash: caget hklApp:in:hklH
+
 
 # Original PyDevice README
 

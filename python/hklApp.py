@@ -71,6 +71,7 @@ class hklCalculator():
         # could use Hkl.compute_UB_busing_levy, Hkl.hkl_sample_compute_UB_busing_levy, Hkl.hkl_sample_UB_get, ... see "strings /usr/local/lib/girepository-1.0/Hkl-5.0.typelib" 
         #TODO how do I update self variables without knowing which variables are being updated? Dependent on geom
         self.pseudoaxes_h, self.pseudoaxes_k, self.pseudoaxes_l = values_hkl
+        print(self.pseudoaxes_h)
         return values_hkl
 
     def backward(self, wavelength, latt, geom, values_hkl):
@@ -99,7 +100,6 @@ class hklCalculator():
 def test_object():
     wavelength = 1. #Angstrom
     geom = 'K6C'
-    print(type(geom))
     lattice = [1.54, 1.54, 1.54,
             math.radians(90.0),
             math.radians(90.0),

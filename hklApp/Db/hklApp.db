@@ -1,3 +1,5 @@
+# FROM EPICS TO PYTHON
+
 record(ao, "hklApp:hklWavelength") {
     field(PINI, "YES")
     field(DTYP, "pydev")
@@ -180,41 +182,25 @@ record(ao, "hklApp:hklEmergence") {
     info(autosaveFields, "VAL")
 }
 
+# FROM PYTHON TO EPICS
+record(ai, "hklApp:in:hklH") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hklCalculator.hkl_h='VAL'")
+    info(autosaveFields, "VAL")
+}
 
+record(ai, "hklApp:in:hklK") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hklCalculator.hkl_k='VAL'")
+    info(autosaveFields, "VAL")
+}
 
-
-#####NOTES:
-# OUT is going to python
-# IN is going to EPICS
-# need to switch ins/out
-# pretty sure I also need to change forward to backward and vice versa
-
-
-##### POSSIBLE INPUTS TO FORWARD/BACKWARD
-# wavelength - input - analog input record (ai)
-# geom (E4CV, etc..) - input - string input record (stringin)
-# lattice (a,b,c,alpha,beta,gamma) - input - analog array input record (aai)
-
-
-##### UB MATRIX CALC
-# 2 reflections recorded before running hkl at all
-# set default crystal to silicon - sets r1, r2, UBmatrix
-
-# r1 - input - the first reflection (h,k,l, 3 motor angles) OR (v_recip, v_real) both expanded
-# r2 - input - the second reflection (h,k,l, 3 motor angles)
-# how do you determine hkl of the r1 and r2?
-#UB matrix - analog array output record (aao) - fixed after calculating from r1 and r2?
-
-# Would we need to store motor rotation states? 
-# Is is (prev motor rotation state) (dot) UBmatrix = (new motor rotation state)?
-
-
-##### FORWARD/BACKWARD
-# v_real - both input and output - aai and aao, depending on forward or backward
-# v_recip (h,k,l) - both input and output - aai and aao
-
-# long in for decimals? 
-
-# waveform type?
-
+record(ai, "hklApp:in:hklL") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hklCalculator.hkl_l='VAL'")
+    info(autosaveFields, "VAL")
+}
 
