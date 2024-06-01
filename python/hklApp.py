@@ -4,20 +4,19 @@ import gi
 from gi.repository import GLib
 gi.require_version('Hkl', '5.0')
 from gi.repository import Hkl
-
-#from epics import PV # how do i use this?
+#from epics import PV
 
 class hklCalculator():
     def __init__(self):
-        self.hkl_wavelength = 0
-        self.hkl_geom = '' #TODO, map to ints
-        self.hkl_lattice = [0, 0, 0, 0, 0, 0]
-        self.axes_mu = 0
-        self.axes_oemga = 0
-        self.axes_chi = 0
-        self.axes_phi = 0
-        self.axes_gamma = 0
-        self.axes_delta = 0
+        self.wavelength = 0
+        self.geom = '' #TODO, map to ints
+        self.lattice = [0, 0, 0, 0, 0, 0] # a1, a2, a3, alpha, beta, gamma
+        self.realaxes_mu = 0
+        self.realaxes_omega = 0
+        self.realaxes_chi = 0
+        self.realaxes_phi = 0
+        self.realaxes_gamma = 0
+        self.realaxes_delta = 0
         self.pseudoaxes_h = 0
         self.pseudoaxes_k = 0
         self.pseudoaxes_l = 0
@@ -30,10 +29,10 @@ class hklCalculator():
         self.pseudoaxes_incidence = 0
         self.pseudoaxes_azimuth = 0
         self.pseudoaxes_emergence = 0
-        #self.pseudoaxes_ 2 azimuth values?
+        #self.pseudoaxes_azimuth 2 azimuth values?
         #self.pseudoaxes_alpha shows up in the gui twice too
 
-    def forward(self, wavelength, geom=None, latt=None, values_w=None):
+    def forward(self, wavelength=None, geom=None, latt=None, values_w=None):
         '''
         forward hkl calculation, real -> reciprocal
         inputs
@@ -47,14 +46,14 @@ class hklCalculator():
             UB_matrix (?)        
         '''
         #TODO dynamically assign input/output variables based on geom
-        # wavelength
+        # need wavelength, unused arguement for now
         detector = Hkl.Detector.factory_new(Hkl.DetectorType(0))
         factory = Hkl.factories()[geom]
         geometry = factory.create_new_geometry()
         try:
             geometry.axis_values_set(values_w, Hkl.UnitEnum.USER)
         except:
-            print("invalid motor rotation values")
+            print("invalid axes values")
             #TODO catch only specific error, this may overlap with other issues and mask them
         axis_names = geometry.axis_names_get()
         sample = Hkl.Sample.new("toto")
@@ -69,7 +68,6 @@ class hklCalculator():
         values_hkl = hkl.pseudo_axis_values_get(Hkl.UnitEnum.USER)
         #TODO compute UB matrix ? maybe its own function, or read in from epics
         # could use Hkl.compute_UB_busing_levy, Hkl.hkl_sample_compute_UB_busing_levy, Hkl.hkl_sample_UB_get, ... see "strings /usr/local/lib/girepository-1.0/Hkl-5.0.typelib" 
-        #TODO how do I update self variables without knowing which variables are being updated? Dependent on geom
         self.pseudoaxes_h, self.pseudoaxes_k, self.pseudoaxes_l = values_hkl
         print(self.pseudoaxes_h)
         return values_hkl
@@ -87,6 +85,7 @@ class hklCalculator():
             2theta, ... rotations
             UB_matrix (?)        
         '''
+        # placeholder
         pass
 
     def get_pseudoaxes(self):
@@ -94,6 +93,39 @@ class hklCalculator():
         print(pseudoaxes)
         return pseudoaxes
 
+    def get_axes(self):
+        # placeholder, return values depend on geom
+        axes = (self.axes_mu, self.axes_omega, self.axes_chi)
+        print(axes)
+        return axes
+
+    def update(self, **kwargs):
+        for key, value in kwargs.items():
+            if key in [a for a in dir(self) if not a.startswith('__')]:
+                self.key = value #?
+        #otherwise just 'try' all of these:
+        self.hkl_wavelength = wavelength
+        self.hkl_geom = geom
+        self.hkl_lattice = lattice
+        self.axes_mu = mu
+        self.axes_omega = omega
+        self.axes_chi = chi
+        self.axes_phi = phi
+        self.axes_gamma = gamma
+        self.axes_delta = delta
+        self.pseudoaxes_h = h
+        self.pseudoaxes_k = k
+        self.pseudoaxes_l = l
+        self.pseudoaxes_psi = psi
+        self.pseudoaxes_q = q
+        self.pseudoaxes_alpha = alpha
+        self.pseudoaxes_qper = qper
+        self.pseudoaxes_qpar = qpar
+        self.pseudoaxes_tth = tth
+        self.pseudoaxes_incidence = incidence
+        self.pseudoaxes_azimuth = azimuth
+        self.pseudoaxes_emergence = emergence
+        
     def test_object(self):
         wavelength = 1. #Angstrom
         geom = 'K6C'
@@ -106,20 +138,4 @@ class hklCalculator():
         results = self.forward(wavelength=wavelength, geom=geom, latt=lattice, values_w=values_w)
         print(results) 
 
-
-
-#    def get_axes():
-#    def get_pseudoaxes():
-#    def update_axes():        
-#    def update_pseudoaxes():
-
-#if __name__ == "__main__":
-#    latt = [1.54, 1.54, 1.54,
-#            math.radians(90.0),
-#            math.radians(90.0),
-#            math.radians(90.)]
-#    geom = 'K6C' 
-#    values_w = [0., 30., 0., 0., 0., 60.]
-#    results = forward(wavelength=None, latt=latt, geom=geom, values_w=values_w)
-#    print(results) 
 

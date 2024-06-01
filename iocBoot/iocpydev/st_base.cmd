@@ -15,7 +15,7 @@ dbLoadDatabase "${TOP}/dbd/hklApp.dbd"
 hklApp_registerRecordDeviceDriver pdbbase
 
 ## Load record instances
-dbLoadRecords("${TOP}/db/hklApp.db")
+dbLoadRecords("${TOP}/db/hklApp.db", "P=$(PREFIX),R=hb3:")
 dbLoadRecords("${TOP}/db/hkl.template","P=$(PREFIX),R=hb3:")
 
 cd ${TOP}/iocBoot/${IOC}

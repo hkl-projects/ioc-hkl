@@ -43,9 +43,10 @@ cd /epics/iocs/PyDevice/iocBoot/iocpydev
 ./st.cmd
 ```
 
-# To test communication
+# To test communication and PV update
 in epics shell: pydev("hklApp.test\_object()")
-in bash: caget hklApp:in:hklH
+in epics shell: pydev("hklApp.get\_pseudoaxes()")
+in bash: caget TAS:hb3:in:pseudoaxesh
 
 
 # Original PyDevice README
