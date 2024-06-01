@@ -21,6 +21,7 @@ dbLoadRecords("${TOP}/db/hkl.template","P=$(PREFIX),R=hb3:")
 cd ${TOP}/iocBoot/${IOC}
 
 pydev("import hklApp")
-pydev("hklApp.test_object()")
+pydev("from hklApp import hklCalculator")
+pydev("hkl_calc = hklCalculator()")
 
 iocInit

@@ -3,182 +3,182 @@
 record(ao, "hklApp:hklWavelength") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hklCalculator.hkl_wavelength='VAL'")
+    field(OUT, "@hkl_calc.hkl_wavelength='VAL'")
     info(autosaveFields, "VAL")
 }
 
 record(ao, "hklApp:hklGeom") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hklCalculator.hkl_geom='VAL'")
+    field(OUT, "@hkl_calc.hkl_geom='VAL'")
     info(autosaveFields, "VAL")
 }
 
 record(ao, "hklApp:hklLatticea1") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hklCalculator.hkl_lattice[0]='VAL'")
+    field(OUT, "@hkl_calc.hkl_lattice[0]='VAL'")
     info(autosaveFields, "VAL")
 }
 
 record(ao, "hklApp:hklLatticea2") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hklCalculator.hkl_lattice[1]='VAL'")
+    field(OUT, "@hkl_calc.hkl_lattice[1]='VAL'")
     info(autosaveFields, "VAL")
 }
 
 record(ao, "hklApp:hklLatticea3") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hklCalculator.hkl_lattice[2]='VAL'")
+    field(OUT, "@hkl_calc.hkl_lattice[2]='VAL'")
     info(autosaveFields, "VAL")
 }
 
 record(ao, "hklApp:hklLatticealpha") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hklCalculator.hkl_lattice[3]='VAL'")
+    field(OUT, "@hkl_calc.hkl_lattice[3]='VAL'")
     info(autosaveFields, "VAL")
 }
 
 record(ao, "hklApp:hklLatticebeta") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hklCalculator.hkl_lattice[4]='VAL'")
+    field(OUT, "@hkl_calc.hkl_lattice[4]='VAL'")
     info(autosaveFields, "VAL")
 }
 
 record(ao, "hklApp:hklLatticegamma") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hklCalculator.hkl_lattice[5]='VAL'")
+    field(OUT, "@hkl_calc.hkl_lattice[5]='VAL'")
     info(autosaveFields, "VAL")
 }
 
 record(ao, "hklApp:hklMu") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hklCalculator.hkl_mu='VAL'")
+    field(OUT, "@hkl_calc.axes_mu='VAL'")
     info(autosaveFields, "VAL")
 }
 
 record(ao, "hklApp:hklOmega") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hklCalculator.hkl_omega='VAL'")
+    field(OUT, "@hkl_calc.axes_omega='VAL'")
     info(autosaveFields, "VAL")
 }
 
 record(ao, "hklApp:hklChi") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hklCalculator.hkl_chi='VAL'")
+    field(OUT, "@hkl_calc.axes_chi='VAL'")
     info(autosaveFields, "VAL")
 }
 
 record(ao, "hklApp:hklPhi") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hklCalculator.hkl_phi='VAL'")
+    field(OUT, "@hkl_calc.axes_phi='VAL'")
     info(autosaveFields, "VAL")
 }
 
 record(ao, "hklApp:hklGamma") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hklCalculator.hkl_gamma='VAL'")
+    field(OUT, "@hkl_calc.axes_gamma='VAL'")
     info(autosaveFields, "VAL")
 }
 
 record(ao, "hklApp:hklDelta") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hklCalculator.hkl_delta='VAL'")
+    field(OUT, "@hkl_calc.axes_delta='VAL'")
     info(autosaveFields, "VAL")
 }
 
 record(ao, "hklApp:hklH") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hklCalculator.hkl_h='VAL'")
+    field(OUT, "@hkl_calc.pseudoaxes_h='VAL'")
     info(autosaveFields, "VAL")
 }
 
 record(ao, "hklApp:hklK") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hklCalculator.hkl_k='VAL'")
+    field(OUT, "@hkl_calc.pseudoaxes_k='VAL'")
     info(autosaveFields, "VAL")
 }
 
 record(ao, "hklApp:hklL") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hklCalculator.hkl_l='VAL'")
+    field(OUT, "@hkl_calc.pseudoaxes_l='VAL'")
     info(autosaveFields, "VAL")
 }
 
 record(ao, "hklApp:hklPsi") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hklCalculator.hkl_psi='VAL'")
+    field(OUT, "@hkl_calc.pseudoaxes_psi='VAL'")
     info(autosaveFields, "VAL")
 }
 
 record(ao, "hklApp:hklq") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hklCalculator.hkl_q='VAL'")
+    field(OUT, "@hkl_calc.pseudoaxes_q='VAL'")
     info(autosaveFields, "VAL")
 }
 
 record(ao, "hklApp:hklAlpha") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hklCalculator.hkl_alpha='VAL'")
+    field(OUT, "@hkl_calc.pseudoaxes_alpha='VAL'")
     info(autosaveFields, "VAL")
 }
 
 record(ao, "hklApp:hklQper") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hklCalculator.hkl_qper='VAL'")
+    field(OUT, "@hkl_calc.pseudoaxes_qper='VAL'")
     info(autosaveFields, "VAL")
 }
 
 record(ao, "hklApp:hklQpar") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hklCalculator.hkl_qpar='VAL'")
+    field(OUT, "@hkl_calc.pseudoaxes_qpar='VAL'")
     info(autosaveFields, "VAL")
 }
 
 record(ao, "hklApp:hklTth") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hklCalculator.hkl_tth='VAL'")
+    field(OUT, "@hkl_calc.pseudoaxes_tth='VAL'")
     info(autosaveFields, "VAL")
 }
 
 record(ao, "hklApp:hklIncidence") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hklCalculator.hkl_incidence='VAL'")
+    field(OUT, "@hkl_calc.pseudoaxes_incidence='VAL'")
     info(autosaveFields, "VAL")
 }
 
 record(ao, "hklApp:hklAzimuth") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hklCalculator.hkl_azimuth='VAL'")
+    field(OUT, "@hkl_calc.pseudoaxes_azimuth='VAL'")
     info(autosaveFields, "VAL")
 }
 
 record(ao, "hklApp:hklEmergence") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hklCalculator.hkl_emergence='VAL'")
+    field(OUT, "@hkl_calc.pseudoaxes_emergence='VAL'")
     info(autosaveFields, "VAL")
 }
 
@@ -186,21 +186,24 @@ record(ao, "hklApp:hklEmergence") {
 record(ai, "hklApp:in:hklH") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(INP, "@hklCalculator.hkl_h='VAL'")
+    field(INP, "@hkl_calc.pseudoaxes_h")
     info(autosaveFields, "VAL")
+    field(SCAN, "I/O Intr")
 }
 
 record(ai, "hklApp:in:hklK") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(INP, "@hklCalculator.hkl_k='VAL'")
+    field(INP, "@hkl_calc.pseudoaxes_k")
     info(autosaveFields, "VAL")
+    field(SCAN, "I/O Intr")
 }
 
 record(ai, "hklApp:in:hklL") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(INP, "@hklCalculator.hkl_l='VAL'")
+    field(INP, "@hkl_calc.pseudoaxes_l")
     info(autosaveFields, "VAL")
+    field(SCAN, "I/O Intr")
 }
 

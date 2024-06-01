@@ -89,26 +89,29 @@ class hklCalculator():
         '''
         pass
 
+    def get_pseudoaxes(self):
+        pseudoaxes = (self.pseudoaxes_h, self.pseudoaxes_k, self.pseudoaxes_l)
+        print(pseudoaxes)
+        return pseudoaxes
+
+    def test_object(self):
+        wavelength = 1. #Angstrom
+        geom = 'K6C'
+        lattice = [1.54, 1.54, 1.54,
+                math.radians(90.0),
+                math.radians(90.0),
+                math.radians(90.)]
+        values_w = [1.0, 1.0, 1.0, 90.0, 90.0, 90.0] # cubic
+        #instance of HklCalculator object
+        results = self.forward(wavelength=wavelength, geom=geom, latt=lattice, values_w=values_w)
+        print(results) 
+
+
+
 #    def get_axes():
-
 #    def get_pseudoaxes():
-
-#    def update_axes():
-        
+#    def update_axes():        
 #    def update_pseudoaxes():
-
-def test_object():
-    wavelength = 1. #Angstrom
-    geom = 'K6C'
-    lattice = [1.54, 1.54, 1.54,
-            math.radians(90.0),
-            math.radians(90.0),
-            math.radians(90.)]
-    values_w = [1.0, 1.0, 1.0, 90.0, 90.0, 90.0] # cubic
-    #instance of HklCalculator object
-    hkl_calc = hklCalculator()
-    results = hkl_calc.forward(wavelength=wavelength, geom=geom, latt=lattice, values_w=values_w)
-    print(results) 
 
 #if __name__ == "__main__":
 #    latt = [1.54, 1.54, 1.54,
