@@ -43,8 +43,7 @@ class hklCalculator():
             value_w :list: takes in a list of 6 elements corresponding to ...
 
         outputs (for E4CV)
-            values_hkl :list: (h,k,l, )
-            UB_matrix (?)        
+            values_hkl :list: (h,k,l)
         '''
         print("Forward function start")
         #TODO dynamically assign input/output variables based on geom
@@ -81,8 +80,7 @@ class hklCalculator():
             value_hkl :list: 
 
         outputs
-            2theta, ... rotations
-            UB_matrix (?)        
+            dependent on geometry, for 4-circle: [omega, chi, phi, 2theta]
         '''
         print("Backward function start")
         detector = Hkl.Detector.factory_new(Hkl.DetectorType(0))
@@ -96,7 +94,7 @@ class hklCalculator():
         engines = factory.create_new_engine_list()
         engines.init(geometry, detector, sample)
         engines.get()
-        # get the hkl engine and do a computation #TODO NEED DIFFERENT ENGINE FOR BACKWARDS?
+        # get the hkl engine and do a computation
         hkl = engines.engine_get_by_name("hkl") 
         solutions = hkl.pseudo_axis_values_set(values_hkl, Hkl.UnitEnum.USER)
         print("axis names: ", axis_names)
@@ -108,7 +106,6 @@ class hklCalculator():
             values_w_all.append(read)
         #idx, self.realaxes_mu, self.realaxes_omega, self.realaxes_chi, \
         #self.realaxes_phi, self.realaxes_gamma, self.realaxes_delta = values_w
-        #print(self.realaxes_mu) #TODO not single value per variable, need to handle
         return values_w_all
 
     def get_pseudoaxes(self):
@@ -151,25 +148,26 @@ class hklCalculator():
 
         def compute_UB_matrix(self):
             # placeholder
-            #TODO compute UB matrix ? maybe its own function, or read in from epics
             # could use Hkl.compute_UB_busing_levy, Hkl.hkl_sample_compute_UB_busing_levy, Hkl.hkl_sample_UB_get, ... see "strings /usr/local/lib/girepository-1.0/Hkl-5.0.typelib" 
             pass
         
     def test(self):
         # Crystal properties
         wavelength = 1. #Angstrom
-        geom = 'K6C'
+        #geom = 'K6C' # kappa 6-circle
+        geom = 'E4CV' # 4-circle
         lattice = [1.54, 1.54, 1.54,
                 math.radians(90.0),
                 math.radians(90.0),
                 math.radians(90.)]
         # forward test
-        values_w = [0., 30., 0., 0., 0., 60.0]
+        #values_w = [0., 30., 0., 0., 0., 60.0] # K6C
+        values_w = [30., 0., 0., 60.0] # E4CV
         f_results = self.forward(wavelength=wavelength, geom=geom, latt=lattice, values_w=values_w)
         print("forward function test\n", f_results)  
         # backward test
         values_hkl = [0.0, 0.0, 1.0]
         b_results = self.backward(wavelength=wavelength, geom=geom, latt=lattice, values_hkl=values_hkl)
-        print("backward function test\n", b_results) #TODO need to better handle unknown number of possible motor positions per reflection
+        print("backward function test\n", b_results)
 
 

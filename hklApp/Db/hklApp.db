@@ -161,20 +161,23 @@ record(ai, "$(P)$(R)in:pseudoaxesh") {
 #    field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_h")
-    field(SCAN, "I/O Intr")
+#    field(SCAN, "I/O Intr")
+    field(SCAN, "1 second")
 }
 
 record(ai, "$(P)$(R)in:pseudoaxesk") {
 #    field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_k")
-    field(SCAN, "I/O Intr")
+#    field(SCAN, "I/O Intr")
+#    field(SCAN, "1 second")
 }
 
 record(ai, "$(P)$(R)in:pseudoaxesl") {
 #    field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_l")
-    field(SCAN, "I/O Intr")
+#    field(SCAN, "I/O Intr")
+#    field(SCAN, "1 second")
 }
 
