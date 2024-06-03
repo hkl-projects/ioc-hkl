@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-06-02 15:43:00 by kg1-->
+<display version="2.0.0">
+  <name>Display</name>
+  <width>850</width>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <class>TITLE</class>
+    <text>Diffractometer</text>
+    <x use_class="true">0</x>
+    <y use_class="true">0</y>
+    <width>550</width>
+    <height>31</height>
+    <font use_class="true">
+      <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_1</name>
+    <text>Some Value:</text>
+    <y>280</y>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update</name>
+    <pv_name>sim://sine</pv_name>
+    <x>100</x>
+    <y>280</y>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_2</name>
+    <class>COMMENT</class>
+    <text>Some comment.</text>
+    <x>220</x>
+    <y>280</y>
+    <width>140</width>
+    <font use_class="true">
+      <font name="Comment" family="Liberation Sans" style="ITALIC" size="14.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
+    <wrap_words use_class="true">true</wrap_words>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button</name>
+    <x>10</x>
+    <y>310</y>
+    <width>140</width>
+    <height>40</height>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry</name>
+    <pv_name>PyCalcTest:Input1</pv_name>
+    <x>30</x>
+    <y>360</y>
+    <width>140</width>
+    <height>50</height>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_1</name>
+    <pv_name>PyCalcTest:Input1</pv_name>
+    <x>250</x>
+    <y>350</y>
+    <width>120</width>
+    <height>50</height>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_2</name>
+    <pv_name>PyDev:Double:Pow2</pv_name>
+    <x>230</x>
+    <y>420</y>
+    <width>120</width>
+    <height>30</height>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_3</name>
+    <pv_name>$(Sys)$(Dev)wlen.DESC</pv_name>
+    <x>103</x>
+    <y>80</y>
+    <width>132</width>
+    <height>22</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <vertical_alignment>1</vertical_alignment>
+    <wrap_words>false</wrap_words>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color name="green-18" red="0" green="160" blue="0">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input</name>
+    <pv_name>$(Sys)$(Dev)wlen.VAL</pv_name>
+    <x>271</x>
+    <y>80</y>
+    <width>150</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Set" prop_id="background_color" out_exp="false">
+        <exp bool_exp="pv0==1">
+          <value>
+            <color red="224" green="224" blue="0">
+            </color>
+          </value>
+        </exp>
+        <exp bool_exp="pv0==0">
+          <value>
+            <color name="White" red="255" green="255" blue="255">
+            </color>
+          </value>
+        </exp>
+        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
+      </rule>
+    </rules>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_4</name>
+    <pv_name>$(Sys)$(Dev)wlen.RBV</pv_name>
+    <x>456</x>
+    <y>82</y>
+    <width>146</width>
+    <height>18</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+    <wrap_words>false</wrap_words>
+    <actions>
+    </actions>
+    <border_width>2</border_width>
+    <border_color>
+      <color name="green-18" red="0" green="160" blue="0">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_1</name>
+    <pv_name>$(Sys)$(Dev)wlen.TWV</pv_name>
+    <x>666</x>
+    <y>80</y>
+    <width>150</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_1</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(Sys)$(Dev)$(Mtr).TWF</pv_name>
+        <value>1</value>
+        <description>Tweak Positive Dir</description>
+      </action>
+    </actions>
+    <pv_name>$(Sys)$(Dev)wlen.TWF</pv_name>
+    <text>&gt;</text>
+    <x>821</x>
+    <y>80</y>
+    <width>24</width>
+    <height>22</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_2</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(Sys)$(Dev)$(Mtr).TWR</pv_name>
+        <value>1</value>
+        <description>Tweak Negative Dir</description>
+      </action>
+    </actions>
+    <pv_name>$(Sys)$(Dev)wlen.TWR</pv_name>
+    <text>&lt;</text>
+    <x>636</x>
+    <y>80</y>
+    <width>24</width>
+    <height>22</height>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_3</name>
+    <text>Wave length</text>
+    <y>82</y>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_4</name>
+    <text>Diffractometer</text>
+    <y>50</y>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>Menu Button</name>
+    <pv_name>$(Sys)$(Dev)Diffractometer</pv_name>
+    <x>103</x>
+    <y>45</y>
+    <height>25</height>
+    <background_color>
+      <color red="240" green="240" blue="240">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_13</name>
+    <pv_name>$(Sys)$(Dev)Diffractometer_RBV</pv_name>
+    <x>271</x>
+    <y>45</y>
+    <width>96</width>
+    <height>15</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>6</format>
+    <horizontal_alignment>1</horizontal_alignment>
+    <vertical_alignment>1</vertical_alignment>
+    <wrap_words>false</wrap_words>
+    <actions>
+    </actions>
+    <border_width>2</border_width>
+    <border_color>
+      <color name="S_ind" red="0" green="177" blue="0">
+      </color>
+    </border_color>
+  </widget>
+</display>
