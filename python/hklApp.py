@@ -163,11 +163,19 @@ class hklCalculator():
         # forward test
         #values_w = [0., 30., 0., 0., 0., 60.0] # K6C
         values_w = [30., 0., 0., 60.0] # E4CV
-        f_results = self.forward(wavelength=wavelength, geom=geom, latt=lattice, values_w=values_w)
-        print("forward function test\n", f_results)  
+        print("Running test - Initial conditions:")
+        print("##################################")
+        #TODO move to a get_initial_conditions function
+        print("wavelength: ", wavelength)
+        print("geometry: ", geom)
+        print("lattice: ", lattice)
+        f_results = self.forward(wavelength=wavelength, geom=geom, latt=lattice, values_w=values_w) 
+        print("input motor values: ", values_w) 
+        print("forward function results:\n", f_results)  
         # backward test
         values_hkl = [0.0, 0.0, 1.0]
         b_results = self.backward(wavelength=wavelength, geom=geom, latt=lattice, values_hkl=values_hkl)
-        print("backward function test\n", b_results)
+        print("input hkl values: ", values_hkl)
+        print("backward function test results:", *b_results, sep="\n")
 
 
