@@ -68,7 +68,7 @@ class hklCalculator():
         # get the hkl engine and do a computation
         hkl = engines.engine_get_by_name("hkl")
         values_hkl = hkl.pseudo_axis_values_get(Hkl.UnitEnum.USER)
-       self.pseudoaxes_h, self.pseudoaxes_k, self.pseudoaxes_l = values_hkl
+        self.pseudoaxes_h, self.pseudoaxes_k, self.pseudoaxes_l = values_hkl
         return values_hkl
 
     def backward(self, wavelength, latt, geom, values_hkl):
