@@ -4,206 +4,177 @@ record(ao, "$(P)$(R)wavelength") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.wavelength='VAL'")
-    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)geom") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.geom='VAL'")
-    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)latticea1") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.lattice[0]='VAL'")
-    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)latticea2") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.lattice[1]='VAL'")
-    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)latticea3") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.lattice[2]='VAL'")
-    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)latticealpha") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.lattice[3]='VAL'")
-    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)latticebeta") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.lattice[4]='VAL'")
-    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)latticegamma") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.lattice[5]='VAL'")
-    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)realaxesmu") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.realaxes_mu='VAL'")
-    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)realaxesomega") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.realaxes_omega='VAL'")
-    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)realaxeschi") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.realaxes_chi='VAL'")
-    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)realaxesphi") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.realaxes_phi='VAL'")
-    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)realaxesgamma") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.realaxes_gamma='VAL'")
-    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)realaxesdelta") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.realaxes_delta='VAL'")
-    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)pseudoaxesh") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_h='VAL'")
-    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)pseudoaxesk") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_k='VAL'")
-    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)pseudoaxesl") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_l='VAL'")
-    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)pseudoaxespsi") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_psi='VAL'")
-    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)pseudoaxesq") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_q='VAL'")
-    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)pseudoaxesalpha") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_alpha='VAL'")
-    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)pseudoaxesqper") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_qper='VAL'")
-    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)pseudoaxesqpar") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_qpar='VAL'")
-    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)pseudoaxestth") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_tth='VAL'")
-    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)pseudoaxesincidence") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_incidence='VAL'")
-    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)pseudoaxesazimuth") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_azimuth='VAL'")
-    info(autosaveFields, "VAL")
 }
 
 record(ao, "$(P)$(R)pseudoaxesemergence") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_emergence='VAL'")
-    info(autosaveFields, "VAL")
 }
 
 # FROM PYTHON TO EPICS
 record(ai, "$(P)$(R)in:pseudoaxesh") {
-    field(PINI, "YES")
+#    field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_h")
-    info(autosaveFields, "VAL")
     field(SCAN, "I/O Intr")
 }
 
 record(ai, "$(P)$(R)in:pseudoaxesk") {
-    field(PINI, "YES")
+#    field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_k")
-    info(autosaveFields, "VAL")
     field(SCAN, "I/O Intr")
 }
 
 record(ai, "$(P)$(R)in:pseudoaxesl") {
-    field(PINI, "YES")
+#    field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_l")
-    info(autosaveFields, "VAL")
     field(SCAN, "I/O Intr")
 }
 
