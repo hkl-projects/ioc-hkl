@@ -156,9 +156,59 @@ record(ao, "$(P)$(R)pseudoaxesemergence") {
     field(OUT, "@hkl_calc.pseudoaxes_emergence='VAL'")
 }
 
-# FROM PYTHON TO EPICS
+### FROM PYTHON TO EPICS
+# real axes
+record(ai, "$(P)$(R)in:realaxesmu") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.realaxes_mu")
+#    field(SCAN, "I/O Intr")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)in:realaxesomega") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.realaxes_omega")
+#    field(SCAN, "I/O Intr")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)in:realaxeschi") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.realaxes_chi")
+#    field(SCAN, "I/O Intr")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)in:realaxesphi") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.realaxes_phi")
+#    field(SCAN, "I/O Intr")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)in:realaxesgamma") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.realaxes_gamma")
+#    field(SCAN, "I/O Intr")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)in:realaxestth") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.realaxes_tth")
+#    field(SCAN, "I/O Intr")
+    field(SCAN, "1 second")
+}
+
+# pseudoaxes
 record(ai, "$(P)$(R)in:pseudoaxesh") {
-#    field(PINI, "YES")
+    field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_h")
 #    field(SCAN, "I/O Intr")
@@ -166,18 +216,18 @@ record(ai, "$(P)$(R)in:pseudoaxesh") {
 }
 
 record(ai, "$(P)$(R)in:pseudoaxesk") {
-#    field(PINI, "YES")
+    field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_k")
 #    field(SCAN, "I/O Intr")
-#    field(SCAN, "1 second")
+    field(SCAN, "1 second")
 }
 
 record(ai, "$(P)$(R)in:pseudoaxesl") {
-#    field(PINI, "YES")
+    field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_l")
 #    field(SCAN, "I/O Intr")
-#    field(SCAN, "1 second")
+    field(SCAN, "1 second")
 }
 
