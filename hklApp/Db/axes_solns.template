@@ -1,0 +1,34 @@
+# motor axes solutions
+
+record(ai, "$(P)$(R)omega$(C)") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_solns_omega[$(C)]")
+#    field(SCAN, "I/O Intr")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)chi$(C)") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_solns_chi[$(C)]")
+#    field(SCAN, "I/O Intr")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)phi$(C)") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_solns_phi[$(C)]")
+#    field(SCAN, "I/O Intr")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)tth$(C)") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_solns_tth[$(C)]")
+#    field(SCAN, "I/O Intr")
+    field(SCAN, "1 second")
+}
+
