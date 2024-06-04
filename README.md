@@ -1,17 +1,17 @@
 # Installation instructions
 
 # Directory structure
-/epics
-|
-├── base
-├── GUI
-├── iocs
-│   └── ioc-hkl
-├── support
-│   ├── hkl
-│   └── PyDevice
-└── util
-
+/epics \
+| \
+├── base \
+├── GUI \
+├── iocs \
+│   └── ioc-hkl \
+├── support \
+│   ├── hkl \
+│   └── PyDevice \
+└── util \
+ \
 /epics/iocs/ioc-hkl
 #TODO
 
@@ -81,9 +81,9 @@ cd /epics/iocs/PyDevice/iocBoot/iocpydev
 ```
 
 # To test communication and PV update
-in epics shell: pydev("hklApp.test\_object()")
-in epics shell: pydev("hklApp.get\_pseudoaxes()")
-in bash: caget TAS:hb3:in:pseudoaxesh
+in epics shell: pydev("hklApp.test()") \
+in epics shell: pydev("hklApp.get\_pseudoaxes()") \
+in bash: caget TAS:hb3:in:pseudoaxesh 
 
 
 # Original PyDevice README
