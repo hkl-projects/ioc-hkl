@@ -1,0 +1,81 @@
+# EPICS TO PYTHON
+
+record(ao, "$(P)$(R)pseudoaxesh") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.pseudoaxes_h='VAL'")
+}
+
+record(ao, "$(P)$(R)pseudoaxesk") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.pseudoaxes_k='VAL'")
+}
+
+record(ao, "$(P)$(R)pseudoaxesl") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.pseudoaxes_l='VAL'")
+}
+
+record(ao, "$(P)$(R)pseudoaxespsi") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.pseudoaxes_psi='VAL'")
+}
+
+record(ao, "$(P)$(R)pseudoaxesq") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.pseudoaxes_q='VAL'")
+}
+
+record(ao, "$(P)$(R)pseudoaxesincidence") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.pseudoaxes_incidence='VAL'")
+}
+
+record(ao, "$(P)$(R)pseudoaxesincazimuth") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.pseudoaxes_inc_azimuth='VAL'")
+}
+
+record(ao, "$(P)$(R)pseudoaxesemergence") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.pseudoaxes_emergence='VAL'")
+}
+
+record(ao, "$(P)$(R)pseudoaxesemerazimuth") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.pseudoaxes_emer_azimuth='VAL'")
+}
+
+# PYTHON TO EPICS
+
+record(ai, "$(P)$(R)solnpseudoaxesh") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.pseudoaxes_h")
+#    field(SCAN, "I/O Intr")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)solnpseudoaxesk") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.pseudoaxes_k")
+#    field(SCAN, "I/O Intr")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)solnpseudoaxesl") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.pseudoaxes_l")
+#    field(SCAN, "I/O Intr")
+    field(SCAN, "1 second")
+}

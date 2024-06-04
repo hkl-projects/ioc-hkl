@@ -1,9 +1,31 @@
 # Installation instructions
 
 # Directory structure
-... #TODO include dir tree
+/epics
+|
+├── base
+├── GUI
+├── iocs
+│   └── ioc-hkl
+├── support
+│   ├── hkl
+│   └── PyDevice
+└── util
 
-# hkl
+/epics/iocs/ioc-hkl
+#TODO
+
+# EPICS installation
+Download the EPICS base from https://epics.anl.gov/download/base/index.php and place tarball into /epics, then unpack and build. 
+
+```bash
+tar -xvzf base-7.0.8.tar.gz
+mv base-7.0.8 base
+cd base
+make
+```
+
+# hkl installation
 hkl - https://repo.or.cz/hkl.git
 
 ```bash
@@ -24,17 +46,32 @@ make
 sudo make install
 ```
 
-If running hkl outside of PyDevice, you will need to set the following environmental variables in your shell/bashrc:
+If running hkl outside of this IOC, you will need to set the following environmental variables in your shell/bashrc:
 ```bash
 export GI_TYPELIB_PATH=/usr/local/lib/girepository-1.0 
 export LD_LIBRARY_PATH=LD_LIBRARY_PATH:/usr/local/lib
 ```
 
-# PyDevice
+# IOC installation
 Place this repo in /epics/iocs/
 ```bash
-cd /epics/iocs/PyDevice
+cd /epics/iocs
+git clone https://github.com/ornl-hkl-projects/ioc-hkl.git
+cd ioc-hkl
 make
+```
+
+# Python
+Confirm your default Python installation 
+```bash
+which python3
+```
+This should show: /usr/bin/python3
+
+Python requires 2 external packages, which can be installed with pip
+```bash
+pip install numpy
+pip install pandas
 ```
 
 # To run 

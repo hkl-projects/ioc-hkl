@@ -1,5 +1,6 @@
 import math
-#import numpy as np # use to set defaults to np.nan. 0 may be a valid result
+import numpy as np
+import pandas as pd
 import gi
 from gi.repository import GLib
 gi.require_version('Hkl', '5.0')
@@ -8,30 +9,35 @@ from gi.repository import Hkl
 import inspect
 
 class hklCalculator():
-    def __init__(self):
-        self.wavelength = 0
+    def __init__(self, num_axes_solns=10):
+        self.num_axes_solns = num_axes_solns
+        #TODO differentiate omega/komega for kappa
+        self.wavelength = np.nan
         self.geom = '' #TODO, map to ints
-        self.lattice = [0, 0, 0, 0, 0, 0] # a1, a2, a3, alpha, beta, gamma
-        self.realaxes_mu = 0
-        self.realaxes_omega = 0
-        self.realaxes_chi = 0
-        self.realaxes_phi = 0
-        self.realaxes_gamma = 0
-        self.realaxes_delta = 0
-        self.pseudoaxes_h = 0
-        self.pseudoaxes_k = 0
-        self.pseudoaxes_l = 0
-        self.pseudoaxes_psi = 0
-        self.pseudoaxes_q = 0
-        self.pseudoaxes_alpha = 0
-        self.pseudoaxes_qper = 0
-        self.pseudoaxes_qpar = 0
-        self.pseudoaxes_tth = 0
-        self.pseudoaxes_incidence = 0
-        self.pseudoaxes_azimuth = 0
-        self.pseudoaxes_emergence = 0
-        #self.pseudoaxes_azimuth 2 azimuth values?
-        #self.pseudoaxes_alpha shows up in the gui twice too
+        self.lattice = [np.nan, np.nan, np.nan, np.nan, np.nan, np.nan] # a1, a2, a3, alpha, beta, gamma
+        # self.axes_mu = np.nan
+        self.axes_omega = np.nan
+        self.axes_chi = np.nan
+        self.axes_phi = np.nan
+        self.axes_tth = np.nan
+        self.pseudoaxes_h = np.nan
+        self.pseudoaxes_k = np.nan
+        self.pseudoaxes_l = np.nan
+        self.pseudoaxes_psi = np.nan
+        self.pseudoaxes_q = np.nan
+        self.pseudoaxes_incidence = np.nan
+        self.pseudoaxes_inc_azimuth = np.nan
+        self.pseudoaxes_emergence = np.nan
+        self.pseudoaxes_emer_azimuth = np.nan
+        self.axes_solns_omega = []
+        self.axes_solns_chi = []
+        self.axes_solns_phi = []
+        self.axes_solns_tth = []
+        for _ in range(self.num_axes_solns):
+            self.axes_solns_omega.append(np.nan)
+            self.axes_solns_chi.append(np.nan)
+            self.axes_solns_phi.append(np.nan)
+            self.axes_solns_tth.append(np.nan)
 
     def forward(self, wavelength=None, geom=None, latt=None, values_w=None):
         '''
@@ -47,28 +53,27 @@ class hklCalculator():
         '''
         print("Forward function start")
         #TODO dynamically assign input/output variables based on geom
-        # need wavelength, unused arguement for now
-        detector = Hkl.Detector.factory_new(Hkl.DetectorType(0))
-        factory = Hkl.factories()[geom]
-        geometry = factory.create_new_geometry()
+        #self.wavelength = wavelength should maybe put this all in init
+        detector   = Hkl.Detector.factory_new(Hkl.DetectorType(0))
+        factory    = Hkl.factories()[geom]
+        geometry   = factory.create_new_geometry()
         try:
             geometry.axis_values_set(values_w, Hkl.UnitEnum.USER)
         except:
             print("invalid axes values")
-            #TODO catch only specific error, this may overlap with other issues and mask them
+            #TODO catch different types of errors
+        geometry.wavelength_set(wavelength, Hkl.UnitEnum.USER)
         axis_names = geometry.axis_names_get()
-        sample = Hkl.Sample.new("toto")
-        lattice = Hkl.Lattice.new(*latt)
+        sample     = Hkl.Sample.new("toto")
+        lattice    = Hkl.Lattice.new(*latt)
         sample.lattice_set(lattice)
-        # compute all the pseudo axes managed by all engines
-        engines = factory.create_new_engine_list()
+        engines    = factory.create_new_engine_list()
         engines.init(geometry, detector, sample)
         engines.get()
-        # get the hkl engine and do a computation
-        hkl = engines.engine_get_by_name("hkl")
+        hkl        = engines.engine_get_by_name("hkl")
         values_hkl = hkl.pseudo_axis_values_get(Hkl.UnitEnum.USER)
         self.pseudoaxes_h, self.pseudoaxes_k, self.pseudoaxes_l = values_hkl
-        return values_hkl
+        #return values_hkl # no returns, just get functions
 
     def backward(self, wavelength, latt, geom, values_hkl):
         '''
@@ -83,12 +88,13 @@ class hklCalculator():
             dependent on geometry, for 4-circle: [omega, chi, phi, 2theta]
         '''
         print("Backward function start")
-        detector = Hkl.Detector.factory_new(Hkl.DetectorType(0))
-        factory = Hkl.factories()[geom]
-        geometry = factory.create_new_geometry()
+        detector   = Hkl.Detector.factory_new(Hkl.DetectorType(0))
+        factory    = Hkl.factories()[geom]
+        geometry   = factory.create_new_geometry()
+        geometry.wavelength_set(wavelength, Hkl.UnitEnum.USER)
         axis_names = geometry.axis_names_get()
-        sample = Hkl.Sample.new("toto")
-        lattice = Hkl.Lattice.new(*latt)
+        sample     = Hkl.Sample.new("toto")
+        lattice    = Hkl.Lattice.new(*latt)
         sample.lattice_set(lattice)
         # compute all the pseudo axes managed by all engines
         engines = factory.create_new_engine_list()
@@ -100,51 +106,47 @@ class hklCalculator():
         print("axis names: ", axis_names)
         values_w_all = []
         for i, item in enumerate(solutions.items()):
-            #print("id: ", i)
+            #print("id: ", i) # for kappa 6-circle
             read = item.geometry_get().axis_values_get(Hkl.UnitEnum.USER)
-            #print("real values: ", read)
+            #print("motor axes solution values: ", read)
             values_w_all.append(read)
-        #idx, self.realaxes_mu, self.realaxes_omega, self.realaxes_chi, \
-        #self.realaxes_phi, self.realaxes_gamma, self.realaxes_delta = values_w
-        return values_w_all
-
+        for i in range(self.num_axes_solns):
+            self.axes_solns_omega[i], self.axes_solns_chi[i], \
+            self.axes_solns_phi[i], self.axes_solns_tth[i] = values_w_all[i]           
     def get_pseudoaxes(self):
-        pseudoaxes = (self.pseudoaxes_h, self.pseudoaxes_k, self.pseudoaxes_l)
-        print(pseudoaxes)
+        pseudoaxes = (self.pseudoaxes_h, \
+                      self.pseudoaxes_k, \
+                      self.pseudoaxes_l)
         return pseudoaxes
 
-    def get_realaxes(self):
-        # placeholder, return values depend on geom, k6c currently
-        axes = (self.axes_mu, self.axes_omega, self.axes_chi)
-        print(axes)
-        return axes
+    def get_axes(self, cleanprint=False):
+        '''
+        Which rotations are returned depends on geometry, 4-circle currently
+        inputs
+            cleanprint :bool: 
+                if true, dataframe 
+                if false, dict
+        outputs
+            axes :dict: 
+                key is rotation name, value is list of solutions up to num_axes_solns
+        '''
+        axes = {}
+        axes['omega'] = self.axes_solns_omega
+        axes['chi']   = self.axes_solns_chi
+        axes['phi']   = self.axes_solns_phi
+        axes['tth']   = self.axes_solns_tth
+        if(cleanprint==False):
+            return axes
+        elif(cleanprint==True):
+            axes_df = pd.DataFrame(axes)
+            return axes_df
 
     def update(self, **kwargs):
+        #TODO get this working, currently updating in forward/backward
         for key, value in kwargs.items():
-            if key in [a for a in dir(self) if not a.startswith('__')]:
-                self.key = value #?
-        #otherwise just 'try' all of these:
-        self.hkl_wavelength = wavelength
-        self.hkl_geom = geom
-        self.hkl_lattice = lattice
-        self.axes_mu = mu
-        self.axes_omega = omega
-        self.axes_chi = chi
-        self.axes_phi = phi
-        self.axes_gamma = gamma
-        self.axes_delta = delta
-        self.pseudoaxes_h = h
-        self.pseudoaxes_k = k
-        self.pseudoaxes_l = l
-        self.pseudoaxes_psi = psi
-        self.pseudoaxes_q = q
-        self.pseudoaxes_alpha = alpha
-        self.pseudoaxes_qper = qper
-        self.pseudoaxes_qpar = qpar
-        self.pseudoaxes_tth = tth
-        self.pseudoaxes_incidence = incidence
-        self.pseudoaxes_azimuth = azimuth
-        self.pseudoaxes_emergence = emergence
+            name = f'self.{key}'
+            if name in [a for a in dir(self) if not a.startswith('__')]:
+                name = value #need to replace string name with variable
 
         def compute_UB_matrix(self):
             # placeholder
@@ -152,30 +154,28 @@ class hklCalculator():
             pass
         
     def test(self):
-        # Crystal properties
-        wavelength = 1. #Angstrom
-        #geom = 'K6C' # kappa 6-circle
+        wavelength = 1.54 #Angstrom
         geom = 'E4CV' # 4-circle
         lattice = [1.54, 1.54, 1.54,
                 math.radians(90.0),
                 math.radians(90.0),
-                math.radians(90.)]
+                math.radians(90.)] # cubic
         # forward test
-        #values_w = [0., 30., 0., 0., 0., 60.0] # K6C
-        values_w = [30., 0., 0., 60.0] # E4CV
+        values_w = [30., 0., 0., 60.0] # [omega, chi, phi, tth]
         print("Running test - Initial conditions:")
         print("##################################")
-        #TODO move to a get_initial_conditions function
         print("wavelength: ", wavelength)
         print("geometry: ", geom)
         print("lattice: ", lattice)
-        f_results = self.forward(wavelength=wavelength, geom=geom, latt=lattice, values_w=values_w) 
+        self.forward(wavelength=wavelength, geom=geom, latt=lattice, values_w=values_w) 
+        f_results = self.get_pseudoaxes()
         print("input motor values: ", values_w) 
         print("forward function results:\n", f_results)  
         # backward test
-        values_hkl = [0.0, 0.0, 1.0]
-        b_results = self.backward(wavelength=wavelength, geom=geom, latt=lattice, values_hkl=values_hkl)
+        values_hkl = [0.0, 0.0, 1.0] # h, k, l
+        self.backward(wavelength=wavelength, geom=geom, latt=lattice, values_hkl=values_hkl)
+        b_results = self.get_axes(cleanprint=True)
         print("input hkl values: ", values_hkl)
-        print("backward function test results:", *b_results, sep="\n")
-
+        print("backward function results:\n", b_results)
+                
 

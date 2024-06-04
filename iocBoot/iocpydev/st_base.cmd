@@ -15,8 +15,8 @@ dbLoadDatabase "${TOP}/dbd/hklApp.dbd"
 hklApp_registerRecordDeviceDriver pdbbase
 
 ## Load record instances
-dbLoadRecords("${TOP}/db/hklApp.db", "P=$(PREFIX),R=hb3:")
-dbLoadRecords("${TOP}/db/hkl.template","P=$(PREFIX),R=hb3:")
+#dbLoadRecords("db/hkl_main.template","P=$(PREFIX),R=hb3:")
+dbLoadRecords("db/hkl_main.db")
 
 cd ${TOP}/iocBoot/${IOC}
 
@@ -26,3 +26,5 @@ pydev("hkl_calc = hklCalculator()")
 pydev("hkl_calc.test()")
 
 iocInit
+
+dbl > pvlist.dbl

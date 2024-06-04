@@ -1,0 +1,26 @@
+# FROM EPICS TO PYTHON
+
+record(ao, "$(P)$(R)axesomega") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.axes_omega='VAL'")
+}
+
+record(ao, "$(P)$(R)axeschi") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.axes_chi='VAL'")
+}
+
+record(ao, "$(P)$(R)axesphi") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.axes_phi='VAL'")
+}
+
+record(ao, "$(P)$(R)axestth") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.axes_tth='VAL'")
+}
+

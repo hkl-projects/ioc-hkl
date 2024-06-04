@@ -1,0 +1,50 @@
+# FROM EPICS TO PYTHON
+
+record(ao, "$(P)$(R)wavelength") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.wavelength='VAL'")
+}
+
+record(ao, "$(P)$(R)geom") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.geom='VAL'")
+}
+
+record(ao, "$(P)$(R)latticea1") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.lattice[0]='VAL'")
+}
+
+record(ao, "$(P)$(R)latticea2") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.lattice[1]='VAL'")
+}
+
+record(ao, "$(P)$(R)latticea3") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.lattice[2]='VAL'")
+}
+
+record(ao, "$(P)$(R)latticealpha") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.lattice[3]='VAL'")
+}
+
+record(ao, "$(P)$(R)latticebeta") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.lattice[4]='VAL'")
+}
+
+record(ao, "$(P)$(R)latticegamma") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.lattice[5]='VAL'")
+}
+

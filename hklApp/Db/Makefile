@@ -10,8 +10,11 @@ include $(TOP)/configure/CONFIG
 #----------------------------------------------------
 # Create and install (or just install) into <top>/db
 # databases, templates, substitutions like this
-DB += hklApp.db
-DB += hkl.template
+DB += hkl_main.db
+#DB += initials.template
+#DB += axes.template
+#DB += pseudoaxes.template
+#DB += axes_solns.template
 
 #----------------------------------------------------
 # If <anyname>.db template is not named <anyname>*.template add
