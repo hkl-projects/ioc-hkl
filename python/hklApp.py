@@ -10,12 +10,8 @@ import inspect
 
 class hklCalculator():
     def __init__(self, num_axes_solns=10):
+        # axes params
         self.num_axes_solns = num_axes_solns
-        #TODO differentiate omega/komega for kappa
-        self.wavelength = np.nan
-        self.geom = '' #TODO, map to ints
-        self.lattice = [np.nan, np.nan, np.nan, np.nan, np.nan, np.nan] # a1, a2, a3, alpha, beta, gamma
-        # self.axes_mu = np.nan
         self.axes_omega = np.nan
         self.axes_chi = np.nan
         self.axes_phi = np.nan
@@ -29,6 +25,25 @@ class hklCalculator():
         self.pseudoaxes_inc_azimuth = np.nan
         self.pseudoaxes_emergence = np.nan
         self.pseudoaxes_emer_azimuth = np.nan
+
+        # engine params
+        self.wavelength = np.nan
+        self.geom_name = ''
+        self.geometry = np.nan # hkl object placeholder
+        self.detector = np.nan # hkl object placeholder
+        self.sample = np.nan # hkl object placeholder
+        self.engines = np.nan # hkl object placeholder
+        self.latt = [np.nan, np.nan, np.nan, np.nan, np.nan, np.nan] 
+        # ^ [a1, a2, a3, alpha, beta, gamma]
+        
+        # sample orientation
+        self.refl1 = [np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan] 
+        self.refl2 = [np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan] 
+        # ^ [h, k l, omega, chi, phi, tth]
+        #self.UB_matrix = np.empty((3,3)).fill(np.nan)
+        self.UB_matrix = np.nan
+        
+        # solutions 
         self.axes_solns_omega = []
         self.axes_solns_chi = []
         self.axes_solns_phi = []
@@ -38,8 +53,25 @@ class hklCalculator():
             self.axes_solns_chi.append(np.nan)
             self.axes_solns_phi.append(np.nan)
             self.axes_solns_tth.append(np.nan)
+        self.pseudoaxes_solns_h = np.nan
+        self.pseudoaxes_solns_k = np.nan
+        self.pseudoaxes_solns_l = np.nan
 
-    def forward(self, wavelength=None, geom=None, latt=None, values_w=None):
+    def start(self):
+        self.detector = Hkl.Detector.factory_new(Hkl.DetectorType(0))
+        factory       = Hkl.factories()[self.geom_name]
+        self.geometry = factory.create_new_geometry()
+        # set real axes
+        # then create sample? why is it this way?
+        self.geometry.wavelength_set(self.wavelength, Hkl.UnitEnum.USER)
+        self.engines = factory.create_new_engine_list()
+        
+        self.sample = Hkl.Sample.new("toto")
+        lattice     = Hkl.Lattice.new(*self.latt)
+        self.sample.lattice_set(lattice)
+        
+       
+    def forward(self):
         '''
         forward hkl calculation, real -> reciprocal
         inputs
@@ -51,31 +83,34 @@ class hklCalculator():
         outputs (for E4CV)
             values_hkl :list: (h,k,l)
         '''
+        #TODO, make it so that I don't need to run all of start() for every forward()
         print("Forward function start")
-        #TODO dynamically assign input/output variables based on geom
-        #self.wavelength = wavelength should maybe put this all in init
-        detector   = Hkl.Detector.factory_new(Hkl.DetectorType(0))
-        factory    = Hkl.factories()[geom]
-        geometry   = factory.create_new_geometry()
+        self.detector = Hkl.Detector.factory_new(Hkl.DetectorType(0))
+        factory       = Hkl.factories()[self.geom_name]
+        self.geometry = factory.create_new_geometry()
+ 
+        values_w = [self.axes_omega, self.axes_chi, self.axes_phi, self.axes_tth] 
         try:
-            geometry.axis_values_set(values_w, Hkl.UnitEnum.USER)
+            self.geometry.axis_values_set(values_w, Hkl.UnitEnum.USER)
         except:
             print("invalid axes values")
             #TODO catch different types of errors
-        geometry.wavelength_set(wavelength, Hkl.UnitEnum.USER)
-        axis_names = geometry.axis_names_get()
-        sample     = Hkl.Sample.new("toto")
-        lattice    = Hkl.Lattice.new(*latt)
-        sample.lattice_set(lattice)
-        engines    = factory.create_new_engine_list()
-        engines.init(geometry, detector, sample)
-        engines.get()
-        hkl        = engines.engine_get_by_name("hkl")
-        values_hkl = hkl.pseudo_axis_values_get(Hkl.UnitEnum.USER)
-        self.pseudoaxes_h, self.pseudoaxes_k, self.pseudoaxes_l = values_hkl
-        #return values_hkl # no returns, just get functions
 
-    def backward(self, wavelength, latt, geom, values_hkl):
+        self.geometry.wavelength_set(self.wavelength, Hkl.UnitEnum.USER)
+        
+        self.sample = Hkl.Sample.new("toto")
+        lattice     = Hkl.Lattice.new(*self.latt)
+        self.sample.lattice_set(lattice)
+         
+        self.engines = factory.create_new_engine_list()
+        self.engines.init(self.geometry, self.detector, self.sample)
+        self.engines.get()
+        hkl = self.engines.engine_get_by_name("hkl")
+       
+        values_hkl = hkl.pseudo_axis_values_get(Hkl.UnitEnum.USER)
+        self.pseudoaxes_solns_h, self.pseudoaxes_solns_k, self.pseudoaxes_solns_l = values_hkl
+
+    def backward(self):
         '''
         backward hkl calculation, reciprocal -> real
         inputs
@@ -88,22 +123,11 @@ class hklCalculator():
             dependent on geometry, for 4-circle: [omega, chi, phi, 2theta]
         '''
         print("Backward function start")
-        detector   = Hkl.Detector.factory_new(Hkl.DetectorType(0))
-        factory    = Hkl.factories()[geom]
-        geometry   = factory.create_new_geometry()
-        geometry.wavelength_set(wavelength, Hkl.UnitEnum.USER)
-        axis_names = geometry.axis_names_get()
-        sample     = Hkl.Sample.new("toto")
-        lattice    = Hkl.Lattice.new(*latt)
-        sample.lattice_set(lattice)
-        # compute all the pseudo axes managed by all engines
-        engines = factory.create_new_engine_list()
-        engines.init(geometry, detector, sample)
-        engines.get()
-        # get the hkl engine and do a computation
-        hkl = engines.engine_get_by_name("hkl") 
+        values_hkl = [self.pseudoaxes_h, self.pseudoaxes_k, self.pseudoaxes_l]
+        self.engines.init(self.geometry, self.detector, self.sample)
+        self.engines.get()
+        hkl = self.engines.engine_get_by_name("hkl") 
         solutions = hkl.pseudo_axis_values_set(values_hkl, Hkl.UnitEnum.USER)
-        print("axis names: ", axis_names)
         values_w_all = []
         for i, item in enumerate(solutions.items()):
             #print("id: ", i) # for kappa 6-circle
@@ -113,13 +137,18 @@ class hklCalculator():
         for i in range(self.num_axes_solns):
             self.axes_solns_omega[i], self.axes_solns_chi[i], \
             self.axes_solns_phi[i], self.axes_solns_tth[i] = values_w_all[i]           
+
+    def get_axes(self):
+        axes = (self.axes_omega, self.axes_chi, self.axes_phi, self.axes_tth)
+        return axes
+
     def get_pseudoaxes(self):
         pseudoaxes = (self.pseudoaxes_h, \
                       self.pseudoaxes_k, \
                       self.pseudoaxes_l)
         return pseudoaxes
 
-    def get_axes(self, cleanprint=False):
+    def get_axes_solns(self, cleanprint=False):
         '''
         Which rotations are returned depends on geometry, 4-circle currently
         inputs
@@ -141,41 +170,92 @@ class hklCalculator():
             axes_df = pd.DataFrame(axes)
             return axes_df
 
-    def update(self, **kwargs):
-        #TODO get this working, currently updating in forward/backward
-        for key, value in kwargs.items():
-            name = f'self.{key}'
-            if name in [a for a in dir(self) if not a.startswith('__')]:
-                name = value #need to replace string name with variable
+    def get_pseudoaxes_solns(self):
+        pseudoaxes_solns = (self.pseudoaxes_solns_h, \
+                      self.pseudoaxes_solns_k, \
+                      self.pseudoaxes_solns_l)
+        return pseudoaxes_solns
 
-        def compute_UB_matrix(self):
-            # placeholder
-            # could use Hkl.compute_UB_busing_levy, Hkl.hkl_sample_compute_UB_busing_levy, Hkl.hkl_sample_UB_get, ... see "strings /usr/local/lib/girepository-1.0/Hkl-5.0.typelib" 
-            pass
+
+#    def update(self, **kwargs):
+#        # Probably not needed
+#        for key, value in kwargs.items():
+#            name = f'self.{key}'
+#            if name in [a for a in dir(self) if not a.startswith('__')]:
+#                name = value #need to replace string name with variable
+
+    def compute_UB_matrix(self):
+        print("Computing UB matrix")
+        self.sample.compute_UB_busing_levy(self.refl1, self.refl2)
+        # From Sardana https://gitlab.com/sardana-org/sardana/-/blob/develop/src/sardana/pool/poolcontrollers/HklPseudoMotorController.py
+        UB = self.sample.UB_get()
+        self.UB_matrix = [[UB.get(i, j) for j in range(3)] for i in range(3)]
         
     def test(self):
-        wavelength = 1.54 #Angstrom
-        geom = 'E4CV' # 4-circle
-        lattice = [1.54, 1.54, 1.54,
+        # starting sample, instrument parameters
+        self.wavelength = 1.54 #Angstrom
+        self.geom_name = 'E4CV' # 4-circle
+        self.latt = [1.54, 1.54, 1.54,
                 math.radians(90.0),
                 math.radians(90.0),
                 math.radians(90.)] # cubic
+        self.start() # start hkl
+       
         # forward test
-        values_w = [30., 0., 0., 60.0] # [omega, chi, phi, tth]
+        self.axes_omega = 30.
+        self.axes_chi   = 0.
+        self.axes_phi   = 0.
+        self.axes_tth   = 60.
         print("Running test - Initial conditions:")
         print("##################################")
-        print("wavelength: ", wavelength)
-        print("geometry: ", geom)
-        print("lattice: ", lattice)
-        self.forward(wavelength=wavelength, geom=geom, latt=lattice, values_w=values_w) 
-        f_results = self.get_pseudoaxes()
-        print("input motor values: ", values_w) 
+        print("wavelength: ", self.wavelength)
+        print("geometry: ", self.geom_name)
+        print("lattice: ", self.latt)
+        self.forward() 
+        f_results = self.get_pseudoaxes_solns()
+        print("input motor values: ", self.get_axes()) 
         print("forward function results:\n", f_results)  
         # backward test
-        values_hkl = [0.0, 0.0, 1.0] # h, k, l
-        self.backward(wavelength=wavelength, geom=geom, latt=lattice, values_hkl=values_hkl)
-        b_results = self.get_axes(cleanprint=True)
+        self.pseudoaxes_h = 0.
+        self.pseudoaxes_k = 0.
+        self.pseudoaxes_l = 1.
+        values_hkl = [self.pseudoaxes_h, self.pseudoaxes_k, self.pseudoaxes_l]
+        self.backward()
+        b_results = self.get_axes_solns(cleanprint=True)
         print("input hkl values: ", values_hkl)
         print("backward function results:\n", b_results)
-                
+        #UB matrix test
+        # 4, 0, 0,    69.0966, 0, 0, -145.451
+        # Hkl.SampleReflection(self.geometry, self.detector, h, k, l)
+        # When this function takes in self.geometry, it pulls the axes positions from there
+        # So, need to run a forward() with reflection1 motor positions to capture refl1
+        
+        # reflection #1
+        self.axes_omega = 69.0966
+        self.axes_chi   = 0
+        self.axes_phi   = 0
+        self.axes_tth   = -145.451
+        self.forward()
+        self.pseudoaxes_h = 4
+        self.pseudoaxes_k = 0
+        self.pseudoaxes_l = 0
+        self.refl1 = Hkl.SampleReflection(self.geometry, self.detector, self.pseudoaxes_h, \
+                                            self.pseudoaxes_k, self.pseudoaxes_l)
 
+        # reflection #2
+        self.axes_omega = 69.0966
+        self.axes_chi   = 90
+        self.axes_phi   = 0
+        self.axes_tth   = -145.451
+        self.forward()
+        self.pseudoaxes_h = 0
+        self.pseudoaxes_k = 4
+        self.pseudoaxes_l = 0
+        self.refl2 = Hkl.SampleReflection(self.geometry, self.detector, self.pseudoaxes_h, \
+                                            self.pseudoaxes_k, self.pseudoaxes_l)   
+        # Finally, we compute the UB matrix
+        self.compute_UB_matrix()
+        print("Testing UB matrix calculation")
+        print(f'reflection #1: {self.refl1}')
+        print(f'reflection #2: {self.refl2}')
+        print(f'Resulting UB matrix: {self.UB_matrix}')
