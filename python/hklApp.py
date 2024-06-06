@@ -37,13 +37,15 @@ class hklCalculator():
         # ^ [a1, a2, a3, alpha, beta, gamma]
         
         # sample orientation
-        self.refl1 = [np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan] 
-        self.refl2 = [np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan] 
+        self.refl1_input = [np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan] 
+        self.refl2_input = [np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan] 
+        self.refl1 = np.nan # hkl object placeholder
+        self.refl2 = np.nan # hkl object placeholder
         # ^ [h, k l, omega, chi, phi, tth]
-        #self.UB_matrix = np.empty((3,3)).fill(np.nan)
-        self.UB_matrix = np.nan
+        self.UB_matrix = np.zeros((3,3))
+        print(self.UB_matrix)
         
-        # solutions 
+        # axes solutions 
         self.axes_solns_omega = []
         self.axes_solns_chi = []
         self.axes_solns_phi = []
@@ -176,21 +178,35 @@ class hklCalculator():
                       self.pseudoaxes_solns_l)
         return pseudoaxes_solns
 
-
-#    def update(self, **kwargs):
-#        # Probably not needed
-#        for key, value in kwargs.items():
-#            name = f'self.{key}'
-#            if name in [a for a in dir(self) if not a.startswith('__')]:
-#                name = value #need to replace string name with variable
-
     def compute_UB_matrix(self):
         print("Computing UB matrix")
+        self.add_reflection1()
+        self.add_reflection2()
         self.sample.compute_UB_busing_levy(self.refl1, self.refl2)
-        # From Sardana https://gitlab.com/sardana-org/sardana/-/blob/develop/src/sardana/pool/poolcontrollers/HklPseudoMotorController.py
         UB = self.sample.UB_get()
-        self.UB_matrix = [[UB.get(i, j) for j in range(3)] for i in range(3)]
-        
+        #TODO probably a better way to do this
+        for i in range(3):
+            for j in range(3):
+                self.UB_matrix[i,j] = UB.get(i,j)
+
+    def add_reflection1(self):
+        self.axes_omega = self.refl1_input[3]
+        self.axes_chi   = self.refl1_input[4]
+        self.axes_phi   = self.refl1_input[5]
+        self.axes_tth   = self.refl1_input[6]
+        self.forward() # replace with an update of sample with motor positions
+        self.refl1 = Hkl.SampleReflection(self.geometry, self.detector, self.refl1_input[0], \
+                                         self.refl1_input[1], self.refl1_input[2])
+
+    def add_reflection2(self):
+        self.axes_omega = self.refl2_input[3]
+        self.axes_chi   = self.refl2_input[4]
+        self.axes_phi   = self.refl2_input[5]
+        self.axes_tth   = self.refl2_input[6]
+        self.forward()
+        self.refl2 = Hkl.SampleReflection(self.geometry, self.detector, self.refl2_input[0], \
+                                         self.refl2_input[1], self.refl2_input[2])
+
     def test(self):
         # starting sample, instrument parameters
         self.wavelength = 1.54 #Angstrom
@@ -225,34 +241,25 @@ class hklCalculator():
         print("input hkl values: ", values_hkl)
         print("backward function results:\n", b_results)
         #UB matrix test
-        # 4, 0, 0,    69.0966, 0, 0, -145.451
         # Hkl.SampleReflection(self.geometry, self.detector, h, k, l)
         # When this function takes in self.geometry, it pulls the axes positions from there
-        # So, need to run a forward() with reflection1 motor positions to capture refl1
-        
+        # So, need to run a forward() with reflection1 motor positions to capture reflections
         # reflection #1
-        self.axes_omega = 69.0966
-        self.axes_chi   = 0
-        self.axes_phi   = 0
-        self.axes_tth   = -145.451
-        self.forward()
-        self.pseudoaxes_h = 4
-        self.pseudoaxes_k = 0
-        self.pseudoaxes_l = 0
-        self.refl1 = Hkl.SampleReflection(self.geometry, self.detector, self.pseudoaxes_h, \
-                                            self.pseudoaxes_k, self.pseudoaxes_l)
-
+        self.refl1_input[3] = 60 # omega
+        self.refl1_input[4] = 0 # chi
+        self.refl1_input[5] = 0 # phi
+        self.refl1_input[6] = -145.451 # tth
+        self.refl1_input[0] = 1 # h
+        self.refl1_input[1] = 0 # k
+        self.refl1_input[2] = 0 # l
         # reflection #2
-        self.axes_omega = 69.0966
-        self.axes_chi   = 90
-        self.axes_phi   = 0
-        self.axes_tth   = -145.451
-        self.forward()
-        self.pseudoaxes_h = 0
-        self.pseudoaxes_k = 4
-        self.pseudoaxes_l = 0
-        self.refl2 = Hkl.SampleReflection(self.geometry, self.detector, self.pseudoaxes_h, \
-                                            self.pseudoaxes_k, self.pseudoaxes_l)   
+        self.refl2_input[3] = 30 # omega
+        self.refl2_input[4] = 30 # chi
+        self.refl2_input[5] = 0 # phi
+        self.refl2_input[6] = 90 # tth
+        self.refl2_input[0] = 0 # h
+        self.refl2_input[1] = 0 # k
+        self.refl2_input[2] = 4 # l
         # Finally, we compute the UB matrix
         self.compute_UB_matrix()
         print("Testing UB matrix calculation")

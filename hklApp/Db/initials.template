@@ -48,3 +48,45 @@ record(ao, "$(P)$(R)latticegamma") {
     field(OUT, "@hkl_calc.lattice[5]='VAL'")
 }
 
+record(mbbo, "$(P)$(R)geom") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(ZRVL, "1")
+    field(ONVL, "2")
+    field(TWVL, "3")
+    field(THVL, "4")
+    field(FRVL, "5")
+    field(FVVL, "6")
+    field(SXVL, "7")
+    field(ZRST, "E4CV")
+    field(ONST, "K6C")
+    field(TWST, "E4CV")
+    field(THST, "E4CV")
+    field(FRST, "E4CV")
+    field(FVST, "E4CV")
+    field(SXST, "E4CV")
+    field(OUT, "@hkl_calc.geom")
+}
+
+#record(mbbo, "$(P)$(R)symmetry") {
+#    field(PINI, "YES")
+#    field(DTYP, "Raw Soft Channel")
+#    field(ZRVL, "1")
+#    field(ONVL, "2")
+#    field(TWVL, "3")
+#    field(THVL, "4")
+#    field(FRVL, "5")
+#    field(FVVL, "6")
+#    field(SXVL, "7")
+#    field(ZRST, "Cubic")
+#    field(ONST, "Tetragonal")
+#    field(TWST, "Orthohombic")
+#    field(THST, "Hexagonal")
+#    field(FRST, "Rhombohedral")
+#    field(FVST, "Monoclinic")
+#    field(SXST, "Triclinic")
+#    field(OUT, "")
+#    field(FLNK, "")
+#    #info(autosaveFields, "VAL")
+#}
+

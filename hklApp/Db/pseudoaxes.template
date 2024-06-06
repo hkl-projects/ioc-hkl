@@ -56,7 +56,7 @@ record(ao, "$(P)$(R)pseudoaxesemerazimuth") {
 
 # PYTHON TO EPICS
 
-record(ai, "$(P)$(R)solnpseudoaxesh") {
+record(ai, "$(P)$(R)solnVaxesh") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_h")
@@ -64,7 +64,7 @@ record(ai, "$(P)$(R)solnpseudoaxesh") {
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)solnpseudoaxesk") {
+record(ai, "$(P)$(R)solnVaxesk") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_k")
@@ -72,7 +72,7 @@ record(ai, "$(P)$(R)solnpseudoaxesk") {
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)solnpseudoaxesl") {
+record(ai, "$(P)$(R)solnVaxesl") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_l")
