@@ -48,7 +48,8 @@ record(ao, "$(P)$(R)latticegamma") {
     field(OUT, "@hkl_calc.lattice[5]='VAL'")
 }
 
-record(mbbo, "$(P)$(R)geom") {
+# temporary
+record(mbbo, "$(P)$(R)geom2") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(ZRVL, "1")

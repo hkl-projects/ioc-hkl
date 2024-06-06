@@ -1,54 +1,54 @@
 # EPICS TO PYTHON
 
-record(ao, "$(P)$(R)pseudoaxesh") {
+record(ao, "$(P)$(R)Vaxesh") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_h='VAL'")
 }
 
-record(ao, "$(P)$(R)pseudoaxesk") {
+record(ao, "$(P)$(R)Vaxesk") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_k='VAL'")
 }
 
-record(ao, "$(P)$(R)pseudoaxesl") {
+record(ao, "$(P)$(R)Vaxesl") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_l='VAL'")
 }
 
-record(ao, "$(P)$(R)pseudoaxespsi") {
+record(ao, "$(P)$(R)Vaxespsi") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_psi='VAL'")
 }
 
-record(ao, "$(P)$(R)pseudoaxesq") {
+record(ao, "$(P)$(R)Vaxesq") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_q='VAL'")
 }
 
-record(ao, "$(P)$(R)pseudoaxesincidence") {
+record(ao, "$(P)$(R)Vaxesincidence") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_incidence='VAL'")
 }
 
-record(ao, "$(P)$(R)pseudoaxesincazimuth") {
+record(ao, "$(P)$(R)Vaxesincazimuth") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_inc_azimuth='VAL'")
 }
 
-record(ao, "$(P)$(R)pseudoaxesemergence") {
+record(ao, "$(P)$(R)Vaxesemergence") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_emergence='VAL'")
 }
 
-record(ao, "$(P)$(R)pseudoaxesemerazimuth") {
+record(ao, "$(P)$(R)Vaxesemerazimuth") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_emer_azimuth='VAL'")
