@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-06-02 15:43:00 by kg1-->
+<!--Saved on 2024-06-06 16:54:51 by l3b-->
 <display version="2.0.0">
   <name>Display</name>
+  <macros>
+    <Sys>TAC:</Sys>
+    <Dev>hb3:</Dev>
+  </macros>
   <width>850</width>
   <widget type="label" version="2.0.0">
     <name>Label</name>
@@ -110,7 +114,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input</name>
-    <pv_name>$(Sys)$(Dev)wlen.VAL</pv_name>
+    <pv_name>$(Sys)$(Dev)wavelength</pv_name>
     <x>271</x>
     <y>80</y>
     <width>150</width>

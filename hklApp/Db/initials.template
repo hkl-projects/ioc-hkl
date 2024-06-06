@@ -6,11 +6,11 @@ record(ao, "$(P)$(R)wavelength") {
     field(OUT, "@hkl_calc.wavelength='VAL'")
 }
 
-record(ao, "$(P)$(R)geom") {
-    field(PINI, "YES")
-    field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.geom='VAL'")
-}
+#record(ao, "$(P)$(R)geom") {
+#    field(PINI, "YES")
+#    field(DTYP, "pydev")
+#    field(OUT, "@hkl_calc.geom='VAL'")
+#}
 
 record(ao, "$(P)$(R)latticea1") {
     field(PINI, "YES")
@@ -49,7 +49,7 @@ record(ao, "$(P)$(R)latticegamma") {
 }
 
 # temporary
-record(mbbo, "$(P)$(R)geom2") {
+record(mbbo, "$(P)$(R)geom") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(ZRVL, "1")

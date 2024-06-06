@@ -42,7 +42,6 @@ TAC:hb3:chi9
 TAC:hb3:phi9
 TAC:hb3:tth9
 TAC:hb3:wavelength
-TAC:hb3:geom
 TAC:hb3:latticea1
 TAC:hb3:latticea2
 TAC:hb3:latticea3
@@ -62,4 +61,4 @@ TAC:hb3:axesomega
 TAC:hb3:axeschi
 TAC:hb3:axesphi
 TAC:hb3:axestth
-TAC:hb3:geom2
+TAC:hb3:geom
