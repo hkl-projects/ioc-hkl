@@ -1,0 +1,19 @@
+# FROM EPICS TO PYTHON
+
+#record(bi, "$(P)$(R)forward") {
+#    field(PINI, "YES")
+#    field(DTYP, "pydev")
+#    field(PUTF, "@hkl_calc.forward()")
+#}
+
+#record(bi, "$(P)$(R)backward") {
+#    field(PINI, "YES")
+#    field(DTYP, "pydev")
+#    field(PUTF, "@hkl_calc.backward()")
+#}
+
+
+# FROM PYTHON TO EPICS
+
+# function outputs?
+

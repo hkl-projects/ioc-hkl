@@ -51,4 +51,11 @@ pattern {P, R, C}
 { TAC:, hb3:, 9 }
 }
 
-
+#file functions.template 
+#{
+#pattern {P, R}
+#{ TAC:, hb3: }
+#{ TAC:, hb3: }
+#{ TAC:, hb3: }
+#{ TAC:, hb3: }
+#}
