@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-06-06 16:54:51 by l3b-->
+<!--Saved on 2024-06-06 21:50:52 by kg1-->
 <display version="2.0.0">
-  <name>Display</name>
-  <macros>
-    <Sys>TAC:</Sys>
-    <Dev>hb3:</Dev>
-  </macros>
-  <width>850</width>
+  <name>HKL</name>
+  <width>860</width>
+  <height>1100</height>
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
@@ -28,20 +25,21 @@
   <widget type="label" version="2.0.0">
     <name>Label_1</name>
     <text>Some Value:</text>
-    <y>280</y>
+    <x>520</x>
+    <y>360</y>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update</name>
     <pv_name>sim://sine</pv_name>
-    <x>100</x>
-    <y>280</y>
+    <x>620</x>
+    <y>360</y>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_2</name>
     <class>COMMENT</class>
     <text>Some comment.</text>
-    <x>220</x>
-    <y>280</y>
+    <x>740</x>
+    <y>440</y>
     <width>140</width>
     <font use_class="true">
       <font name="Comment" family="Liberation Sans" style="ITALIC" size="14.0">
@@ -56,8 +54,8 @@
   </widget>
   <widget type="action_button" version="3.0.0">
     <name>Action Button</name>
-    <x>10</x>
-    <y>310</y>
+    <x>530</x>
+    <y>390</y>
     <width>140</width>
     <height>40</height>
     <tooltip>$(actions)</tooltip>
@@ -65,25 +63,25 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Entry</name>
     <pv_name>PyCalcTest:Input1</pv_name>
-    <x>30</x>
-    <y>360</y>
+    <x>530</x>
+    <y>440</y>
     <width>140</width>
     <height>50</height>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_1</name>
     <pv_name>PyCalcTest:Input1</pv_name>
-    <x>250</x>
-    <y>350</y>
-    <width>120</width>
+    <x>700</x>
+    <y>400</y>
+    <width>140</width>
     <height>50</height>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_2</name>
     <pv_name>PyDev:Double:Pow2</pv_name>
-    <x>230</x>
-    <y>420</y>
-    <width>120</width>
+    <x>700</x>
+    <y>460</y>
+    <width>140</width>
     <height>30</height>
   </widget>
   <widget type="textupdate" version="2.0.0">
@@ -114,7 +112,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input</name>
-    <pv_name>$(Sys)$(Dev)wavelength</pv_name>
+    <pv_name>$(Sys)$(Dev)wlen.VAL</pv_name>
     <x>271</x>
     <y>80</y>
     <width>150</width>
@@ -238,16 +236,11 @@
     <text>Wave length</text>
     <y>82</y>
   </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_4</name>
-    <text>Diffractometer</text>
-    <y>50</y>
-  </widget>
   <widget type="combo" version="2.0.0">
     <name>Menu Button</name>
     <pv_name>$(Sys)$(Dev)Diffractometer</pv_name>
-    <x>103</x>
-    <y>45</y>
+    <x>34</x>
+    <y>44</y>
     <height>25</height>
     <background_color>
       <color red="240" green="240" blue="240">
@@ -258,10 +251,10 @@
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_13</name>
     <pv_name>$(Sys)$(Dev)Diffractometer_RBV</pv_name>
-    <x>271</x>
-    <y>45</y>
+    <x>202</x>
+    <y>44</y>
     <width>96</width>
-    <height>15</height>
+    <height>25</height>
     <background_color>
       <color red="255" green="255" blue="255">
       </color>
@@ -277,5 +270,67 @@
       <color name="S_ind" red="0" green="177" blue="0">
       </color>
     </border_color>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display</name>
+    <macros>
+      <Ax1Name>omega</Ax1Name>
+      <Ax2Name>chi</Ax2Name>
+      <Ax3Name>phi</Ax3Name>
+      <Ax4Name>tth</Ax4Name>
+    </macros>
+    <file>axis/_multi_axes.opi</file>
+    <y>160</y>
+    <width>780</width>
+    <height>100</height>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_5</name>
+    <text>Axes</text>
+    <x>10</x>
+    <y>130</y>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_6</name>
+    <text>PseudoAxes</text>
+    <x>20</x>
+    <y>280</y>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_1</name>
+    <macros>
+      <Ax1Name>h</Ax1Name>
+      <Ax2Name>k</Ax2Name>
+      <Ax3Name>l</Ax3Name>
+      <Ax4Name>psi</Ax4Name>
+      <Ax5Name>q</Ax5Name>
+      <Ax6Name>incidence</Ax6Name>
+      <Ax7Name>azimuth</Ax7Name>
+      <Ax8Name>emergence</Ax8Name>
+      <Ax9Name>azimuth2</Ax9Name>
+    </macros>
+    <file>axis/_multi_pseudoaxes.bob</file>
+    <y>310</y>
+    <width>456</width>
+    <height>350</height>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_7</name>
+    <text>Solutions</text>
+    <x>20</x>
+    <y>696</y>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_2</name>
+    <macros>
+      <Ax1Name>omega</Ax1Name>
+      <Ax2Name>chi</Ax2Name>
+      <Ax3Name>phi</Ax3Name>
+      <Ax4Name>tth</Ax4Name>
+    </macros>
+    <file>axis/_multi_solutions.bob</file>
+    <y>723</y>
+    <width>780</width>
+    <height>350</height>
   </widget>
 </display>
