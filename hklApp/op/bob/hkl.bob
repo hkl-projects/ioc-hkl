@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-06-07 10:36:07 by kg1-->
+<!--Saved on 2024-06-07 11:51:21 by l3b-->
 <display version="2.0.0">
   <name>HKL</name>
   <macros>
@@ -89,7 +89,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_3</name>
-    <pv_name>$(Sys)$(Dev)wlen.DESC</pv_name>
+    <pv_name>$(Sys)wlen.DESC</pv_name>
     <x>103</x>
     <y>80</y>
     <width>132</width>
@@ -115,7 +115,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input</name>
-    <pv_name>$(Sys)$(Dev)wlen.VAL</pv_name>
+    <pv_name>$(Sys)wlen.VAL</pv_name>
     <x>271</x>
     <y>80</y>
     <width>150</width>
@@ -152,7 +152,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_4</name>
-    <pv_name>$(Sys)$(Dev)wlen.RBV</pv_name>
+    <pv_name>$(Sys)wlen.RBV</pv_name>
     <x>456</x>
     <y>82</y>
     <width>146</width>
@@ -174,7 +174,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_1</name>
-    <pv_name>$(Sys)$(Dev)wlen.TWV</pv_name>
+    <pv_name>$(Sys)wlen.TWV</pv_name>
     <x>666</x>
     <y>80</y>
     <width>150</width>
@@ -241,7 +241,7 @@
   </widget>
   <widget type="combo" version="2.0.0">
     <name>Menu Button</name>
-    <pv_name>$(Sys)$(Dev)geom</pv_name>
+    <pv_name>$(Sys)geom</pv_name>
     <x>34</x>
     <y>44</y>
     <height>25</height>
@@ -253,7 +253,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_13</name>
-    <pv_name>$(Sys)$(Dev)Diffractometer_RBV</pv_name>
+    <pv_name>$(Sys)geom_RBV</pv_name>
     <x>202</x>
     <y>44</y>
     <width>96</width>

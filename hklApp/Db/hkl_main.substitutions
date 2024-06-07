@@ -24,6 +24,21 @@ pattern {P, R}
 { HB3, : }
 { HB3, : }
 { HB3, : }
+{ HB3, : }
+{ HB3, : }
+{ HB3, : }
+{ HB3, : }
+{ HB3, : }
+{ HB3, : }
+{ HB3, : }
+{ HB3, : }
+{ HB3, : }
+{ HB3, : }
+{ HB3, : }
+{ HB3, : }
+{ HB3, : }
+{ HB3, : }
+{ HB3, : }
 }
 
 file axes.template 
@@ -49,6 +64,11 @@ pattern {P, R, C}
 { HB3, : , 7 }
 { HB3, : , 8 }
 { HB3, : , 9 }
+{ HB3, : , 10 }
+{ HB3, : , 11 }
+{ HB3, : , 12 }
+{ HB3, : , 13 }
+{ HB3, : , 14 }
 }
 
 #file functions.template 
