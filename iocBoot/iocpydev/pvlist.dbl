@@ -100,4 +100,7 @@ HB3:omega
 HB3:chi
 HB3:phi
 HB3:tth
+HB3:forward
+HB3:backward
+HB3:test
 HB3:geom

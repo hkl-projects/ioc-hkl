@@ -42,7 +42,7 @@ record(ai, "$(P)$(R)omega_RBV") {
     field(DTYP, "pydev")
     field(LOPR, "-180")
     field(HOPR, "180")
-    field(INP, "@hkl_calc.axes_omega='VAL'")
+    field(INP, "@hkl_calc.axes_omega")
 }
 
 record(ai, "$(P)$(R)chi_RBV") {
@@ -51,7 +51,7 @@ record(ai, "$(P)$(R)chi_RBV") {
     field(DTYP, "pydev")
     field(LOPR, "-180")
     field(HOPR, "180")
-    field(INP, "@hkl_calc.axes_chi='VAL'")
+    field(INP, "@hkl_calc.axes_chi")
 }
 
 record(ai, "$(P)$(R)phi_RBV") {
@@ -60,7 +60,7 @@ record(ai, "$(P)$(R)phi_RBV") {
     field(DTYP, "pydev")
     field(LOPR, "-180")
     field(HOPR, "180")
-    field(INP, "@hkl_calc.axes_phi='VAL'")
+    field(INP, "@hkl_calc.axes_phi")
 }
 
 record(ai, "$(P)$(R)tth_RBV") {
@@ -69,5 +69,5 @@ record(ai, "$(P)$(R)tth_RBV") {
     field(DTYP, "pydev")
     field(LOPR, "-180")
     field(HOPR, "180")
-    field(INP, "@hkl_calc.axes_tth='VAL'")
+    field(INP, "@hkl_calc.axes_tth")
 }

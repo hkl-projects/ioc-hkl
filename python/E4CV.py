@@ -28,7 +28,6 @@ class hklCalculator_E4CV():
         self.refl2 = np.nan # hkl object placeholder
         # ^ [h, k l, omega, chi, phi, tth]
         self.UB_matrix = np.zeros((3,3))
-        print(self.UB_matrix)
 
         # axes
         self.num_axes_solns = num_axes_solns
@@ -69,8 +68,6 @@ class hklCalculator_E4CV():
         self.pseudoaxes_solns_azimuth1 = 0
         self.pseudoaxes_solns_emergence = 0
         self.pseudoaxes_solns_azimuth2 = 0
-
-
        
     def start(self):
         self.detector = Hkl.Detector.factory_new(Hkl.DetectorType(0))
@@ -111,6 +108,7 @@ class hklCalculator_E4CV():
         except:
             print("invalid axes values")
             #TODO catch different types of errors
+            return
 
         self.geometry.wavelength_set(self.wavelength, Hkl.UnitEnum.USER)
         
@@ -283,22 +281,22 @@ class hklCalculator_E4CV():
         # When this function takes in self.geometry, it pulls the axes positions from there
         # So, need to run a forward() with reflection1 motor positions to capture reflections
         # reflection #1
-        self.refl1_input[3] = 60 # omega
+        self.refl1_input[3] = -145.451 # omega
         self.refl1_input[4] = 0 # chi
         self.refl1_input[5] = 0 # phi
-        self.refl1_input[6] = -145.451 # tth
-        self.refl1_input[0] = 1 # h
+        self.refl1_input[6] = 69.0966 # tth
+        self.refl1_input[0] = 4 # h
         self.refl1_input[1] = 0 # k
         self.refl1_input[2] = 0 # l
         # reflection #2
-        self.refl2_input[3] = 30 # omega
-        self.refl2_input[4] = 30 # chi
+        self.refl2_input[3] = -145.451 # omega
+        self.refl2_input[4] = 90 # chi
         self.refl2_input[5] = 0 # phi
-        self.refl2_input[6] = 90 # tth
+        self.refl2_input[6] = 69.0966 # tth
         self.refl2_input[0] = 0 # h
-        self.refl2_input[1] = 0 # k
-        self.refl2_input[2] = 4 # l
-        # Finally, we compute the UB matrix
+        self.refl2_input[1] = 4 # k
+        self.refl2_input[2] = 0 # l
+        # Finally, compute the UB matrix #TODO calculated matrix not correct
         self.compute_UB_matrix()
         print("Testing UB matrix calculation")
         print(f'reflection #1: {self.refl1}')

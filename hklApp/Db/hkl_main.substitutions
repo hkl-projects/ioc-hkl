@@ -2,51 +2,17 @@ file initials.template
 {
 pattern {P,R}
 {  HB3, : }
-{  HB3, : }
-{  HB3, : }
-{  HB3, : }
-{  HB3, : }
-{  HB3, : }
 }
 
 file pseudoaxes.template 
 {
 pattern {P, R}
 { HB3, : }
-{ HB3, : }
-{ HB3, : }
-{ HB3, : }
-{ HB3, : }
-{ HB3, : }
-{ HB3, : }
-{ HB3, : }
-{ HB3, : }
-{ HB3, : }
-{ HB3, : }
-{ HB3, : }
-{ HB3, : }
-{ HB3, : }
-{ HB3, : }
-{ HB3, : }
-{ HB3, : }
-{ HB3, : }
-{ HB3, : }
-{ HB3, : }
-{ HB3, : }
-{ HB3, : }
-{ HB3, : }
-{ HB3, : }
-{ HB3, : }
-{ HB3, : }
-{ HB3, : }
 }
 
 file axes.template 
 {
 pattern {P, R}
-{ HB3, : }
-{ HB3, : }
-{ HB3, : }
 { HB3, : }
 }
 
@@ -71,11 +37,8 @@ pattern {P, R, C}
 { HB3, : , 14 }
 }
 
-#file functions.template 
-#{
-#pattern {P, R}
-#{ TAC:, hb3: }
-#{ TAC:, hb3: }
-#{ TAC:, hb3: }
-#{ TAC:, hb3: }
-#}
+file functions.template 
+{
+pattern {P, R}
+{ HB3, : }
+}

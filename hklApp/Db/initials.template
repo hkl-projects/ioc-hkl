@@ -1,11 +1,20 @@
 # FROM EPICS TO PYTHON
 
 record(ao, "$(P)$(R)wlen") {
-    field(DESC, "wavelength (nm)")
+    field(DESC, "wavelength")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.wavelength='VAL'")
 }
+
+record(ai, "$(P)$(R)wlen_RBV") {
+    field(DESC, "wavelength")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.wavelength")
+}
+
+
 
 #record(ao, "$(P)$(R)geom") {
 #    field(PINI, "YES")
