@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-06-06 21:50:52 by kg1-->
+<!--Saved on 2024-06-07 10:36:07 by kg1-->
 <display version="2.0.0">
   <name>HKL</name>
+  <macros>
+    <Sys>HB3:</Sys>
+  </macros>
   <width>860</width>
   <height>1100</height>
   <widget type="label" version="2.0.0">
@@ -238,7 +241,7 @@
   </widget>
   <widget type="combo" version="2.0.0">
     <name>Menu Button</name>
-    <pv_name>$(Sys)$(Dev)Diffractometer</pv_name>
+    <pv_name>$(Sys)$(Dev)geom</pv_name>
     <x>34</x>
     <y>44</y>
     <height>25</height>
@@ -312,13 +315,13 @@
     <file>axis/_multi_pseudoaxes.bob</file>
     <y>310</y>
     <width>456</width>
-    <height>350</height>
+    <height>220</height>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_7</name>
     <text>Solutions</text>
     <x>20</x>
-    <y>696</y>
+    <y>580</y>
   </widget>
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_2</name>
@@ -329,7 +332,7 @@
       <Ax4Name>tth</Ax4Name>
     </macros>
     <file>axis/_multi_solutions.bob</file>
-    <y>723</y>
+    <y>607</y>
     <width>780</width>
     <height>350</height>
   </widget>

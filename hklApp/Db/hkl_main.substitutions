@@ -1,54 +1,54 @@
 file initials.template
 {
 pattern {P,R}
-{ TAC:, hb3: }
-{ TAC:, hb3: }
-{ TAC:, hb3: }
-{ TAC:, hb3: }
-{ TAC:, hb3: }
-{ TAC:, hb3: }
+{  HB3, : }
+{  HB3, : }
+{  HB3, : }
+{  HB3, : }
+{  HB3, : }
+{  HB3, : }
 }
 
 file pseudoaxes.template 
 {
 pattern {P, R}
-{ TAC:, hb3: }
-{ TAC:, hb3: }
-{ TAC:, hb3: }
-{ TAC:, hb3: }
-{ TAC:, hb3: }
-{ TAC:, hb3: }
-{ TAC:, hb3: }
-{ TAC:, hb3: }
-{ TAC:, hb3: }
-{ TAC:, hb3: }
-{ TAC:, hb3: }
-{ TAC:, hb3: }
+{ HB3, : }
+{ HB3, : }
+{ HB3, : }
+{ HB3, : }
+{ HB3, : }
+{ HB3, : }
+{ HB3, : }
+{ HB3, : }
+{ HB3, : }
+{ HB3, : }
+{ HB3, : }
+{ HB3, : }
 }
 
 file axes.template 
 {
 pattern {P, R}
-{ TAC:, hb3: }
-{ TAC:, hb3: }
-{ TAC:, hb3: }
-{ TAC:, hb3: }
+{ HB3, : }
+{ HB3, : }
+{ HB3, : }
+{ HB3, : }
 }
 
 
 file axes_solns.template 
 {
 pattern {P, R, C}
-{ TAC:, hb3:, 0 }
-{ TAC:, hb3:, 1 }
-{ TAC:, hb3:, 2 }
-{ TAC:, hb3:, 3 }
-{ TAC:, hb3:, 4 }
-{ TAC:, hb3:, 5 }
-{ TAC:, hb3:, 6 }
-{ TAC:, hb3:, 7 }
-{ TAC:, hb3:, 8 }
-{ TAC:, hb3:, 9 }
+{ HB3, : , 0 }
+{ HB3, : , 1 }
+{ HB3, : , 2 }
+{ HB3, : , 3 }
+{ HB3, : , 4 }
+{ HB3, : , 5 }
+{ HB3, : , 6 }
+{ HB3, : , 7 }
+{ HB3, : , 8 }
+{ HB3, : , 9 }
 }
 
 #file functions.template 

@@ -1,54 +1,54 @@
 # EPICS TO PYTHON
 
-record(ao, "$(P)$(R)Vaxesh") {
+record(ao, "$(P)$(R)h") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_h='VAL'")
 }
 
-record(ao, "$(P)$(R)Vaxesk") {
+record(ao, "$(P)$(R)k") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_k='VAL'")
 }
 
-record(ao, "$(P)$(R)Vaxesl") {
+record(ao, "$(P)$(R)l") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_l='VAL'")
 }
 
-record(ao, "$(P)$(R)Vaxespsi") {
+record(ao, "$(P)$(R)psi") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_psi='VAL'")
 }
 
-record(ao, "$(P)$(R)Vaxesq") {
+record(ao, "$(P)$(R)q") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_q='VAL'")
 }
 
-record(ao, "$(P)$(R)Vaxesincidence") {
+record(ao, "$(P)$(R)incidence") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_incidence='VAL'")
 }
 
-record(ao, "$(P)$(R)Vaxesincazimuth") {
+record(ao, "$(P)$(R)azimuth") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_inc_azimuth='VAL'")
 }
 
-record(ao, "$(P)$(R)Vaxesemergence") {
+record(ao, "$(P)$(R)emergence") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_emergence='VAL'")
 }
 
-record(ao, "$(P)$(R)Vaxesemerazimuth") {
+record(ao, "$(P)$(R)azimuth2") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_emer_azimuth='VAL'")
@@ -56,7 +56,7 @@ record(ao, "$(P)$(R)Vaxesemerazimuth") {
 
 # PYTHON TO EPICS
 
-record(ai, "$(P)$(R)solnVaxesh") {
+record(ai, "$(P)$(R)solh") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_h")
@@ -64,7 +64,7 @@ record(ai, "$(P)$(R)solnVaxesh") {
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)solnVaxesk") {
+record(ai, "$(P)$(R)solk") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_k")
@@ -72,7 +72,7 @@ record(ai, "$(P)$(R)solnVaxesk") {
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)solnVaxesl") {
+record(ai, "$(P)$(R)soll") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_l")
