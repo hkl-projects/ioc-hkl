@@ -1,26 +1,73 @@
 # FROM EPICS TO PYTHON
 
-record(ao, "$(P)$(R)axesomega") {
+record(ao, "$(P)$(R)omega") {
+    field(DESC, "omega")
     field(PINI, "YES")
     field(DTYP, "pydev")
+    field(LOPR, "-180")
+    field(HOPR, "180")
     field(OUT, "@hkl_calc.axes_omega='VAL'")
 }
 
-record(ao, "$(P)$(R)axeschi") {
+record(ao, "$(P)$(R)chi") {
+    field(DESC, "chi")
     field(PINI, "YES")
     field(DTYP, "pydev")
+    field(LOPR, "-180")
+    field(HOPR, "180")
     field(OUT, "@hkl_calc.axes_chi='VAL'")
 }
 
-record(ao, "$(P)$(R)axesphi") {
+record(ao, "$(P)$(R)phi") {
+    field(DESC, "phi")
     field(PINI, "YES")
     field(DTYP, "pydev")
+    field(LOPR, "-180")
+    field(HOPR, "180")
     field(OUT, "@hkl_calc.axes_phi='VAL'")
 }
 
-record(ao, "$(P)$(R)axestth") {
+record(ao, "$(P)$(R)tth") {
+    field(DESC, "tth")
     field(PINI, "YES")
     field(DTYP, "pydev")
+    field(LOPR, "-180")
+    field(HOPR, "180")
     field(OUT, "@hkl_calc.axes_tth='VAL'")
 }
 
+record(ai, "$(P)$(R)omega_RBV") {
+    field(DESC, "omega")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(LOPR, "-180")
+    field(HOPR, "180")
+    field(INP, "@hkl_calc.axes_omega")
+}
+
+record(ai, "$(P)$(R)chi_RBV") {
+    field(DESC, "chi")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(LOPR, "-180")
+    field(HOPR, "180")
+    field(INP, "@hkl_calc.axes_chi")
+}
+
+record(ai, "$(P)$(R)phi_RBV") {
+    field(DESC, "phi")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(LOPR, "-180")
+    field(HOPR, "180")
+    field(INP, "@hkl_calc.axes_phi")
+}
+
+record(ai, "$(P)$(R)tth_RBV") {
+    field(DESC, "tth")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(LOPR, "-180")
+    field(HOPR, "180")
+    field(INP, "@hkl_calc.axes_tth")
+}

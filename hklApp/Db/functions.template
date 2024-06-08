@@ -1,19 +1,17 @@
-# FROM EPICS TO PYTHON
+record(bo, "$(P)$(R)forward") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.forward()")
+}
 
-#record(bi, "$(P)$(R)forward") {
-#    field(PINI, "YES")
-#    field(DTYP, "pydev")
-#    field(PUTF, "@hkl_calc.forward()")
-#}
+record(bo, "$(P)$(R)backward") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.backward()")
+}
 
-#record(bi, "$(P)$(R)backward") {
-#    field(PINI, "YES")
-#    field(DTYP, "pydev")
-#    field(PUTF, "@hkl_calc.backward()")
-#}
-
-
-# FROM PYTHON TO EPICS
-
-# function outputs?
-
+record(bo, "$(P)$(R)test") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.test()")
+}

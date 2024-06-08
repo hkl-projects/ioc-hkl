@@ -1,10 +1,20 @@
 # FROM EPICS TO PYTHON
 
-record(ao, "$(P)$(R)wavelength") {
+record(ao, "$(P)$(R)wlen") {
+    field(DESC, "wavelength")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.wavelength='VAL'")
 }
+
+record(ai, "$(P)$(R)wlen_RBV") {
+    field(DESC, "wavelength")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.wavelength")
+}
+
+
 
 #record(ao, "$(P)$(R)geom") {
 #    field(PINI, "YES")
@@ -52,13 +62,13 @@ record(ao, "$(P)$(R)latticegamma") {
 record(mbbo, "$(P)$(R)geom") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(ZRVL, "1")
-    field(ONVL, "2")
-    field(TWVL, "3")
-    field(THVL, "4")
-    field(FRVL, "5")
-    field(FVVL, "6")
-    field(SXVL, "7")
+    field(ZRVL, "0")
+    field(ONVL, "1")
+    field(TWVL, "2")
+    field(THVL, "3")
+    field(FRVL, "4")
+    field(FVVL, "5")
+    field(SXVL, "6")
     field(ZRST, "E4CV")
     field(ONST, "K6C")
     field(TWST, "E4CV")
@@ -69,16 +79,16 @@ record(mbbo, "$(P)$(R)geom") {
     field(OUT, "@hkl_calc.geom")
 }
 
-#record(mbbo, "$(P)$(R)symmetry") {
+#record(mbbo, "$(P)$(R)geom_RBV") {
 #    field(PINI, "YES")
 #    field(DTYP, "Raw Soft Channel")
-#    field(ZRVL, "1")
-#    field(ONVL, "2")
-#    field(TWVL, "3")
-#    field(THVL, "4")
-#    field(FRVL, "5")
-#    field(FVVL, "6")
-#    field(SXVL, "7")
+#    field(ZRVL, "0")
+#    field(ONVL, "1")
+#    field(TWVL, "2")
+#    field(THVL, "3")
+#    field(FRVL, "4")
+#    field(FVVL, "5")
+#    field(SXVL, "6")
 #    field(ZRST, "Cubic")
 #    field(ONST, "Tetragonal")
 #    field(TWST, "Orthohombic")
@@ -86,8 +96,7 @@ record(mbbo, "$(P)$(R)geom") {
 #    field(FRST, "Rhombohedral")
 #    field(FVST, "Monoclinic")
 #    field(SXST, "Triclinic")
-#    field(OUT, "")
-#    field(FLNK, "")
-#    #info(autosaveFields, "VAL")
+#    field(INP, "@hkl_calc.geom")
+#    #field(FLNK, "")
 #}
 

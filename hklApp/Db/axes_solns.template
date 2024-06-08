@@ -1,6 +1,7 @@
 # motor axes solutions
 
 record(ai, "$(P)$(R)omega$(C)") {
+    field(DESC, "soln $(C)")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.axes_solns_omega[$(C)]")
@@ -9,6 +10,7 @@ record(ai, "$(P)$(R)omega$(C)") {
 }
 
 record(ai, "$(P)$(R)chi$(C)") {
+    field(DESC, "soln $(C)")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.axes_solns_chi[$(C)]")
@@ -17,6 +19,7 @@ record(ai, "$(P)$(R)chi$(C)") {
 }
 
 record(ai, "$(P)$(R)phi$(C)") {
+    field(DESC, "soln $(C)")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.axes_solns_phi[$(C)]")
@@ -25,6 +28,7 @@ record(ai, "$(P)$(R)phi$(C)") {
 }
 
 record(ai, "$(P)$(R)tth$(C)") {
+    field(DESC, "soln $(C)")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.axes_solns_tth[$(C)]")
