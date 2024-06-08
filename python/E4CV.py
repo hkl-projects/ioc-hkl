@@ -12,40 +12,40 @@ from enum import IntEnum
 class hklCalculator_E4CV():
     def __init__(self, num_axes_solns=15):
         # initials
-        self.wavelength = 0
+        self.wavelength = 0.
         self.geom_name = 'E4CV'
         self.geometry = np.nan # hkl object placeholder
         self.detector = np.nan # hkl object placeholder
         self.sample = np.nan # hkl object placeholder
         self.engines = np.nan # hkl object placeholder
-        self.latt = [0, 0, 0, 0, 0, 0] 
+        self.latt = [0., 0., 0., 0., 0., 0.] 
         # ^ [a1, a2, a3, alpha, beta, gamma]
         
         # sample orientation
-        self.refl1_input = [0, 0, 0, 0, 0, 0, 0] 
-        self.refl2_input = [0, 0, 0, 0, 0, 0, 0] 
+        self.refl1_input = [0., 0., 0., 0., 0., 0., 0.] 
+        self.refl2_input = [0., 0., 0., 0., 0., 0., 0.] 
         self.refl1 = np.nan # hkl object placeholder
         self.refl2 = np.nan # hkl object placeholder
         # ^ [h, k l, omega, chi, phi, tth]
-        self.UB_matrix = np.zeros((3,3))
+        self.UB_matrix = np.zeros((3,3), dtype=float)
 
         # axes
         self.num_axes_solns = num_axes_solns
-        self.axes_omega = 0
-        self.axes_chi = 0
-        self.axes_phi = 0
-        self.axes_tth = 0
+        self.axes_omega = 0.
+        self.axes_chi = 0.
+        self.axes_phi = 0.
+        self.axes_tth = 0.
 
         # pseduoaxes 
-        self.pseudoaxes_h = 0
-        self.pseudoaxes_k = 0
-        self.pseudoaxes_l = 0
-        self.pseudoaxes_psi = 0
-        self.pseudoaxes_q = 0
-        self.pseudoaxes_incidence = 0
-        self.pseudoaxes_azimuth1 = 0
-        self.pseudoaxes_emergence = 0
-        self.pseudoaxes_azimuth2 = 0
+        self.pseudoaxes_h = 0.
+        self.pseudoaxes_k = 0.
+        self.pseudoaxes_l = 0.
+        self.pseudoaxes_psi = 0.
+        self.pseudoaxes_q = 0.
+        self.pseudoaxes_incidence = 0.
+        self.pseudoaxes_azimuth1 = 0.
+        self.pseudoaxes_emergence = 0.
+        self.pseudoaxes_azimuth2 = 0.
        
         # axes solutions 
         self.axes_solns_omega = []
@@ -59,15 +59,15 @@ class hklCalculator_E4CV():
             self.axes_solns_tth.append(0)
         
         # pseudoaxes solutions
-        self.pseudoaxes_solns_h = 0
-        self.pseudoaxes_solns_k = 0
-        self.pseudoaxes_solns_l = 0
-        self.pseudoaxes_solns_psi = 0
-        self.pseudoaxes_solns_q = 0
-        self.pseudoaxes_solns_incidence = 0
-        self.pseudoaxes_solns_azimuth1 = 0
-        self.pseudoaxes_solns_emergence = 0
-        self.pseudoaxes_solns_azimuth2 = 0
+        self.pseudoaxes_solns_h = 0.
+        self.pseudoaxes_solns_k = 0.
+        self.pseudoaxes_solns_l = 0.
+        self.pseudoaxes_solns_psi = 0.
+        self.pseudoaxes_solns_q = 0.
+        self.pseudoaxes_solns_incidence = 0.
+        self.pseudoaxes_solns_azimuth1 = 0.
+        self.pseudoaxes_solns_emergence = 0.
+        self.pseudoaxes_solns_azimuth2 = 0.
        
     def start(self):
         self.detector = Hkl.Detector.factory_new(Hkl.DetectorType(0))
@@ -242,6 +242,10 @@ class hklCalculator_E4CV():
         self.forward()
         self.refl2 = Hkl.SampleReflection(self.geometry, self.detector, self.refl2_input[0], \
                                          self.refl2_input[1], self.refl2_input[2])
+
+    def reset(self):
+        # replace with conventional way
+        self.__init__()
 
     def test(self):
         # starting sample, instrument parameters
