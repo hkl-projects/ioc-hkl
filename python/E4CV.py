@@ -9,6 +9,11 @@ from gi.repository import Hkl
 import inspect
 from enum import IntEnum
 
+#TODO create lists from individual values, change PVs accordingly
+#TODO fix compute UB
+#TODO add holds
+#TODO add lattice set function [self.sample.lattice_set(lattice)], with reset of axes/pseudoaxes
+
 class hklCalculator_E4CV():
     def __init__(self, num_axes_solns=15):
         # initials
@@ -18,6 +23,7 @@ class hklCalculator_E4CV():
         self.detector = np.nan # hkl object placeholder
         self.sample = np.nan # hkl object placeholder
         self.engines = np.nan # hkl object placeholder
+        self.engine_hkl = np.nan # hkl object placeholder
         self.latt = [0., 0., 0., 0., 0., 0.] 
         # ^ [a1, a2, a3, alpha, beta, gamma]
         
@@ -73,15 +79,18 @@ class hklCalculator_E4CV():
         self.detector = Hkl.Detector.factory_new(Hkl.DetectorType(0))
         factory       = Hkl.factories()[self.geom_name]
         self.geometry = factory.create_new_geometry()
-        # set real axes
-        # then create sample? why is it this way?
         self.geometry.wavelength_set(self.wavelength, Hkl.UnitEnum.USER)
         self.engines = factory.create_new_engine_list()
         
         self.sample = Hkl.Sample.new("toto")
         lattice     = Hkl.Lattice.new(*self.latt)
         self.sample.lattice_set(lattice)
-        
+          
+        self.engines = factory.create_new_engine_list()
+        self.engines.init(self.geometry, self.detector, self.sample)
+        self.engines.get()
+        self.engine_hkl = self.engines.engine_get_by_name("hkl")
+              
        
     def forward(self):
         '''
@@ -95,13 +104,9 @@ class hklCalculator_E4CV():
         outputs (for E4CV)
             values_hkl :list: (h,k,l)
         '''
-        #TODO, make it so that I don't need to run all of start() for every forward()
+        #TODO, make it so that I don't need to run all of start() for every forward(), see sardana
         print("Forward function start")
         self.reset_pseudoaxes_solns()
-        self.detector = Hkl.Detector.factory_new(Hkl.DetectorType(0))
-        factory       = Hkl.factories()[self.geom_name]
-        self.geometry = factory.create_new_geometry()
- 
         values_w = [self.axes_omega, self.axes_chi, self.axes_phi, self.axes_tth] 
         try:
             self.geometry.axis_values_set(values_w, Hkl.UnitEnum.USER)
@@ -110,18 +115,7 @@ class hklCalculator_E4CV():
             #TODO catch different types of errors
             return
 
-        self.geometry.wavelength_set(self.wavelength, Hkl.UnitEnum.USER)
-        
-        self.sample = Hkl.Sample.new("toto")
-        lattice     = Hkl.Lattice.new(*self.latt)
-        self.sample.lattice_set(lattice)
-         
-        self.engines = factory.create_new_engine_list()
-        self.engines.init(self.geometry, self.detector, self.sample)
-        self.engines.get()
-        hkl = self.engines.engine_get_by_name("hkl")
-       
-        values_hkl = hkl.pseudo_axis_values_get(Hkl.UnitEnum.USER)
+        values_hkl = self.engine_hkl.pseudo_axis_values_get(Hkl.UnitEnum.USER)
         self.pseudoaxes_solns_h, self.pseudoaxes_solns_k, self.pseudoaxes_solns_l = values_hkl
 
     def backward(self):
@@ -139,10 +133,7 @@ class hklCalculator_E4CV():
         print("Backward function start")
         self.reset_axes_solns()
         values_hkl = [self.pseudoaxes_h, self.pseudoaxes_k, self.pseudoaxes_l]
-        self.engines.init(self.geometry, self.detector, self.sample)
-        self.engines.get()
-        hkl = self.engines.engine_get_by_name("hkl") 
-        solutions = hkl.pseudo_axis_values_set(values_hkl, Hkl.UnitEnum.USER)
+        solutions = self.engine_hkl.pseudo_axis_values_set(values_hkl, Hkl.UnitEnum.USER)
         values_w_all = []
         for i, item in enumerate(solutions.items()):
             #print("id: ", i) # for kappa 6-circle
@@ -219,11 +210,20 @@ class hklCalculator_E4CV():
         self.add_reflection1()
         self.add_reflection2()
         self.sample.compute_UB_busing_levy(self.refl1, self.refl2)
+        #UB = self.sample.compute_UB_busing_levy(self.refl1, self.refl2)
+        #self.UB_matrix = UB
+        #UB = self.sample.UB_get()
+        #for i in range(3):
+        #    for j in range(3):
+        #        #print(f"{i},{j}")
+        #        self.UB_matrix[i,j] = UB.get(i,j)
+
+    def get_UB_matrix(self):
+        #return self.sample.UB_get()
         UB = self.sample.UB_get()
-        #TODO probably a better way to do this
-        for i in range(3):
-            for j in range(3):
-                self.UB_matrix[i,j] = UB.get(i,j)
+        return [[UB.get(i, j) for j in range(3)] for i in range(3)]
+
+
 
     def add_reflection1(self):
         self.axes_omega = self.refl1_input[3]
@@ -305,4 +305,6 @@ class hklCalculator_E4CV():
         print("Testing UB matrix calculation")
         print(f'reflection #1: {self.refl1}')
         print(f'reflection #2: {self.refl2}')
-        print(f'Resulting UB matrix: {self.UB_matrix}')
+        #print(f'Resulting UB matrix: {self.UB_matrix}')
+        x = self.get_UB_matrix()
+        print(x)
