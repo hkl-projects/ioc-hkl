@@ -1,12 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-06-07 15:45:34 by l3b-->
+<!--Saved on 2024-06-11 11:20:24 by l3b-->
 <display version="2.0.0">
   <name>HKL</name>
   <macros>
     <Sys>HB3:</Sys>
   </macros>
-  <width>860</width>
+  <width>1800</width>
   <height>1100</height>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle1</name>
+    <x>10</x>
+    <y>340</y>
+    <width>800</width>
+    <height>510</height>
+    <background_color>
+      <color red="130" green="130" blue="128" alpha="195">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle1_1</name>
+    <x>850</x>
+    <y>340</y>
+    <width>810</width>
+    <height>740</height>
+    <background_color>
+      <color red="130" green="130" blue="128" alpha="195">
+      </color>
+    </background_color>
+  </widget>
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
@@ -25,74 +47,21 @@
     </foreground_color>
     <transparent use_class="true">true</transparent>
   </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_1</name>
-    <text>Some Value:</text>
-    <x>520</x>
-    <y>360</y>
-  </widget>
-  <widget type="textupdate" version="2.0.0">
-    <name>Text Update</name>
-    <pv_name>sim://sine</pv_name>
-    <x>620</x>
-    <y>360</y>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_2</name>
-    <class>COMMENT</class>
-    <text>Some comment.</text>
-    <x>740</x>
-    <y>440</y>
-    <width>140</width>
-    <font use_class="true">
-      <font name="Comment" family="Liberation Sans" style="ITALIC" size="14.0">
-      </font>
-    </font>
-    <foreground_color use_class="true">
-      <color name="Text" red="0" green="0" blue="0">
-      </color>
-    </foreground_color>
-    <transparent use_class="true">true</transparent>
-    <wrap_words use_class="true">true</wrap_words>
-  </widget>
   <widget type="action_button" version="3.0.0">
     <name>Action Button</name>
-    <pv_name>HB3:test</pv_name>
-    <x>530</x>
-    <y>390</y>
+    <pv_name>HB3:forward</pv_name>
+    <text>Forward</text>
+    <x>20</x>
+    <y>520</y>
     <width>140</width>
     <height>40</height>
     <tooltip>$(actions)</tooltip>
   </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Entry</name>
-    <pv_name>PyCalcTest:Input1</pv_name>
-    <x>530</x>
-    <y>440</y>
-    <width>140</width>
-    <height>50</height>
-  </widget>
-  <widget type="textupdate" version="2.0.0">
-    <name>Text Update_1</name>
-    <pv_name>PyCalcTest:Input1</pv_name>
-    <x>700</x>
-    <y>400</y>
-    <width>140</width>
-    <height>50</height>
-  </widget>
-  <widget type="textupdate" version="2.0.0">
-    <name>Text Update_2</name>
-    <pv_name>PyDev:Double:Pow2</pv_name>
-    <x>700</x>
-    <y>460</y>
-    <width>140</width>
-    <height>30</height>
-  </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_3</name>
     <pv_name>$(Sys)wlen.DESC</pv_name>
-    <x>103</x>
-    <y>80</y>
+    <x>10</x>
+    <y>100</y>
     <width>132</width>
     <height>22</height>
     <font>
@@ -117,14 +86,16 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input</name>
     <pv_name>$(Sys)wlen.VAL</pv_name>
-    <x>271</x>
-    <y>80</y>
+    <x>178</x>
+    <y>100</y>
     <width>150</width>
     <height>22</height>
     <background_color>
       <color red="255" green="255" blue="255">
       </color>
     </background_color>
+    <format>1</format>
+    <precision>4</precision>
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
@@ -154,14 +125,16 @@
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_4</name>
     <pv_name>$(Sys)wlen_RBV</pv_name>
-    <x>456</x>
-    <y>82</y>
+    <x>363</x>
+    <y>102</y>
     <width>146</width>
     <height>18</height>
     <background_color>
       <color red="255" green="255" blue="255">
       </color>
     </background_color>
+    <format>1</format>
+    <precision>4</precision>
     <horizontal_alignment>1</horizontal_alignment>
     <vertical_alignment>1</vertical_alignment>
     <wrap_words>false</wrap_words>
@@ -176,14 +149,16 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_1</name>
     <pv_name>$(Sys)wlen.TWV</pv_name>
-    <x>666</x>
-    <y>80</y>
+    <x>573</x>
+    <y>100</y>
     <width>150</width>
     <height>22</height>
     <background_color>
       <color red="255" green="255" blue="255">
       </color>
     </background_color>
+    <format>1</format>
+    <precision>4</precision>
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
@@ -204,8 +179,8 @@
     </actions>
     <pv_name>$(Sys)$(Dev)wlen.TWF</pv_name>
     <text>&gt;</text>
-    <x>821</x>
-    <y>80</y>
+    <x>728</x>
+    <y>100</y>
     <width>24</width>
     <height>22</height>
     <font>
@@ -225,8 +200,8 @@
     </actions>
     <pv_name>$(Sys)$(Dev)wlen.TWR</pv_name>
     <text>&lt;</text>
-    <x>636</x>
-    <y>80</y>
+    <x>543</x>
+    <y>100</y>
     <width>24</width>
     <height>22</height>
     <font>
@@ -235,16 +210,11 @@
     </font>
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_3</name>
-    <text>Wave length</text>
-    <y>82</y>
-  </widget>
   <widget type="combo" version="2.0.0">
     <name>Menu Button</name>
     <pv_name>$(Sys)geom</pv_name>
-    <x>34</x>
-    <y>44</y>
+    <x>20</x>
+    <y>50</y>
     <height>25</height>
     <background_color>
       <color red="240" green="240" blue="240">
@@ -255,8 +225,8 @@
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_13</name>
     <pv_name>$(Sys)geom_RBV</pv_name>
-    <x>202</x>
-    <y>44</y>
+    <x>178</x>
+    <y>50</y>
     <width>96</width>
     <height>25</height>
     <background_color>
@@ -284,24 +254,65 @@
       <Ax4Name>tth</Ax4Name>
     </macros>
     <file>axis/_multi_axes.opi</file>
-    <y>160</y>
+    <x>20</x>
+    <y>410</y>
     <width>780</width>
     <height>100</height>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_5</name>
-    <text>Axes</text>
-    <x>10</x>
-    <y>130</y>
+    <text>Axes Input</text>
+    <x>20</x>
+    <y>380</y>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_6</name>
-    <text>PseudoAxes</text>
+    <text>PseudoAxes Solutions </text>
     <x>20</x>
-    <y>280</y>
+    <y>580</y>
+    <width>156</width>
   </widget>
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_1</name>
+    <macros>
+      <Ax1Name>solh</Ax1Name>
+      <Ax2Name>solk</Ax2Name>
+      <Ax3Name>soll</Ax3Name>
+      <Ax4Name>solpsi</Ax4Name>
+      <Ax5Name>solq</Ax5Name>
+      <Ax6Name>solincidence</Ax6Name>
+      <Ax7Name>solazimuth</Ax7Name>
+      <Ax8Name>solemergence</Ax8Name>
+      <Ax9Name>solazimuth2</Ax9Name>
+    </macros>
+    <file>axis/_multi_pseudoaxes.bob</file>
+    <x>20</x>
+    <y>610</y>
+    <width>456</width>
+    <height>220</height>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_7</name>
+    <text>Axes Solutions</text>
+    <x>860</x>
+    <y>700</y>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_2</name>
+    <macros>
+      <Ax1Name>omega</Ax1Name>
+      <Ax2Name>chi</Ax2Name>
+      <Ax3Name>phi</Ax3Name>
+      <Ax4Name>tth</Ax4Name>
+    </macros>
+    <file>axis/_multi_solutions.bob</file>
+    <x>860</x>
+    <y>720</y>
+    <width>780</width>
+    <height>350</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_4</name>
     <macros>
       <Ax1Name>h</Ax1Name>
       <Ax2Name>k</Ax2Name>
@@ -314,27 +325,146 @@
       <Ax9Name>azimuth2</Ax9Name>
     </macros>
     <file>axis/_multi_pseudoaxes.bob</file>
-    <y>310</y>
+    <x>860</x>
+    <y>410</y>
     <width>456</width>
     <height>220</height>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>Label_7</name>
-    <text>Solutions</text>
-    <x>20</x>
-    <y>580</y>
+    <name>Label_8</name>
+    <text>Lattice Parameters</text>
+    <x>10</x>
+    <y>140</y>
+    <width>150</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_9</name>
+    <text>UB Matrix</text>
+    <x>840</x>
+    <y>220</y>
+    <width>150</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_10</name>
+    <text>Add reflection</text>
+    <x>840</x>
+    <y>170</y>
+    <width>150</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_11</name>
+    <text>PseudoAxes Input</text>
+    <x>860</x>
+    <y>380</y>
+    <width>195</width>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_3</name>
+    <pv_name>HB3:backward</pv_name>
+    <text>Backward</text>
+    <x>860</x>
+    <y>640</y>
+    <width>140</width>
+    <height>40</height>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_12</name>
+    <text>Forward Calculation</text>
+    <x>340</x>
+    <y>350</y>
+    <width>169</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_13</name>
+    <text>Backward Calculation</text>
+    <x>1220</x>
+    <y>350</y>
+    <width>169</width>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_4</name>
+    <pv_name>HB3:reset</pv_name>
+    <text>RESET</text>
+    <x>340</x>
+    <y>31</y>
+    <width>140</width>
+    <height>40</height>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="arc" version="2.0.0">
+    <name>Arc</name>
+    <x>980</x>
+    <y>300</y>
+    <width>1</width>
+    <height>1</height>
   </widget>
   <widget type="embedded" version="2.0.0">
-    <name>Embedded Display_2</name>
+    <name>Embedded Display_3</name>
     <macros>
-      <Ax1Name>omega</Ax1Name>
-      <Ax2Name>chi</Ax2Name>
-      <Ax3Name>phi</Ax3Name>
-      <Ax4Name>tth</Ax4Name>
+      <Ax1Name>a</Ax1Name>
+      <Ax2Name>b</Ax2Name>
+      <Ax3Name>c</Ax3Name>
+      <Ax4Name>alpha</Ax4Name>
+      <Ax5Name>beta</Ax5Name>
+      <Ax6Name>gamma</Ax6Name>
     </macros>
-    <file>axis/_multi_solutions.bob</file>
-    <y>607</y>
-    <width>780</width>
-    <height>350</height>
+    <file>lattice/_lattice.bob</file>
+    <x>10</x>
+    <y>160</y>
+    <width>800</width>
+    <height>150</height>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_14</name>
+    <text>omega</text>
+    <x>1000</x>
+    <y>700</y>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_15</name>
+    <text>chi</text>
+    <x>1160</x>
+    <y>700</y>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_16</name>
+    <text>phi</text>
+    <x>1316</x>
+    <y>700</y>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_17</name>
+    <text>tth</text>
+    <x>1480</x>
+    <y>700</y>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_18</name>
+    <text>min value</text>
+    <x>476</x>
+    <y>140</y>
+    <width>97</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_19</name>
+    <text>max value</text>
+    <x>630</x>
+    <y>140</y>
+    <width>97</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_20</name>
+    <text>readback</text>
+    <x>310</x>
+    <y>140</y>
+    <width>97</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_21</name>
+    <text>input</text>
+    <x>160</x>
+    <y>140</y>
+    <width>97</width>
   </widget>
 </display>

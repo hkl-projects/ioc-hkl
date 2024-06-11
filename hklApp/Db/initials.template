@@ -14,51 +14,96 @@ record(ai, "$(P)$(R)wlen_RBV") {
     field(INP, "@hkl_calc.wavelength")
 }
 
-
-
-#record(ao, "$(P)$(R)geom") {
-#    field(PINI, "YES")
-#    field(DTYP, "pydev")
-#    field(OUT, "@hkl_calc.geom='VAL'")
-#}
-
-record(ao, "$(P)$(R)latticea1") {
+record(ao, "$(P)$(R)a") {
+    field(DESC, "a")
     field(PINI, "YES")
     field(DTYP, "pydev")
+    field(LOPR, "0")
+    field(HOPR, "11.54")
     field(OUT, "@hkl_calc.lattice[0]='VAL'")
 }
 
-record(ao, "$(P)$(R)latticea2") {
+record(ai, "$(P)$(R)a_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
+    field(INP, "@hkl_calc.lattice[0]")
+}
+
+record(ao, "$(P)$(R)b") {
+    field(DESC, "b")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(LOPR, "0")
+    field(HOPR, "11.54")
     field(OUT, "@hkl_calc.lattice[1]='VAL'")
 }
 
-record(ao, "$(P)$(R)latticea3") {
+record(ai, "$(P)$(R)b_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
+    field(INP, "@hkl_calc.lattice[1]")
+}
+
+record(ao, "$(P)$(R)c") {
+    field(DESC, "c")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(LOPR, "0")
+    field(HOPR, "11.54")
     field(OUT, "@hkl_calc.lattice[2]='VAL'")
 }
 
-record(ao, "$(P)$(R)latticealpha") {
+record(ai, "$(P)$(R)c_RBV") {
     field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.lattice[2]")
+}
+
+record(ao, "$(P)$(R)alpha") {
+    field(DESC, "alpha")
+    field(PINI, "YES")
+    field(LOPR, "0")
+    field(HOPR, "180")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.lattice[3]='VAL'")
 }
 
-record(ao, "$(P)$(R)latticebeta") {
+record(ai, "$(P)$(R)alpha_RBV") {
     field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.lattice[3]")
+}
+
+record(ao, "$(P)$(R)beta") {
+    field(DESC, "beta")
+    field(PINI, "YES")
+    field(LOPR, "0")
+    field(HOPR, "180")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.lattice[4]='VAL'")
 }
 
-record(ao, "$(P)$(R)latticegamma") {
+record(ai, "$(P)$(R)beta_RBV") {
     field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.lattice[4]")
+}
+
+record(ao, "$(P)$(R)gamma") {
+    field(DESC, "gamma")
+    field(PINI, "YES")
+    field(LOPR, "0")
+    field(HOPR, "180")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.lattice[5]='VAL'")
 }
 
-# temporary
+record(ai, "$(P)$(R)gamma_RBV") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.lattice[5]")
+}
+
 record(mbbo, "$(P)$(R)geom") {
     field(PINI, "YES")
     field(DTYP, "pydev")
@@ -79,7 +124,7 @@ record(mbbo, "$(P)$(R)geom") {
     field(OUT, "@hkl_calc.geom")
 }
 
-#record(mbbo, "$(P)$(R)geom_RBV") {
+#record(mbbi, "$(P)$(R)geom_RBV") {
 #    field(PINI, "YES")
 #    field(DTYP, "Raw Soft Channel")
 #    field(ZRVL, "0")
@@ -89,14 +134,6 @@ record(mbbo, "$(P)$(R)geom") {
 #    field(FRVL, "4")
 #    field(FVVL, "5")
 #    field(SXVL, "6")
-#    field(ZRST, "Cubic")
-#    field(ONST, "Tetragonal")
-#    field(TWST, "Orthohombic")
-#    field(THST, "Hexagonal")
-#    field(FRST, "Rhombohedral")
-#    field(FVST, "Monoclinic")
-#    field(SXST, "Triclinic")
 #    field(INP, "@hkl_calc.geom")
-#    #field(FLNK, "")
 #}
 

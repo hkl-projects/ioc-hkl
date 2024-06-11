@@ -1,122 +1,157 @@
 record(ao, "$(P)$(R)h") {
+    field(DESC, "h")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_h='VAL'")
+    field(SCAN, "1 second")
 }
 
 record(ai, "$(P)$(R)h_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_h")
+    field(SCAN, "1 second")
 }
 
 record(ao, "$(P)$(R)k") {
+    field(DESC, "k")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_k='VAL'")
+    field(SCAN, "1 second")
 }
 
 record(ai, "$(P)$(R)k_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_k")
+    field(SCAN, "1 second")
 }
 
 record(ao, "$(P)$(R)l") {
+    field(DESC, "l")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_l='VAL'")
+    field(SCAN, "1 second")
 }
 
 record(ai, "$(P)$(R)l_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_l")
+    field(SCAN, "1 second")
 }
 
 record(ao, "$(P)$(R)psi") {
+    field(DESC, "psi")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_psi='VAL'")
+    field(SCAN, "1 second")
 }
 
 record(ai, "$(P)$(R)psi_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_psi")
+    field(SCAN, "1 second")
 }
 
 record(ao, "$(P)$(R)q") {
+    field(DESC, "q")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_q='VAL'")
+    field(SCAN, "1 second")
 }
 
 record(ai, "$(P)$(R)q_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_q")
+    field(SCAN, "1 second")
 }
 
 record(ao, "$(P)$(R)incidence") {
+    field(DESC, "incidence")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_incidence='VAL'")
+    field(SCAN, "1 second")
 }
 
 record(ai, "$(P)$(R)incidence_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_incidence")
+    field(SCAN, "1 second")
 }
 
 record(ao, "$(P)$(R)azimuth") {
+    field(DESC, "azimuth")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_inc_azimuth='VAL'")
+    field(SCAN, "1 second")
 }
 
 record(ai, "$(P)$(R)azimuth_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_inc_azimuth")
+    field(SCAN, "1 second")
 }
 
 record(ao, "$(P)$(R)emergence") {
+    field(DESC, "emergence")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_emergence='VAL'")
+    field(SCAN, "1 second")
 }
 
 record(ai, "$(P)$(R)emergence_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_emergence")
+    field(SCAN, "1 second")
 }
 
 record(ao, "$(P)$(R)azimuth2") {
+    field(DESC, "azimuth2")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_emer_azimuth='VAL'")
+    field(SCAN, "1 second")
 }
 
 record(ai, "$(P)$(R)azimuth2_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_emer_azimuth")
+    field(SCAN, "1 second")
 }
 
 # PYTHON TO EPICS
 
 record(ai, "$(P)$(R)solh") {
+    field(DESC, "h")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_h")
-#    field(SCAN, "I/O Intr")
+    field(SCAN, "1 second")
+}
+
+record(ao, "$(P)$(R)solh_RBV") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.pseudoaxes_h")
     field(SCAN, "1 second")
 }
 
 record(ai, "$(P)$(R)solk") {
+    field(DESC, "k")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_k")
@@ -124,58 +159,115 @@ record(ai, "$(P)$(R)solk") {
     field(SCAN, "1 second")
 }
 
+record(ao, "$(P)$(R)solk_RBV") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.pseudoaxes_k")
+    field(SCAN, "1 second")
+}
+
 record(ai, "$(P)$(R)soll") {
+    field(DESC, "l")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_l")
-#    field(SCAN, "I/O Intr")
+    field(SCAN, "1 second")
+}
+
+record(ao, "$(P)$(R)soll_RBV") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.pseudoaxes_l")
     field(SCAN, "1 second")
 }
 
 record(ai, "$(P)$(R)solpsi") {
+    field(DESC, "psi")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_solns_psi")
-#    field(SCAN, "I/O Intr")
+    field(SCAN, "1 second")
+}
+
+record(ao, "$(P)$(R)solpsi_RBV") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.pseudoaxes_solns_psi")
     field(SCAN, "1 second")
 }
 
 record(ai, "$(P)$(R)solq") {
+    field(DESC, "q")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_solns_q")
-#    field(SCAN, "I/O Intr")
+    field(SCAN, "1 second")
+}
+
+record(ao, "$(P)$(R)solq_RBV") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.pseudoaxes_solns_q")
     field(SCAN, "1 second")
 }
 
 record(ai, "$(P)$(R)solincidence") {
+    field(DESC, "incidence")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_solns_incidence")
-#    field(SCAN, "I/O Intr")
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)solazimuth1") {
+record(ao, "$(P)$(R)solincidence_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(INP, "@hkl_calc.pseudoaxes_solns_azimuth1")
-#    field(SCAN, "I/O Intr")
+    field(OUT, "@hkl_calc.pseudoaxes_solns_incidence")
     field(SCAN, "1 second")
 }
 
+record(ai, "$(P)$(R)solazimuth") {
+    field(DESC, "azimuth1")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.pseudoaxes_solns_azimuth")
+    field(SCAN, "1 second")
+}
+
+record(ao, "$(P)$(R)solazimuth_RBV") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.pseudoaxes_solns_azimuth")
+    field(SCAN, "1 second")
+}
+
+
 record(ai, "$(P)$(R)solemergence") {
+    field(DESC, "emergence")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_solns_emergence")
-#    field(SCAN, "I/O Intr")
+    field(SCAN, "1 second")
+}
+
+record(ao, "$(P)$(R)solemergence_RBV") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.pseudoaxes_solns_emergence")
     field(SCAN, "1 second")
 }
 
 record(ai, "$(P)$(R)solazimuth2") {
+    field(DESC, "azimuth2")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_solns_azimuth2")
-#    field(SCAN, "I/O Intr")
+    field(SCAN, "1 second")
+}
+
+record(ao, "$(P)$(R)solazimuth2_RBV") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.pseudoaxes_solns_azimuth2")
     field(SCAN, "1 second")
 }

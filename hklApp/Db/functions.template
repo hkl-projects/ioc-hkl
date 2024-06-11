@@ -10,6 +10,12 @@ record(bo, "$(P)$(R)backward") {
     field(OUT, "@hkl_calc.backward()")
 }
 
+record(bo, "$(P)$(R)reset") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.reset()")
+}
+
 record(bo, "$(P)$(R)test") {
     field(PINI, "YES")
     field(DTYP, "pydev")
