@@ -124,16 +124,23 @@ record(mbbo, "$(P)$(R)geom") {
     field(OUT, "@hkl_calc.geom")
 }
 
-#record(mbbi, "$(P)$(R)geom_RBV") {
-#    field(PINI, "YES")
-#    field(DTYP, "Raw Soft Channel")
-#    field(ZRVL, "0")
-#    field(ONVL, "1")
-#    field(TWVL, "2")
-#    field(THVL, "3")
-#    field(FRVL, "4")
-#    field(FVVL, "5")
-#    field(SXVL, "6")
-#    field(INP, "@hkl_calc.geom")
-#}
+record(mbbi, "$(P)$(R)geom_RBV") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(ZRVL, "0")
+    field(ONVL, "1")
+    field(TWVL, "2")
+    field(THVL, "3")
+    field(FRVL, "4")
+    field(FVVL, "5")
+    field(FVVL, "6")
+    field(ZRST, "E4CV")
+    field(ONST, "K6C")
+    field(TWST, "E4CV")
+    field(THST, "E4CV")
+    field(FRST, "E4CV")
+    field(FVST, "E4CV")
+    field(SXST, "E4CV")
+    field(INP, "@hkl_calc.geom")
+}
 
