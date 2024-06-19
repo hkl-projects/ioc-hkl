@@ -27,6 +27,7 @@ class hklCalculator_E4CV():
         self.engine_hkl = np.nan # hkl object placeholder
         self.latt = [0., 0., 0., 0., 0., 0.] 
         # ^ [a1, a2, a3, alpha, beta, gamma]
+        self.lattice = np.nan 
         
         # sample orientation
         self.refl1_input = [0., 0., 0., 0., 0., 0., 0.] 
@@ -83,8 +84,8 @@ class hklCalculator_E4CV():
         self.geometry.wavelength_set(self.wavelength, Hkl.UnitEnum.USER)
         
         self.sample = Hkl.Sample.new("toto")
-        lattice     = Hkl.Lattice.new(*self.latt)
-        self.sample.lattice_set(lattice)             
+        self.lattice = Hkl.Lattice.new(*self.latt)
+        self.sample.lattice_set(self.lattice)             
 
         self.engines = self.factory.create_new_engine_list()
         self.engines.init(self.geometry, self.detector, self.sample) # See if there's an "update" engine instead of "init"
@@ -186,9 +187,7 @@ class hklCalculator_E4CV():
                 self.UB_matrix[i,j] = UB.get(i,j)
 
     def get_UB_matrix(self):
-        UB = self.sample.UB_get()
-        return [[UB.get(i, j) for j in range(3)] for i in range(3)]
-
+        return self.UB_matrix
 
 
     def add_reflection1(self):
@@ -197,8 +196,8 @@ class hklCalculator_E4CV():
         self.axes_phi   = self.refl1_input[5]
         self.axes_tth   = self.refl1_input[6]
         self.forward() # replace with an update of sample with motor positions
-        self.refl1 = Hkl.SampleReflection(self.geometry, self.detector, self.refl1_input[0], \
-                                         self.refl1_input[1], self.refl1_input[2])
+        self.refl1 = self.sample.add_reflection(self.geometry, self.detector, \
+                    self.refl1_input[0], self.refl1_input[1], self.refl1_input[2])
 
     def add_reflection2(self):
         self.axes_omega = self.refl2_input[3]
@@ -206,8 +205,8 @@ class hklCalculator_E4CV():
         self.axes_phi   = self.refl2_input[5]
         self.axes_tth   = self.refl2_input[6]
         self.forward()
-        self.refl2 = Hkl.SampleReflection(self.geometry, self.detector, self.refl2_input[0], \
-                                         self.refl2_input[1], self.refl2_input[2])
+        self.refl2 = self.sample.add_reflection(self.geometry, self.detector, \
+                    self.refl2_input[0], self.refl2_input[1], self.refl2_input[2])
 
     def reset(self):
         # replace with conventional way
@@ -222,7 +221,9 @@ class hklCalculator_E4CV():
                 math.radians(90.0),
                 math.radians(90.)] # cubic
         self.start() # start hkl
-       
+        #lattice volume test
+        print("Running test - lattice volume")
+        print(f'lattice volume: {self.lattice.volume_get()}') # Check in bindings example
         # forward test
         self.axes_omega = 30.
         self.axes_chi   = 0.
@@ -266,6 +267,8 @@ class hklCalculator_E4CV():
         self.refl2_input[0] = 0 # h
         self.refl2_input[1] = 4 # k
         self.refl2_input[2] = 0 # l
+        #confirm the reflection values
+        
         # Finally, compute the UB matrix #TODO calculated matrix not correct
         self.compute_UB_matrix()
         print("Testing UB matrix calculation")

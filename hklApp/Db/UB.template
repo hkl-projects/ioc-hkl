@@ -1,0 +1,153 @@
+# FROM EPICS TO PYTHON
+
+record(ao, "$(P)$(R)wlen") {
+    field(DESC, "wavelength")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.wavelength='VAL'")
+}
+
+record(ai, "$(P)$(R)wlen_RBV") {
+    field(DESC, "wavelength")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.wavelength")
+}
+
+record(ao, "$(P)$(R)a") {
+    field(DESC, "a")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(LOPR, "0")
+    field(HOPR, "11.54")
+    field(OVAL, "1.54")
+    field(OUT, "@hkl_calc.lattice[0]='VAL'")
+}
+
+record(ai, "$(P)$(R)a_RBV") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(VAL, "1.54")
+    field(INP, "@hkl_calc.lattice[0]")
+}
+
+record(ao, "$(P)$(R)b") {
+    field(DESC, "b")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(LOPR, "0")
+    field(HOPR, "11.54")
+    field(OUT, "@hkl_calc.lattice[1]='VAL'")
+}
+
+record(ai, "$(P)$(R)b_RBV") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(VAL, "1.54")
+    field(INP, "@hkl_calc.lattice[1]")
+}
+
+record(ao, "$(P)$(R)c") {
+    field(DESC, "c")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(LOPR, "0")
+    field(HOPR, "11.54")
+    field(OUT, "@hkl_calc.lattice[2]='VAL'")
+}
+
+record(ai, "$(P)$(R)c_RBV") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(VAL, "1.54")
+    field(INP, "@hkl_calc.lattice[2]")
+}
+
+record(ao, "$(P)$(R)alpha") {
+    field(DESC, "alpha")
+    field(PINI, "YES")
+    field(LOPR, "0")
+    field(HOPR, "180")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.lattice[3]='VAL'")
+}
+
+record(ai, "$(P)$(R)alpha_RBV") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(VAL, "90")
+    field(INP, "@hkl_calc.lattice[3]")
+}
+
+record(ao, "$(P)$(R)beta") {
+    field(DESC, "beta")
+    field(PINI, "YES")
+    field(LOPR, "0")
+    field(HOPR, "180")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.lattice[4]='VAL'")
+}
+
+record(ai, "$(P)$(R)beta_RBV") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(VAL, "90")
+    field(INP, "@hkl_calc.lattice[4]")
+}
+
+record(ao, "$(P)$(R)gamma") {
+    field(DESC, "gamma")
+    field(PINI, "YES")
+    field(LOPR, "0")
+    field(HOPR, "180")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.lattice[5]='VAL'")
+}
+
+record(ai, "$(P)$(R)gamma_RBV") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(VAL, "90")
+    field(INP, "@hkl_calc.lattice[5]")
+}
+
+record(mbbo, "$(P)$(R)geom") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(ZRVL, "0")
+    field(ONVL, "1")
+    field(TWVL, "2")
+    field(THVL, "3")
+    field(FRVL, "4")
+    field(FVVL, "5")
+    field(SXVL, "6")
+    field(ZRST, "E4CV")
+    field(ONST, "K6C")
+    field(TWST, "E4CV")
+    field(THST, "E4CV")
+    field(FRST, "E4CV")
+    field(FVST, "E4CV")
+    field(SXST, "E4CV")
+    field(OUT, "@hkl_calc.geom")
+}
+
+record(mbbi, "$(P)$(R)geom_RBV") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(ZRVL, "0")
+    field(ONVL, "1")
+    field(TWVL, "2")
+    field(THVL, "3")
+    field(FRVL, "4")
+    field(FVVL, "5")
+    field(FVVL, "6")
+    field(ZRST, "E4CV")
+    field(ONST, "K6C")
+    field(TWST, "E4CV")
+    field(THST, "E4CV")
+    field(FRST, "E4CV")
+    field(FVST, "E4CV")
+    field(SXST, "E4CV")
+    field(INP, "@hkl_calc.geom")
+}
+
