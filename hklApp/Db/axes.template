@@ -29,7 +29,7 @@ record(ao, "$(P)$(R)chi") {
     field(DTYP, "pydev")
     field(LOPR, "-180")
     field(HOPR, "180")
-    field(OUT, "@hkl_calc.axes_chi='VAL'")
+    field(OUT, "@hkl_calc.axes_chi=VAL")
     field(SCAN, "1 second")
 }
 
@@ -49,7 +49,7 @@ record(ao, "$(P)$(R)phi") {
     field(PINI, "YES")
     field(LOPR, "-180")
     field(HOPR, "180")
-    field(OUT, "@hkl_calc.axes_phi='VAL'")
+    field(OUT, "@hkl_calc.axes_phi=VAL")
     field(SCAN, "1 second")
 }
 
@@ -69,7 +69,7 @@ record(ao, "$(P)$(R)tth") {
     field(PINI, "YES")
     field(LOPR, "-180")
     field(HOPR, "180")
-    field(OUT, "@hkl_calc.axes_tth='VAL'")
+    field(OUT, "@hkl_calc.axes_tth=VAL")
     field(SCAN, "1 second")
 }
 
