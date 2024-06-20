@@ -216,7 +216,7 @@ class hklCalculator_E4CV():
         # starting sample, instrument parameters
         self.wavelength = 1.54 #Angstrom
         self.geom_name = 'E4CV' # 4-circle
-        self.latt = [1.54, 1.54, 1.54,
+        self.latt = [5.431, 5.431, 5.431,
                 math.radians(90.0),
                 math.radians(90.0),
                 math.radians(90.)] # cubic

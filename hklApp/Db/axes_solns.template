@@ -5,8 +5,9 @@ record(ai, "$(P)$(R)omega$(C)") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.axes_solns_omega[$(C)]")
+    field(VAL,  "30")
 #    field(SCAN, "I/O Intr")
-    field(SCAN, "1 second")
+#    field(SCAN, "1 second")
 }
 
 record(ao, "$(P)$(R)omega$(C)_RBV") {

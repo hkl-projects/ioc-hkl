@@ -6,9 +6,11 @@ record(ao, "$(P)$(R)omega") {
     field(DTYP, "pydev")
     field(LOPR, "-180")
     field(HOPR, "180")
-    #field(OUT, "@pydev.iotinr(@hkl_calc.axes_omega='VAL')")
-    field(OUT, "@hkl_calc.axes_omega='VAL'")
-    field(SCAN, "1 second")
+    #field(OUT, "@pydev.iotinr(@hkl_calc.axes_omega=VAL)")
+    field(OUT, "@hkl_calc.axes_omega=VAL")
+    field(VAL,  "45")
+#    field(SCAN, "1 second")
+    field(FLNK, "$(P)$(R)omega_RBV")
 }
 
 record(ai, "$(P)$(R)omega_RBV") {
@@ -17,7 +19,8 @@ record(ai, "$(P)$(R)omega_RBV") {
     field(DTYP, "pydev")
     #field(INP, "@pydev.iointr(@hkl_calc.axes_omega)")
     field(INP, "@hkl_calc.axes_omega")
-    field(SCAN, "1 second")
+#    field(SCAN, "1 second")
+#    field(SCAN, "I/O Intr")
 }
 
 record(ao, "$(P)$(R)chi") {

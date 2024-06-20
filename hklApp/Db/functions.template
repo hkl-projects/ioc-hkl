@@ -1,5 +1,5 @@
 record(bo, "$(P)$(R)forward") {
-    field(PINI, "YES")
+    #field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.forward()")
 }
