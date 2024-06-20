@@ -47,10 +47,10 @@ record(ai, "$(P)$(R)solincidence") {
 }
 
 record(ai, "$(P)$(R)solazimuth") {
-    field(DESC, "azimuth1")
+    field(DESC, "azimuth")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(INP, "@hkl_calc.pseudoaxes_solns_azimuth")
+    field(INP, "@hkl_calc.pseudoaxes_solns_azimuth1")
     field(SCAN, "1 second")
 }
 

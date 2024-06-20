@@ -1,23 +1,18 @@
-# FROM EPICS TO PYTHON
-
 record(ao, "$(P)$(R)omega") {
     field(DESC, "omega")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(LOPR, "-180")
     field(HOPR, "180")
-    #field(OUT, "@pydev.iotinr(@hkl_calc.axes_omega='VAL')")
-    field(OUT, "@hkl_calc.axes_omega='VAL'")
-    field(SCAN, "1 second")
+    field(OUT, "@hkl_calc.axes_omega=VAL")
+    field(FLNK, "$(P)$(R)omega_RBV")
 }
 
 record(ai, "$(P)$(R)omega_RBV") {
     field(DESC, "omega")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    #field(INP, "@pydev.iointr(@hkl_calc.axes_omega)")
     field(INP, "@hkl_calc.axes_omega")
-    field(SCAN, "1 second")
 }
 
 record(ao, "$(P)$(R)chi") {
@@ -26,8 +21,8 @@ record(ao, "$(P)$(R)chi") {
     field(DTYP, "pydev")
     field(LOPR, "-180")
     field(HOPR, "180")
-    field(OUT, "@hkl_calc.axes_chi='VAL'")
-    field(SCAN, "1 second")
+    field(OUT, "@hkl_calc.axes_chi=VAL")
+    field(FLNK, "$(P)$(R)omega_RBV")
 }
 
 record(ai, "$(P)$(R)chi_RBV") {
@@ -37,7 +32,6 @@ record(ai, "$(P)$(R)chi_RBV") {
     field(LOPR, "-180")
     field(HOPR, "180")
     field(INP, "@hkl_calc.axes_chi")
-    field(SCAN, "1 second")
 }
 
 record(ao, "$(P)$(R)phi") {
@@ -46,8 +40,8 @@ record(ao, "$(P)$(R)phi") {
     field(PINI, "YES")
     field(LOPR, "-180")
     field(HOPR, "180")
-    field(OUT, "@hkl_calc.axes_phi='VAL'")
-    field(SCAN, "1 second")
+    field(OUT, "@hkl_calc.axes_phi=VAL")
+    field(FLNK, "$(P)$(R)phi_RBV")
 }
 
 record(ai, "$(P)$(R)phi_RBV") {
@@ -57,7 +51,6 @@ record(ai, "$(P)$(R)phi_RBV") {
     field(LOPR, "-180")
     field(HOPR, "180")
     field(INP, "@hkl_calc.axes_phi")
-    field(SCAN, "1 second")
 }
 
 record(ao, "$(P)$(R)tth") {
@@ -66,8 +59,8 @@ record(ao, "$(P)$(R)tth") {
     field(PINI, "YES")
     field(LOPR, "-180")
     field(HOPR, "180")
-    field(OUT, "@hkl_calc.axes_tth='VAL'")
-    field(SCAN, "1 second")
+    field(OUT, "@hkl_calc.axes_tth=VAL")
+    field(FLNK, "$(P)$(R)tth_RBV")
 }
 
 record(ai, "$(P)$(R)tth_RBV") {
@@ -77,5 +70,4 @@ record(ai, "$(P)$(R)tth_RBV") {
     field(LOPR, "-180")
     field(HOPR, "180")
     field(INP, "@hkl_calc.axes_tth")
-    field(SCAN, "1 second")
 }

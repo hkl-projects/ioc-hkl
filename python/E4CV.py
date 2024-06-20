@@ -26,7 +26,7 @@ class hklCalculator_E4CV():
         self.engines = np.nan # hkl object placeholder
         self.engine_hkl = np.nan # hkl object placeholder
         self.latt = [0., 0., 0., 0., 0., 0.] 
-        # ^ [a1, a2, a3, alpha, beta, gamma]
+        # ^ [a1, a2, a3, alpha, beta, gamma], angstroms and radians
         self.lattice = np.nan 
         
         # sample orientation
@@ -76,7 +76,7 @@ class hklCalculator_E4CV():
         self.pseudoaxes_solns_azimuth1 = 0.
         self.pseudoaxes_solns_emergence = 0.
         self.pseudoaxes_solns_azimuth2 = 0.
-       
+ 
     def start(self):
         self.detector = Hkl.Detector.factory_new(Hkl.DetectorType(0))
         self.factory  = Hkl.factories()[self.geom_name]
@@ -84,14 +84,19 @@ class hklCalculator_E4CV():
         self.geometry.wavelength_set(self.wavelength, Hkl.UnitEnum.USER)
         
         self.sample = Hkl.Sample.new("toto")
-        self.lattice = Hkl.Lattice.new(*self.latt)
+        a,b,c,alpha,beta,gamma = [i for i in self.latt]
+        alpha=math.radians(alpha)
+        beta=math.radians(beta)
+        gamma=math.radians(gamma)
+        self.lattice = Hkl.Lattice.new(a,b,c,alpha,beta,gamma)
+        #seg faults here
         self.sample.lattice_set(self.lattice)             
 
         self.engines = self.factory.create_new_engine_list()
         self.engines.init(self.geometry, self.detector, self.sample) # See if there's an "update" engine instead of "init"
         self.engines.get()
         self.engine_hkl = self.engines.engine_get_by_name("hkl")
-       
+    
     def forward(self):
         print("Forward function start")
         self.reset_pseudoaxes_solns()
@@ -121,12 +126,13 @@ class hklCalculator_E4CV():
         values_hkl = [float(self.pseudoaxes_h), \
                       float(self.pseudoaxes_k), \
                       float(self.pseudoaxes_l)]
+
         solutions = self.engine_hkl.pseudo_axis_values_set(values_hkl, Hkl.UnitEnum.USER)
         values_w_all = []
         for i, item in enumerate(solutions.items()):
             read = item.geometry_get().axis_values_get(Hkl.UnitEnum.USER)
             values_w_all.append(read)
-        for i in range(self.num_axes_solns):
+        for i in range(self.num_axes_solns): #TODO out of index when less than max solns
             self.axes_solns_omega[i], self.axes_solns_chi[i], \
             self.axes_solns_phi[i], self.axes_solns_tth[i] = values_w_all[i]           
 
@@ -216,6 +222,7 @@ class hklCalculator_E4CV():
                     self.refl2_input[0], self.refl2_input[1], self.refl2_input[2])
 
     def reset(self):
+        #DELETE
         # replace with conventional way
         self.__init__()
 
