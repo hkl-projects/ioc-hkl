@@ -5,6 +5,7 @@ record(ao, "$(P)$(R)wlen") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.wavelength=VAL")
+    field(FLNK, "$(P)$(R)wlen_RBV")
 }
 
 record(ai, "$(P)$(R)wlen_RBV") {
@@ -20,15 +21,15 @@ record(ao, "$(P)$(R)a") {
     field(DTYP, "pydev")
     field(LOPR, "0")
     field(HOPR, "11.54")
-    field(OVAL, "1.54")
-    field(OUT, "@hkl_calc.lattice[0]=VAL")
+    field(OUT, "@hkl_calc.latt[0]=VAL")
+    field(FLNK, "$(P)$(R)a_RBV")
 }
 
 record(ai, "$(P)$(R)a_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(VAL, "1.54")
-    field(INP, "@hkl_calc.lattice[0]")
+    #field(VAL, "1.54")
+    field(INP, "@hkl_calc.latt[0]")
 }
 
 record(ao, "$(P)$(R)b") {
@@ -37,14 +38,15 @@ record(ao, "$(P)$(R)b") {
     field(DTYP, "pydev")
     field(LOPR, "0")
     field(HOPR, "11.54")
-    field(OUT, "@hkl_calc.lattice[1]=VAL")
+    field(OUT, "@hkl_calc.latt[1]=VAL")
+    field(FLNK, "$(P)$(R)b_RBV")
 }
 
 record(ai, "$(P)$(R)b_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(VAL, "1.54")
-    field(INP, "@hkl_calc.lattice[1]")
+    field(INP, "@hkl_calc.latt[1]")
 }
 
 record(ao, "$(P)$(R)c") {
@@ -53,14 +55,15 @@ record(ao, "$(P)$(R)c") {
     field(DTYP, "pydev")
     field(LOPR, "0")
     field(HOPR, "11.54")
-    field(OUT, "@hkl_calc.lattice[2]=VAL")
+    field(OUT, "@hkl_calc.latt[2]=VAL")
+    field(FLNK, "$(P)$(R)c_RBV")
 }
 
 record(ai, "$(P)$(R)c_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(VAL, "1.54")
-    field(INP, "@hkl_calc.lattice[2]")
+    field(INP, "@hkl_calc.latt[2]")
 }
 
 record(ao, "$(P)$(R)alpha") {
@@ -69,14 +72,15 @@ record(ao, "$(P)$(R)alpha") {
     field(LOPR, "0")
     field(HOPR, "180")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.lattice[3]=VAL")
+    field(OUT, "@hkl_calc.latt[3]=VAL")
+    field(FLNK, "$(P)$(R)alpha_RBV")
 }
 
 record(ai, "$(P)$(R)alpha_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(VAL, "90")
-    field(INP, "@hkl_calc.lattice[3]")
+    field(INP, "@hkl_calc.latt[3]")
 }
 
 record(ao, "$(P)$(R)beta") {
@@ -85,14 +89,15 @@ record(ao, "$(P)$(R)beta") {
     field(LOPR, "0")
     field(HOPR, "180")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.lattice[4]=VAL")
+    field(OUT, "@hkl_calc.latt[4]=VAL")
+    field(FLNK, "$(P)$(R)beta_RBV")
 }
 
 record(ai, "$(P)$(R)beta_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(VAL, "90")
-    field(INP, "@hkl_calc.lattice[4]")
+    field(INP, "@hkl_calc.latt[4]")
 }
 
 record(ao, "$(P)$(R)gamma") {
@@ -101,14 +106,15 @@ record(ao, "$(P)$(R)gamma") {
     field(LOPR, "0")
     field(HOPR, "180")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.lattice[5]=VAL")
+    field(OUT, "@hkl_calc.latt[5]=VAL")
+    field(FLNK, "$(P)$(R)gamma_RBV")
 }
 
 record(ai, "$(P)$(R)gamma_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(VAL, "90")
-    field(INP, "@hkl_calc.lattice[5]")
+    field(INP, "@hkl_calc.latt[5]")
 }
 
 record(mbbo, "$(P)$(R)geom") {
@@ -128,7 +134,7 @@ record(mbbo, "$(P)$(R)geom") {
     field(FRST, "E4CV")
     field(FVST, "E4CV")
     field(SXST, "E4CV")
-    field(OUT, "@hkl_calc.geom")
+    field(OUT, "@hkl_calc.geom=VAL")
     field(FLNK, "$(P)$(R)geom_RBV")
 }
 
