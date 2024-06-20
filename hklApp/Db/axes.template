@@ -22,7 +22,7 @@ record(ao, "$(P)$(R)chi") {
     field(LOPR, "-180")
     field(HOPR, "180")
     field(OUT, "@hkl_calc.axes_chi=VAL")
-    field(FLNK, "$(P)$(R)omega_RBV")
+    field(FLNK, "$(P)$(R)chi_RBV")
 }
 
 record(ai, "$(P)$(R)chi_RBV") {

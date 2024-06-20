@@ -25,4 +25,6 @@ pydev("hkl_calc = hklApp.hklCalcs()")
 
 iocInit
 
+epicsThreadSleep(1)
+dbpf("HB3:omega","20")
 #dbl > pvlist.dbl

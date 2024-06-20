@@ -3,96 +3,96 @@
 record(ao, "$(P)$(R)reflh") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.refl1[0]='VAL'")
+    field(OUT, "@hkl_calc.refl1[0]=VAL")
 }
 
 record(ao, "$(P)$(R)reflk") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.refl[1]='VAL'")
+    field(OUT, "@hkl_calc.refl[1]=VAL")
 }
 
 record(ao, "$(P)$(R)refll") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.refl[2]='VAL'")
+    field(OUT, "@hkl_calc.refl[2]=VAL")
 }
 
 record(ao, "$(P)$(R)reflomega") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.refl[3]='VAL'")
+    field(OUT, "@hkl_calc.refl[3]=VAL")
 }
 
 record(ao, "$(P)$(R)reflchi") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.refl[4]='VAL'")
+    field(OUT, "@hkl_calc.refl[4]=VAL")
 }
 
 record(ao, "$(P)$(R)reflphi") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.refl[5]='VAL'")
+    field(OUT, "@hkl_calc.refl[5]=VAL")
 }
 
 record(ao, "$(P)$(R)refltth") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.refl[6]='VAL'")
+    field(OUT, "@hkl_calc.refl[6]=VAL")
 }
 
 record(ao, "$(P)$(R)UBa11") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.UB_matrix[0]='VAL'")
+    field(OUT, "@hkl_calc.UB_matrix[0]=VAL")
 }
 
 record(ao, "$(P)$(R)UBa12") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.UB_matrix[1]='VAL'")
+    field(OUT, "@hkl_calc.UB_matrix[1]=VAL")
 }
 
 record(ao, "$(P)$(R)UBa13") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.UB_matrix[2]='VAL'")
+    field(OUT, "@hkl_calc.UB_matrix[2]=VAL")
 }
 
 record(ao, "$(P)$(R)UBa21") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.UB_matrix[3]='VAL'")
+    field(OUT, "@hkl_calc.UB_matrix[3]=VAL")
 }
 
 record(ao, "$(P)$(R)UBa22") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.UB_matrix[4]='VAL'")
+    field(OUT, "@hkl_calc.UB_matrix[4]=VAL")
 }
 
 record(ao, "$(P)$(R)UBa23") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.UB_matrix[5]='VAL'")
+    field(OUT, "@hkl_calc.UB_matrix[5]=VAL")
 }
 
 record(ao, "$(P)$(R)UBa31") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.UB_matrix[6]='VAL'")
+    field(OUT, "@hkl_calc.UB_matrix[6]=VAL")
 }
 
 record(ao, "$(P)$(R)UBa32") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.UB_matrix[7]='VAL'")
+    field(OUT, "@hkl_calc.UB_matrix[7]=VAL")
 }
 
 record(ao, "$(P)$(R)UBa33") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.UB_matrix[8]='VAL'")
+    field(OUT, "@hkl_calc.UB_matrix[8]=VAL")
 }
 
