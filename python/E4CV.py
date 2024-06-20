@@ -95,7 +95,10 @@ class hklCalculator_E4CV():
     def forward(self):
         print("Forward function start")
         self.reset_pseudoaxes_solns()
-        values_w = [self.axes_omega, self.axes_chi, self.axes_phi, self.axes_tth] 
+        values_w = [float(self.axes_omega), \
+                    float(self.axes_chi), \
+                    float(self.axes_phi), \
+                    float(self.axes_tth)] 
 
         try:
             self.geometry.axis_values_set(values_w, Hkl.UnitEnum.USER)
@@ -115,7 +118,9 @@ class hklCalculator_E4CV():
         print("Backward function start")
         self.reset_axes_solns()
 
-        values_hkl = [self.pseudoaxes_h, self.pseudoaxes_k, self.pseudoaxes_l]
+        values_hkl = [float(self.pseudoaxes_h), \
+                      float(self.pseudoaxes_k), \
+                      float(self.pseudoaxes_l)]
         solutions = self.engine_hkl.pseudo_axis_values_set(values_hkl, Hkl.UnitEnum.USER)
         values_w_all = []
         for i, item in enumerate(solutions.items()):
@@ -195,7 +200,8 @@ class hklCalculator_E4CV():
         self.axes_chi   = self.refl1_input[4]
         self.axes_phi   = self.refl1_input[5]
         self.axes_tth   = self.refl1_input[6]
-        self.forward() # replace with an update of sample with motor positions
+        self.forward() # replace with an update of sample with motor positions 
+        # Hkl.SampleReflection(self.geometry, self.detector, h, k, l)
         self.refl1 = self.sample.add_reflection(self.geometry, self.detector, \
                     self.refl1_input[0], self.refl1_input[1], self.refl1_input[2])
 
@@ -205,12 +211,16 @@ class hklCalculator_E4CV():
         self.axes_phi   = self.refl2_input[5]
         self.axes_tth   = self.refl2_input[6]
         self.forward()
+        # Hkl.SampleReflection(self.geometry, self.detector, h, k, l)
         self.refl2 = self.sample.add_reflection(self.geometry, self.detector, \
                     self.refl2_input[0], self.refl2_input[1], self.refl2_input[2])
 
     def reset(self):
         # replace with conventional way
         self.__init__()
+
+    def set_wavelength(self, wlen):
+        self.wavelength = wlen
 
     def test(self):
         # starting sample, instrument parameters
@@ -248,9 +258,6 @@ class hklCalculator_E4CV():
         print("input hkl values: ", values_hkl)
         print("backward function results:\n", b_results)
         #UB matrix test
-        # Hkl.SampleReflection(self.geometry, self.detector, h, k, l)
-        # When this function takes in self.geometry, it pulls the axes positions from there
-        # So, need to run a forward() with reflection1 motor positions to capture reflections?
         # reflection #1
         self.refl1_input[3] = -145.451 # omega
         self.refl1_input[4] = 0 # chi
@@ -267,7 +274,6 @@ class hklCalculator_E4CV():
         self.refl2_input[0] = 0 # h
         self.refl2_input[1] = 4 # k
         self.refl2_input[2] = 0 # l
-        #confirm the reflection values
         
         # Finally, compute the UB matrix #TODO calculated matrix not correct
         self.compute_UB_matrix()

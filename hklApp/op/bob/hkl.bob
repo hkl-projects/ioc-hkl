@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-06-11 11:20:24 by l3b-->
+<!--Saved on 2024-06-20 13:39:56 by l3b-->
 <display version="2.0.0">
   <name>HKL</name>
   <macros>
@@ -49,6 +49,13 @@
   </widget>
   <widget type="action_button" version="3.0.0">
     <name>Action Button</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$HB3:forward</pv_name>
+        <value>1</value>
+        <description>WritePV</description>
+      </action>
+    </actions>
     <pv_name>HB3:forward</pv_name>
     <text>Forward</text>
     <x>20</x>

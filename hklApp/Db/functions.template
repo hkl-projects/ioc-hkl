@@ -1,7 +1,8 @@
-record(bo, "$(P)$(R)forward") {
-    field(PINI, "YES")
+record(ao, "$(P)$(R)forward") {
+    #field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.forward()")
+    #field(FLNK, ...)
 }
 
 record(bo, "$(P)$(R)backward") {
