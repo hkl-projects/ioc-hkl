@@ -10,6 +10,12 @@ pattern {P, R}
 { HB3, : }
 }
 
+file pseudoaxes_solns.template 
+{
+pattern {P, R}
+{ HB3, : }
+}
+
 file axes.template 
 {
 pattern {P, R}

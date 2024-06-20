@@ -1,27 +1,29 @@
-record(bo, "$(P)$(R)forward") {
-    #field(PINI, "YES")
+record(ao, "$(P)$(R)forward") {
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.forward()")
     field(TPRO, "1")
 }
 
-record(bo, "$(P)$(R)backward") {
-    field(PINI, "YES")
+record(ao, "$(P)$(R)backward") {
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.backward()")
     field(TPRO, "1")
 }
 
-record(bo, "$(P)$(R)reset") {
-    field(PINI, "YES")
+record(ao, "$(P)$(R)reset") {
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.reset()")
     field(TPRO, "1")
 }
 
-record(bo, "$(P)$(R)test") {
-    field(PINI, "YES")
+record(ao, "$(P)$(R)test") {
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.test()")
+    field(TPRO, "1")
+}
+
+record(ao, "$(P)$(R)set_sample") {
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.start()")
     field(TPRO, "1")
 }

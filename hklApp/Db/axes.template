@@ -1,14 +1,10 @@
-# FROM EPICS TO PYTHON
-
 record(ao, "$(P)$(R)omega") {
     field(DESC, "omega")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(LOPR, "-180")
     field(HOPR, "180")
-    #field(OUT, "@pydev.iotinr(@hkl_calc.axes_omega=VAL)")
     field(OUT, "@hkl_calc.axes_omega=VAL")
-    field(VAL,  "45")
     field(FLNK, "$(P)$(R)omega_RBV")
 }
 
@@ -16,7 +12,6 @@ record(ai, "$(P)$(R)omega_RBV") {
     field(DESC, "omega")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    #field(INP, "@pydev.iointr(@hkl_calc.axes_omega)")
     field(INP, "@hkl_calc.axes_omega")
 }
 
