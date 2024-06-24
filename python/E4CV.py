@@ -44,6 +44,12 @@ class hklCalculator_E4CV():
         self.axes_phi = 0.
         self.axes_tth = 0.
 
+        # axes for UB calculation - only used internally
+        self.axes_omega_UB = 0.
+        self.axes_chi_UB = 0.
+        self.axes_phi_UB = 0.
+        self.axes_tth_UB = 0.
+
         # pseduoaxes 
         self.pseudoaxes_h = 0.
         self.pseudoaxes_k = 0.
@@ -118,6 +124,22 @@ class hklCalculator_E4CV():
  
         values_hkl = self.engine_hkl.pseudo_axis_values_get(Hkl.UnitEnum.USER)
         self.pseudoaxes_solns_h, self.pseudoaxes_solns_k, self.pseudoaxes_solns_l = values_hkl
+
+
+    def forward_UB(self):
+        print("Forward function start")
+        values_w = [float(self.axes_omega_UB), \
+                    float(self.axes_chi_UB), \
+                    float(self.axes_phi_UB), \
+                    float(self.axes_tth_UB)] 
+
+        try:
+            self.geometry.axis_values_set(values_w, Hkl.UnitEnum.USER)
+        except:
+            print("invalid axes values")
+            #TODO catch different types of errors
+            return
+
 
     def backward(self):
         print("Backward function start")
@@ -202,21 +224,21 @@ class hklCalculator_E4CV():
 
 
     def add_reflection1(self):
-        self.axes_omega = self.refl1_input[3]
-        self.axes_chi   = self.refl1_input[4]
-        self.axes_phi   = self.refl1_input[5]
-        self.axes_tth   = self.refl1_input[6]
-        self.forward() # replace with an update of sample with motor positions 
+        self.axes_omega_UB = self.refl1_input[3]
+        self.axes_chi_UB   = self.refl1_input[4]
+        self.axes_phi_UB   = self.refl1_input[5]
+        self.axes_tth_UB   = self.refl1_input[6]
+        self.forward_UB() # replace with an update of sample with motor positions 
         # Hkl.SampleReflection(self.geometry, self.detector, h, k, l)
         self.refl1 = self.sample.add_reflection(self.geometry, self.detector, \
                     self.refl1_input[0], self.refl1_input[1], self.refl1_input[2])
 
     def add_reflection2(self):
-        self.axes_omega = self.refl2_input[3]
-        self.axes_chi   = self.refl2_input[4]
-        self.axes_phi   = self.refl2_input[5]
-        self.axes_tth   = self.refl2_input[6]
-        self.forward()
+        self.axes_omega_UB = self.refl2_input[3]
+        self.axes_chi_UB   = self.refl2_input[4]
+        self.axes_phi_UB   = self.refl2_input[5]
+        self.axes_tth_UB   = self.refl2_input[6]
+        self.forward_UB()
         # Hkl.SampleReflection(self.geometry, self.detector, h, k, l)
         self.refl2 = self.sample.add_reflection(self.geometry, self.detector, \
                     self.refl2_input[0], self.refl2_input[1], self.refl2_input[2])

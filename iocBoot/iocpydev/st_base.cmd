@@ -26,5 +26,18 @@ pydev("hkl_calc = hklApp.hklCalcs()")
 iocInit
 
 epicsThreadSleep(1)
-dbpf("HB3:omega","20")
+dbpf("HB3:wlen","1.54")
+dbpf("HB3:a","1.54")
+dbpf("HB3:b","1.54")
+dbpf("HB3:c","1.54")
+dbpf("HB3:alpha","90")
+dbpf("HB3:beta","90")
+dbpf("HB3:gamma","90")
+
+pydev("hkl_calc.set_sample()")
+
+dbpf("HB3:omega","30")
+dbpf("HB3:chi","0")
+dbpf("HB3:phi","0")
+dbpf("HB3:tth","60")
 #dbl > pvlist.dbl
