@@ -27,3 +27,10 @@ record(ao, "$(P)$(R)set_sample") {
     field(OUT, "@hkl_calc.start()")
     field(TPRO, "1")
 }
+
+record(ao, "$(P)$(R)compute_UB") {
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.compute_UB_matrix()")
+    field(TPRO, "1")
+    field(FLNK, "$(P)$(R)UBa11")
+}

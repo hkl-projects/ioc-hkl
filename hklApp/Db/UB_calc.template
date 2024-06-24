@@ -1,98 +1,160 @@
-# FROM EPICS TO PYTHON
-
-record(ao, "$(P)$(R)reflh") {
+record(ao, "$(P)$(R)refl1h") {
+    field(DESC, "h")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.refl1[0]=VAL")
+    field(OUT, "@hkl_calc.refl1_input[0]=VAL")
 }
 
-record(ao, "$(P)$(R)reflk") {
+record(ao, "$(P)$(R)refl1k") {
+    field(DESC, "k")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.refl[1]=VAL")
+    field(OUT, "@hkl_calc.refl1_input[1]=VAL")
 }
 
-record(ao, "$(P)$(R)refll") {
+record(ao, "$(P)$(R)refl1l") {
+    field(DESC, "l")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.refl[2]=VAL")
+    field(OUT, "@hkl_calc.refl1_input[2]=VAL")
 }
 
-record(ao, "$(P)$(R)reflomega") {
+record(ao, "$(P)$(R)refl1omega") {
+    field(DESC, "omega")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.refl[3]=VAL")
+    field(OUT, "@hkl_calc.refl1_input[3]=VAL")
 }
 
-record(ao, "$(P)$(R)reflchi") {
+record(ao, "$(P)$(R)refl1chi") {
+    field(DESC, "chi")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.refl[4]=VAL")
+    field(OUT, "@hkl_calc.refl1_input[4]=VAL")
 }
 
-record(ao, "$(P)$(R)reflphi") {
+record(ao, "$(P)$(R)refl1phi") {
+    field(DESC, "phi")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.refl[5]=VAL")
+    field(OUT, "@hkl_calc.refl1_input[5]=VAL")
 }
 
-record(ao, "$(P)$(R)refltth") {
+record(ao, "$(P)$(R)refl1tth") {
+    field(DESC, "tth")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.refl[6]=VAL")
+    field(OUT, "@hkl_calc.refl1_input[6]=VAL")
 }
 
-record(ao, "$(P)$(R)UBa11") {
+record(ao, "$(P)$(R)refl2h") {
+    field(DESC, "h")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.UB_matrix[0]=VAL")
+    field(OUT, "@hkl_calc.refl2_input[0]=VAL")
 }
 
-record(ao, "$(P)$(R)UBa12") {
+record(ao, "$(P)$(R)refl2k") {
+    field(DESC, "k")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.UB_matrix[1]=VAL")
+    field(OUT, "@hkl_calc.refl2_input[1]=VAL")
 }
 
-record(ao, "$(P)$(R)UBa13") {
+record(ao, "$(P)$(R)refl2l") {
+    field(DESC, "l")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.UB_matrix[2]=VAL")
+    field(OUT, "@hkl_calc.refl2_input[2]=VAL")
 }
 
-record(ao, "$(P)$(R)UBa21") {
+record(ao, "$(P)$(R)refl2omega") {
+    field(DESC, "omega")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.UB_matrix[3]=VAL")
+    field(OUT, "@hkl_calc.refl2_input[3]=VAL")
 }
 
-record(ao, "$(P)$(R)UBa22") {
+record(ao, "$(P)$(R)refl2chi") {
+    field(DESC, "chi")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.UB_matrix[4]=VAL")
+    field(OUT, "@hkl_calc.refl2_input[4]=VAL")
 }
 
-record(ao, "$(P)$(R)UBa23") {
+record(ao, "$(P)$(R)refl2phi") {
+    field(DESC, "phi")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.UB_matrix[5]=VAL")
+    field(OUT, "@hkl_calc.refl2_input[5]=VAL")
 }
 
-record(ao, "$(P)$(R)UBa31") {
+record(ao, "$(P)$(R)refl2tth") {
+    field(DESC, "tth")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.UB_matrix[6]=VAL")
+    field(OUT, "@hkl_calc.refl2_input[6]=VAL")
 }
 
-record(ao, "$(P)$(R)UBa32") {
+record(ai, "$(P)$(R)UBa11") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.UB_matrix[7]=VAL")
+    field(INP, "@hkl_calc.UB_matrix[0,0]")
+    field(FLNK, "$(P)$(R)UBa12")
 }
 
-record(ao, "$(P)$(R)UBa33") {
+record(ai, "$(P)$(R)UBa12") {
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.UB_matrix[8]=VAL")
+    field(INP, "@hkl_calc.UB_matrix[0,1]")
+    field(FLNK, "$(P)$(R)UBa13")
+}
+
+record(ai, "$(P)$(R)UBa13") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.UB_matrix[0,2]")
+    field(FLNK, "$(P)$(R)UBa21")
+}
+
+record(ai, "$(P)$(R)UBa21") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.UB_matrix[1,0]")
+    field(FLNK, "$(P)$(R)UBa22")
+}
+
+record(ai, "$(P)$(R)UBa22") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.UB_matrix[1,1]")
+    field(FLNK, "$(P)$(R)UBa23")
+}
+
+record(ai, "$(P)$(R)UBa23") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.UB_matrix[1,2]")
+    field(FLNK, "$(P)$(R)UBa31")
+}
+
+record(ai, "$(P)$(R)UBa31") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.UB_matrix[2,0]")
+    field(FLNK, "$(P)$(R)UBa32")
+}
+
+record(ai, "$(P)$(R)UBa32") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.UB_matrix[2,1]")
+    field(FLNK, "$(P)$(R)UBa33")
+}
+
+record(ai, "$(P)$(R)UBa33") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.UB_matrix[2,2]")
 }
 
