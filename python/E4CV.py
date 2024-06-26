@@ -28,6 +28,7 @@ class hklCalculator_E4CV():
         self.latt = [0., 0., 0., 0., 0., 0.] 
         # ^ [a1, a2, a3, alpha, beta, gamma], angstroms and radians
         self.lattice = np.nan 
+        self.lattice_vol = 0.
         
         # sample orientation
         self.refl1_input = [0., 0., 0., 0., 0., 0., 0.] 
@@ -36,6 +37,11 @@ class hklCalculator_E4CV():
         self.refl2 = np.nan # hkl object placeholder
         # ^ [h, k l, omega, chi, phi, tth]
         self.UB_matrix = np.zeros((3,3), dtype=float)
+        #self.sample_rot_matrix = np.zeros((8,8), dtype=float)
+        self.u_matrix = np.zeros((3,3), dtype=float)
+        self.ux = 0.
+        self.uy = 0.
+        self.uz = 0.
 
         # axes
         self.num_axes_solns = num_axes_solns
@@ -248,44 +254,100 @@ class hklCalculator_E4CV():
         # replace with conventional way
         self.__init__()
 
+    def get_sample_rotation(self):
+        rot = self.geometry.sample_rotation_get(self.sample).to_matrix()
+        dim = len(self.sample_rot_matrix)
+        for i in range(dim):
+            for j in range(dim):
+                self.sample_rot_matrix[i,j] = rot.get(i,j)     
+        return self.sample_rot_matrix  
+
+    def get_u_matrix(self):
+        rot = self.sample.U_get()
+        dim = len(self.u_matrix)
+        for i in range(dim):
+            for j in range(dim):
+                self.u_matrix[i,j] = rot.get(i,j)     
+        return self.u_matrix
+
+    def get_u_xyz(self):
+        self.ux = self.sample.ux_get().value_get(0)
+        self.uy = self.sample.uy_get().value_get(0)
+        self.uz = self.sample.uz_get().value_get(0)
+        return self.ux, self.uy, self.uz
+
     def set_wavelength(self, wlen):
         self.wavelength = wlen
+
+    def get_latt_vol(self):
+        self.lattice_vol = self.lattice.volume_get().value_get(0)
+        return self.lattice_vol
+
+    def print_values(self):
+        # Initials
+        vol = self.get_latt_vol()
+        # Forward
+        axes = self.get_axes()
+        pseudoaxes_solns = self.get_pseudoaxes_solns()
+        # Backward
+        pseudoaxes = self.get_pseudoaxes()
+        axes_solns = self.get_axes_solns(cleanprint=True)
+        # orientation
+        u = self.get_u_matrix()
+        ux,uy,uz = self.get_u_xyz()
+        ub = self.get_UB_matrix()
+        #sample_rot_m = self.get_sample_rotation()
+        print("Initial conditions:")
+        print("##################################")
+        print(f'wavelength: {self.wavelength}')
+        print(f'geometry: {self.geom_name}')
+        print(f'lattice: {self.latt}')
+        print(f'lattice volume: {vol}')
+        print("Forward")
+        print("##################################")
+        print(f'input axes: {axes}') 
+        print(f'pseudoaxes solutions: {pseudoaxes_solns}')
+        print("Backward")
+        print("##################################")
+        print(f'input pseudoaxes: {pseudoaxes}')
+        print(f'axes solutions: {axes_solns}')
+        print("Orientation")
+        print("##################################")
+        print(f'reflection #1: {self.refl1_input}')
+        print(f'reflection #2: {self.refl2_input}') 
+        print(f'u matrix: \n {u}')
+        print(f'u vector: ux, uy, uz: {ux}, {uy}, {uz}')
+        print(f'UB:\n {ub}')
+        #print(f'sample rotation/quaternion:\n {sample_rot_m}')
 
     def test(self):
         # starting sample, instrument parameters
         self.wavelength = 1.54 #Angstrom
         self.geom_name = 'E4CV' # 4-circle
-        self.latt = [5.431, 5.431, 5.431,
-                math.radians(90.0),
-                math.radians(90.0),
-                math.radians(90.)] # cubic
+        self.latt = [1.54, 1.54, 1.54,
+                90.,
+                90.,
+                90.] # cubic
         self.start() # start hkl
-        #lattice volume test
-        print("Running test - lattice volume")
-        print(f'lattice volume: {self.lattice.volume_get()}') # Check in bindings example
+        
         # forward test
         self.axes_omega = 30.
         self.axes_chi   = 0.
         self.axes_phi   = 0.
         self.axes_tth   = 60.
-        print("Running test - Initial conditions:")
-        print("##################################")
-        print("wavelength: ", self.wavelength)
-        print("geometry: ", self.geom_name)
-        print("lattice: ", self.latt)
+        
+        print("\n\n\nRunning Forward\n")
         self.forward() 
-        f_results = self.get_pseudoaxes_solns()
-        print("input motor values: ", self.get_axes()) 
-        print("forward function results:\n", f_results)  
+        self.print_values()
+
         # backward test
         self.pseudoaxes_h = 0.
         self.pseudoaxes_k = 0.
         self.pseudoaxes_l = 1.
-        values_hkl = [self.pseudoaxes_h, self.pseudoaxes_k, self.pseudoaxes_l]
+        print("\n\n\nRunning Backward\n")
         self.backward()
-        b_results = self.get_axes_solns(cleanprint=True)
-        print("input hkl values: ", values_hkl)
-        print("backward function results:\n", b_results)
+        self.print_values()
+ 
         #UB matrix test
         # reflection #1
         self.refl1_input[3] = -145.451 # omega
@@ -303,10 +365,10 @@ class hklCalculator_E4CV():
         self.refl2_input[0] = 0 # h
         self.refl2_input[1] = 4 # k
         self.refl2_input[2] = 0 # l
+        # UB calculation
         
-        # Finally, compute the UB matrix #TODO calculated matrix not correct
+        print("\n\n\nPre-UB Caclulation\n")
+        self.print_values()
         self.compute_UB_matrix()
-        print("Testing UB matrix calculation")
-        print(f'reflection #1: {self.refl1}')
-        print(f'reflection #2: {self.refl2}')
-        print(f'Resulting UB matrix: {self.UB_matrix}')
+        print("\n\n\nPost-UB Caclulation\n")
+        self.print_values()
