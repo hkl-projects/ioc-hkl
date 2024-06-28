@@ -160,7 +160,11 @@ class hklCalculator_E4CV():
         for i, item in enumerate(solutions.items()):
             read = item.geometry_get().axis_values_get(Hkl.UnitEnum.USER)
             values_w_all.append(read)
-        for i in range(self.num_axes_solns): #TODO out of index when less than max solns
+        len_solns = i
+        print(len_solns)
+        if len_solns > self.num_axes_solns:
+            len_solns = self.num_axes_solns
+        for i in range(len_solns): 
             self.axes_solns_omega[i], self.axes_solns_chi[i], \
             self.axes_solns_phi[i], self.axes_solns_tth[i] = values_w_all[i]           
 
@@ -217,6 +221,17 @@ class hklCalculator_E4CV():
  
     def compute_UB_matrix(self):
         print("Computing UB matrix")
+        self.add_reflection1()
+        self.add_reflection2()
+        self.sample.compute_UB_busing_levy(self.refl1, self.refl2)
+        UB = self.sample.UB_get()
+        for i in range(3):
+            for j in range(3):
+                self.UB_matrix[i,j] = UB.get(i,j)
+        self.start()
+
+    def compute_set_UB_matrix(self):
+        # same thing as compute_UB_matrix, but without start()
         self.add_reflection1()
         self.add_reflection2()
         self.sample.compute_UB_busing_levy(self.refl1, self.refl2)

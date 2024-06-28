@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-06-24 13:34:17 by l3b-->
+<!--Saved on 2024-06-28 15:46:57 by l3b-->
 <display version="2.0.0">
   <name>HKL</name>
   <macros>
@@ -347,7 +347,7 @@
   <widget type="label" version="2.0.0">
     <name>Label_9</name>
     <text>UB Matrix</text>
-    <x>1230</x>
+    <x>1027</x>
     <y>210</y>
     <width>150</width>
   </widget>
@@ -398,7 +398,7 @@
   </widget>
   <widget type="arc" version="2.0.0">
     <name>Arc</name>
-    <x>1336</x>
+    <x>1133</x>
     <y>290</y>
     <width>1</width>
     <height>1</height>
@@ -1093,7 +1093,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_16</name>
     <pv_name>$(Sys)UBa11</pv_name>
-    <x>1221</x>
+    <x>1018</x>
     <y>230</y>
     <width>78</width>
     <height>22</height>
@@ -1132,7 +1132,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_17</name>
     <pv_name>$(Sys)UBa12</pv_name>
-    <x>1311</x>
+    <x>1108</x>
     <y>230</y>
     <width>78</width>
     <height>22</height>
@@ -1171,7 +1171,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_18</name>
     <pv_name>$(Sys)UBa13</pv_name>
-    <x>1401</x>
+    <x>1198</x>
     <y>230</y>
     <width>78</width>
     <height>22</height>
@@ -1210,7 +1210,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_19</name>
     <pv_name>$(Sys)UBa21</pv_name>
-    <x>1221</x>
+    <x>1018</x>
     <y>252</y>
     <width>78</width>
     <height>22</height>
@@ -1249,7 +1249,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_20</name>
     <pv_name>$(Sys)UBa22</pv_name>
-    <x>1311</x>
+    <x>1108</x>
     <y>252</y>
     <width>78</width>
     <height>22</height>
@@ -1288,7 +1288,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_21</name>
     <pv_name>$(Sys)UBa23</pv_name>
-    <x>1401</x>
+    <x>1198</x>
     <y>252</y>
     <width>78</width>
     <height>22</height>
@@ -1327,7 +1327,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_22</name>
     <pv_name>$(Sys)UBa31</pv_name>
-    <x>1221</x>
+    <x>1018</x>
     <y>274</y>
     <width>78</width>
     <height>22</height>
@@ -1366,7 +1366,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_23</name>
     <pv_name>$(Sys)UBa32</pv_name>
-    <x>1311</x>
+    <x>1108</x>
     <y>274</y>
     <width>78</width>
     <height>22</height>
@@ -1405,7 +1405,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_24</name>
     <pv_name>$(Sys)UBa33</pv_name>
-    <x>1401</x>
+    <x>1198</x>
     <y>274</y>
     <width>78</width>
     <height>22</height>
@@ -1452,8 +1452,25 @@
     </actions>
     <pv_name>HB3:compute_UB</pv_name>
     <text>Calculate UB</text>
-    <x>978</x>
-    <y>240</y>
+    <x>870</x>
+    <y>230</y>
+    <width>140</width>
+    <height>40</height>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_6</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>HB3:compute_set_UB</pv_name>
+        <value>1</value>
+        <description>WritePV</description>
+      </action>
+    </actions>
+    <pv_name>HB3:compute_set_UB</pv_name>
+    <text>Set UB to Sample</text>
+    <x>1290</x>
+    <y>230</y>
     <width>140</width>
     <height>40</height>
     <tooltip>$(actions)</tooltip>
