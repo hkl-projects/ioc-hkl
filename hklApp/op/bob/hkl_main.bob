@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-06-14 16:40:15 by kg1-->
+<!--Saved on 2024-07-05 13:27:44 by l3b-->
 <display version="2.0.0">
   <name>HKL_main</name>
   <macros>
@@ -46,7 +46,7 @@
         <group_name></group_name>
       </tab>
     </tabs>
-    <width>1820</width>
+    <width>1850</width>
     <height>1100</height>
   </widget>
 </display>

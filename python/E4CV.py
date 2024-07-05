@@ -5,14 +5,9 @@ import gi
 from gi.repository import GLib
 gi.require_version('Hkl', '5.0')
 from gi.repository import Hkl
-#from epics import PV
-import inspect
-from enum import IntEnum
 
 #TODO create lists from individual values, change PVs accordingly
-#TODO fix compute UB
 #TODO add holds
-#TODO add lattice set function [self.sample.lattice_set(lattice)], with reset of axes/pseudoaxes
 
 class hklCalculator_E4CV():
     def __init__(self, num_axes_solns=15):
@@ -101,11 +96,10 @@ class hklCalculator_E4CV():
         beta=math.radians(beta)
         gamma=math.radians(gamma)
         self.lattice = Hkl.Lattice.new(a,b,c,alpha,beta,gamma)
-        #seg faults here
         self.sample.lattice_set(self.lattice)             
 
         self.engines = self.factory.create_new_engine_list()
-        self.engines.init(self.geometry, self.detector, self.sample) # See if there's an "update" engine instead of "init"
+        self.engines.init(self.geometry, self.detector, self.sample)
         self.engines.get()
         self.engine_hkl = self.engines.engine_get_by_name("hkl")
     
@@ -157,12 +151,11 @@ class hklCalculator_E4CV():
 
         solutions = self.engine_hkl.pseudo_axis_values_set(values_hkl, Hkl.UnitEnum.USER)
         values_w_all = []
+        len_solns = len(solutions.items())
         for i, item in enumerate(solutions.items()):
             read = item.geometry_get().axis_values_get(Hkl.UnitEnum.USER)
             values_w_all.append(read)
-        len_solns = i
-        print(len_solns)
-        if len_solns > self.num_axes_solns:
+        if len_solns > self.num_axes_solns: # truncate if above max available soln slots
             len_solns = self.num_axes_solns
         for i in range(len_solns): 
             self.axes_solns_omega[i], self.axes_solns_chi[i], \
@@ -231,7 +224,9 @@ class hklCalculator_E4CV():
         self.start()
 
     def compute_set_UB_matrix(self):
-        # same thing as compute_UB_matrix, but without start()
+        '''
+        same thing as compute_UB_matrix, but without start()
+        '''
         self.add_reflection1()
         self.add_reflection2()
         self.sample.compute_UB_busing_levy(self.refl1, self.refl2)
@@ -243,6 +238,11 @@ class hklCalculator_E4CV():
     def get_UB_matrix(self):
         return self.UB_matrix
 
+    def affine(self):
+        '''
+        takes in >2 reflections to refine lattice parameters and UB matrix
+        '''
+        self.sample.affine()
 
     def add_reflection1(self):
         self.axes_omega_UB = self.refl1_input[3]
