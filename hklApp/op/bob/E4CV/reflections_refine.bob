@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-08 12:54:21 by l3b-->
+<!--Saved on 2024-07-09 12:10:32 by l3b-->
 <display version="2.0.0">
   <name>Reflections Refine</name>
   <macros>
@@ -392,7 +392,7 @@
         <description>WritePV</description>
       </action>
     </actions>
-    <pv_name>HB3:compute_set_UB</pv_name>
+    <pv_name>HB3:calc_UB_refine_set</pv_name>
     <text>Set Lattice and UB to Sample</text>
     <x>720</x>
     <y>280</y>
@@ -410,7 +410,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_25</name>
     <pv_name>$(Sys)refl1h</pv_name>
-    <x>41</x>
+    <x>20</x>
     <y>60</y>
     <width>108</width>
     <height>22</height>
@@ -449,7 +449,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_26</name>
     <pv_name>$(Sys)refl1k</pv_name>
-    <x>160</x>
+    <x>139</x>
     <y>60</y>
     <width>108</width>
     <height>22</height>
@@ -488,7 +488,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_27</name>
     <pv_name>$(Sys)refl1l</pv_name>
-    <x>278</x>
+    <x>257</x>
     <y>60</y>
     <width>108</width>
     <height>22</height>
@@ -527,7 +527,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_28</name>
     <pv_name>$(Sys)refl1omega</pv_name>
-    <x>401</x>
+    <x>380</x>
     <y>60</y>
     <width>108</width>
     <height>22</height>
@@ -566,7 +566,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_29</name>
     <pv_name>$(Sys)refl1chi</pv_name>
-    <x>521</x>
+    <x>500</x>
     <y>60</y>
     <width>108</width>
     <height>22</height>
@@ -605,7 +605,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_30</name>
     <pv_name>$(Sys)refl1phi</pv_name>
-    <x>641</x>
+    <x>620</x>
     <y>60</y>
     <width>108</width>
     <height>22</height>
@@ -644,7 +644,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_31</name>
     <pv_name>$(Sys)refl1tth</pv_name>
-    <x>761</x>
+    <x>740</x>
     <y>60</y>
     <width>108</width>
     <height>22</height>
@@ -681,68 +681,53 @@
     </border_color>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>Label_37</name>
-    <text>refl</text>
-    <x>10</x>
-    <y>60</y>
-    <width>51</width>
-  </widget>
-  <widget type="label" version="2.0.0">
     <name>Label_39</name>
     <text>h</text>
-    <x>41</x>
+    <x>20</x>
     <y>40</y>
     <width>51</width>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_40</name>
     <text>k</text>
-    <x>165</x>
+    <x>144</x>
     <y>40</y>
     <width>51</width>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_41</name>
     <text>l</text>
-    <x>278</x>
+    <x>257</x>
     <y>40</y>
     <width>51</width>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_42</name>
     <text>omega</text>
-    <x>401</x>
+    <x>380</x>
     <y>40</y>
     <width>51</width>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_43</name>
     <text>chi</text>
-    <x>531</x>
+    <x>510</x>
     <y>40</y>
     <width>51</width>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_44</name>
     <text>phi</text>
-    <x>641</x>
+    <x>620</x>
     <y>40</y>
     <width>51</width>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_45</name>
     <text>tth</text>
-    <x>761</x>
+    <x>740</x>
     <y>40</y>
     <width>51</width>
-  </widget>
-  <widget type="array" version="2.0.0">
-    <name>Array</name>
-    <pv_name>HB3:additional_refls</pv_name>
-    <x>41</x>
-    <y>160</y>
-    <width>669</width>
-    <height>160</height>
   </widget>
   <widget type="action_button" version="3.0.0">
     <name>Action Button_5</name>
@@ -1086,5 +1071,13 @@
     <x>180</x>
     <y>560</y>
     <width>51</width>
+  </widget>
+  <widget type="checkbox" version="2.0.0">
+    <name>Check Box_1</name>
+    <pv_name>HB3:refl_refine_input_list</pv_name>
+    <x>40</x>
+    <y>160</y>
+    <width>670</width>
+    <height>170</height>
   </widget>
 </display>

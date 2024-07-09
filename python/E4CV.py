@@ -35,6 +35,7 @@ class hklCalculator_E4CV():
         
         # refine with reflections
         self.refl_refine_input = [0., 0., 0., 0., 0., 0., 0.]
+        self.refl_refine_input_list = []
         self.refl_refine = np.nan
         self.refl_refine_list = []
         self.selected_refl # used for deleting reflection from list
@@ -271,6 +272,7 @@ class hklCalculator_E4CV():
         takes in >2 reflections to refine lattice parameters and UB matrix
         '''
         self.sample.affine()
+        self.start()
 
     def affine_set(self):
         '''
@@ -278,17 +280,16 @@ class hklCalculator_E4CV():
         '''
         self.sample.affine()
 
-
-
     def add_refl_refine(self):
         self.axes_omega_UB = self.refl_refine_input[3]
         self.axes_chi_UB = self.refl_refine_input[4]
         self.axes_phi_UB = self.refl_refine_input[5]
         self.axes_tth_UB = self.refl_refine_input[6]
         self.refl_refine = self.sample.add_reflection(self.geometry, \
-                    self.detector, self.refl_refine_input[0], \
-                    self.refl_refine_input[1], self.refl_refine[2])   
+                self.detector, self.refl_refine_input[0], \
+                self.refl_refine_input[1], self.refl_refine[2])   
         self.refl_refine_list.append(self.refl.refine)
+        self.refl_refine_input_list.append(self.refl_refine_input)
 
     def del_refl_refine(self):
         self.selected_refl
