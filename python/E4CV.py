@@ -10,7 +10,7 @@ from gi.repository import Hkl
 #TODO add holds
 
 class hklCalculator_E4CV():
-    def __init__(self, num_axes_solns=15):
+    def __init__(self, num_axes_solns=15, num_reflections = 5):
         # initials
         self.wavelength = 0.
         self.geom_name = 'E4CV'
@@ -26,11 +26,20 @@ class hklCalculator_E4CV():
         self.lattice_vol = 0.
         
         # sample orientation
-        self.refl1_input = [0., 0., 0., 0., 0., 0., 0.] 
-        self.refl2_input = [0., 0., 0., 0., 0., 0., 0.] 
-        self.refl1 = np.nan # hkl object placeholder
-        self.refl2 = np.nan # hkl object placeholder
-        # ^ [h, k l, omega, chi, phi, tth]
+        # initial 2 reflections
+        self.num_reflections = num_reflections
+        self.refl1_input = [0., 0., 0., 0., 0., 0., 0.]
+        self.refl2_input = [0., 0., 0., 0., 0., 0., 0.]
+        self.refl1 = np.nan
+        self.refl2 = np.nan
+        
+        # refine with reflections
+        self.refl_refine_input = [0., 0., 0., 0., 0., 0., 0.]
+        self.refl_refine = np.nan
+        self.refl_refine_list = []
+        self.selected_refl # used for deleting reflection from list
+        
+        # UB
         self.UB_matrix = np.zeros((3,3), dtype=float)
         #self.sample_rot_matrix = np.zeros((8,8), dtype=float)
         self.u_matrix = np.zeros((3,3), dtype=float)
@@ -45,7 +54,7 @@ class hklCalculator_E4CV():
         self.axes_phi = 0.
         self.axes_tth = 0.
 
-        # axes for UB calculation - only used internally
+        # axes for UB calculation - only used internally - avoids setting on calculation
         self.axes_omega_UB = 0.
         self.axes_chi_UB = 0.
         self.axes_phi_UB = 0.
@@ -137,7 +146,6 @@ class hklCalculator_E4CV():
             self.geometry.axis_values_set(values_w, Hkl.UnitEnum.USER)
         except:
             print("invalid axes values")
-            #TODO catch different types of errors
             return
 
 
@@ -211,6 +219,26 @@ class hklCalculator_E4CV():
             self.axes_solns_chi.append(0)
             self.axes_solns_phi.append(0)
             self.axes_solns_tth.append(0)
+
+    def add_reflection1(self):
+        self.axes_omega_UB = self.refl1_input[3]
+        self.axes_chi_UB   = self.refl1_input[4]
+        self.axes_phi_UB   = self.refl1_input[5]
+        self.axes_tth_UB   = self.refl1_input[6]
+        self.forward_UB() # replace with an update of sample with motor positions 
+        # Hkl.SampleReflection(self.geometry, self.detector, h, k, l)
+        self.refl1 = self.sample.add_reflection(self.geometry, self.detector, \
+                    self.refl1_input[0], self.refl1_input[1], self.refl1_input[2])
+
+    def add_reflection2(self):
+        self.axes_omega_UB = self.refl2_input[3]
+        self.axes_chi_UB   = self.refl2_input[4]
+        self.axes_phi_UB   = self.refl2_input[5]
+        self.axes_tth_UB   = self.refl2_input[6]
+        self.forward_UB()
+        # Hkl.SampleReflection(self.geometry, self.detector, h, k, l)
+        self.refl2 = self.sample.add_reflection(self.geometry, self.detector, \
+                    self.refl2_input[0], self.refl2_input[1], self.refl2_input[2])
  
     def compute_UB_matrix(self):
         print("Computing UB matrix")
@@ -244,25 +272,32 @@ class hklCalculator_E4CV():
         '''
         self.sample.affine()
 
-    def add_reflection1(self):
-        self.axes_omega_UB = self.refl1_input[3]
-        self.axes_chi_UB   = self.refl1_input[4]
-        self.axes_phi_UB   = self.refl1_input[5]
-        self.axes_tth_UB   = self.refl1_input[6]
-        self.forward_UB() # replace with an update of sample with motor positions 
-        # Hkl.SampleReflection(self.geometry, self.detector, h, k, l)
-        self.refl1 = self.sample.add_reflection(self.geometry, self.detector, \
-                    self.refl1_input[0], self.refl1_input[1], self.refl1_input[2])
+    def affine_set(self):
+        '''
+        takes in >2 reflections to refine lattice parameters and UB matrix
+        '''
+        self.sample.affine()
 
-    def add_reflection2(self):
-        self.axes_omega_UB = self.refl2_input[3]
-        self.axes_chi_UB   = self.refl2_input[4]
-        self.axes_phi_UB   = self.refl2_input[5]
-        self.axes_tth_UB   = self.refl2_input[6]
-        self.forward_UB()
-        # Hkl.SampleReflection(self.geometry, self.detector, h, k, l)
-        self.refl2 = self.sample.add_reflection(self.geometry, self.detector, \
-                    self.refl2_input[0], self.refl2_input[1], self.refl2_input[2])
+
+
+    def add_refl_refine(self):
+        self.axes_omega_UB = self.refl_refine_input[3]
+        self.axes_chi_UB = self.refl_refine_input[4]
+        self.axes_phi_UB = self.refl_refine_input[5]
+        self.axes_tth_UB = self.refl_refine_input[6]
+        self.refl_refine = self.sample.add_reflection(self.geometry, \
+                    self.detector, self.refl_refine_input[0], \
+                    self.refl_refine_input[1], self.refl_refine[2])   
+        self.refl_refine_list.append(self.refl.refine)
+
+    def del_refl_refine(self):
+        self.selected_refl
+        self.refl_refine = self.sample.del_reflection(self.geometry, \
+                    self.detector, self.refl_refine_input[0], \
+                    self.refl_refine_input[1], self.refl_refine[2])   
+        self.refl_refine_list.append(self.refl.refine)
+
+
 
     def reset(self):
         #DELETE

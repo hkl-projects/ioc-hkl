@@ -1,595 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-08 12:37:16 by l3b-->
+<!--Saved on 2024-07-08 12:54:21 by l3b-->
 <display version="2.0.0">
-  <name>Reflections</name>
+  <name>Reflections Refine</name>
   <macros>
     <Sys>HB3:</Sys>
   </macros>
   <width>875</width>
-  <height>330</height>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle</name>
+    <x>170</x>
+    <y>380</y>
+    <width>550</width>
+    <height>210</height>
+    <line_color>
+      <color name="Header_Background" red="77" green="77" blue="77">
+      </color>
+    </line_color>
+    <transparent>true</transparent>
+  </widget>
   <widget type="label" version="2.0.0">
     <name>Label_9</name>
     <text>UB Matrix</text>
-    <x>283</x>
-    <y>210</y>
+    <x>522</x>
+    <y>420</y>
     <width>74</width>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_10</name>
-    <text>Add initial 2 reflections</text>
-    <x>319</x>
-    <width>202</width>
   </widget>
   <widget type="arc" version="2.0.0">
     <name>Arc</name>
-    <x>296</x>
-    <y>290</y>
+    <x>535</x>
+    <y>500</y>
     <width>1</width>
     <height>1</height>
   </widget>
   <widget type="textentry" version="3.0.0">
-    <name>Text Input_2</name>
-    <pv_name>$(Sys)refl1h</pv_name>
-    <x>31</x>
-    <y>40</y>
-    <width>108</width>
-    <height>22</height>
-    <background_color>
-      <color red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <precision>4</precision>
-    <horizontal_alignment>1</horizontal_alignment>
-    <actions>
-    </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Input_3</name>
-    <pv_name>$(Sys)refl1k</pv_name>
-    <x>150</x>
-    <y>40</y>
-    <width>108</width>
-    <height>22</height>
-    <background_color>
-      <color red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <precision>4</precision>
-    <horizontal_alignment>1</horizontal_alignment>
-    <actions>
-    </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Input_4</name>
-    <pv_name>$(Sys)refl1l</pv_name>
-    <x>268</x>
-    <y>40</y>
-    <width>108</width>
-    <height>22</height>
-    <background_color>
-      <color red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <precision>4</precision>
-    <horizontal_alignment>1</horizontal_alignment>
-    <actions>
-    </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Input_5</name>
-    <pv_name>$(Sys)refl1omega</pv_name>
-    <x>391</x>
-    <y>40</y>
-    <width>108</width>
-    <height>22</height>
-    <background_color>
-      <color red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <precision>4</precision>
-    <horizontal_alignment>1</horizontal_alignment>
-    <actions>
-    </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Input_6</name>
-    <pv_name>$(Sys)refl1chi</pv_name>
-    <x>511</x>
-    <y>40</y>
-    <width>108</width>
-    <height>22</height>
-    <background_color>
-      <color red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <precision>4</precision>
-    <horizontal_alignment>1</horizontal_alignment>
-    <actions>
-    </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Input_7</name>
-    <pv_name>$(Sys)refl1phi</pv_name>
-    <x>631</x>
-    <y>40</y>
-    <width>108</width>
-    <height>22</height>
-    <background_color>
-      <color red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <precision>4</precision>
-    <horizontal_alignment>1</horizontal_alignment>
-    <actions>
-    </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Input_8</name>
-    <pv_name>$(Sys)refl1tth</pv_name>
-    <x>751</x>
-    <y>40</y>
-    <width>108</width>
-    <height>22</height>
-    <background_color>
-      <color red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <precision>4</precision>
-    <horizontal_alignment>1</horizontal_alignment>
-    <actions>
-    </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Input_9</name>
-    <pv_name>$(Sys)refl2h</pv_name>
-    <x>31</x>
-    <y>80</y>
-    <width>108</width>
-    <height>22</height>
-    <background_color>
-      <color red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <precision>4</precision>
-    <horizontal_alignment>1</horizontal_alignment>
-    <actions>
-    </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Input_10</name>
-    <pv_name>$(Sys)refl2k</pv_name>
-    <x>150</x>
-    <y>80</y>
-    <width>108</width>
-    <height>22</height>
-    <background_color>
-      <color red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <precision>4</precision>
-    <horizontal_alignment>1</horizontal_alignment>
-    <actions>
-    </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Input_11</name>
-    <pv_name>$(Sys)refl2l</pv_name>
-    <x>268</x>
-    <y>80</y>
-    <width>108</width>
-    <height>22</height>
-    <background_color>
-      <color red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <precision>4</precision>
-    <horizontal_alignment>1</horizontal_alignment>
-    <actions>
-    </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Input_12</name>
-    <pv_name>$(Sys)refl2omega</pv_name>
-    <x>391</x>
-    <y>80</y>
-    <width>108</width>
-    <height>22</height>
-    <background_color>
-      <color red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <precision>4</precision>
-    <horizontal_alignment>1</horizontal_alignment>
-    <actions>
-    </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Input_13</name>
-    <pv_name>$(Sys)refl2chi</pv_name>
-    <x>511</x>
-    <y>80</y>
-    <width>108</width>
-    <height>22</height>
-    <background_color>
-      <color red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <precision>4</precision>
-    <horizontal_alignment>1</horizontal_alignment>
-    <actions>
-    </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Input_14</name>
-    <pv_name>$(Sys)refl2phi</pv_name>
-    <x>631</x>
-    <y>80</y>
-    <width>108</width>
-    <height>22</height>
-    <background_color>
-      <color red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <precision>4</precision>
-    <horizontal_alignment>1</horizontal_alignment>
-    <actions>
-    </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Input_15</name>
-    <pv_name>$(Sys)refl2tth</pv_name>
-    <x>751</x>
-    <y>80</y>
-    <width>108</width>
-    <height>22</height>
-    <background_color>
-      <color red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <precision>4</precision>
-    <horizontal_alignment>1</horizontal_alignment>
-    <actions>
-    </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_28</name>
-    <text>refl1</text>
-    <y>40</y>
-    <width>51</width>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_29</name>
-    <text>refl2</text>
-    <y>80</y>
-    <width>31</width>
-  </widget>
-  <widget type="textentry" version="3.0.0">
     <name>Text Input_16</name>
     <pv_name>$(Sys)UBa11</pv_name>
-    <x>181</x>
-    <y>230</y>
+    <x>420</x>
+    <y>440</y>
     <width>78</width>
     <height>22</height>
     <background_color>
@@ -627,8 +74,8 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_17</name>
     <pv_name>$(Sys)UBa12</pv_name>
-    <x>271</x>
-    <y>230</y>
+    <x>510</x>
+    <y>440</y>
     <width>78</width>
     <height>22</height>
     <background_color>
@@ -666,8 +113,8 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_18</name>
     <pv_name>$(Sys)UBa13</pv_name>
-    <x>361</x>
-    <y>230</y>
+    <x>600</x>
+    <y>440</y>
     <width>78</width>
     <height>22</height>
     <background_color>
@@ -705,8 +152,8 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_19</name>
     <pv_name>$(Sys)UBa21</pv_name>
-    <x>181</x>
-    <y>252</y>
+    <x>420</x>
+    <y>462</y>
     <width>78</width>
     <height>22</height>
     <background_color>
@@ -744,8 +191,8 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_20</name>
     <pv_name>$(Sys)UBa22</pv_name>
-    <x>271</x>
-    <y>252</y>
+    <x>510</x>
+    <y>462</y>
     <width>78</width>
     <height>22</height>
     <background_color>
@@ -783,8 +230,8 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_21</name>
     <pv_name>$(Sys)UBa23</pv_name>
-    <x>361</x>
-    <y>252</y>
+    <x>600</x>
+    <y>462</y>
     <width>78</width>
     <height>22</height>
     <background_color>
@@ -822,8 +269,8 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_22</name>
     <pv_name>$(Sys)UBa31</pv_name>
-    <x>181</x>
-    <y>274</y>
+    <x>420</x>
+    <y>484</y>
     <width>78</width>
     <height>22</height>
     <background_color>
@@ -861,8 +308,8 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_23</name>
     <pv_name>$(Sys)UBa32</pv_name>
-    <x>271</x>
-    <y>274</y>
+    <x>510</x>
+    <y>484</y>
     <width>78</width>
     <height>22</height>
     <background_color>
@@ -900,8 +347,8 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_24</name>
     <pv_name>$(Sys)UBa33</pv_name>
-    <x>361</x>
-    <y>274</y>
+    <x>600</x>
+    <y>484</y>
     <width>78</width>
     <height>22</height>
     <background_color>
@@ -937,23 +384,6 @@
     </border_color>
   </widget>
   <widget type="action_button" version="3.0.0">
-    <name>Action Button_4</name>
-    <actions>
-      <action type="write_pv">
-        <pv_name>HB3:compute_UB</pv_name>
-        <value>1</value>
-        <description>WritePV</description>
-      </action>
-    </actions>
-    <pv_name>HB3:compute_UB</pv_name>
-    <text>Calculate UB</text>
-    <x>319</x>
-    <y>120</y>
-    <width>140</width>
-    <height>40</height>
-    <tooltip>$(actions)</tooltip>
-  </widget>
-  <widget type="action_button" version="3.0.0">
     <name>Action Button_6</name>
     <actions>
       <action type="write_pv">
@@ -963,72 +393,698 @@
       </action>
     </actions>
     <pv_name>HB3:compute_set_UB</pv_name>
-    <text>Set UB to Sample</text>
-    <x>486</x>
-    <y>240</y>
+    <text>Set Lattice and UB to Sample</text>
+    <x>720</x>
+    <y>280</y>
+    <width>141</width>
+    <height>40</height>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_11</name>
+    <text>Refine lattice and UB with additional reflections</text>
+    <x>268</x>
+    <y>10</y>
+    <width>325</width>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_25</name>
+    <pv_name>$(Sys)refl1h</pv_name>
+    <x>41</x>
+    <y>60</y>
+    <width>108</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Set" prop_id="background_color" out_exp="false">
+        <exp bool_exp="pv0==1">
+          <value>
+            <color red="224" green="224" blue="0">
+            </color>
+          </value>
+        </exp>
+        <exp bool_exp="pv0==0">
+          <value>
+            <color name="White" red="255" green="255" blue="255">
+            </color>
+          </value>
+        </exp>
+        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
+      </rule>
+    </rules>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_26</name>
+    <pv_name>$(Sys)refl1k</pv_name>
+    <x>160</x>
+    <y>60</y>
+    <width>108</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Set" prop_id="background_color" out_exp="false">
+        <exp bool_exp="pv0==1">
+          <value>
+            <color red="224" green="224" blue="0">
+            </color>
+          </value>
+        </exp>
+        <exp bool_exp="pv0==0">
+          <value>
+            <color name="White" red="255" green="255" blue="255">
+            </color>
+          </value>
+        </exp>
+        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
+      </rule>
+    </rules>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_27</name>
+    <pv_name>$(Sys)refl1l</pv_name>
+    <x>278</x>
+    <y>60</y>
+    <width>108</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Set" prop_id="background_color" out_exp="false">
+        <exp bool_exp="pv0==1">
+          <value>
+            <color red="224" green="224" blue="0">
+            </color>
+          </value>
+        </exp>
+        <exp bool_exp="pv0==0">
+          <value>
+            <color name="White" red="255" green="255" blue="255">
+            </color>
+          </value>
+        </exp>
+        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
+      </rule>
+    </rules>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_28</name>
+    <pv_name>$(Sys)refl1omega</pv_name>
+    <x>401</x>
+    <y>60</y>
+    <width>108</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Set" prop_id="background_color" out_exp="false">
+        <exp bool_exp="pv0==1">
+          <value>
+            <color red="224" green="224" blue="0">
+            </color>
+          </value>
+        </exp>
+        <exp bool_exp="pv0==0">
+          <value>
+            <color name="White" red="255" green="255" blue="255">
+            </color>
+          </value>
+        </exp>
+        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
+      </rule>
+    </rules>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_29</name>
+    <pv_name>$(Sys)refl1chi</pv_name>
+    <x>521</x>
+    <y>60</y>
+    <width>108</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Set" prop_id="background_color" out_exp="false">
+        <exp bool_exp="pv0==1">
+          <value>
+            <color red="224" green="224" blue="0">
+            </color>
+          </value>
+        </exp>
+        <exp bool_exp="pv0==0">
+          <value>
+            <color name="White" red="255" green="255" blue="255">
+            </color>
+          </value>
+        </exp>
+        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
+      </rule>
+    </rules>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_30</name>
+    <pv_name>$(Sys)refl1phi</pv_name>
+    <x>641</x>
+    <y>60</y>
+    <width>108</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Set" prop_id="background_color" out_exp="false">
+        <exp bool_exp="pv0==1">
+          <value>
+            <color red="224" green="224" blue="0">
+            </color>
+          </value>
+        </exp>
+        <exp bool_exp="pv0==0">
+          <value>
+            <color name="White" red="255" green="255" blue="255">
+            </color>
+          </value>
+        </exp>
+        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
+      </rule>
+    </rules>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_31</name>
+    <pv_name>$(Sys)refl1tth</pv_name>
+    <x>761</x>
+    <y>60</y>
+    <width>108</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Set" prop_id="background_color" out_exp="false">
+        <exp bool_exp="pv0==1">
+          <value>
+            <color red="224" green="224" blue="0">
+            </color>
+          </value>
+        </exp>
+        <exp bool_exp="pv0==0">
+          <value>
+            <color name="White" red="255" green="255" blue="255">
+            </color>
+          </value>
+        </exp>
+        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
+      </rule>
+    </rules>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_37</name>
+    <text>refl</text>
+    <x>10</x>
+    <y>60</y>
+    <width>51</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_39</name>
+    <text>h</text>
+    <x>41</x>
+    <y>40</y>
+    <width>51</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_40</name>
+    <text>k</text>
+    <x>165</x>
+    <y>40</y>
+    <width>51</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_41</name>
+    <text>l</text>
+    <x>278</x>
+    <y>40</y>
+    <width>51</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_42</name>
+    <text>omega</text>
+    <x>401</x>
+    <y>40</y>
+    <width>51</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_43</name>
+    <text>chi</text>
+    <x>531</x>
+    <y>40</y>
+    <width>51</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_44</name>
+    <text>phi</text>
+    <x>641</x>
+    <y>40</y>
+    <width>51</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_45</name>
+    <text>tth</text>
+    <x>761</x>
+    <y>40</y>
+    <width>51</width>
+  </widget>
+  <widget type="array" version="2.0.0">
+    <name>Array</name>
+    <pv_name>HB3:additional_refls</pv_name>
+    <x>41</x>
+    <y>160</y>
+    <width>669</width>
+    <height>160</height>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_5</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>HB3:compute_UB</pv_name>
+        <value>1</value>
+        <description>WritePV</description>
+      </action>
+    </actions>
+    <pv_name>HB3:add_refl_refine</pv_name>
+    <text>Add Reflection</text>
+    <x>329</x>
+    <y>100</y>
+    <width>140</width>
+    <height>40</height>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_7</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>HB3:compute_UB</pv_name>
+        <value>1</value>
+        <description>WritePV</description>
+      </action>
+    </actions>
+    <pv_name>HB3:remove_reflection</pv_name>
+    <text>Remove Reflection</text>
+    <x>720</x>
+    <y>160</y>
+    <width>140</width>
+    <height>40</height>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_8</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>HB3:compute_UB</pv_name>
+        <value>1</value>
+        <description>WritePV</description>
+      </action>
+    </actions>
+    <pv_name>HB3:calc_UB_refine</pv_name>
+    <text>Refine Lattice &amp; UB</text>
+    <x>720</x>
+    <y>220</y>
     <width>140</width>
     <height>40</height>
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>Label_30</name>
-    <text>h</text>
-    <x>31</x>
-    <y>20</y>
-    <width>51</width>
+    <name>Label_12</name>
+    <text>Refined lattice and UB matrix</text>
+    <x>360</x>
+    <y>350</y>
+    <width>187</width>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>Label_31</name>
-    <text>k</text>
-    <x>155</x>
-    <y>20</y>
-    <width>51</width>
+    <name>Label_13</name>
+    <text>Lattice</text>
+    <x>260</x>
+    <y>390</y>
+    <width>50</width>
   </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_32</name>
-    <text>l</text>
-    <x>268</x>
-    <y>20</y>
-    <width>51</width>
+  <widget type="arc" version="2.0.0">
+    <name>Arc_1</name>
+    <x>275</x>
+    <y>480</y>
+    <width>1</width>
+    <height>1</height>
   </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_33</name>
-    <text>omega</text>
-    <x>391</x>
-    <y>20</y>
-    <width>51</width>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_34</name>
-    <text>chi</text>
-    <x>521</x>
-    <y>20</y>
-    <width>51</width>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_35</name>
-    <text>phi</text>
-    <x>631</x>
-    <y>20</y>
-    <width>51</width>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_36</name>
-    <text>tth</text>
-    <x>751</x>
-    <y>20</y>
-    <width>51</width>
-  </widget>
-  <widget type="rectangle" version="2.0.0">
-    <name>Rectangle</name>
-    <x>155</x>
-    <y>190</y>
-    <width>490</width>
-    <height>130</height>
-    <line_color>
-      <color name="Header_Background" red="77" green="77" blue="77">
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_41</name>
+    <pv_name>$(Sys)refl1h</pv_name>
+    <x>230</x>
+    <y>410</y>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
       </color>
-    </line_color>
-    <transparent>true</transparent>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Set" prop_id="background_color" out_exp="false">
+        <exp bool_exp="pv0==1">
+          <value>
+            <color red="224" green="224" blue="0">
+            </color>
+          </value>
+        </exp>
+        <exp bool_exp="pv0==0">
+          <value>
+            <color name="White" red="255" green="255" blue="255">
+            </color>
+          </value>
+        </exp>
+        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
+      </rule>
+    </rules>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_42</name>
+    <pv_name>$(Sys)refl1h</pv_name>
+    <x>230</x>
+    <y>440</y>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Set" prop_id="background_color" out_exp="false">
+        <exp bool_exp="pv0==1">
+          <value>
+            <color red="224" green="224" blue="0">
+            </color>
+          </value>
+        </exp>
+        <exp bool_exp="pv0==0">
+          <value>
+            <color name="White" red="255" green="255" blue="255">
+            </color>
+          </value>
+        </exp>
+        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
+      </rule>
+    </rules>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_43</name>
+    <pv_name>$(Sys)refl1h</pv_name>
+    <x>230</x>
+    <y>470</y>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Set" prop_id="background_color" out_exp="false">
+        <exp bool_exp="pv0==1">
+          <value>
+            <color red="224" green="224" blue="0">
+            </color>
+          </value>
+        </exp>
+        <exp bool_exp="pv0==0">
+          <value>
+            <color name="White" red="255" green="255" blue="255">
+            </color>
+          </value>
+        </exp>
+        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
+      </rule>
+    </rules>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_44</name>
+    <pv_name>$(Sys)refl1h</pv_name>
+    <x>230</x>
+    <y>500</y>
+    <width>101</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Set" prop_id="background_color" out_exp="false">
+        <exp bool_exp="pv0==1">
+          <value>
+            <color red="224" green="224" blue="0">
+            </color>
+          </value>
+        </exp>
+        <exp bool_exp="pv0==0">
+          <value>
+            <color name="White" red="255" green="255" blue="255">
+            </color>
+          </value>
+        </exp>
+        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
+      </rule>
+    </rules>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_45</name>
+    <pv_name>$(Sys)refl1h</pv_name>
+    <x>230</x>
+    <y>560</y>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Set" prop_id="background_color" out_exp="false">
+        <exp bool_exp="pv0==1">
+          <value>
+            <color red="224" green="224" blue="0">
+            </color>
+          </value>
+        </exp>
+        <exp bool_exp="pv0==0">
+          <value>
+            <color name="White" red="255" green="255" blue="255">
+            </color>
+          </value>
+        </exp>
+        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
+      </rule>
+    </rules>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_46</name>
+    <pv_name>$(Sys)refl1h</pv_name>
+    <x>230</x>
+    <y>530</y>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Set" prop_id="background_color" out_exp="false">
+        <exp bool_exp="pv0==1">
+          <value>
+            <color red="224" green="224" blue="0">
+            </color>
+          </value>
+        </exp>
+        <exp bool_exp="pv0==0">
+          <value>
+            <color name="White" red="255" green="255" blue="255">
+            </color>
+          </value>
+        </exp>
+        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
+      </rule>
+    </rules>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_38</name>
+    <text>a</text>
+    <x>210</x>
+    <y>410</y>
+    <width>20</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_46</name>
+    <text>b</text>
+    <x>210</x>
+    <y>440</y>
+    <width>20</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_47</name>
+    <text>c</text>
+    <x>210</x>
+    <y>470</y>
+    <width>20</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_48</name>
+    <text>alpha</text>
+    <x>190</x>
+    <y>500</y>
+    <width>40</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_49</name>
+    <text>beta</text>
+    <x>190</x>
+    <y>530</y>
+    <width>40</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_50</name>
+    <text>gamma</text>
+    <x>180</x>
+    <y>560</y>
+    <width>51</width>
   </widget>
 </display>
