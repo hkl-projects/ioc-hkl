@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-05 13:38:27 by l3b-->
+<!--Saved on 2024-07-11 11:25:44 by l3b-->
 <display version="2.0.0">
   <name>HKL_settings</name>
   <macros>
     <Sys>HB3:</Sys>
   </macros>
   <width>1730</width>
-  <height>1090</height>
+  <height>1150</height>
   <widget type="arc" version="2.0.0">
     <name>Arc</name>
     <x>980</x>
@@ -24,19 +24,19 @@
   </widget>
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_4</name>
-    <file>E4CV/forward.bob</file>
+    <file>E4CV/forward_input.bob</file>
     <x>20</x>
     <y>340</y>
     <width>810</width>
-    <height>520</height>
+    <height>180</height>
   </widget>
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_5</name>
-    <file>E4CV/backward.bob</file>
-    <x>850</x>
+    <file>E4CV/backward_input.bob</file>
+    <x>1030</x>
     <y>340</y>
-    <width>870</width>
-    <height>740</height>
+    <width>480</width>
+    <height>310</height>
   </widget>
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display</name>
@@ -45,5 +45,51 @@
     <y>10</y>
     <width>880</width>
     <height>320</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_6</name>
+    <file>E4CV/forward_output.bob</file>
+    <x>90</x>
+    <y>520</y>
+    <width>550</width>
+    <height>350</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_7</name>
+    <file>E4CV/backward_output.bob</file>
+    <x>870</x>
+    <y>640</y>
+    <width>830</width>
+    <height>490</height>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle</name>
+    <x>10</x>
+    <y>340</y>
+    <width>840</width>
+    <height>550</height>
+    <line_color>
+      <color name="Header_Background" red="77" green="77" blue="77">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="30" green="144" blue="255" alpha="8">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle_1</name>
+    <x>870</x>
+    <y>340</y>
+    <width>840</width>
+    <height>800</height>
+    <line_color>
+      <color name="Header_Background" red="77" green="77" blue="77">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="30" green="144" blue="255" alpha="8">
+      </color>
+    </background_color>
   </widget>
 </display>

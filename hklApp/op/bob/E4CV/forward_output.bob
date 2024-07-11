@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-07-11 11:13:50 by l3b-->
+<display version="2.0.0">
+  <name>Forward_output</name>
+  <macros>
+    <Sys>HB3:</Sys>
+  </macros>
+  <width>600</width>
+  <height>350</height>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>HB3:forward</pv_name>
+        <value>1</value>
+        <description>WritePV</description>
+      </action>
+    </actions>
+    <pv_name>HB3:forward</pv_name>
+    <text>Forward</text>
+    <x>240</x>
+    <y>40</y>
+    <width>140</width>
+    <height>40</height>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_6</name>
+    <text>PseudoAxes Solutions </text>
+    <x>130</x>
+    <y>90</y>
+    <width>156</width>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_1</name>
+    <macros>
+      <Ax1Name>solh</Ax1Name>
+      <Ax2Name>solk</Ax2Name>
+      <Ax3Name>soll</Ax3Name>
+      <Ax4Name>solpsi</Ax4Name>
+      <Ax5Name>solq</Ax5Name>
+      <Ax6Name>solincidence</Ax6Name>
+      <Ax7Name>solazimuth</Ax7Name>
+      <Ax8Name>solemergence</Ax8Name>
+      <Ax9Name>solazimuth2</Ax9Name>
+    </macros>
+    <file>../axis/_multi_pseudoaxis_solutions.bob</file>
+    <x>130</x>
+    <y>120</y>
+    <width>320</width>
+    <height>220</height>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_12</name>
+    <text>Forward calculation output</text>
+    <x>230</x>
+    <y>10</y>
+    <width>169</width>
+  </widget>
+</display>
