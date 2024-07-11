@@ -38,7 +38,7 @@ class hklCalculator_E4CV():
         self.refl_refine_input_list = []
         self.refl_refine = np.nan
         self.refl_refine_list = []
-        self.selected_refl # used for deleting reflection from list
+        self.selected_refl = [] # used for deleting reflection from list
         
         # UB
         self.UB_matrix = np.zeros((3,3), dtype=float)
