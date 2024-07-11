@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-06-20 18:06:18 by l3b-->
+<!--Saved on 2024-07-11 11:22:17 by l3b-->
 <display version="2.0.0">
   <width>780</width>
-  <height>360</height>
+  <height>365</height>
   <background_color>
     <color red="240" green="240" blue="240">
     </color>
@@ -369,6 +369,33 @@
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
     <y>319</y>
+    <width>780</width>
+    <height>22</height>
+    <resize>2</resize>
+    <transparent>true</transparent>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pvStr0==&quot;\${Ax6Name}&quot;">
+          <value>false</value>
+        </exp>
+        <pv_name>loc://${DID}${MA}Ax6Visible("${Ax6Name}")</pv_name>
+      </rule>
+    </rules>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Linking Container_16</name>
+    <macros>
+      <Dev>$(Ax15Name)</Dev>
+      <Solution>15</Solution>
+    </macros>
+    <file>solutions_axis_1h_wide_center.bob</file>
+    <y>342</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
