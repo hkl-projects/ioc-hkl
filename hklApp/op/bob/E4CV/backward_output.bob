@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-11 11:23:01 by l3b-->
+<!--Saved on 2024-07-12 00:20:58 by kg1-->
 <display version="2.0.0">
   <name>Backward_output</name>
   <macros>
@@ -37,7 +37,7 @@
       </action>
     </actions>
     <pv_name>HB3:backward</pv_name>
-    <text>Backward</text>
+    <text>Reciprocal-&gt;Real</text>
     <x>330</x>
     <y>40</y>
     <width>140</width>
@@ -46,10 +46,14 @@
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_13</name>
-    <text>Backward calculation output</text>
+    <text>Real space output solutions</text>
     <x>310</x>
     <y>10</y>
     <width>220</width>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_14</name>
