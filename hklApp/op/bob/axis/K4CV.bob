@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-07-11 22:11:00 by kg1-->
+<display version="2.0.0">
+  <name>E4CH</name>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <class>TITLE</class>
+    <text>K4CV</text>
+    <x use_class="true">0</x>
+    <y use_class="true">0</y>
+    <width>60</width>
+    <height>25</height>
+    <font use_class="true">
+      <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display</name>
+    <macros>
+      <Ax1Name>komega</Ax1Name>
+      <Ax2Name>kappa</Ax2Name>
+      <Ax3Name>kphi</Ax3Name>
+      <Ax4Name>tth</Ax4Name>
+    </macros>
+    <file>_4axes.bob</file>
+    <y>25</y>
+    <width>780</width>
+    <height>100</height>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_1</name>
+    <text>Value</text>
+    <x>150</x>
+    <width>110</width>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_2</name>
+    <text>Readback</text>
+    <x>300</x>
+    <width>110</width>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_3</name>
+    <text>Min</text>
+    <x>460</x>
+    <width>110</width>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_4</name>
+    <text>Max</text>
+    <x>620</x>
+    <width>110</width>
+    <vertical_alignment>1</vertical_alignment>
+  </widget>
+</display>
