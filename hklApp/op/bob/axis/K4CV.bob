@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-11 22:11:00 by kg1-->
+<!--Saved on 2024-07-12 10:01:14 by kg1-->
 <display version="2.0.0">
   <name>E4CH</name>
   <widget type="label" version="2.0.0">
@@ -23,9 +23,9 @@
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display</name>
     <macros>
-      <Ax1Name>komega</Ax1Name>
+      <Ax1Name>omega</Ax1Name>
       <Ax2Name>kappa</Ax2Name>
-      <Ax3Name>kphi</Ax3Name>
+      <Ax3Name>phi</Ax3Name>
       <Ax4Name>tth</Ax4Name>
     </macros>
     <file>_4axes.bob</file>
