@@ -1,6 +1,6 @@
 import math
 import numpy as np
-import pandas as pd
+#import pandas as pd
 import gi
 from gi.repository import GLib
 gi.require_version('Hkl', '5.0')
@@ -187,11 +187,12 @@ class hklCalculator_E4CV():
         axes['chi']   = self.axes_solns_chi
         axes['phi']   = self.axes_solns_phi
         axes['tth']   = self.axes_solns_tth
-        if(cleanprint==False):
-            return axes
-        elif(cleanprint==True):
-            axes_df = pd.DataFrame(axes)
-            return axes_df
+ #       if(cleanprint==False):
+ #           return axes
+ #       elif(cleanprint==True):
+ #           axes_df = pd.DataFrame(axes)
+ #           return axes_df
+        return axes
 
     def get_pseudoaxes_solns(self):
         pseudoaxes_solns = (self.pseudoaxes_solns_h, \
