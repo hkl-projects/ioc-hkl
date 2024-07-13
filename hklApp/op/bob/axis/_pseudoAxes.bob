@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-06-07 10:26:32 by kg1-->
+<!--Saved on 2024-07-13 14:40:53 by kg1-->
 <display version="2.0.0">
-  <width>880</width>
-  <height>400</height>
+  <name>PseudoAxisSol</name>
+  <width>460</width>
+  <height>420</height>
   <background_color>
     <color red="240" green="240" blue="240">
     </color>
@@ -184,7 +185,7 @@
         <exp bool_exp="pvStr0==&quot;\${Ax1Name}&quot;">
           <value>false</value>
         </exp>
-        <pv_name>loc://${DID}${MA}Ax1Visible("${Ax1Name}")</pv_name>
+        <pv_name>loc://${DID}${MA}Ax7Visible("${Ax7Name}")</pv_name>
       </rule>
     </rules>
     <border_color>
@@ -210,7 +211,7 @@
         <exp bool_exp="pvStr0==&quot;\${Ax2Name}&quot;">
           <value>false</value>
         </exp>
-        <pv_name>loc://${DID}${MA}Ax2Visible("${Ax2Name}")</pv_name>
+        <pv_name>loc://${DID}${MA}Ax8Visible("${Ax8Name}")</pv_name>
       </rule>
     </rules>
     <border_color>
@@ -236,7 +237,215 @@
         <exp bool_exp="pvStr0==&quot;\${Ax3Name}&quot;">
           <value>false</value>
         </exp>
+        <pv_name>loc://${DID}${MA}Ax9Visible("${Ax9Name}")</pv_name>
+      </rule>
+    </rules>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Linking Container_9</name>
+    <macros>
+      <Dev>$(Ax10Name)</Dev>
+    </macros>
+    <file>pseudoaxis_1h_wide_center.bob</file>
+    <y>219</y>
+    <width>455</width>
+    <height>22</height>
+    <resize>2</resize>
+    <transparent>true</transparent>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pvStr0==&quot;\${Ax10Name}&quot;">
+          <value>false</value>
+        </exp>
+        <pv_name>loc://${DID}${MA}Ax10Visible("${Ax10Name}")</pv_name>
+      </rule>
+    </rules>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Linking Container_12</name>
+    <macros>
+      <Dev>$(Ax11Name)</Dev>
+    </macros>
+    <file>pseudoaxis_1h_wide_center.bob</file>
+    <y>244</y>
+    <width>455</width>
+    <height>22</height>
+    <resize>2</resize>
+    <transparent>true</transparent>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pvStr0==&quot;\${Ax2Name}&quot;">
+          <value>false</value>
+        </exp>
+        <pv_name>loc://${DID}${MA}Ax11Visible("${Ax11Name}")</pv_name>
+      </rule>
+    </rules>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Linking Container_13</name>
+    <macros>
+      <Dev>$(Ax12Name)</Dev>
+    </macros>
+    <file>pseudoaxis_1h_wide_center.bob</file>
+    <y>269</y>
+    <width>455</width>
+    <height>22</height>
+    <resize>2</resize>
+    <transparent>true</transparent>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pvStr0==&quot;\${Ax3Name}&quot;">
+          <value>false</value>
+        </exp>
         <pv_name>loc://${DID}${MA}Ax3Visible("${Ax3Name}")</pv_name>
+      </rule>
+    </rules>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Linking Container_14</name>
+    <macros>
+      <Dev>$(Ax13Name)</Dev>
+    </macros>
+    <file>pseudoaxis_1h_wide_center.bob</file>
+    <y>294</y>
+    <width>455</width>
+    <height>22</height>
+    <resize>2</resize>
+    <transparent>true</transparent>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pvStr0==&quot;\${Ax4Name}&quot;">
+          <value>false</value>
+        </exp>
+        <pv_name>loc://${DID}${MA}Ax4Visible("${Ax4Name}")</pv_name>
+      </rule>
+    </rules>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Linking Container_15</name>
+    <macros>
+      <Dev>$(Ax14Name)</Dev>
+    </macros>
+    <file>pseudoaxis_1h_wide_center.bob</file>
+    <y>319</y>
+    <width>455</width>
+    <height>22</height>
+    <resize>2</resize>
+    <transparent>true</transparent>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pvStr0==&quot;\${Ax5Name}&quot;">
+          <value>false</value>
+        </exp>
+        <pv_name>loc://${DID}${MA}Ax5Visible("${Ax5Name}")</pv_name>
+      </rule>
+    </rules>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Linking Container_16</name>
+    <macros>
+      <Dev>$(Ax15Name)</Dev>
+    </macros>
+    <file>pseudoaxis_1h_wide_center.bob</file>
+    <y>344</y>
+    <width>455</width>
+    <height>22</height>
+    <resize>2</resize>
+    <transparent>true</transparent>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pvStr0==&quot;\${Ax6Name}&quot;">
+          <value>false</value>
+        </exp>
+        <pv_name>loc://${DID}${MA}Ax6Visible("${Ax6Name}")</pv_name>
+      </rule>
+    </rules>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Linking Container_17</name>
+    <macros>
+      <Dev>$(Ax16Name)</Dev>
+    </macros>
+    <file>pseudoaxis_1h_wide_center.bob</file>
+    <y>366</y>
+    <width>455</width>
+    <height>22</height>
+    <resize>2</resize>
+    <transparent>true</transparent>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pvStr0==&quot;\${Ax1Name}&quot;">
+          <value>false</value>
+        </exp>
+        <pv_name>loc://${DID}${MA}Ax1Visible("${Ax1Name}")</pv_name>
+      </rule>
+    </rules>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Linking Container_18</name>
+    <macros>
+      <Dev>$(Ax17Name)</Dev>
+    </macros>
+    <file>pseudoaxis_1h_wide_center.bob</file>
+    <y>391</y>
+    <width>455</width>
+    <height>22</height>
+    <resize>2</resize>
+    <transparent>true</transparent>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pvStr0==&quot;\${Ax2Name}&quot;">
+          <value>false</value>
+        </exp>
+        <pv_name>loc://${DID}${MA}Ax2Visible("${Ax2Name}")</pv_name>
       </rule>
     </rules>
     <border_color>
