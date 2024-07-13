@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-12 00:17:57 by kg1-->
+<!--Saved on 2024-07-13 17:09:26 by kg1-->
 <display version="2.0.0">
   <name>Forward_output</name>
   <macros>
     <Sys>HB3:</Sys>
   </macros>
   <width>600</width>
-  <height>350</height>
+  <height>520</height>
+  <widget type="label" version="2.0.0">
+    <name>Label_12</name>
+    <text>Reciprocal space output</text>
+    <x>30</x>
+    <y>20</y>
+    <width>169</width>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+  </widget>
   <widget type="action_button" version="3.0.0">
     <name>Action Button</name>
     <actions>
@@ -18,47 +29,129 @@
     </actions>
     <pv_name>HB3:forward</pv_name>
     <text>Real-&gt;Reciprocal</text>
-    <x>240</x>
-    <y>40</y>
+    <x>220</x>
+    <y>10</y>
     <width>140</width>
     <height>40</height>
     <tooltip>$(actions)</tooltip>
   </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_6</name>
-    <text>PseudoAxes Solutions </text>
-    <x>130</x>
-    <y>90</y>
-    <width>156</width>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_5</name>
+    <file>../axis/TwoCpseudoaxisSolutions.bob</file>
+    <x>30</x>
+    <y>60</y>
+    <width>320</width>
+    <height>460</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visible" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==0">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
   </widget>
   <widget type="embedded" version="2.0.0">
-    <name>Embedded Display_1</name>
-    <macros>
-      <Ax1Name>solh</Ax1Name>
-      <Ax2Name>solk</Ax2Name>
-      <Ax3Name>soll</Ax3Name>
-      <Ax4Name>solpsi</Ax4Name>
-      <Ax5Name>solq</Ax5Name>
-      <Ax6Name>solincidence</Ax6Name>
-      <Ax7Name>solazimuth</Ax7Name>
-      <Ax8Name>solemergence</Ax8Name>
-      <Ax9Name>solazimuth2</Ax9Name>
-    </macros>
-    <file>../axis/_multi_pseudoaxis_solutions.bob</file>
-    <x>130</x>
-    <y>120</y>
+    <name>Embedded Display_2</name>
+    <file>../axis/E4CHpseudoaxisSolutions.bob</file>
+    <x>30</x>
+    <y>60</y>
     <width>320</width>
-    <height>220</height>
+    <height>460</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visible" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==1">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
   </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_12</name>
-    <text>Reciprocal space output</text>
-    <x>230</x>
-    <y>10</y>
-    <width>169</width>
-    <font>
-      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
-      </font>
-    </font>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_3</name>
+    <file>../axis/E4CVpseudoaxisSolutions.bob</file>
+    <x>30</x>
+    <y>60</y>
+    <width>320</width>
+    <height>460</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visible" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==2">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_4</name>
+    <file>../axis/K4CVpseudoaxisSolutions.bob</file>
+    <x>30</x>
+    <y>60</y>
+    <width>320</width>
+    <height>460</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visible" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==3">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_6</name>
+    <file>../axis/E6CpseudoaxisSolutions.bob</file>
+    <x>30</x>
+    <y>60</y>
+    <width>320</width>
+    <height>460</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visible" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==4">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_7</name>
+    <file>../axis/K6CpseudoaxisSolutions.bob</file>
+    <x>30</x>
+    <y>60</y>
+    <width>320</width>
+    <height>460</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="VisibleNew Rule" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==5">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_8</name>
+    <file>../axis/ZAXISpseudoaxisSolutions.bob</file>
+    <x>30</x>
+    <y>60</y>
+    <width>320</width>
+    <height>460</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visible" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==6">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
   </widget>
 </display>
