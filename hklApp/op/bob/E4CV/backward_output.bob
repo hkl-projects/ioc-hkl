@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-12 00:20:58 by kg1-->
+<!--Saved on 2024-07-13 16:27:14 by kg1-->
 <display version="2.0.0">
   <name>Backward_output</name>
   <macros>
@@ -47,8 +47,8 @@
   <widget type="label" version="2.0.0">
     <name>Label_13</name>
     <text>Real space output solutions</text>
-    <x>310</x>
-    <y>10</y>
+    <x>30</x>
+    <y>40</y>
     <width>220</width>
     <font>
       <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
