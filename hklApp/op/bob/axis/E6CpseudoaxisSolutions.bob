@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-07-13 15:06:49 by kg1-->
+<display version="2.0.0">
+  <name>E6C_PseudoAxSol</name>
+  <width>320</width>
+  <height>440</height>
+  <widget type="label" version="2.0.0">
+    <name>E6C_PseudoAxSol</name>
+    <class>TITLE</class>
+    <text>E6C PseudoAxis solutions</text>
+    <x use_class="true">0</x>
+    <y use_class="true">0</y>
+    <width>320</width>
+    <height>31</height>
+    <font use_class="true">
+      <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display</name>
+    <macros>
+      <Ax1Name>sol:h</Ax1Name>
+      <Ax2Name>sol:k</Ax2Name>
+      <Ax3Name>sol:l</Ax3Name>
+      <Ax4Name>sol:psi</Ax4Name>
+      <Ax5Name>sol:q</Ax5Name>
+      <Ax6Name>sol:alpha</Ax6Name>
+      <Ax7Name>sol:qper</Ax7Name>
+      <Ax8Name>sol:qpar</Ax8Name>
+      <Ax9Name>sol:tth</Ax9Name>
+      <Ax10Name>sol:alpha2</Ax10Name>
+      <Ax11Name>sol:incidence</Ax11Name>
+      <Ax12Name>sol:azimuthI</Ax12Name>
+      <Ax13Name>sol:emergence</Ax13Name>
+      <Ax14Name>sol:azimuthE</Ax14Name>
+    </macros>
+    <file>_multi_pseudoaxis_solutions.bob</file>
+    <y>31</y>
+    <width>320</width>
+    <height>410</height>
+  </widget>
+</display>
