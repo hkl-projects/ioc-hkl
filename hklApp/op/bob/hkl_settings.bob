@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-11 19:33:31 by kg1-->
+<!--Saved on 2024-07-13 15:53:33 by kg1-->
 <display version="2.0.0">
   <name>HKL_settings</name>
   <macros>
@@ -79,10 +79,10 @@
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_6</name>
     <file>E4CV/forward_output.bob</file>
-    <x>150</x>
-    <y>650</y>
+    <x>30</x>
+    <y>610</y>
     <width>550</width>
-    <height>350</height>
+    <height>520</height>
   </widget>
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_7</name>
