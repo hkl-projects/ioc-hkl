@@ -1,4 +1,4 @@
-record(ai, "$(P)$(R)solh") {
+record(ai, "$(P)$(R)sol:h") {
     field(DESC, "h")
     field(PINI, "YES")
     field(DTYP, "pydev")
@@ -6,7 +6,7 @@ record(ai, "$(P)$(R)solh") {
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)solk") {
+record(ai, "$(P)$(R)sol:k") {
     field(DESC, "k")
     field(PINI, "YES")
     field(DTYP, "pydev")
@@ -14,7 +14,7 @@ record(ai, "$(P)$(R)solk") {
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)soll") {
+record(ai, "$(P)$(R)sol:l") {
     field(DESC, "l")
     field(PINI, "YES")
     field(DTYP, "pydev")
@@ -22,7 +22,7 @@ record(ai, "$(P)$(R)soll") {
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)solpsi") {
+record(ai, "$(P)$(R)sol:psi") {
     field(DESC, "psi")
     field(PINI, "YES")
     field(DTYP, "pydev")
@@ -30,7 +30,7 @@ record(ai, "$(P)$(R)solpsi") {
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)solq") {
+record(ai, "$(P)$(R)sol:q") {
     field(DESC, "q")
     field(PINI, "YES")
     field(DTYP, "pydev")
@@ -38,7 +38,7 @@ record(ai, "$(P)$(R)solq") {
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)solincidence") {
+record(ai, "$(P)$(R)sol:incidence") {
     field(DESC, "incidence")
     field(PINI, "YES")
     field(DTYP, "pydev")
@@ -46,15 +46,15 @@ record(ai, "$(P)$(R)solincidence") {
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)solazimuth") {
-    field(DESC, "azimuth")
+record(ai, "$(P)$(R)sol:azimuthI") {
+    field(DESC, "azimuthI")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_solns_azimuth1")
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)solemergence") {
+record(ai, "$(P)$(R)sol:emergence") {
     field(DESC, "emergence")
     field(PINI, "YES")
     field(DTYP, "pydev")
@@ -62,8 +62,8 @@ record(ai, "$(P)$(R)solemergence") {
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)solazimuth2") {
-    field(DESC, "azimuth2")
+record(ai, "$(P)$(R)sol:azimuthE") {
+    field(DESC, "azimuthE")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_solns_azimuth2")
