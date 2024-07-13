@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-07-13 16:45:50 by kg1-->
+<display version="2.0.0">
+  <name>E4CV_PseudoAxInput</name>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <class>TITLE</class>
+    <text>E4CV PseudoAxes Input</text>
+    <x use_class="true">0</x>
+    <y use_class="true">0</y>
+    <width>550</width>
+    <height>31</height>
+    <font use_class="true">
+      <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display</name>
+    <macros>
+      <Ax1Name>h</Ax1Name>
+      <Ax2Name>k</Ax2Name>
+      <Ax3Name>l</Ax3Name>
+      <Ax4Name>psi</Ax4Name>
+      <Ax5Name>q</Ax5Name>
+      <Ax6Name>incidence</Ax6Name>
+      <Ax7Name>azimuthI</Ax7Name>
+      <Ax8Name>emergence</Ax8Name>
+      <Ax9Name>azimuthE</Ax9Name>
+    </macros>
+    <file>_pseudoAxes.bob</file>
+    <y>30</y>
+    <width>580</width>
+    <height>270</height>
+  </widget>
+</display>
