@@ -82,15 +82,15 @@ record(ai, "$(P)$(R)incidence_RBV") {
     field(INP, "@hkl_calc.pseudoaxes_incidence")
 }
 
-record(ao, "$(P)$(R)azimuth") {
-    field(DESC, "azimuth")
+record(ao, "$(P)$(R)azimuthI") {
+    field(DESC, "azimuthI")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_inc_azimuth=VAL")
-    field(FLNK, "$(P)$(R)azimuth_RBV")
+    field(FLNK, "$(P)$(R)azimuthI_RBV")
 }
 
-record(ai, "$(P)$(R)azimuth_RBV") {
+record(ai, "$(P)$(R)azimuthI_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_inc_azimuth")
@@ -110,15 +110,15 @@ record(ai, "$(P)$(R)emergence_RBV") {
     field(INP, "@hkl_calc.pseudoaxes_emergence")
 }
 
-record(ao, "$(P)$(R)azimuth2") {
-    field(DESC, "azimuth2")
+record(ao, "$(P)$(R)azimuthE") {
+    field(DESC, "azimuthE")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_emer_azimuth=VAL")
-    field(FLNK, "$(P)$(R)azimuth2_RBV")
+    field(FLNK, "$(P)$(R)azimuthE_RBV")
 }
 
-record(ai, "$(P)$(R)azimuth2_RBV") {
+record(ai, "$(P)$(R)azimuthE_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_emer_azimuth")
