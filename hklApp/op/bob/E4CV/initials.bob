@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-05 13:37:05 by l3b-->
+<!--Saved on 2024-07-13 11:03:45 by kg1-->
 <display version="2.0.0">
   <name>Initials</name>
   <macros>
@@ -28,7 +28,7 @@
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_3</name>
     <pv_name>$(Sys)wlen.DESC</pv_name>
-    <x>360</x>
+    <x>370</x>
     <y>20</y>
     <width>132</width>
     <height>22</height>
@@ -113,70 +113,6 @@
       <color name="green-18" red="0" green="160" blue="0">
       </color>
     </border_color>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Input_1</name>
-    <pv_name>$(Sys)wlen.TWV</pv_name>
-    <x>530</x>
-    <y>20</y>
-    <width>150</width>
-    <height>22</height>
-    <background_color>
-      <color red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <precision>4</precision>
-    <horizontal_alignment>1</horizontal_alignment>
-    <actions>
-    </actions>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="action_button" version="3.0.0">
-    <name>Action Button_1</name>
-    <actions>
-      <action type="write_pv">
-        <pv_name>$(Sys)$(Dev)$(Mtr).TWF</pv_name>
-        <value>1</value>
-        <description>Tweak Positive Dir</description>
-      </action>
-    </actions>
-    <pv_name>$(Sys)$(Dev)wlen.TWF</pv_name>
-    <text>&gt;</text>
-    <x>685</x>
-    <y>20</y>
-    <width>24</width>
-    <height>22</height>
-    <font>
-      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
-      </font>
-    </font>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-  </widget>
-  <widget type="action_button" version="3.0.0">
-    <name>Action Button_2</name>
-    <actions>
-      <action type="write_pv">
-        <pv_name>$(Sys)$(Dev)$(Mtr).TWR</pv_name>
-        <value>1</value>
-        <description>Tweak Negative Dir</description>
-      </action>
-    </actions>
-    <pv_name>$(Sys)$(Dev)wlen.TWR</pv_name>
-    <text>&lt;</text>
-    <x>500</x>
-    <y>20</y>
-    <width>24</width>
-    <height>22</height>
-    <font>
-      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
-      </font>
-    </font>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="combo" version="2.0.0">
     <name>Menu Button</name>
