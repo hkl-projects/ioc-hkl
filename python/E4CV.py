@@ -44,10 +44,18 @@ class hklCalculator_E4CV():
         self.UB_matrix = np.zeros((3,3), dtype=float)
         #self.sample_rot_matrix = np.zeros((8,8), dtype=float)
         self.u_matrix = np.zeros((3,3), dtype=float)
+        
+        # U vector
         self.ux = 0.
         self.uy = 0.
         self.uz = 0.
 
+        # UB busing levy
+        self.UB_matrix_bl = np.zeros((3,3), dtype=float)
+
+        # UB simplex
+        self.UB_matrix_simplex = np.zeros((3,3), dtype=float)
+        
         # axes
         self.num_axes_solns = num_axes_solns
         self.axes_omega = 0.
@@ -187,11 +195,11 @@ class hklCalculator_E4CV():
         axes['chi']   = self.axes_solns_chi
         axes['phi']   = self.axes_solns_phi
         axes['tth']   = self.axes_solns_tth
- #       if(cleanprint==False):
- #           return axes
- #       elif(cleanprint==True):
- #           axes_df = pd.DataFrame(axes)
- #           return axes_df
+        #if(cleanprint==False):
+        #    return axes
+        #elif(cleanprint==True):
+        #    axes_df = pd.DataFrame(axes)
+        #    return axes_df
         return axes
 
     def get_pseudoaxes_solns(self):
@@ -223,6 +231,9 @@ class hklCalculator_E4CV():
             self.axes_solns_tth.append(0)
 
     def add_reflection1(self):
+        '''
+        adds reflection #1 to sample for busing-levy calculation
+        '''
         self.axes_omega_UB = self.refl1_input[3]
         self.axes_chi_UB   = self.refl1_input[4]
         self.axes_phi_UB   = self.refl1_input[5]
@@ -233,6 +244,9 @@ class hklCalculator_E4CV():
                     self.refl1_input[0], self.refl1_input[1], self.refl1_input[2])
 
     def add_reflection2(self):
+        '''
+        adds reflection #2 to sample for busing levy calculation
+        '''
         self.axes_omega_UB = self.refl2_input[3]
         self.axes_chi_UB   = self.refl2_input[4]
         self.axes_phi_UB   = self.refl2_input[5]
@@ -243,6 +257,9 @@ class hklCalculator_E4CV():
                     self.refl2_input[0], self.refl2_input[1], self.refl2_input[2])
  
     def compute_UB_matrix(self):
+        '''
+        busing-levy UB calculation
+        '''
         print("Computing UB matrix")
         self.add_reflection1()
         self.add_reflection2()
@@ -251,7 +268,7 @@ class hklCalculator_E4CV():
         for i in range(3):
             for j in range(3):
                 self.UB_matrix[i,j] = UB.get(i,j)
-        self.start()
+        self.start() # Reinitializes sample with lattice parameters
 
     def compute_set_UB_matrix(self):
         '''
