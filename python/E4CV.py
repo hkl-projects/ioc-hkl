@@ -378,6 +378,10 @@ class hklCalculator_E4CV():
         self.lattice_vol = self.lattice.volume_get().value_get(0)
         return self.lattice_vol
 
+    def get_info(self):
+        diff_geom = self.factory.name_get()
+        print(diff_geom)
+
     def print_values(self):
         # Initials
         vol = self.get_latt_vol()

@@ -6,19 +6,12 @@ from gi.repository import GLib
 gi.require_version('Hkl', '5.0')
 from gi.repository import Hkl
 import hklApp
-'''
-Traceback (most recent call last):
-  File "<string>", line 1, in <module>
-  File "/epics/iocs/ioc-hkl/python/TwoC.py", line 138, in forward
-    self.engine_hkl = self.engines.engine_get_by_name("hkl")
-gi.repository.GLib.GError: hkl-engine-list-error-quark: this engine list does not contain this engine "hkl" (0)
-'''
 
-class hklCalculator_TwoC():
+class hklCalculator_E4CH():
     def __init__(self, num_axes_solns=15, num_reflections = 5):
         # initials
         self.wavelength = 0.
-        self.geom_name = 'TwoC'
+        self.geom_name = 'E4CH'
         self.geometry = np.nan # hkl object placeholder
         self.detector = np.nan # hkl object placeholder
         self.factory = np.nan
@@ -33,13 +26,13 @@ class hklCalculator_TwoC():
         # sample orientation
         # initial 2 reflections
         self.num_reflections = num_reflections
-        self.refl1_input = [0., 0., 0., 0., 0.]
-        self.refl2_input = [0., 0., 0., 0., 0.]
+        self.refl1_input = [0., 0., 0., 0., 0., 0., 0.]
+        self.refl2_input = [0., 0., 0., 0., 0., 0., 0.]
         self.refl1 = np.nan
         self.refl2 = np.nan
          
         # refine with reflections
-        self.refl_refine_input = [0., 0., 0., 0., 0.]
+        self.refl_refine_input = [0., 0., 0., 0., 0., 0., 0.]
         self.refl_refine_input_list = []
         self.refl_refine = np.nan
         self.refl_refine_list = []
@@ -64,10 +57,14 @@ class hklCalculator_TwoC():
         # axes
         self.num_axes_solns = num_axes_solns
         self.axes_omega = 0.
+        self.axes_chi = 0.
+        self.axes_phi = 0.
         self.axes_tth = 0.
 
         # axes for UB calculation - only used internally - avoids setting on calculation
         self.axes_omega_UB = 0.
+        self.axes_chi_UB = 0.
+        self.axes_phi_UB = 0.
         self.axes_tth_UB = 0.
 
         # pseduoaxes 
@@ -83,9 +80,13 @@ class hklCalculator_TwoC():
        
         # axes solutions 
         self.axes_solns_omega = []
+        self.axes_solns_chi = []
+        self.axes_solns_phi = []
         self.axes_solns_tth = []
         for _ in range(self.num_axes_solns):
             self.axes_solns_omega.append(0)
+            self.axes_solns_chi.append(0)
+            self.axes_solns_phi.append(0)
             self.axes_solns_tth.append(0)
         
         # pseudoaxes solutions
@@ -128,6 +129,8 @@ class hklCalculator_TwoC():
         print("Forward function start")
         self.reset_pseudoaxes_solns()
         values_w = [float(self.axes_omega), \
+                    float(self.axes_chi), \
+                    float(self.axes_phi), \
                     float(self.axes_tth)] 
 
         try:
@@ -148,6 +151,8 @@ class hklCalculator_TwoC():
     def forward_UB(self):
         print("Forward function start")
         values_w = [float(self.axes_omega_UB), \
+                    float(self.axes_chi_UB), \
+                    float(self.axes_phi_UB), \
                     float(self.axes_tth_UB)] 
 
         try:
@@ -174,11 +179,11 @@ class hklCalculator_TwoC():
         if len_solns > self.num_axes_solns: # truncate if above max available soln slots
             len_solns = self.num_axes_solns
         for i in range(len_solns): 
-            self.axes_solns_omega[i], \
-                self.axes_solns_tth[i] = values_w_all[i]           
+            self.axes_solns_omega[i], self.axes_solns_chi[i], \
+            self.axes_solns_phi[i], self.axes_solns_tth[i] = values_w_all[i]           
 
     def get_axes(self):
-        axes = (self.axes_omega, self.axes_tth)
+        axes = (self.axes_omega, self.axes_chi, self.axes_phi, self.axes_tth)
         print(axes)
         return axes 
 
@@ -191,6 +196,8 @@ class hklCalculator_TwoC():
     def get_axes_solns(self, cleanprint=False):
         axes = {}
         axes['omega'] = self.axes_solns_omega
+        axes['chi']   = self.axes_solns_chi
+        axes['phi']   = self.axes_solns_phi
         axes['tth']   = self.axes_solns_tth
         return axes
 
@@ -213,9 +220,13 @@ class hklCalculator_TwoC():
 
     def reset_axes_solns(self):
         self.axes_solns_omega = []
+        self.axes_solns_chi = []
+        self.axes_solns_phi = []
         self.axes_solns_tth = []
         for _ in range(self.num_axes_solns):
             self.axes_solns_omega.append(0)
+            self.axes_solns_chi.append(0)
+            self.axes_solns_phi.append(0)
             self.axes_solns_tth.append(0)
 
     def add_reflection1(self):
@@ -223,6 +234,8 @@ class hklCalculator_TwoC():
         adds reflection #1 to sample for busing-levy calculation
         '''
         self.axes_omega_UB = self.refl1_input[3]
+        self.axes_chi_UB   = self.refl1_input[4]
+        self.axes_phi_UB   = self.refl1_input[5]
         self.axes_tth_UB   = self.refl1_input[6]
         self.forward_UB() # replace with an update of sample with motor positions 
         # Hkl.SampleReflection(self.geometry, self.detector, h, k, l)
@@ -234,6 +247,8 @@ class hklCalculator_TwoC():
         adds reflection #2 to sample for busing levy calculation
         '''
         self.axes_omega_UB = self.refl2_input[3]
+        self.axes_chi_UB   = self.refl2_input[4]
+        self.axes_phi_UB   = self.refl2_input[5]
         self.axes_tth_UB   = self.refl2_input[6]
         self.forward_UB()
         # Hkl.SampleReflection(self.geometry, self.detector, h, k, l)
@@ -308,6 +323,8 @@ class hklCalculator_TwoC():
                 
     def add_refl_refine(self):
         self.axes_omega_UB = self.refl_refine_input[3]
+        self.axes_chi_UB = self.refl_refine_input[4]
+        self.axes_phi_UB = self.refl_refine_input[5]
         self.axes_tth_UB = self.refl_refine_input[6]
         self.refl_refine = self.sample.add_reflection(self.geometry, \
                 self.detector, self.refl_refine_input[0], \
@@ -362,3 +379,92 @@ class hklCalculator_TwoC():
         diff_geom = self.factory.name_get()
         print(diff_geom)
 
+    def print_values(self):
+        # Initials
+        vol = self.get_latt_vol()
+        # Forward
+        axes = self.get_axes()
+        pseudoaxes_solns = self.get_pseudoaxes_solns()
+        # Backward
+        pseudoaxes = self.get_pseudoaxes()
+        axes_solns = self.get_axes_solns(cleanprint=True)
+        # orientation
+        u = self.get_u_matrix()
+        ux,uy,uz = self.get_u_xyz()
+        ub = self.get_UB_matrix()
+        #sample_rot_m = self.get_sample_rotation()
+        print("Initial conditions:")
+        print("##################################")
+        print(f'wavelength: {self.wavelength}')
+        print(f'geometry: {self.geom_name}')
+        print(f'lattice: {self.latt}')
+        print(f'lattice volume: {vol}')
+        print("Forward")
+        print("##################################")
+        print(f'input axes: {axes}') 
+        print(f'pseudoaxes solutions: {pseudoaxes_solns}')
+        print("Backward")
+        print("##################################")
+        print(f'input pseudoaxes: {pseudoaxes}')
+        print(f'axes solutions: {axes_solns}')
+        print("Orientation")
+        print("##################################")
+        print(f'reflection #1: {self.refl1_input}')
+        print(f'reflection #2: {self.refl2_input}') 
+        print(f'u matrix: \n {u}')
+        print(f'u vector: ux, uy, uz: {ux}, {uy}, {uz}')
+        print(f'UB:\n {ub}')
+        #print(f'sample rotation/quaternion:\n {sample_rot_m}')
+
+    def test(self):
+        # starting sample, instrument parameters
+        self.wavelength = 1.54 #Angstrom
+        self.geom_name = 'E4CV' # 4-circle
+        self.latt = [1.54, 1.54, 1.54,
+                90.,
+                90.,
+                90.] # cubic
+        self.start() # start hkl
+        
+        # forward test
+        self.axes_omega = 30.
+        self.axes_chi   = 0.
+        self.axes_phi   = 0.
+        self.axes_tth   = 60.
+        
+        print("\n\n\nRunning Forward\n")
+        self.forward() 
+        self.print_values()
+
+        # backward test
+        self.pseudoaxes_h = 0.
+        self.pseudoaxes_k = 0.
+        self.pseudoaxes_l = 1.
+        print("\n\n\nRunning Backward\n")
+        self.backward()
+        self.print_values()
+ 
+        #UB matrix test
+        # reflection #1
+        self.refl1_input[3] = -145.451 # omega
+        self.refl1_input[4] = 0 # chi
+        self.refl1_input[5] = 0 # phi
+        self.refl1_input[6] = 69.0966 # tth
+        self.refl1_input[0] = 4 # h
+        self.refl1_input[1] = 0 # k
+        self.refl1_input[2] = 0 # l
+        # reflection #2
+        self.refl2_input[3] = -145.451 # omega
+        self.refl2_input[4] = 90 # chi
+        self.refl2_input[5] = 0 # phi
+        self.refl2_input[6] = 69.0966 # tth
+        self.refl2_input[0] = 0 # h
+        self.refl2_input[1] = 4 # k
+        self.refl2_input[2] = 0 # l
+        # UB calculation
+        
+        print("\n\n\nPre-UB Caclulation\n")
+        self.print_values()
+        self.compute_UB_matrix()
+        print("\n\n\nPost-UB Caclulation\n")
+        self.print_values()
