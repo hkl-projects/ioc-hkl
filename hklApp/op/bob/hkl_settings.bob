@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-13 15:53:33 by kg1-->
+<!--Saved on 2024-07-21 08:43:12 by l3b-->
 <display version="2.0.0">
   <name>HKL_settings</name>
   <macros>
     <Sys>HB3:</Sys>
   </macros>
   <width>1730</width>
-  <height>1160</height>
+  <height>1600</height>
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_1</name>
     <x>870</x>
-    <y>340</y>
+    <y>790</y>
     <width>840</width>
     <height>810</height>
     <line_color>
@@ -25,7 +25,7 @@
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle</name>
     <x>10</x>
-    <y>340</y>
+    <y>790</y>
     <width>840</width>
     <height>800</height>
     <line_color>
@@ -47,16 +47,16 @@
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_3</name>
     <file>E4CV/initials.bob</file>
-    <x>10</x>
-    <y>10</y>
-    <width>820</width>
+    <x>250</x>
+    <y>40</y>
+    <width>1340</width>
     <height>320</height>
   </widget>
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_4</name>
     <file>E4CV/forward_input.bob</file>
     <x>30</x>
-    <y>350</y>
+    <y>800</y>
     <width>810</width>
     <height>250</height>
   </widget>
@@ -64,15 +64,15 @@
     <name>Embedded Display_5</name>
     <file>E4CV/backward_input.bob</file>
     <x>1040</x>
-    <y>350</y>
+    <y>800</y>
     <width>480</width>
-    <height>290</height>
+    <height>240</height>
   </widget>
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display</name>
     <file>E4CV/reflections.bob</file>
-    <x>840</x>
-    <y>10</y>
+    <x>420</x>
+    <y>450</y>
     <width>880</width>
     <height>320</height>
   </widget>
@@ -80,7 +80,7 @@
     <name>Embedded Display_6</name>
     <file>E4CV/forward_output.bob</file>
     <x>30</x>
-    <y>610</y>
+    <y>1060</y>
     <width>550</width>
     <height>520</height>
   </widget>
@@ -88,7 +88,7 @@
     <name>Embedded Display_7</name>
     <file>E4CV/backward_output.bob</file>
     <x>880</x>
-    <y>650</y>
+    <y>1050</y>
     <width>820</width>
     <height>490</height>
   </widget>

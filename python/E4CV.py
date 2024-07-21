@@ -120,7 +120,9 @@ class hklCalculator_E4CV():
         self.engines.init(self.geometry, self.detector, self.sample)
         self.engines.get()
         self.engine_hkl = self.engines.engine_get_by_name("hkl")
-    
+
+        self.get_UB_matrix()    
+
     def forward(self):
         print("Forward function start")
         self.reset_pseudoaxes_solns()
@@ -142,7 +144,7 @@ class hklCalculator_E4CV():
  
         values_hkl = self.engine_hkl.pseudo_axis_values_get(Hkl.UnitEnum.USER)
         self.pseudoaxes_solns_h, self.pseudoaxes_solns_k, self.pseudoaxes_solns_l = values_hkl
-
+        #self.get_UB_matrix()
 
     def forward_UB(self):
         print("Forward function start")
@@ -195,11 +197,6 @@ class hklCalculator_E4CV():
         axes['chi']   = self.axes_solns_chi
         axes['phi']   = self.axes_solns_phi
         axes['tth']   = self.axes_solns_tth
-        #if(cleanprint==False):
-        #    return axes
-        #elif(cleanprint==True):
-        #    axes_df = pd.DataFrame(axes)
-        #    return axes_df
         return axes
 
     def get_pseudoaxes_solns(self):
@@ -267,7 +264,7 @@ class hklCalculator_E4CV():
         UB = self.sample.UB_get()
         for i in range(3):
             for j in range(3):
-                self.UB_matrix[i,j] = UB.get(i,j)
+                self.UB_matrix_bl[i,j] = UB.get(i,j)
         self.start() # Reinitializes sample with lattice parameters
 
     def compute_set_UB_matrix(self):
@@ -280,10 +277,14 @@ class hklCalculator_E4CV():
         UB = self.sample.UB_get()
         for i in range(3):
             for j in range(3):
+                self.UB_matrix_bl[i,j] = UB.get(i,j)
                 self.UB_matrix[i,j] = UB.get(i,j)
 
     def get_UB_matrix(self):
-        return self.UB_matrix
+        UB = self.sample.UB_get()
+        for i in range(3):
+            for j in range(3):
+                self.UB_matrix[i,j] = UB.get(i,j)
 
     def affine(self):
         '''
@@ -291,13 +292,33 @@ class hklCalculator_E4CV():
         '''
         self.sample.affine()
         self.start()
+        UB = self.sample.UB_get()
+        for i in range(3):
+            for j in range(3):
+                self.UB_matrix_simplex[i,j] = UB.get(i,j)
+        self.start()
 
     def affine_set(self):
         '''
         takes in >2 reflections to refine lattice parameters and UB matrix
         '''
         self.sample.affine()
-
+        UB = self.sample.UB_get()
+        for i in range(3):
+            for j in range(3):
+                self.UB_matrix_simplex[i,j] = UB.get(i,j)
+        self.start()
+                
+    def affine_set(self):
+        '''
+        takes in >2 reflections to refine lattice parameters and UB matrix
+        '''
+        self.sample.affine()
+        UB = self.sample.UB_get()
+        for i in range(3):
+            for j in range(3):
+                self.UB_matrix_simplex[i,j] = UB.get(i,j)
+                
     def add_refl_refine(self):
         self.axes_omega_UB = self.refl_refine_input[3]
         self.axes_chi_UB = self.refl_refine_input[4]

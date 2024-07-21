@@ -107,6 +107,7 @@ record(ai, "$(P)$(R)gamma_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.latt[5]")
+    field(FLNK, "$(P)$(R)Ux")
 }
 
 record(mbbo, "$(P)$(R)geom") {
@@ -148,5 +149,102 @@ record(mbbi, "$(P)$(R)geom_RBV") {
     field(FVST, "K6C")
     field(SXST, "ZAXIS")
     field(INP, "@hkl_calc.geom")
+}
+
+
+
+record(ai, "$(P)$(R)Ux") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.ux")
+    field(FLNK, "$(P)$(R)Uy")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)Uy") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.uy")
+    field(FLNK, "$(P)$(R)Uz")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)Uz") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.uz")
+    field(FLNK, "$(P)$(R)UBa11")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)UBa11") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.UB_matrix[0,0]")
+    field(FLNK, "$(P)$(R)UBa12")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)UBa12") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.UB_matrix[0,1]")
+    field(FLNK, "$(P)$(R)UBa13")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)UBa13") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.UB_matrix[0,2]")
+    field(FLNK, "$(P)$(R)UBa21")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)UBa21") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.UB_matrix[1,0]")
+    field(FLNK, "$(P)$(R)UBa22")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)UBa22") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.UB_matrix[1,1]")
+    field(FLNK, "$(P)$(R)UBa23")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)UBa23") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.UB_matrix[1,2]")
+    field(FLNK, "$(P)$(R)UBa31")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)UBa31") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.UB_matrix[2,0]")
+    field(FLNK, "$(P)$(R)UBa32")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)UBa32") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.UB_matrix[2,1]")
+    field(FLNK, "$(P)$(R)UBa33")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)UBa33") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.UB_matrix[2,2]")
+    field(SCAN, "1 second")
 }
 

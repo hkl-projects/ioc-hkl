@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-05 13:27:44 by l3b-->
+<!--Saved on 2024-07-21 08:41:42 by l3b-->
 <display version="2.0.0">
   <name>HKL_main</name>
   <macros>
     <Sys>HB3:</Sys>
   </macros>
-  <width>1800</width>
-  <height>1200</height>
+  <width>1850</width>
+  <height>1170</height>
   <widget type="navtabs" version="2.0.0">
     <name>Navigation Tabs</name>
     <tabs>
@@ -47,6 +47,6 @@
       </tab>
     </tabs>
     <width>1850</width>
-    <height>1100</height>
+    <height>1170</height>
   </widget>
 </display>
