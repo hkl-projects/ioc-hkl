@@ -1,5 +1,6 @@
 from enum import IntEnum
 from E4CV import hklCalculator_E4CV
+from TwoC import hklCalculator_TwoC
 
 def hklCalcs(geom_num=0):
     #TODO need to attach this function to dropdown box in phoebus
