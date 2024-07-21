@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-21 10:29:34 by l3b-->
+<!--Saved on 2024-07-21 15:34:25 by l3b-->
 <display version="2.0.0">
   <name>HKL_settings</name>
   <macros>
     <Sys>HB3:</Sys>
   </macros>
-  <width>1730</width>
+  <width>1750</width>
   <height>1800</height>
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle_1</name>
@@ -62,16 +62,16 @@
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_5</name>
     <file>E4CV/backward_input.bob</file>
-    <x>1040</x>
+    <x>1010</x>
     <y>940</y>
-    <width>480</width>
-    <height>240</height>
+    <width>540</width>
+    <height>370</height>
+    <resize>1</resize>
   </widget>
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display</name>
     <file>E4CV/reflections.bob</file>
-    <x>10</x>
-    <y>360</y>
+    <y>440</y>
     <width>880</width>
     <height>320</height>
   </widget>
@@ -87,16 +87,16 @@
     <name>Embedded Display_7</name>
     <file>E4CV/backward_output.bob</file>
     <x>880</x>
-    <y>1190</y>
+    <y>1320</y>
     <width>820</width>
-    <height>490</height>
+    <height>400</height>
   </widget>
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_1</name>
     <file>E4CV/reflections_refine.bob</file>
     <x>880</x>
-    <y>260</y>
+    <y>320</y>
     <width>850</width>
-    <height>670</height>
+    <height>580</height>
   </widget>
 </display>

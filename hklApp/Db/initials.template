@@ -149,9 +149,8 @@ record(mbbi, "$(P)$(R)geom_RBV") {
     field(FVST, "K6C")
     field(SXST, "ZAXIS")
     field(INP, "@hkl_calc.geom")
+#    field(FLNK, "$(P)$(R)run")
 }
-
-
 
 record(ai, "$(P)$(R)Ux") {
     field(PINI, "YES")

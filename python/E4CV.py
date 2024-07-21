@@ -5,6 +5,7 @@ import gi
 from gi.repository import GLib
 gi.require_version('Hkl', '5.0')
 from gi.repository import Hkl
+import hklApp
 
 #TODO create lists from individual values, change PVs accordingly
 #TODO add holds
@@ -122,6 +123,10 @@ class hklCalculator_E4CV():
         self.engine_hkl = self.engines.engine_get_by_name("hkl")
 
         self.get_UB_matrix()    
+
+    def run_new(self):
+        hkl_calc = hklApp.hklCalcs(self.geom) 
+        return hkl_calc
 
     def forward(self):
         print("Forward function start")

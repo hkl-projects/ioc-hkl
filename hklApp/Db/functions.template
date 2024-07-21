@@ -49,4 +49,16 @@ record(ao, "$(P)$(R)add_refl_refine") {
     field(FLNK, "$(P)$(R)UBa11si")
 }
 
+#record(ao, "$(P)$(R)run") {
+#    field(DTYP, "pydev")
+#    field(OUT, "@hklApp.run()")
+#    field(TPRO, "1")
+#}
+
+record(ao, "$(P)$(R)run") {
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.run_new()")
+    field(TPRO, "1")
+}
+
 
