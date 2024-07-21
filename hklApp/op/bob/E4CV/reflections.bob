@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-21 09:12:33 by l3b-->
+<!--Saved on 2024-07-21 10:24:25 by l3b-->
 <display version="2.0.0">
   <name>Reflections</name>
   <macros>
     <Sys>HB3:</Sys>
   </macros>
-  <width>875</width>
+  <width>880</width>
   <height>330</height>
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle</name>
@@ -28,9 +28,9 @@
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_10</name>
-    <text>Add initial 2 reflections</text>
-    <x>319</x>
-    <width>202</width>
+    <text>Busing-Levy - add 2 reflections</text>
+    <x>297</x>
+    <width>216</width>
   </widget>
   <widget type="arc" version="2.0.0">
     <name>Arc</name>

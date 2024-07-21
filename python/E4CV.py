@@ -32,14 +32,14 @@ class hklCalculator_E4CV():
         self.refl2_input = [0., 0., 0., 0., 0., 0., 0.]
         self.refl1 = np.nan
         self.refl2 = np.nan
-        
+         
         # refine with reflections
         self.refl_refine_input = [0., 0., 0., 0., 0., 0., 0.]
         self.refl_refine_input_list = []
         self.refl_refine = np.nan
         self.refl_refine_list = []
         self.selected_refl = [] # used for deleting reflection from list
-        
+        self.latt_refine = [0., 0., 0., 0., 0., 0.]
         # UB
         self.UB_matrix = np.zeros((3,3), dtype=float)
         #self.sample_rot_matrix = np.zeros((8,8), dtype=float)

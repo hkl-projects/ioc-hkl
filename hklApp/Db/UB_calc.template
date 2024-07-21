@@ -96,6 +96,105 @@ record(ao, "$(P)$(R)refl2tth") {
     field(OUT, "@hkl_calc.refl2_input[6]=VAL")
 }
 
+record(ao, "$(P)$(R)reflhsi") {
+    field(DESC, "h")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.refl_refine_input[0]=VAL")
+}
+
+record(ao, "$(P)$(R)reflksi") {
+    field(DESC, "h")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.refl_refine_input[1]=VAL")
+}
+
+record(ao, "$(P)$(R)refllsi") {
+    field(DESC, "h")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.refl_refine_input[2]=VAL")
+}
+
+record(ao, "$(P)$(R)reflomegasi") {
+    field(DESC, "h")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.refl_refine_input[3]=VAL")
+}
+
+record(ao, "$(P)$(R)reflchisi") {
+    field(DESC, "h")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.refl_refine_input[4]=VAL")
+}
+
+record(ao, "$(P)$(R)reflphisi") {
+    field(DESC, "h")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.refl_refine_input[5]=VAL")
+}
+
+record(ao, "$(P)$(R)refltthsi") {
+    field(DESC, "h")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.refl_refine_input[6]=VAL")
+}
+
+record(ai, "$(P)$(R)asi") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.latt_refine[0]")
+    field(FLNK, "$(P)$(R)bsi")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)bsi") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.latt_refine[1]")
+    field(FLNK, "$(P)$(R)csi")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)csi") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.latt_refine[2]")
+    field(FLNK, "$(P)$(R)alphasi")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)alphasi") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.latt_refine[3]")
+    field(FLNK, "$(P)$(R)betasi")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)betasi") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.latt_refine[4]")
+    field(FLNK, "$(P)$(R)gammasi")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)gammasi") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.latt_refine[5]")
+    field(FLNK, "$(P)$(R)gammasi")
+    field(SCAN, "1 second")
+}
+
+# NEED RECORD FOR LIST OF REFLS TO DISPLAY FOR SIMPLEX
+
 record(ai, "$(P)$(R)UBa11bl") {
     field(PINI, "YES")
     field(DTYP, "pydev")
@@ -164,6 +263,79 @@ record(ai, "$(P)$(R)UBa33bl") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.UB_matrix_bl[2,2]")
+    field(SCAN, "1 second")
+}
+
+
+
+record(ai, "$(P)$(R)UBa11si") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.UB_matrix_simplex[0,0]")
+    field(FLNK, "$(P)$(R)UBa12si")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)UBa12si") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.UB_matrix_simplex[0,1]")
+    field(FLNK, "$(P)$(R)UBa13si")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)UBa13si") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.UB_matrix_simplex[0,2]")
+    field(FLNK, "$(P)$(R)UBa21si")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)UBa21si") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.UB_matrix_simplex[1,0]")
+    field(FLNK, "$(P)$(R)UBa22si")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)UBa22si") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.UB_matrix_simplex[1,1]")
+    field(FLNK, "$(P)$(R)UBa23si")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)UBa23si") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.UB_matrix_simplex[1,2]")
+    field(FLNK, "$(P)$(R)UBa31si")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)UBa31si") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.UB_matrix_simplex[2,0]")
+    field(FLNK, "$(P)$(R)UBa32si")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)UBa32si") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.UB_matrix_simplex[2,1]")
+    field(FLNK, "$(P)$(R)UBa33si")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)UBa33si") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.UB_matrix_simplex[2,2]")
     field(SCAN, "1 second")
 }
 
