@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-07-25 08:37:33 by l3b-->
+<display version="2.0.0">
+  <name>HKL_backward</name>
+  <macros>
+    <Sys>HB3:ioc-hkl:</Sys>
+  </macros>
+  <width>1000</width>
+  <height>1000</height>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle_1</name>
+    <x>10</x>
+    <y>10</y>
+    <width>840</width>
+    <height>810</height>
+    <line_color>
+      <color name="Header_Background" red="77" green="77" blue="77">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="30" green="144" blue="255" alpha="8">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_5</name>
+    <file>E4CV/backward_input.bob</file>
+    <x>110</x>
+    <y>20</y>
+    <width>560</width>
+    <height>380</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_7</name>
+    <file>E4CV/backward_output.bob</file>
+    <x>20</x>
+    <y>410</y>
+    <width>820</width>
+    <height>400</height>
+  </widget>
+</display>

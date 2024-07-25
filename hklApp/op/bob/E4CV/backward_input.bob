@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-21 14:11:53 by l3b-->
+<!--Saved on 2024-07-25 09:55:43 by l3b-->
 <display version="2.0.0">
   <name>Backward_input</name>
   <macros>
-    <Sys>HB3:</Sys>
+    <Sys>HB3:ioc-hkl:</Sys>
   </macros>
   <width>560</width>
   <height>360</height>
@@ -17,22 +17,6 @@
       <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
       </font>
     </font>
-  </widget>
-  <widget type="embedded" version="2.0.0">
-    <name>Embedded Display_5</name>
-    <file>../axis/TwoCpseudoAxes.bob</file>
-    <y>40</y>
-    <width>550</width>
-    <height>310</height>
-    <visible>false</visible>
-    <rules>
-      <rule name="Visible" prop_id="visible" out_exp="false">
-        <exp bool_exp="pv0==0">
-          <value>true</value>
-        </exp>
-        <pv_name>$(Sys)geom</pv_name>
-      </rule>
-    </rules>
   </widget>
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_6</name>
@@ -59,7 +43,7 @@
     <visible>false</visible>
     <rules>
       <rule name="Visible" prop_id="visible" out_exp="false">
-        <exp bool_exp="pv0==2">
+        <exp bool_exp="pv0==0">
           <value>true</value>
         </exp>
         <pv_name>$(Sys)geom</pv_name>
@@ -75,7 +59,7 @@
     <visible>false</visible>
     <rules>
       <rule name="Visible" prop_id="visible" out_exp="false">
-        <exp bool_exp="pv0==3">
+        <exp bool_exp="pv0==2">
           <value>true</value>
         </exp>
         <pv_name>$(Sys)geom</pv_name>
@@ -91,7 +75,7 @@
     <visible>false</visible>
     <rules>
       <rule name="Visible" prop_id="visible" out_exp="false">
-        <exp bool_exp="pv0==4">
+        <exp bool_exp="pv0==3">
           <value>true</value>
         </exp>
         <pv_name>$(Sys)geom</pv_name>
@@ -107,7 +91,7 @@
     <visible>false</visible>
     <rules>
       <rule name="Visible" prop_id="visible" out_exp="false">
-        <exp bool_exp="pv0==5">
+        <exp bool_exp="pv0==4">
           <value>true</value>
         </exp>
         <pv_name>$(Sys)geom</pv_name>
@@ -123,7 +107,7 @@
     <visible>false</visible>
     <rules>
       <rule name="Visible" prop_id="visible" out_exp="false">
-        <exp bool_exp="pv0==6">
+        <exp bool_exp="pv0==5">
           <value>true</value>
         </exp>
         <pv_name>$(Sys)geom</pv_name>

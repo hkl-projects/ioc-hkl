@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-22 10:27:18 by l3b-->
+<!--Saved on 2024-07-25 07:14:51 by l3b-->
 <display version="2.0.0">
   <name>HKL_settings</name>
   <macros>
-    <Sys>HB3:</Sys>
+    <Sys>HB3:ioc-hkl:</Sys>
   </macros>
   <width>1750</width>
   <height>1800</height>
@@ -62,11 +62,10 @@
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_5</name>
     <file>E4CV/backward_input.bob</file>
-    <x>1010</x>
+    <x>970</x>
     <y>940</y>
-    <width>540</width>
-    <height>370</height>
-    <resize>1</resize>
+    <width>560</width>
+    <height>380</height>
   </widget>
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display</name>
@@ -87,7 +86,7 @@
     <name>Embedded Display_7</name>
     <file>E4CV/backward_output.bob</file>
     <x>880</x>
-    <y>1320</y>
+    <y>1330</y>
     <width>820</width>
     <height>400</height>
   </widget>
@@ -115,8 +114,8 @@
     <name>Polyline_1</name>
     <x>1640</x>
     <y>120</y>
-    <width>0</width>
-    <height>0</height>
+    <width>1</width>
+    <height>1</height>
     <points>
       <point x="0.0" y="0.0">
       </point>
