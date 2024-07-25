@@ -246,4 +246,3 @@ record(ai, "$(P)$(R)UBa33") {
     field(INP, "@hkl_calc.UB_matrix[2,2]")
     field(SCAN, "1 second")
 }
-

@@ -21,6 +21,7 @@ cd ${TOP}/iocBoot/${IOC}
 
 pydev("import hklApp")
 pydev("hkl_calc = hklApp.hklCalcs()")
+#pydev("hkl_calc.test()")
 
 iocInit
 

@@ -338,4 +338,3 @@ record(ai, "$(P)$(R)UBa33si") {
     field(INP, "@hkl_calc.UB_matrix_simplex[2,2]")
     field(SCAN, "1 second")
 }
-

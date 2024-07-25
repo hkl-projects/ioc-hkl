@@ -5,7 +5,6 @@ import gi
 from gi.repository import GLib
 gi.require_version('Hkl', '5.0')
 from gi.repository import Hkl
-import hklApp
 
 #TODO create lists from individual values, change PVs accordingly
 #TODO add holds
@@ -14,7 +13,7 @@ class hklCalculator_E4CV():
     def __init__(self, num_axes_solns=15, num_reflections = 5):
         # initials
         self.wavelength = 0.
-        self.geom_name = 'E4CV'
+        self.geom = 'E4CV'
         self.geometry = np.nan # hkl object placeholder
         self.detector = np.nan # hkl object placeholder
         self.factory = np.nan
@@ -105,7 +104,7 @@ class hklCalculator_E4CV():
  
     def start(self):
         self.detector = Hkl.Detector.factory_new(Hkl.DetectorType(0))
-        self.factory  = Hkl.factories()[self.geom_name]
+        self.factory  = Hkl.factories()[self.geom]
         self.geometry = self.factory.create_new_geometry()
         self.geometry.wavelength_set(self.wavelength, Hkl.UnitEnum.USER)
         
@@ -123,10 +122,48 @@ class hklCalculator_E4CV():
         self.engine_hkl = self.engines.engine_get_by_name("hkl")
 
         self.get_UB_matrix()    
+        print("E4CV started")
+        print(self.get_info())
 
     def run_new(self):
-        hkl_calc = hklApp.hklCalcs(self.geom) 
-        return hkl_calc
+        if self.geom == 0:
+            print("switching to TwoC")
+            from TwoC import hklCalculator_TwoC
+            self.__class__ = hklCalculator_TwoC
+            self.__init__()
+            self.start()
+
+        if self.geom == 1:
+            print("switching to E4CH")
+            from E4CH import hklCalculator_E4CH
+            self.__class__ = hklCalculator_E4CH
+            self.__init__()
+            self.start()
+
+        if self.geom == 3:
+            print("switching to K4CV")
+            from K4CV import hklCalculator_K4CV
+            self.__class__ = hklCalculator_K4CV
+            self.__init__()
+            self.start()
+
+        if self.geom == 4:
+            from E6C import hklCalculator_E6C
+            self.__class__ = hklCalculator_E6C
+            self.__init__()
+            self.start()
+
+        if self.geom == 5:
+            from K6C import hklCalculator_K6C
+            self.__class__ = hklCalculator_K6C
+            self.__init__()
+            self.start()
+
+        if self.geom == 6:
+            from ZAXIS import hklCalculator_ZAXIS
+            self.__class__ = hklCalculator_ZAXIS
+            self.__init__()
+            self.start()
 
     def forward(self):
         print("Forward function start")
@@ -136,6 +173,7 @@ class hklCalculator_E4CV():
                     float(self.axes_phi), \
                     float(self.axes_tth)] 
 
+        print(values_w)
         try:
             self.geometry.axis_values_set(values_w, Hkl.UnitEnum.USER)
         except:
@@ -143,13 +181,15 @@ class hklCalculator_E4CV():
             #TODO catch different types of errors
             return
 
-        self.engines.init(self.geometry, self.detector, self.sample) # See if there's an "update" engine instead of "init"
+        self.engines.init(self.geometry, self.detector, self.sample)
         self.engines.get()
         self.engine_hkl = self.engines.engine_get_by_name("hkl")
+        print(self.engine_hkl)
  
         values_hkl = self.engine_hkl.pseudo_axis_values_get(Hkl.UnitEnum.USER)
+        print(values_hkl)
         self.pseudoaxes_solns_h, self.pseudoaxes_solns_k, self.pseudoaxes_solns_l = values_hkl
-        #self.get_UB_matrix()
+        self.get_UB_matrix()
 
     def forward_UB(self):
         print("Forward function start")
@@ -302,17 +342,6 @@ class hklCalculator_E4CV():
             for j in range(3):
                 self.UB_matrix_simplex[i,j] = UB.get(i,j)
         self.start()
-
-    def affine_set(self):
-        '''
-        takes in >2 reflections to refine lattice parameters and UB matrix
-        '''
-        self.sample.affine()
-        UB = self.sample.UB_get()
-        for i in range(3):
-            for j in range(3):
-                self.UB_matrix_simplex[i,j] = UB.get(i,j)
-        self.start()
                 
     def affine_set(self):
         '''
@@ -381,6 +410,9 @@ class hklCalculator_E4CV():
     def get_info(self):
         diff_geom = self.factory.name_get()
         print(diff_geom)
+        samp = self.sample.lattice_get()
+        a,b,c,alpha,beta,gamma = samp.get(Hkl.UnitEnum.USER)
+        print(f'a: {a}, b: {b}, c: {c}, alpha: {alpha}, beta: {beta}, gamma: {gamma}')
 
     def print_values(self):
         # Initials
