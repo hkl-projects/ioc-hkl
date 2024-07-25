@@ -10,7 +10,7 @@ from gi.repository import Hkl
 #TODO add holds
 
 class hklCalculator():
-    def __init__(self, num_axes_solns=30, num_reflections = 5, geom=0, geom_name = 'E4CV'):
+    def __init__(self, num_axes_solns=30, num_reflections = 5, geom=2, geom_name = 'E4CV'):
         # initials
         self.wavelength = 0.
         self.geom_name = geom_name
@@ -150,41 +150,48 @@ class hklCalculator():
     
     def switch_geom(self):
         if self.geom == 0:
-            print("switching to E4CV")
-            self.geom_name = "E4CV"
-            self.__init__(geom = 0, geom_name="E4CV")
-            #self.__init__()
+            self.reset()
+            print("switching to TwoC")
+            self.geom_name = "TwoC"
+            self.__init__(geom = 0, geom_name="TwoC")
             self.start()
 
         if self.geom == 1:
+            self.reset()
             print("switching to E4CH")
             self.geom_name = "E4CH"
-            self.__init__(geom = 1, geom_name = "E4CH")
-            #self.__init__()
+            self.__init__(geom = 0, geom_name="E4CH")
             self.start()
 
         if self.geom == 2:
-            print("switching to K4CV")
-            self.__init__(geom = 2, geom_name = "K4CV")
-            #self.__init__()
+            self.reset()
+            print("switching to E4CV")
+            self.geom_name = "E4CV"
+            self.__init__(geom = 2, geom_name = "E4CV")
             self.start()
 
         if self.geom == 3:
-            print("switching to E6C")
-            self.__init__(geom = 3, geom_name = "E6C")
-            #self.__init__()
+            self.reset()
+            print("switching to K4CV")
+            self.__init__(geom = 3, geom_name = "K4CV")
             self.start()
 
         if self.geom == 4:
-            print("switching to K6C")
-            self.__init__(geom = 4, geom_name = "K6C")
-            #self.__init__()
+            self.reset()
+            print("switching to E6C")
+            self.__init__(geom = 4, geom_name = "E6C")
             self.start()
 
         if self.geom == 5:
+            self.reset()
+            print("switching to K6C")
+            self.__init__(geom = 5, geom_name = "K6C")
+            self.start()
+
+        if self.geom == 6:
+            self.reset()
             print("switching to ZAXIS")
-            self.__init__(geom = 5, geom_name = "ZAXIS")
-            #self.__init__()
+            self.__init__(geom = 6, geom_name = "ZAXIS")
             self.start()
 
     def forward(self):

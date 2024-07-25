@@ -26,7 +26,7 @@ iocInit
 
 epicsThreadSleep(1)
 
-dbpf("$(PREFIX)geom","0")
+dbpf("$(PREFIX)geom","2")
 dbpf("$(PREFIX)wlen","5.431")
 dbpf("$(PREFIX)a","5.431")
 dbpf("$(PREFIX)b","5.431")
