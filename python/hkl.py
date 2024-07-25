@@ -102,6 +102,7 @@ class hklCalculator():
         self.axes_solns_mu = []
         self.axes_solns_gamma = []
         self.axes_solns_delta = []
+
         for _ in range(self.num_axes_solns):
             self.axes_solns_omega.append(0)
             self.axes_solns_chi.append(0)
@@ -146,7 +147,7 @@ class hklCalculator():
         print(self.get_info())
         x = self.engine_hkl.axis_names_get(Hkl.UnitEnum.USER)
         print(x)
-    '''
+    
     def switch_geom(self):
         if self.geom == 0:
             print("switching to E4CV")
@@ -185,12 +186,12 @@ class hklCalculator():
             self.__init__(geom = 5, geom_name = "ZAXIS")
             #self.__init__()
             self.start()
-    '''
 
     def forward(self):
         print("Forward function start")
         self.reset_pseudoaxes_solns()
         if self.geom == 0 or 1:
+            print("REACHED HERE")
             values_w = [float(self.axes_omega), \
                         float(self.axes_chi), \
                         float(self.axes_phi), \
@@ -215,28 +216,25 @@ class hklCalculator():
         self.get_UB_matrix()
 
     def forward_UB(self):
-        print("Forward function start")
-        if self.geom == 0 or 1 or 2:
-            values_w = [float(self.axes_omega_UB), \
-                        float(self.axes_chi_UB), \
-                        float(self.axes_phi_UB), \
-                        float(self.axes_tth_UB)] 
-        elif self.geom == 3 or 4 or 5:
-            #TODO
-            values_w = [float(self.axes_mu_UB),
-                        float(self.axes_omega_UB), \
-                        float(self.axes_chi_UB), \
-                        float(self.axes_phi_UB), \
-                        float(self.axes_gamma_UB), \
-                        float(self.axes_delta_UB),
-] 
+        print("Forward UB function start")
+        values_w = [float(self.axes_omega_UB), \
+                    float(self.axes_chi_UB), \
+                    float(self.axes_phi_UB), \
+                    float(self.axes_tth_UB)] 
+        #elif self.geom == 3 or 4 or 5:
+        #    #TODO
+        #    values_w = [float(self.axes_mu_UB),
+        #                float(self.axes_omega_UB), \
+        #                float(self.axes_chi_UB), \
+        #                float(self.axes_phi_UB), \
+        #                float(self.axes_gamma_UB), \
+        #                float(self.axes_delta_UB)] 
 
         try:
             self.geometry.axis_values_set(values_w, Hkl.UnitEnum.USER)
         except:
             print("invalid axes values")
             return
-
 
     def backward(self):
         print("Backward function start")
@@ -253,14 +251,12 @@ class hklCalculator():
             values_w_all.append(read)
         if len_solns > self.num_axes_solns: # truncate if above max available soln slots
             len_solns = self.num_axes_solns
-        if self.geom == 0 or 1:
-            for i in range(len_solns): 
-                self.axes_solns_omega[i], self.axes_solns_chi[i], \
-                self.axes_solns_phi[i], self.axes_solns_tth[i] = values_w_all[i]           
+        for i in range(len_solns): 
+            self.axes_solns_omega[i], self.axes_solns_chi[i], \
+            self.axes_solns_phi[i], self.axes_solns_tth[i] = values_w_all[i]           
 
     def get_axes(self):
-        if self.geom == 0 or 1:
-            axes = (self.axes_omega, self.axes_chi, self.axes_phi, self.axes_tth)
+        axes = (self.axes_omega, self.axes_chi, self.axes_phi, self.axes_tth)
         print(axes)
         return axes 
 
@@ -272,11 +268,10 @@ class hklCalculator():
 
     def get_axes_solns(self, cleanprint=False):
         axes = {}
-        if self.geom == 0 or 1:
-            axes['omega'] = self.axes_solns_omega
-            axes['chi']   = self.axes_solns_chi
-            axes['phi']   = self.axes_solns_phi
-            axes['tth']   = self.axes_solns_tth
+        axes['omega'] = self.axes_solns_omega
+        axes['chi']   = self.axes_solns_chi
+        axes['phi']   = self.axes_solns_phi
+        axes['tth']   = self.axes_solns_tth
         return axes
 
     def get_pseudoaxes_solns(self):
@@ -318,11 +313,10 @@ class hklCalculator():
         '''
         adds reflection #1 to sample for busing-levy calculation
         '''
-        if self.geom == 0 or 1:
-            self.axes_omega_UB = self.refl1_input[3]
-            self.axes_chi_UB   = self.refl1_input[4]
-            self.axes_phi_UB   = self.refl1_input[5]
-            self.axes_tth_UB   = self.refl1_input[6]
+        self.axes_omega_UB = self.refl1_input[3]
+        self.axes_chi_UB   = self.refl1_input[4]
+        self.axes_phi_UB   = self.refl1_input[5]
+        self.axes_tth_UB   = self.refl1_input[6]
         self.forward_UB() # replace with an update of sample with motor positions 
         # Hkl.SampleReflection(self.geometry, self.detector, h, k, l)
         self.refl1 = self.sample.add_reflection(self.geometry, self.detector, \
@@ -332,11 +326,10 @@ class hklCalculator():
         '''
         adds reflection #2 to sample for busing levy calculation
         '''
-        if self.geom == 0 or 1:
-            self.axes_omega_UB = self.refl2_input[3]
-            self.axes_chi_UB   = self.refl2_input[4]
-            self.axes_phi_UB   = self.refl2_input[5]
-            self.axes_tth_UB   = self.refl2_input[6]
+        self.axes_omega_UB = self.refl2_input[3]
+        self.axes_chi_UB   = self.refl2_input[4]
+        self.axes_phi_UB   = self.refl2_input[5]
+        self.axes_tth_UB   = self.refl2_input[6]
         self.forward_UB()
         # Hkl.SampleReflection(self.geometry, self.detector, h, k, l)
         self.refl2 = self.sample.add_reflection(self.geometry, self.detector, \
@@ -457,3 +450,6 @@ class hklCalculator():
         samp = self.sample.lattice_get()
         a,b,c,alpha,beta,gamma = samp.get(Hkl.UnitEnum.USER)
         print(f'a: {a}, b: {b}, c: {c}, alpha: {alpha}, beta: {beta}, gamma: {gamma}')
+        ub = self.get_UB_matrix()
+        print(f'UB:\n {ub}')
+        
