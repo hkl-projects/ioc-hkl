@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-07-22 06:22:35 by l3b-->
+<display version="2.0.0">
+  <name>DEMO_INVERSE_HKL_settings</name>
+  <macros>
+    <Sys>HB3:</Sys>
+  </macros>
+  <width>1750</width>
+  <height>1800</height>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle_2</name>
+    <x>20</x>
+    <width>740</width>
+    <height>470</height>
+    <line_color>
+      <color name="Header_Background" red="77" green="77" blue="77">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="30" green="144" blue="255" alpha="8">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle_1</name>
+    <x>870</x>
+    <y>930</y>
+    <width>840</width>
+    <height>810</height>
+    <line_color>
+      <color name="Header_Background" red="77" green="77" blue="77">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="30" green="144" blue="255" alpha="8">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle</name>
+    <x>780</x>
+    <width>950</width>
+    <height>470</height>
+    <line_color>
+      <color name="Header_Background" red="77" green="77" blue="77">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="30" green="144" blue="255" alpha="8">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="arc" version="2.0.0">
+    <name>Arc</name>
+    <x>980</x>
+    <y>300</y>
+    <width>1</width>
+    <height>1</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_3</name>
+    <file>E4CV/initials.bob</file>
+    <x>40</x>
+    <y>50</y>
+    <width>700</width>
+    <height>360</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display</name>
+    <file>E4CV/reflections.bob</file>
+    <x>810</x>
+    <y>70</y>
+    <width>880</width>
+    <height>320</height>
+  </widget>
+</display>

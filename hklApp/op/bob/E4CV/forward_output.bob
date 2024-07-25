@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-13 17:09:26 by kg1-->
+<!--Saved on 2024-07-25 13:06:19 by l3b-->
 <display version="2.0.0">
   <name>Forward_output</name>
   <macros>
-    <Sys>HB3:</Sys>
+    <Sys>HB3:ioc-hkl:</Sys>
   </macros>
   <width>600</width>
   <height>520</height>
@@ -22,12 +22,12 @@
     <name>Action Button</name>
     <actions>
       <action type="write_pv">
-        <pv_name>HB3:forward</pv_name>
+        <pv_name>$(Sys)forward</pv_name>
         <value>1</value>
         <description>WritePV</description>
       </action>
     </actions>
-    <pv_name>HB3:forward</pv_name>
+    <pv_name>$(Sys)forward</pv_name>
     <text>Real-&gt;Reciprocal</text>
     <x>220</x>
     <y>10</y>

@@ -41,3 +41,18 @@ record(ao, "$(P)$(R)compute_set_UB") {
     field(TPRO, "1")
     field(FLNK, "$(P)$(R)UBa11")
 }
+
+record(ao, "$(P)$(R)add_refl_refine") {
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.add_refl_refine()")
+    field(TPRO, "1")
+    field(FLNK, "$(P)$(R)UBa11si")
+}
+
+record(ao, "$(P)$(R)switch_geom") {
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.switch_geom()")
+    field(TPRO, "1")
+}
+
+

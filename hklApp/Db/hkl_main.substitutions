@@ -1,56 +1,71 @@
 file initials.template
 {
 pattern {P,R}
-{  HB3, : }
+{  HB3:ioc-hkl, : }
 }
 
 file pseudoaxes.template 
 {
 pattern {P, R}
-{ HB3, : }
+{ HB3:ioc-hkl, : }
 }
 
 file pseudoaxes_solns.template 
 {
 pattern {P, R}
-{ HB3, : }
+{ HB3:ioc-hkl, : }
 }
 
 file axes.template 
 {
 pattern {P, R}
-{ HB3, : }
+{ HB3:ioc-hkl, : }
 }
 
 
 file axes_solns.template 
 {
 pattern {P, R, C}
-{ HB3, : , 0 }
-{ HB3, : , 1 }
-{ HB3, : , 2 }
-{ HB3, : , 3 }
-{ HB3, : , 4 }
-{ HB3, : , 5 }
-{ HB3, : , 6 }
-{ HB3, : , 7 }
-{ HB3, : , 8 }
-{ HB3, : , 9 }
-{ HB3, : , 10 }
-{ HB3, : , 11 }
-{ HB3, : , 12 }
-{ HB3, : , 13 }
-{ HB3, : , 14 }
+{ HB3:ioc-hkl, : , 0 }
+{ HB3:ioc-hkl, : , 1 }
+{ HB3:ioc-hkl, : , 2 }
+{ HB3:ioc-hkl, : , 3 }
+{ HB3:ioc-hkl, : , 4 }
+{ HB3:ioc-hkl, : , 5 }
+{ HB3:ioc-hkl, : , 6 }
+{ HB3:ioc-hkl, : , 7 }
+{ HB3:ioc-hkl, : , 8 }
+{ HB3:ioc-hkl, : , 9 }
+{ HB3:ioc-hkl, : , 10 }
+{ HB3:ioc-hkl, : , 11 }
+{ HB3:ioc-hkl, : , 12 }
+{ HB3:ioc-hkl, : , 13 }
+{ HB3:ioc-hkl, : , 14 }
+{ HB3:ioc-hkl, : , 15 }
+{ HB3:ioc-hkl, : , 16 }
+{ HB3:ioc-hkl, : , 17 }
+{ HB3:ioc-hkl, : , 18 }
+{ HB3:ioc-hkl, : , 19 }
+{ HB3:ioc-hkl, : , 20 }
+{ HB3:ioc-hkl, : , 21 }
+{ HB3:ioc-hkl, : , 22 }
+{ HB3:ioc-hkl, : , 23 }
+{ HB3:ioc-hkl, : , 24 }
+{ HB3:ioc-hkl, : , 25 }
+{ HB3:ioc-hkl, : , 26 }
+{ HB3:ioc-hkl, : , 27 }
+{ HB3:ioc-hkl, : , 28 }
+{ HB3:ioc-hkl, : , 29 }
 }
 
 file functions.template 
 {
 pattern {P, R}
-{ HB3, : }
+{ HB3:ioc-hkl, : }
 }
 
 file UB_calc.template 
 {
 pattern {P, R}
-{ HB3, : }
+{ HB3:ioc-hkl, : }
 }

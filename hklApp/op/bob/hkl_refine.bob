@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-07-25 08:45:42 by l3b-->
+<display version="2.0.0">
+  <name>HKL_refine</name>
+  <macros>
+    <Sys>HB3:ioc-hkl:</Sys>
+  </macros>
+  <width>1000</width>
+  <height>800</height>
+  <widget type="arc" version="2.0.0">
+    <name>Arc</name>
+    <x>140</x>
+    <y>10</y>
+    <width>1</width>
+    <height>1</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_1</name>
+    <file>E4CV/reflections_refine.bob</file>
+    <x>20</x>
+    <y>11</y>
+    <width>850</width>
+    <height>580</height>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>Polyline_1</name>
+    <x>1640</x>
+    <y>120</y>
+    <width>1</width>
+    <height>1</height>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+    </points>
+  </widget>
+</display>

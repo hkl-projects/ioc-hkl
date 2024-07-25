@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-05 13:27:44 by l3b-->
+<!--Saved on 2024-07-25 08:44:32 by l3b-->
 <display version="2.0.0">
   <name>HKL_main</name>
   <macros>
     <Sys>HB3:</Sys>
   </macros>
-  <width>1800</width>
-  <height>1200</height>
+  <width>1850</width>
+  <height>1170</height>
   <widget type="navtabs" version="2.0.0">
     <name>Navigation Tabs</name>
     <tabs>
       <tab>
-        <name>Settings</name>
-        <file>hkl_settings.bob</file>
-        <macros>
-        </macros>
-        <group_name></group_name>
-      </tab>
-      <tab>
-        <name>Crystal</name>
-        <file></file>
-        <macros>
-        </macros>
-        <group_name></group_name>
-      </tab>
-      <tab>
-        <name>Pseudo Axis</name>
-        <file></file>
+        <name>Initials</name>
+        <file>hkl_initials.bob</file>
         <macros>
         </macros>
         <group_name></group_name>
       </tab>
       <tab>
         <name>Reflections</name>
-        <file></file>
+        <file>hkl_reflections.bob</file>
         <macros>
         </macros>
         <group_name></group_name>
       </tab>
       <tab>
-        <name>UB matrix</name>
-        <file></file>
+        <name>Refine</name>
+        <file>hkl_refine.bob</file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>Forward</name>
+        <file>hkl_forward.bob</file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>Backward</name>
+        <file>hkl_backward.bob</file>
         <macros>
         </macros>
         <group_name></group_name>
       </tab>
     </tabs>
     <width>1850</width>
-    <height>1100</height>
+    <height>1170</height>
   </widget>
 </display>

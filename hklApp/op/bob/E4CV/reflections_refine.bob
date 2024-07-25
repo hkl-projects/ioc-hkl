@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-09 12:10:32 by l3b-->
+<!--Saved on 2024-07-21 13:48:18 by l3b-->
 <display version="2.0.0">
   <name>Reflections Refine</name>
   <macros>
     <Sys>HB3:</Sys>
   </macros>
-  <width>875</width>
+  <width>850</width>
+  <height>555</height>
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle</name>
-    <x>170</x>
-    <y>380</y>
+    <x>118</x>
+    <y>330</y>
     <width>550</width>
     <height>210</height>
     <line_color>
@@ -21,22 +22,22 @@
   <widget type="label" version="2.0.0">
     <name>Label_9</name>
     <text>UB Matrix</text>
-    <x>522</x>
-    <y>420</y>
+    <x>470</x>
+    <y>370</y>
     <width>74</width>
   </widget>
   <widget type="arc" version="2.0.0">
     <name>Arc</name>
-    <x>535</x>
-    <y>500</y>
+    <x>483</x>
+    <y>450</y>
     <width>1</width>
     <height>1</height>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_16</name>
-    <pv_name>$(Sys)UBa11</pv_name>
-    <x>420</x>
-    <y>440</y>
+    <pv_name>$(Sys)UBa11si</pv_name>
+    <x>368</x>
+    <y>390</y>
     <width>78</width>
     <height>22</height>
     <background_color>
@@ -73,9 +74,9 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_17</name>
-    <pv_name>$(Sys)UBa12</pv_name>
-    <x>510</x>
-    <y>440</y>
+    <pv_name>$(Sys)UBa12si</pv_name>
+    <x>458</x>
+    <y>390</y>
     <width>78</width>
     <height>22</height>
     <background_color>
@@ -112,9 +113,9 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_18</name>
-    <pv_name>$(Sys)UBa13</pv_name>
-    <x>600</x>
-    <y>440</y>
+    <pv_name>$(Sys)UBa13si</pv_name>
+    <x>548</x>
+    <y>390</y>
     <width>78</width>
     <height>22</height>
     <background_color>
@@ -151,9 +152,9 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_19</name>
-    <pv_name>$(Sys)UBa21</pv_name>
-    <x>420</x>
-    <y>462</y>
+    <pv_name>$(Sys)UBa21si</pv_name>
+    <x>368</x>
+    <y>412</y>
     <width>78</width>
     <height>22</height>
     <background_color>
@@ -190,9 +191,9 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_20</name>
-    <pv_name>$(Sys)UBa22</pv_name>
-    <x>510</x>
-    <y>462</y>
+    <pv_name>$(Sys)UBa22si</pv_name>
+    <x>458</x>
+    <y>412</y>
     <width>78</width>
     <height>22</height>
     <background_color>
@@ -229,9 +230,9 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_21</name>
-    <pv_name>$(Sys)UBa23</pv_name>
-    <x>600</x>
-    <y>462</y>
+    <pv_name>$(Sys)UBa23si</pv_name>
+    <x>548</x>
+    <y>412</y>
     <width>78</width>
     <height>22</height>
     <background_color>
@@ -268,9 +269,9 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_22</name>
-    <pv_name>$(Sys)UBa31</pv_name>
-    <x>420</x>
-    <y>484</y>
+    <pv_name>$(Sys)UBa31si</pv_name>
+    <x>368</x>
+    <y>434</y>
     <width>78</width>
     <height>22</height>
     <background_color>
@@ -307,9 +308,9 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_23</name>
-    <pv_name>$(Sys)UBa32</pv_name>
-    <x>510</x>
-    <y>484</y>
+    <pv_name>$(Sys)UBa32si</pv_name>
+    <x>458</x>
+    <y>434</y>
     <width>78</width>
     <height>22</height>
     <background_color>
@@ -346,9 +347,9 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_24</name>
-    <pv_name>$(Sys)UBa33</pv_name>
-    <x>600</x>
-    <y>484</y>
+    <pv_name>$(Sys)UBa33si</pv_name>
+    <x>548</x>
+    <y>434</y>
     <width>78</width>
     <height>22</height>
     <background_color>
@@ -394,8 +395,8 @@
     </actions>
     <pv_name>HB3:calc_UB_refine_set</pv_name>
     <text>Set Lattice and UB to Sample</text>
-    <x>720</x>
-    <y>280</y>
+    <x>418</x>
+    <y>472</y>
     <width>141</width>
     <height>40</height>
     <tooltip>$(actions)</tooltip>
@@ -403,14 +404,14 @@
   <widget type="label" version="2.0.0">
     <name>Label_11</name>
     <text>Refine lattice and UB with additional reflections</text>
-    <x>268</x>
+    <x>248</x>
     <y>10</y>
     <width>325</width>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_25</name>
-    <pv_name>$(Sys)refl1h</pv_name>
-    <x>20</x>
+    <pv_name>$(Sys)reflhsi</pv_name>
+    <x>10</x>
     <y>60</y>
     <width>108</width>
     <height>22</height>
@@ -448,8 +449,8 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_26</name>
-    <pv_name>$(Sys)refl1k</pv_name>
-    <x>139</x>
+    <pv_name>$(Sys)reflksi</pv_name>
+    <x>129</x>
     <y>60</y>
     <width>108</width>
     <height>22</height>
@@ -487,8 +488,8 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_27</name>
-    <pv_name>$(Sys)refl1l</pv_name>
-    <x>257</x>
+    <pv_name>$(Sys)refllsi</pv_name>
+    <x>247</x>
     <y>60</y>
     <width>108</width>
     <height>22</height>
@@ -526,8 +527,8 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_28</name>
-    <pv_name>$(Sys)refl1omega</pv_name>
-    <x>380</x>
+    <pv_name>$(Sys)reflomegasi</pv_name>
+    <x>370</x>
     <y>60</y>
     <width>108</width>
     <height>22</height>
@@ -565,8 +566,8 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_29</name>
-    <pv_name>$(Sys)refl1chi</pv_name>
-    <x>500</x>
+    <pv_name>$(Sys)reflchisi</pv_name>
+    <x>490</x>
     <y>60</y>
     <width>108</width>
     <height>22</height>
@@ -604,8 +605,8 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_30</name>
-    <pv_name>$(Sys)refl1phi</pv_name>
-    <x>620</x>
+    <pv_name>$(Sys)reflphisi</pv_name>
+    <x>610</x>
     <y>60</y>
     <width>108</width>
     <height>22</height>
@@ -643,8 +644,8 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_31</name>
-    <pv_name>$(Sys)refl1tth</pv_name>
-    <x>740</x>
+    <pv_name>$(Sys)refltthsi</pv_name>
+    <x>730</x>
     <y>60</y>
     <width>108</width>
     <height>22</height>
@@ -683,49 +684,49 @@
   <widget type="label" version="2.0.0">
     <name>Label_39</name>
     <text>h</text>
-    <x>20</x>
+    <x>10</x>
     <y>40</y>
     <width>51</width>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_40</name>
     <text>k</text>
-    <x>144</x>
+    <x>134</x>
     <y>40</y>
     <width>51</width>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_41</name>
     <text>l</text>
-    <x>257</x>
+    <x>247</x>
     <y>40</y>
     <width>51</width>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_42</name>
     <text>omega</text>
-    <x>380</x>
+    <x>370</x>
     <y>40</y>
     <width>51</width>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_43</name>
     <text>chi</text>
-    <x>510</x>
+    <x>500</x>
     <y>40</y>
     <width>51</width>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_44</name>
     <text>phi</text>
-    <x>620</x>
+    <x>610</x>
     <y>40</y>
     <width>51</width>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_45</name>
     <text>tth</text>
-    <x>740</x>
+    <x>730</x>
     <y>40</y>
     <width>51</width>
   </widget>
@@ -733,14 +734,14 @@
     <name>Action Button_5</name>
     <actions>
       <action type="write_pv">
-        <pv_name>HB3:compute_UB</pv_name>
+        <pv_name>HB3:add_refl_refine</pv_name>
         <value>1</value>
         <description>WritePV</description>
       </action>
     </actions>
     <pv_name>HB3:add_refl_refine</pv_name>
     <text>Add Reflection</text>
-    <x>329</x>
+    <x>298</x>
     <y>100</y>
     <width>140</width>
     <height>40</height>
@@ -757,8 +758,8 @@
     </actions>
     <pv_name>HB3:remove_reflection</pv_name>
     <text>Remove Reflection</text>
-    <x>720</x>
-    <y>160</y>
+    <x>620</x>
+    <y>180</y>
     <width>140</width>
     <height>40</height>
     <tooltip>$(actions)</tooltip>
@@ -774,8 +775,8 @@
     </actions>
     <pv_name>HB3:calc_UB_refine</pv_name>
     <text>Refine Lattice &amp; UB</text>
-    <x>720</x>
-    <y>220</y>
+    <x>620</x>
+    <y>230</y>
     <width>140</width>
     <height>40</height>
     <tooltip>$(actions)</tooltip>
@@ -783,29 +784,29 @@
   <widget type="label" version="2.0.0">
     <name>Label_12</name>
     <text>Refined lattice and UB matrix</text>
-    <x>360</x>
-    <y>350</y>
+    <x>308</x>
+    <y>300</y>
     <width>187</width>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_13</name>
     <text>Lattice</text>
-    <x>260</x>
-    <y>390</y>
+    <x>208</x>
+    <y>340</y>
     <width>50</width>
   </widget>
   <widget type="arc" version="2.0.0">
     <name>Arc_1</name>
-    <x>275</x>
-    <y>480</y>
+    <x>223</x>
+    <y>430</y>
     <width>1</width>
     <height>1</height>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_41</name>
-    <pv_name>$(Sys)refl1h</pv_name>
-    <x>230</x>
-    <y>410</y>
+    <pv_name>$(Sys)asi</pv_name>
+    <x>178</x>
+    <y>360</y>
     <height>22</height>
     <background_color>
       <color red="255" green="255" blue="255">
@@ -841,9 +842,9 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_42</name>
-    <pv_name>$(Sys)refl1h</pv_name>
-    <x>230</x>
-    <y>440</y>
+    <pv_name>$(Sys)bsi</pv_name>
+    <x>178</x>
+    <y>390</y>
     <height>22</height>
     <background_color>
       <color red="255" green="255" blue="255">
@@ -879,9 +880,9 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_43</name>
-    <pv_name>$(Sys)refl1h</pv_name>
-    <x>230</x>
-    <y>470</y>
+    <pv_name>$(Sys)csi</pv_name>
+    <x>178</x>
+    <y>420</y>
     <height>22</height>
     <background_color>
       <color red="255" green="255" blue="255">
@@ -917,9 +918,9 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_44</name>
-    <pv_name>$(Sys)refl1h</pv_name>
-    <x>230</x>
-    <y>500</y>
+    <pv_name>$(Sys)alphasi</pv_name>
+    <x>178</x>
+    <y>450</y>
     <width>101</width>
     <height>22</height>
     <background_color>
@@ -956,9 +957,9 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_45</name>
-    <pv_name>$(Sys)refl1h</pv_name>
-    <x>230</x>
-    <y>560</y>
+    <pv_name>$(Sys)gammasi</pv_name>
+    <x>178</x>
+    <y>510</y>
     <height>22</height>
     <background_color>
       <color red="255" green="255" blue="255">
@@ -994,9 +995,9 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_46</name>
-    <pv_name>$(Sys)refl1h</pv_name>
-    <x>230</x>
-    <y>530</y>
+    <pv_name>$(Sys)betasi</pv_name>
+    <x>178</x>
+    <y>480</y>
     <height>22</height>
     <background_color>
       <color red="255" green="255" blue="255">
@@ -1033,51 +1034,51 @@
   <widget type="label" version="2.0.0">
     <name>Label_38</name>
     <text>a</text>
-    <x>210</x>
-    <y>410</y>
+    <x>158</x>
+    <y>360</y>
     <width>20</width>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_46</name>
     <text>b</text>
-    <x>210</x>
-    <y>440</y>
+    <x>158</x>
+    <y>390</y>
     <width>20</width>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_47</name>
     <text>c</text>
-    <x>210</x>
-    <y>470</y>
+    <x>158</x>
+    <y>420</y>
     <width>20</width>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_48</name>
     <text>alpha</text>
-    <x>190</x>
-    <y>500</y>
+    <x>138</x>
+    <y>450</y>
     <width>40</width>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_49</name>
     <text>beta</text>
-    <x>190</x>
-    <y>530</y>
+    <x>138</x>
+    <y>480</y>
     <width>40</width>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_50</name>
     <text>gamma</text>
-    <x>180</x>
-    <y>560</y>
+    <x>128</x>
+    <y>510</y>
     <width>51</width>
   </widget>
   <widget type="checkbox" version="2.0.0">
     <name>Check Box_1</name>
     <pv_name>HB3:refl_refine_input_list</pv_name>
-    <x>40</x>
+    <x>10</x>
     <y>160</y>
-    <width>670</width>
-    <height>170</height>
+    <width>590</width>
+    <height>130</height>
   </widget>
 </display>

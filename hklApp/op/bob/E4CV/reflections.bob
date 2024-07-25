@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-08 12:37:16 by l3b-->
+<!--Saved on 2024-07-25 07:29:52 by l3b-->
 <display version="2.0.0">
   <name>Reflections</name>
   <macros>
-    <Sys>HB3:</Sys>
+    <Sys>HB3:ioc-hkl:</Sys>
   </macros>
-  <width>875</width>
+  <width>880</width>
   <height>330</height>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle</name>
+    <x>155</x>
+    <y>190</y>
+    <width>490</width>
+    <height>130</height>
+    <line_color>
+      <color name="Header_Background" red="77" green="77" blue="77">
+      </color>
+    </line_color>
+    <transparent>true</transparent>
+  </widget>
   <widget type="label" version="2.0.0">
     <name>Label_9</name>
     <text>UB Matrix</text>
@@ -16,9 +28,9 @@
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_10</name>
-    <text>Add initial 2 reflections</text>
-    <x>319</x>
-    <width>202</width>
+    <text>Busing-Levy - add 2 reflections</text>
+    <x>297</x>
+    <width>216</width>
   </widget>
   <widget type="arc" version="2.0.0">
     <name>Arc</name>
@@ -43,23 +55,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -82,23 +77,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -121,23 +99,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -160,23 +121,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -199,23 +143,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -238,23 +165,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -277,23 +187,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -316,23 +209,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -355,23 +231,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -394,23 +253,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -433,23 +275,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -472,23 +297,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -511,23 +319,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -550,23 +341,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -587,7 +361,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_16</name>
-    <pv_name>$(Sys)UBa11</pv_name>
+    <pv_name>$(Sys)UBa11bl</pv_name>
     <x>181</x>
     <y>230</y>
     <width>78</width>
@@ -601,23 +375,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -626,7 +383,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_17</name>
-    <pv_name>$(Sys)UBa12</pv_name>
+    <pv_name>$(Sys)UBa12bl</pv_name>
     <x>271</x>
     <y>230</y>
     <width>78</width>
@@ -640,23 +397,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -665,7 +405,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_18</name>
-    <pv_name>$(Sys)UBa13</pv_name>
+    <pv_name>$(Sys)UBa13bl</pv_name>
     <x>361</x>
     <y>230</y>
     <width>78</width>
@@ -679,23 +419,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -704,7 +427,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_19</name>
-    <pv_name>$(Sys)UBa21</pv_name>
+    <pv_name>$(Sys)UBa21bl</pv_name>
     <x>181</x>
     <y>252</y>
     <width>78</width>
@@ -718,23 +441,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -743,7 +449,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_20</name>
-    <pv_name>$(Sys)UBa22</pv_name>
+    <pv_name>$(Sys)UBa22bl</pv_name>
     <x>271</x>
     <y>252</y>
     <width>78</width>
@@ -757,23 +463,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -782,7 +471,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_21</name>
-    <pv_name>$(Sys)UBa23</pv_name>
+    <pv_name>$(Sys)UBa23bl</pv_name>
     <x>361</x>
     <y>252</y>
     <width>78</width>
@@ -796,23 +485,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -821,7 +493,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_22</name>
-    <pv_name>$(Sys)UBa31</pv_name>
+    <pv_name>$(Sys)UBa31bl</pv_name>
     <x>181</x>
     <y>274</y>
     <width>78</width>
@@ -835,23 +507,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -860,7 +515,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_23</name>
-    <pv_name>$(Sys)UBa32</pv_name>
+    <pv_name>$(Sys)UBa32bl</pv_name>
     <x>271</x>
     <y>274</y>
     <width>78</width>
@@ -874,23 +529,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -899,7 +537,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_24</name>
-    <pv_name>$(Sys)UBa33</pv_name>
+    <pv_name>$(Sys)UBa33bl</pv_name>
     <x>361</x>
     <y>274</y>
     <width>78</width>
@@ -913,23 +551,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr).SET</pv_name>
-      </rule>
-    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -940,35 +561,37 @@
     <name>Action Button_4</name>
     <actions>
       <action type="write_pv">
-        <pv_name>HB3:compute_UB</pv_name>
+        <pv_name>$(Sys)compute_UB</pv_name>
         <value>1</value>
         <description>WritePV</description>
       </action>
     </actions>
-    <pv_name>HB3:compute_UB</pv_name>
+    <pv_name>$(Sys)compute_UB</pv_name>
     <text>Calculate UB</text>
     <x>319</x>
     <y>120</y>
     <width>140</width>
     <height>40</height>
     <tooltip>$(actions)</tooltip>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="action_button" version="3.0.0">
     <name>Action Button_6</name>
     <actions>
       <action type="write_pv">
-        <pv_name>HB3:compute_set_UB</pv_name>
+        <pv_name>$(Sys)compute_set_UB</pv_name>
         <value>1</value>
         <description>WritePV</description>
       </action>
     </actions>
-    <pv_name>HB3:compute_set_UB</pv_name>
+    <pv_name>$(Sys)compute_set_UB</pv_name>
     <text>Set UB to Sample</text>
     <x>486</x>
     <y>240</y>
     <width>140</width>
     <height>40</height>
     <tooltip>$(actions)</tooltip>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_30</name>
@@ -1018,17 +641,5 @@
     <x>751</x>
     <y>20</y>
     <width>51</width>
-  </widget>
-  <widget type="rectangle" version="2.0.0">
-    <name>Rectangle</name>
-    <x>155</x>
-    <y>190</y>
-    <width>490</width>
-    <height>130</height>
-    <line_color>
-      <color name="Header_Background" red="77" green="77" blue="77">
-      </color>
-    </line_color>
-    <transparent>true</transparent>
   </widget>
 </display>

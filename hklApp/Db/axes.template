@@ -1,3 +1,20 @@
+record(ao, "$(P)$(R)mu") {
+    field(DESC, "mu")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(LOPR, "-180")
+    field(HOPR, "180")
+    field(OUT, "@hkl_calc.axes_mu=VAL")
+    field(FLNK, "$(P)$(R)mu_RBV")
+}
+
+record(ai, "$(P)$(R)mu_RBV") {
+    field(DESC, "mu")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_mu")
+}
+
 record(ao, "$(P)$(R)omega") {
     field(DESC, "omega")
     field(PINI, "YES")
@@ -70,4 +87,43 @@ record(ai, "$(P)$(R)tth_RBV") {
     field(LOPR, "-180")
     field(HOPR, "180")
     field(INP, "@hkl_calc.axes_tth")
+}
+
+# duplicate with lattice params
+#record(ao, "$(P)$(R)gamma") {
+#    field(DESC, "gamma")
+#    field(DTYP, "pydev")
+#    field(PINI, "YES")
+#    field(LOPR, "-180")
+#    field(HOPR, "180")
+#    field(OUT, "@hkl_calc.axes_gamma=VAL")
+#    field(FLNK, "$(P)$(R)gamma_RBV")
+#}
+
+#record(ai, "$(P)$(R)gamma_RBV") {
+#    field(DESC, "tth")
+#    field(DTYP, "pydev")
+#    field(PINI, "YES")
+#    field(LOPR, "-180")
+#    field(HOPR, "180")
+#    field(INP, "@hkl_calc.axes_gamma")
+#}
+
+record(ao, "$(P)$(R)delta") {
+    field(DESC, "delta")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(LOPR, "-180")
+    field(HOPR, "180")
+    field(OUT, "@hkl_calc.axes_delta=VAL")
+    field(FLNK, "$(P)$(R)delta_RBV")
+}
+
+record(ai, "$(P)$(R)delta_RBV") {
+    field(DESC, "delta")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(LOPR, "-180")
+    field(HOPR, "180")
+    field(INP, "@hkl_calc.axes_delta")
 }

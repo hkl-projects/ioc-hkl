@@ -6,7 +6,7 @@
 epicsEnvSet("PYTHONPATH","$(TOP)/python")
 
 # Prefix set for Triple Axis Spectrometer -> TAS
-epicsEnvSet("PREFIX", "HB3:")
+epicsEnvSet("PREFIX", "HB3:ioc-hkl:")
 
 cd ${TOP}
 
@@ -21,7 +21,6 @@ cd ${TOP}/iocBoot/${IOC}
 
 pydev("import hklApp")
 pydev("hkl_calc = hklApp.hklCalcs()")
-#pydev("hkl_calc.test()")
 
 iocInit
 
@@ -58,7 +57,4 @@ dbpf("$(PREFIX)refl2phi","0")
 dbpf("$(PREFIX)refl2tth","69")
 
 
-
 #dbl > pvlist.dbl
-
-#pydev("hkl_calc.test()")
