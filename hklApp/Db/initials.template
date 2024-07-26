@@ -107,7 +107,7 @@ record(ao, "$(P)$(R)alpha") {
     field(DESC, "alpha")
     field(PINI, "YES")
     field(DRVL, "0")
-    field(DRVL, "180")
+    field(DRVH, "180")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.latt[3]=VAL")
     field(FLNK, "$(P)$(R)alpha_RBV")
