@@ -254,4 +254,58 @@ record(ai, "$(P)$(R)UBa33") {
     field(SCAN, "1 second")
 }
 
+record(ao, "$(P)$(R)UBa11_input") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.UB_matrix_input[0,0]=VAL")
+}
+
+record(ao, "$(P)$(R)UBa12_input") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.UB_matrix_input[0,1]=VAL")
+}
+
+record(ao, "$(P)$(R)UBa13_input") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.UB_matrix_input[0,2]=VAL")
+}
+
+record(ao, "$(P)$(R)UBa21_input") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.UB_matrix_input[1,0]=VAL")
+}
+
+record(ao, "$(P)$(R)UBa22_input") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.UB_matrix_input[1,1]=VAL")
+}
+
+record(ao, "$(P)$(R)UBa23_input") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.UB_matrix_input[1,2]=VAL")
+}
+
+record(ao, "$(P)$(R)UBa31_input") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.UB_matrix_input[2,0]=VAL")
+}
+
+record(ao, "$(P)$(R)UBa32_input") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.UB_matrix_input[2,1]=VAL")
+}
+
+record(ao, "$(P)$(R)UBa33_input") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.UB_matrix_input[2,2]=VAL")
+}
+
 

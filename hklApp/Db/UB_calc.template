@@ -189,7 +189,6 @@ record(ai, "$(P)$(R)gammasi") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.latt_refine[5]")
-    field(FLNK, "$(P)$(R)gammasi")
     field(SCAN, "1 second")
 }
 
