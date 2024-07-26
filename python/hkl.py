@@ -5,9 +5,10 @@ import gi
 from gi.repository import GLib
 gi.require_version('Hkl', '5.0')
 from gi.repository import Hkl
+import sys
 
 class hklCalculator():
-    def __init__(self, num_axes_solns=30, num_reflections = 5, geom=2, geom_name = 'E4CV'):
+    def __init__(self, num_axes_solns=30, num_reflections = 10, geom=2, geom_name = 'E4CV'):
         # initials
         self.wavelength = 0.
         self.geom_name = geom_name
@@ -24,6 +25,8 @@ class hklCalculator():
         self.lattice = np.nan 
         self.lattice_vol = 0.
         
+        self.errors = 'test string'
+        
         # sample orientation
         # initial 2 reflections
         self.num_reflections = num_reflections
@@ -33,11 +36,15 @@ class hklCalculator():
         #self.refl2_input_6c = [0., 0., 0., 0., 0., 0., 0., 0., 0.]
         self.refl1 = np.nan
         self.refl2 = np.nan
-         
+        
+        self.curr_num_refls = 0
+ 
         # refine with reflections
         self.refl_refine_input = [0., 0., 0., 0., 0., 0., 0.]
         #self.refl_refine_input_6c = [0., 0., 0., 0., 0., 0., 0., 0., 0.]
         self.refl_refine_input_list = []
+        for i in range(self.num_reflections):
+            self.refl_refine_input_list.append([0., 0., 0., 0., 0., 0., 0.])
         self.refl_refine = np.nan
         self.refl_refine_list = []
         self.selected_refl = [] # used for deleting reflection from list
@@ -401,6 +408,7 @@ class hklCalculator():
                 print(UB_temp.get(i,j))
         self.sample.UB_set(UB_temp)
         self.get_UB_matrix()
+        self.get_info()        
 
     def affine(self):
         '''
@@ -414,7 +422,7 @@ class hklCalculator():
                 self.UB_matrix_simplex[i,j] = UB.get(i,j)
         self.latt_refine[0], self.latt_refine[1], self.latt_refine[2], \
             self.latt_refine[3], self.latt_refine[4], self.latt_refine[5] = \
-            lattice.get(Hkl.UnitEnum.DEFAULT)        
+            self.lattice.get(Hkl.UnitEnum.USER)        
         self.start()
 
     def affine_set(self):
@@ -428,10 +436,10 @@ class hklCalculator():
                 self.UB_matrix_simplex[i,j] = UB.get(i,j)
                 self.UB_matrix[i,j] = UB.get(i,j)
         self.latt[0], self.latt[1], self.latt[2], self.latt[3], self.latt[4], \
-            self.latt[5] = lattice.get(Hkl.UnitEnum.DEFAULT)
+            self.latt[5] = self.lattice.get(Hkl.UnitEnum.USER)
         self.latt_refine[0], self.latt_refine[1], self.latt_refine[2], \
             self.latt_refine[3], self.latt_refine[4], self.latt_refine[5] = \
-            lattice.get(Hkl.UnitEnum.DEFAULT)             
+            self.lattice.get(Hkl.UnitEnum.USER)             
                 
     def add_refl_refine(self):
         self.axes_omega_UB = self.refl_refine_input[3]
@@ -443,7 +451,8 @@ class hklCalculator():
                 self.detector, self.refl_refine_input[0], \
                 self.refl_refine_input[1], self.refl_refine_input[2])   
         self.refl_refine_list.append(self.refl_refine)
-        self.refl_refine_input_list.append(self.refl_refine_input)
+        self.refl_refine_input_list[self.curr_num_refls] = self.refl_refine_input.copy()
+        self.curr_num_refls += 1
 
     def del_refl_refine(self):
         self.selected_refl

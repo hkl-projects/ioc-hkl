@@ -52,14 +52,13 @@ record(ao, "$(P)$(R)affine") {
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.affine()")
     field(TPRO, "1")
-    field(FLNK, "$(P)$(R)UBa11si")
+#    field(FLNK, "$(P)$(R)UBa11si")
 }
 
 record(ao, "$(P)$(R)affine_set") {
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.affine_set()")
     field(TPRO, "1")
-    field(FLNK, "$(P)$(R)UBa11")
 }
 
 record(ao, "$(P)$(R)set_input_UB") {

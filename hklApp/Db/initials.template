@@ -59,8 +59,8 @@ record(ao, "$(P)$(R)a") {
     field(DESC, "a")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(LOPR, "0")
-    field(HOPR, "11.54")
+    field(DRVL, "0")
+    field(DRVH, "11.54")
     field(OUT, "@hkl_calc.latt[0]=VAL")
     field(FLNK, "$(P)$(R)a_RBV")
 }
@@ -75,8 +75,8 @@ record(ao, "$(P)$(R)b") {
     field(DESC, "b")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(LOPR, "0")
-    field(HOPR, "11.54")
+    field(DRVL, "0")
+    field(DRVH, "11.54")
     field(OUT, "@hkl_calc.latt[1]=VAL")
     field(FLNK, "$(P)$(R)b_RBV")
 }
@@ -91,8 +91,8 @@ record(ao, "$(P)$(R)c") {
     field(DESC, "c")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(LOPR, "0")
-    field(HOPR, "11.54")
+    field(DRVL, "0")
+    field(DRVH, "11.54")
     field(OUT, "@hkl_calc.latt[2]=VAL")
     field(FLNK, "$(P)$(R)c_RBV")
 }
@@ -106,8 +106,8 @@ record(ai, "$(P)$(R)c_RBV") {
 record(ao, "$(P)$(R)alpha") {
     field(DESC, "alpha")
     field(PINI, "YES")
-    field(LOPR, "0")
-    field(HOPR, "180")
+    field(DRVL, "0")
+    field(DRVL, "180")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.latt[3]=VAL")
     field(FLNK, "$(P)$(R)alpha_RBV")
@@ -122,8 +122,8 @@ record(ai, "$(P)$(R)alpha_RBV") {
 record(ao, "$(P)$(R)beta") {
     field(DESC, "beta")
     field(PINI, "YES")
-    field(LOPR, "0")
-    field(HOPR, "180")
+    field(DRVL, "0")
+    field(DRVH, "180")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.latt[4]=VAL")
     field(FLNK, "$(P)$(R)beta_RBV")
@@ -138,8 +138,8 @@ record(ai, "$(P)$(R)beta_RBV") {
 record(ao, "$(P)$(R)gamma") {
     field(DESC, "gamma")
     field(PINI, "YES")
-    field(LOPR, "0")
-    field(HOPR, "180")
+    field(DRVL, "0")
+    field(DRVH, "180")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.latt[5]=VAL")
     field(FLNK, "$(P)$(R)gamma_RBV")
@@ -306,6 +306,16 @@ record(ao, "$(P)$(R)UBa33_input") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.UB_matrix_input[2,2]=VAL")
+}
+
+record(waveform, "$(P)$(R)errors") {
+    field(PINI, "YES")
+    field(DESC, "error messages")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.errors")
+    field(NELM, "100000")
+    field(FTVL, "CHAR")
+    field(SCAN, "1 second")
 }
 
 

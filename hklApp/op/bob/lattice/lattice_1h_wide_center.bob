@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-25 21:29:15 by l3b-->
+<!--Saved on 2024-07-26 09:59:33 by l3b-->
 <display version="2.0.0">
   <width>780</width>
   <height>22</height>
@@ -82,7 +82,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_1</name>
-    <pv_name>$(Sys)$(Dev).LOPR</pv_name>
+    <pv_name>$(Sys)$(Dev).DRVL</pv_name>
     <x>460</x>
     <width>150</width>
     <height>22</height>
@@ -103,7 +103,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_2</name>
-    <pv_name>$(Sys)$(Dev).HOPR</pv_name>
+    <pv_name>$(Sys)$(Dev).DRVH</pv_name>
     <x>620</x>
     <width>150</width>
     <height>22</height>

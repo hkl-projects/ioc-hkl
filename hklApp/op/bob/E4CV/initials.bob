@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-26 07:57:46 by l3b-->
+<!--Saved on 2024-07-26 11:46:14 by l3b-->
 <display version="2.0.0">
   <name>Initials</name>
   <macros>
@@ -768,19 +768,33 @@
     <tooltip>$(actions)</tooltip>
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
-  <widget type="array" version="2.0.0">
-    <name>Array</name>
-    <pv_name>$(Sys)error_status</pv_name>
-    <x>600</x>
-    <y>360</y>
-    <width>390</width>
-    <height>140</height>
-  </widget>
   <widget type="label" version="2.0.0">
     <name>Label_12</name>
     <text>Error status</text>
     <x>610</x>
     <y>340</y>
     <width>124</width>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_1</name>
+    <pv_name>$(Sys)errors</pv_name>
+    <x>610</x>
+    <y>360</y>
+    <width>490</width>
+    <height>220</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>6</format>
+    <wrap_words>true</wrap_words>
+    <multi_line>true</multi_line>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
   </widget>
 </display>
