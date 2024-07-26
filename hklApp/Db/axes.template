@@ -127,3 +127,18 @@ record(ai, "$(P)$(R)delta_RBV") {
     field(HOPR, "180")
     field(INP, "@hkl_calc.axes_delta")
 }
+
+record(mbbo, "$(P)$(R)mode") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(ZRVL, "0")
+    field(ONVL, "1")
+    field(TWVL, "2")
+    field(THVL, "3")
+    field(ZRST, "bissector")
+    field(ONST, "constant omega")
+    field(TWST, "constant chi")
+    field(THST, "constant phi")
+    field(OUT, "@hkl_calc.mode=VAL")
+}
+

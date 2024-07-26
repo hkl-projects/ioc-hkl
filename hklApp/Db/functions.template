@@ -16,12 +16,6 @@ record(ao, "$(P)$(R)reset") {
     field(TPRO, "1")
 }
 
-record(ao, "$(P)$(R)test") {
-    field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.test()")
-    field(TPRO, "1")
-}
-
 record(ao, "$(P)$(R)set_sample") {
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.start()")
@@ -46,13 +40,32 @@ record(ao, "$(P)$(R)add_refl_refine") {
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.add_refl_refine()")
     field(TPRO, "1")
-    field(FLNK, "$(P)$(R)UBa11si")
 }
 
 record(ao, "$(P)$(R)switch_geom") {
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.switch_geom()")
     field(TPRO, "1")
+}
+
+record(ao, "$(P)$(R)affine") {
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.affine()")
+    field(TPRO, "1")
+#    field(FLNK, "$(P)$(R)UBa11si")
+}
+
+record(ao, "$(P)$(R)affine_set") {
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.affine_set()")
+    field(TPRO, "1")
+}
+
+record(ao, "$(P)$(R)set_input_UB") {
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.set_input_UB()")
+    field(TPRO, "1")
+    field(FLNK, "$(P)$(R)UBa11_input")
 }
 
 

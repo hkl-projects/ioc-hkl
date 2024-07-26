@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-25 08:37:33 by l3b-->
+<!--Saved on 2024-07-26 06:37:29 by l3b-->
 <display version="2.0.0">
   <name>HKL_backward</name>
   <macros>
@@ -12,7 +12,7 @@
     <x>10</x>
     <y>10</y>
     <width>840</width>
-    <height>810</height>
+    <height>910</height>
     <line_color>
       <color name="Header_Background" red="77" green="77" blue="77">
       </color>
@@ -34,8 +34,36 @@
     <name>Embedded Display_7</name>
     <file>E4CV/backward_output.bob</file>
     <x>20</x>
-    <y>410</y>
+    <y>510</y>
     <width>820</width>
     <height>400</height>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <text>Mode:</text>
+    <x>50</x>
+    <y>430</y>
+    <width>60</width>
+    <height>30</height>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>Choice Button</name>
+    <pv_name>$(Sys)mode</pv_name>
+    <x>120</x>
+    <y>430</y>
+    <width>620</width>
+    <height>20</height>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <items>
+      <item></item>
+    </items>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_1</name>
+    <text>*constant to the rotation value set in "forward"</text>
+    <x>290</x>
+    <y>460</y>
+    <width>340</width>
+    <height>30</height>
   </widget>
 </display>

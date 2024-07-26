@@ -69,3 +69,20 @@ file UB_calc.template
 pattern {P, R}
 { HB3:ioc-hkl, : }
 }
+
+
+file UB_calc_refine_refls.template 
+{
+pattern {P, R, C}
+{ HB3:ioc-hkl, : , 0 }
+{ HB3:ioc-hkl, : , 1 }
+{ HB3:ioc-hkl, : , 2 }
+{ HB3:ioc-hkl, : , 3 }
+{ HB3:ioc-hkl, : , 4 }
+{ HB3:ioc-hkl, : , 5 }
+{ HB3:ioc-hkl, : , 6 }
+{ HB3:ioc-hkl, : , 7 }
+{ HB3:ioc-hkl, : , 8 }
+{ HB3:ioc-hkl, : , 9 }
+{ HB3:ioc-hkl, : , 10 }
+}

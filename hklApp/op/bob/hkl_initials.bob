@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-25 08:35:54 by l3b-->
+<!--Saved on 2024-07-26 06:55:34 by l3b-->
 <display version="2.0.0">
   <name>HKL_initials</name>
   <macros>
     <Sys>HB3:ioc-hkl:</Sys>
   </macros>
   <width>1500</width>
-  <height>500</height>
+  <height>700</height>
   <widget type="arc" version="2.0.0">
     <name>Arc</name>
     <x>980</x>
@@ -19,7 +19,7 @@
     <file>E4CV/initials.bob</file>
     <x>160</x>
     <width>1340</width>
-    <height>320</height>
+    <height>600</height>
   </widget>
   <widget type="polyline" version="2.0.0">
     <name>Polyline_1</name>
