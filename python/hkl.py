@@ -405,8 +405,8 @@ class hklCalculator():
         self.axes_tth_UB = self.refl_refine_input[6]
         self.refl_refine = self.sample.add_reflection(self.geometry, \
                 self.detector, self.refl_refine_input[0], \
-                self.refl_refine_input[1], self.refl_refine[2])   
-        self.refl_refine_list.append(self.refl.refine)
+                self.refl_refine_input[1], self.refl_refine_input[2])   
+        self.refl_refine_list.append(self.refl_refine)
         self.refl_refine_input_list.append(self.refl_refine_input)
 
     def del_refl_refine(self):
