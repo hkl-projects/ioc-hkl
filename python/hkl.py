@@ -6,9 +6,6 @@ from gi.repository import GLib
 gi.require_version('Hkl', '5.0')
 from gi.repository import Hkl
 
-#TODO create lists from individual values, change PVs accordingly
-#TODO add holds
-
 class hklCalculator():
     def __init__(self, num_axes_solns=30, num_reflections = 5, geom=2, geom_name = 'E4CV'):
         # initials
@@ -143,6 +140,7 @@ class hklCalculator():
         self.engine_hkl = self.engines.engine_get_by_name("hkl")
 
         self.get_UB_matrix()    
+        self.get_latt_vol()
         print(f'{self.geom_name} started')
         print(self.get_info())
         x = self.engine_hkl.axis_names_get(Hkl.UnitEnum.USER)
@@ -197,8 +195,7 @@ class hklCalculator():
     def forward(self):
         print("Forward function start")
         self.reset_pseudoaxes_solns()
-        if self.geom == 0 or 1:
-            print("REACHED HERE")
+        if self.geom == 1 or 2:
             values_w = [float(self.axes_omega), \
                         float(self.axes_chi), \
                         float(self.axes_phi), \
@@ -224,10 +221,11 @@ class hklCalculator():
 
     def forward_UB(self):
         print("Forward UB function start")
-        values_w = [float(self.axes_omega_UB), \
-                    float(self.axes_chi_UB), \
-                    float(self.axes_phi_UB), \
-                    float(self.axes_tth_UB)] 
+        if self.geom == 1 or 2:
+            values_w = [float(self.axes_omega_UB), \
+                        float(self.axes_chi_UB), \
+                        float(self.axes_phi_UB), \
+                        float(self.axes_tth_UB)] 
         #elif self.geom == 3 or 4 or 5:
         #    #TODO
         #    values_w = [float(self.axes_mu_UB),
@@ -258,14 +256,16 @@ class hklCalculator():
             values_w_all.append(read)
         if len_solns > self.num_axes_solns: # truncate if above max available soln slots
             len_solns = self.num_axes_solns
-        for i in range(len_solns): 
-            self.axes_solns_omega[i], self.axes_solns_chi[i], \
-            self.axes_solns_phi[i], self.axes_solns_tth[i] = values_w_all[i]           
+        if self.geom == 1 or 2:
+            for i in range(len_solns): 
+                self.axes_solns_omega[i], self.axes_solns_chi[i], \
+                self.axes_solns_phi[i], self.axes_solns_tth[i] = values_w_all[i]           
 
     def get_axes(self):
-        axes = (self.axes_omega, self.axes_chi, self.axes_phi, self.axes_tth)
-        print(axes)
-        return axes 
+        if self.geom == 1 or 2:
+            axes = (self.axes_omega, self.axes_chi, self.axes_phi, self.axes_tth)
+            print(axes)
+            return axes 
 
     def get_pseudoaxes(self):
         pseudoaxes = (self.pseudoaxes_h, \
@@ -273,13 +273,14 @@ class hklCalculator():
                       self.pseudoaxes_l)
         return pseudoaxes
 
-    def get_axes_solns(self, cleanprint=False):
+    def get_axes_solns(self):
         axes = {}
-        axes['omega'] = self.axes_solns_omega
-        axes['chi']   = self.axes_solns_chi
-        axes['phi']   = self.axes_solns_phi
-        axes['tth']   = self.axes_solns_tth
-        return axes
+        if self.geom == 1 or 2:
+            axes['omega'] = self.axes_solns_omega
+            axes['chi']   = self.axes_solns_chi
+            axes['phi']   = self.axes_solns_phi
+            axes['tth']   = self.axes_solns_tth
+            return axes
 
     def get_pseudoaxes_solns(self):
         pseudoaxes_solns = (self.pseudoaxes_solns_h, \
@@ -415,8 +416,6 @@ class hklCalculator():
                     self.refl_refine_input[1], self.refl_refine[2])   
         self.refl_refine_list.append(self.refl.refine)
 
-
-
     def reset(self):
         #DELETE
         # replace with conventional way
@@ -449,7 +448,7 @@ class hklCalculator():
 
     def get_latt_vol(self):
         self.lattice_vol = self.lattice.volume_get().value_get(0)
-        return self.lattice_vol
+        print(self.lattice_vol)
 
     def get_info(self):
         diff_geom = self.factory.name_get()
@@ -457,6 +456,6 @@ class hklCalculator():
         samp = self.sample.lattice_get()
         a,b,c,alpha,beta,gamma = samp.get(Hkl.UnitEnum.USER)
         print(f'a: {a}, b: {b}, c: {c}, alpha: {alpha}, beta: {beta}, gamma: {gamma}')
-        ub = self.get_UB_matrix()
-        print(f'UB:\n {ub}')
+        print(f'UB: {self.UB_matrix}')
+        print(f'latt vol: {self.lattice_vol}')
         

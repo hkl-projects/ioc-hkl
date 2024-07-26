@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-06-11 11:09:06 by l3b-->
+<!--Saved on 2024-07-25 21:31:09 by l3b-->
 <display version="2.0.0">
   <width>780</width>
   <height>22</height>
@@ -26,23 +26,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr)set</pv_name>
-      </rule>
-    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -90,6 +73,7 @@
     <wrap_words>false</wrap_words>
     <actions>
     </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_width>2</border_width>
     <border_color>
       <color name="green-18" red="0" green="160" blue="0">
@@ -111,23 +95,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr)set</pv_name>
-      </rule>
-    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
@@ -149,23 +116,6 @@
     <horizontal_alignment>1</horizontal_alignment>
     <actions>
     </actions>
-    <rules>
-      <rule name="Set" prop_id="background_color" out_exp="false">
-        <exp bool_exp="pv0==1">
-          <value>
-            <color red="224" green="224" blue="0">
-            </color>
-          </value>
-        </exp>
-        <exp bool_exp="pv0==0">
-          <value>
-            <color name="White" red="255" green="255" blue="255">
-            </color>
-          </value>
-        </exp>
-        <pv_name>$(Sys)$(Dev)$(Mtr)set</pv_name>
-      </rule>
-    </rules>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <border_color>
       <color red="0" green="128" blue="255">
