@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-25 08:36:54 by l3b-->
+<!--Saved on 2024-07-25 16:31:12 by l3b-->
 <display version="2.0.0">
   <name>HKL_forward</name>
   <macros>
@@ -48,10 +48,5 @@
       <point x="0.0" y="0.0">
       </point>
     </points>
-  </widget>
-  <widget type="text-symbol" version="2.0.0">
-    <name>Text Symbol</name>
-    <x>610</x>
-    <y>570</y>
   </widget>
 </display>
