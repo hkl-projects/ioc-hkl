@@ -55,6 +55,7 @@ dbpf("$(PREFIX)refl2omega","-145")
 dbpf("$(PREFIX)refl2chi","90")
 dbpf("$(PREFIX)refl2phi","0")
 dbpf("$(PREFIX)refl2tth","69")
+dbpf("$(PREFIX)errors","my string test")
 
 
 #dbl > pvlist.dbl

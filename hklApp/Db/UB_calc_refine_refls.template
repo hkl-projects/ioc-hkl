@@ -1,4 +1,5 @@
 record(ai, "$(P)$(R)refl_refine_input_list_h$(C)") {
+    field(DESC, "reflection $(C)")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.refl_refine_input_list[$(C)][0]")
@@ -6,6 +7,7 @@ record(ai, "$(P)$(R)refl_refine_input_list_h$(C)") {
 }
 
 record(ai, "$(P)$(R)refl_refine_input_list_k$(C)") {
+    field(DESC, "reflection $(C)")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.refl_refine_input_list[$(C)][1]")
@@ -13,6 +15,7 @@ record(ai, "$(P)$(R)refl_refine_input_list_k$(C)") {
 }
 
 record(ai, "$(P)$(R)refl_refine_input_list_l$(C)") {
+    field(DESC, "reflection $(C)")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.refl_refine_input_list[$(C)][2]")
@@ -20,6 +23,7 @@ record(ai, "$(P)$(R)refl_refine_input_list_l$(C)") {
 }
 
 record(ai, "$(P)$(R)refl_refine_input_list_omega$(C)") {
+    field(DESC, "reflection $(C)")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.refl_refine_input_list[$(C)][3]")
@@ -27,6 +31,7 @@ record(ai, "$(P)$(R)refl_refine_input_list_omega$(C)") {
 }
 
 record(ai, "$(P)$(R)refl_refine_input_list_chi$(C)") {
+    field(DESC, "reflection $(C)")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.refl_refine_input_list[$(C)][4]")
@@ -34,6 +39,7 @@ record(ai, "$(P)$(R)refl_refine_input_list_chi$(C)") {
 }
 
 record(ai, "$(P)$(R)refl_refine_input_list_phi$(C)") {
+    field(DESC, "reflection $(C)")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.refl_refine_input_list[$(C)][5]")
@@ -41,6 +47,7 @@ record(ai, "$(P)$(R)refl_refine_input_list_phi$(C)") {
 }
 
 record(ai, "$(P)$(R)refl_refine_input_list_tth$(C)") {
+    field(DESC, "reflection $(C)")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.refl_refine_input_list[$(C)][6]")

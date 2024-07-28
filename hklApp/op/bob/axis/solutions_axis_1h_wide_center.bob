@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-25 21:33:17 by l3b-->
+<!--Saved on 2024-07-26 15:09:37 by l3b-->
 <display version="2.0.0">
   <width>780</width>
   <height>22</height>
@@ -12,8 +12,7 @@
   <grid_step_x>6</grid_step_x>
   <grid_step_y>6</grid_step_y>
   <widget type="textupdate" version="2.0.0">
-    <name>Text Update_1</name>
-    <pv_name>$(Solution)</pv_name>
+    <pv_name>$(Sys)$(Ax1Name)$(Solution).DESC</pv_name>
     <width>130</width>
     <height>22</height>
     <font>

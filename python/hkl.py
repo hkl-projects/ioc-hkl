@@ -414,7 +414,11 @@ class hklCalculator():
         '''
         takes in >2 reflections to refine lattice parameters and UB matrix
         '''
-        self.sample.affine()
+        try:
+            self.sample.affine()
+        except RuntimeError as e:
+            print(traceback.print_exc()) # credit to Alex S
+            
         self.start()
         UB = self.sample.UB_get()
         for i in range(3):

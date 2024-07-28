@@ -313,7 +313,7 @@ record(waveform, "$(P)$(R)errors") {
     field(DESC, "error messages")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.errors")
-    field(NELM, "100000")
+    field(NELM, "100")
     field(FTVL, "CHAR")
     field(SCAN, "1 second")
 }
