@@ -281,7 +281,7 @@ record(ao, "$(P)$(R)kappa_k6c") {
     field(LOPR, "-180")
     field(HOPR, "180")
     field(OUT, "@hkl_calc.axes_k6c[2]=VAL")
-    field(FLNK, "$(P)$(R)kappa_e6c_RBV")
+    field(FLNK, "$(P)$(R)kappa_k6c_RBV")
 }
 
 record(ai, "$(P)$(R)kappa_k6c_RBV") {

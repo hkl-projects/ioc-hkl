@@ -73,7 +73,6 @@ class hklCalculator():
         self.latt_refine = [0., 0., 0., 0., 0., 0.]
         # UB
         self.UB_matrix = np.zeros((3,3), dtype=float)
-
         self.UB_matrix_input = np.zeros((3,3), dtype=float)
 
         #self.sample_rot_matrix = np.zeros((8,8), dtype=float)
@@ -94,28 +93,23 @@ class hklCalculator():
         self.num_axes_solns = num_axes_solns
 
         # Eulerian 4-circle (omega, chi, phi, tth)
-        self.axes_e4c[0.,0.,0.,0.]
+        self.axes_e4c = [0.,0.,0.,0.]
 
         # Kappa 4-circle (komega, kappa, kphi, tth)
-        self.axes_k4c[0.,0.,0.,0.]
+        self.axes_k4c = [0.,0.,0.,0.]
 
         # Eulerian 6-circle (mu, omega, chi, phi, gamma, delta)
-        self.axes_e6c[0.,0.,0.,0.,0.,0.]
+        self.axes_e6c = [0.,0.,0.,0.,0.,0.]
 
         # Kappa 6-circle (mu, komega, kappa, kphi, gamma, delta)
-        self.axes_k4c[0.,0.,0.,0.,0.,0.]
+        self.axes_k4c = [0.,0.,0.,0.,0.,0.]
 
         #TODO move to arrays for each geom
         ### axes for UB calculation - only used internally - avoids setting on calculation
         self.axes_UB_e4c = [0., 0., 0., 0.]
-        self.axes_chi_UB = 0.
-        self.axes_phi_UB = 0.
-        self.axes_tth_UB = 0.
-
-        self.axes_mu_UB = 0.
-        self.axes_gamma_UB = 0.
-        self.axes_delta_UB = 0.
-
+        self.axes_UB_k4c = [0., 0., 0., 0.]
+        self.axes_UB_e6c = [0., 0., 0., 0., 0., 0.]
+        self.axes_UB_k6c = [0., 0., 0., 0., 0., 0.]
 
         ### pseduoaxes 
         self.pseudoaxes_h = 0.
@@ -136,10 +130,10 @@ class hklCalculator():
         self.axes_solns_tth_e4c = []
 
         # Kappa 4-circle
-        self.axes_solns_komega_e4c = []
-        self.axes_solns_kappa_e4c = []
-        self.axes_solns_kphi_e4c = []
-        self.axes_solns_tth_e4c = []
+        self.axes_solns_komega_k4c = []
+        self.axes_solns_kappa_k4c = []
+        self.axes_solns_kphi_k4c = []
+        self.axes_solns_tth_k4c = []
 
         # Eulerian 6-circle
         self.axes_solns_mu_e6c = []
@@ -169,19 +163,19 @@ class hklCalculator():
             self.axes_solns_kphi_k4c.append(0)
             self.axes_solns_tth_k4c.append(0)
             # Eulerian 6-circle
-            self.axes_solns_mu.append(0)
-            self.axes_solns_omega.append(0)
-            self.axes_solns_chi.append(0)
-            self.axes_solns_phi.append(0)
-            self.axes_solns_gamma.append(0)
-            self.axes_solns_delta.append(0)
+            self.axes_solns_mu_e6c.append(0)
+            self.axes_solns_omega_e6c.append(0)
+            self.axes_solns_chi_e6c.append(0)
+            self.axes_solns_phi_e6c.append(0)
+            self.axes_solns_gamma_e6c.append(0)
+            self.axes_solns_delta_e6c.append(0)
             # Kappa 6-circle
-            self.axes_solns_mu.append(0)
-            self.axes_solns_komega.append(0)
-            self.axes_solns_kappa.append(0)
-            self.axes_solns_kphi.append(0)
-            self.axes_solns_gamma.append(0)
-            self.axes_solns_delta.append(0)
+            self.axes_solns_mu_k6c.append(0)
+            self.axes_solns_komega_k6c.append(0)
+            self.axes_solns_kappa_k6c.append(0)
+            self.axes_solns_kphi_k6c.append(0)
+            self.axes_solns_gamma_k6c.append(0)
+            self.axes_solns_delta_k6c.append(0)
         
         # pseudoaxes solutions
         self.pseudoaxes_solns_h = 0.
@@ -237,18 +231,22 @@ class hklCalculator():
 
         if self.geom == 3:
             print("switching to K4CV")
+            self.geom_name = "K4CV"
             self.start()
 
         if self.geom == 4:
             print("switching to E6C")
+            self.geom_name = "E6C"
             self.start()
 
         if self.geom == 5:
             print("switching to K6C")
+            self.geom_name = "K6C"
             self.start()
 
         if self.geom == 6:
             print("switching to ZAXIS")
+            self.geom_name = "ZAXIS"
             self.start()
 
     def forward(self):
@@ -303,19 +301,29 @@ class hklCalculator():
     def forward_UB(self):
         print("Forward UB function start")
         if self.geom == 1 or 2:
-            values_w = [float(self.axes_omega_UB), \
-                        float(self.axes_chi_UB), \
-                        float(self.axes_phi_UB), \
-                        float(self.axes_tth_UB)] 
-        #elif self.geom == 3 or 4 or 5:
-        #    #TODO
-        #    values_w = [float(self.axes_mu_UB),
-        #                float(self.axes_omega_UB), \
-        #                float(self.axes_chi_UB), \
-        #                float(self.axes_phi_UB), \
-        #                float(self.axes_gamma_UB), \
-        #                float(self.axes_delta_UB)] 
-
+            values_w = [float(self.axes_UB_e4c[0]), \
+                        float(self.axes_UB_e4c[1]), \
+                        float(self.axes_UB_e4c[2]), \
+                        float(self.axes_UB_e4c[3])] 
+        elif self.geom == 3:
+            values_w = [float(self.axes_UB_k4c[0]), \
+                        float(self.axes_UB_k4c[1]), \
+                        float(self.axes_UB_k4c[2]), \
+                        float(self.axes_UB_k4c[3])] 
+        elif self.geom == 4:
+            values_w = [float(self.axes_UB_e6c[0]),
+                        float(self.axes_UB_e6c[1]), \
+                        float(self.axes_UB_e6c[2]), \
+                        float(self.axes_UB_e6c[3]), \
+                        float(self.axes_UB_e6c[4]), \
+                        float(self.axes_UB_e6c[5])] 
+        elif self.geom == 5:
+            values_w = [float(self.axes_UB_k6c[0]),
+                        float(self.axes_UB_k6c[1]), \
+                        float(self.axes_UB_k6c[2]), \
+                        float(self.axes_UB_k6c[3]), \
+                        float(self.axes_UB_k6c[4]), \
+                        float(self.axes_UB_k6c[5])] 
         try:
             self.geometry.axis_values_set(values_w, Hkl.UnitEnum.USER)
         except:
@@ -348,14 +356,60 @@ class hklCalculator():
             len_solns = self.num_axes_solns
         if self.geom == 1 or 2:
             for i in range(len_solns): 
-                self.axes_solns_omega[i], self.axes_solns_chi[i], \
-                self.axes_solns_phi[i], self.axes_solns_tth[i] = values_w_all[i]           
-
+                self.axes_solns_omega_e4c[i], \
+                self.axes_solns_chi_e4c[i], \
+                self.axes_solns_phi_e4c[i], \
+                self.axes_solns_tth_e4c[i] = values_w_all[i]         
+        elif self.geom == 3:
+            for i in range(len_solns): 
+                self.axes_solns_komega_k4c[i], \
+                self.axes_solns_kappa_k4c[i], \
+                self.axes_solns_kphi_k4c[i], \
+                self.axes_solns_tth_k4c[i] = values_w_all[i]         
+        elif self.geom == 4:
+            for i in range(len_solns): 
+                self.axes_solns_mu_e6c[i], \
+                self.axes_solns_omega_e6c[i], \
+                self.axes_solns_chi_e6c[i], \
+                self.axes_solns_phi_e6c[i], \
+                self.axes_solns_gamma_e6c[i], \
+                self.axes_solns_delta_e6c[i] = values_w_all[i]       
+        elif self.geom==5:  
+             for i in range(len_solns): 
+                self.axes_solns_mu_k6c[i], \
+                self.axes_solns_komega_k6c[i], \
+                self.axes_solns_kappa_k6c[i], \
+                self.axes_solns_kphi_k6c[i], \
+                self.axes_solns_gamma_k6c[i], \
+                self.axes_solns_delta_k6c[i] = values_w_all[i]         
+     
     def get_axes(self):
         if self.geom == 1 or 2:
-            axes = (self.axes_omega, self.axes_chi, self.axes_phi, self.axes_tth)
-            print(axes)
-            return axes 
+            axes = (self.axes_e4c[0], \
+                    self.axes_e4c[1], \
+                    self.axes_e4c[2], \
+                    self.axes_e4c[3])
+        if self.geom == 3:
+            axes = (self.axes_k4c[0], \
+                    self.axes_k4c[1], \
+                    self.axes_k4c[2], \
+                    self.axes_k4c[3])
+        if self.geom == 4:
+            axes = (self.axes_e6c[0], \
+                    self.axes_e6c[1], \
+                    self.axes_e6c[2], \
+                    self.axes_e6c[3], \
+                    self.axes_e6c[4], \
+                    self.axes_e6c[5])
+        if self.geom == 5:
+            axes = (self.axes_k6c[0], \
+                    self.axes_k6c[1], \
+                    self.axes_k6c[2], \
+                    self.axes_k6c[3], \
+                    self.axes_k6c[4], \
+                    self.axes_k6c[5])
+        print(axes)
+        return axes 
 
     def get_pseudoaxes(self):
         pseudoaxes = (self.pseudoaxes_h, \
@@ -366,11 +420,30 @@ class hklCalculator():
     def get_axes_solns(self):
         axes = {}
         if self.geom == 1 or 2:
-            axes['omega'] = self.axes_solns_omega
-            axes['chi']   = self.axes_solns_chi
-            axes['phi']   = self.axes_solns_phi
-            axes['tth']   = self.axes_solns_tth
-            return axes
+            axes['omega'] = self.axes_solns_omega_e4c
+            axes['chi']   = self.axes_solns_chi_e4c
+            axes['phi']   = self.axes_solns_phi_e4c
+            axes['tth']   = self.axes_solns_tth_e4c
+        elif self.geom == 3:
+            axes['komega'] = self.axes_solns_komega_k4c
+            axes['kappa']  = self.axes_solns_kappa_k4c
+            axes['kphi']   = self.axes_solns_kphi_k4c
+            axes['tth']    = self.axes_solns_tth_k4c
+        elif self.geom == 4:
+            axes['mu']     = self.axes_solns_mu_e6c
+            axes['omega']  = self.axes_solns_omega_e6c
+            axes['chi']    = self.axes_solns_chi_e6c
+            axes['phi']    = self.axes_solns_phi_e6c
+            axes['gamma']  = self.axes_solns_gamma_e6c
+            axes['delta']  = self.axes_solns_delta_e6c
+        elif self.geom == 5:
+            axes['mu']     = self.axes_solns_mu_k6c
+            axes['komega'] = self.axes_solns_komega_k6c
+            axes['kappa']  = self.axes_solns_kappa_k6c
+            axes['kphi']   = self.axes_solns_kphi_k6c
+            axes['gamma']  = self.axes_solns_gamma_k6c
+            axes['delta']  = self.axes_solns_delta_k6c
+        return axes
 
     def get_pseudoaxes_solns(self):
         pseudoaxes_solns = (self.pseudoaxes_solns_h, \
@@ -390,49 +463,166 @@ class hklCalculator():
         self.pseudoaxes_solns_azimuth2 = 0
 
     def reset_axes_solns(self):
-        self.axes_solns_omega = []
-        self.axes_solns_chi = []
-        self.axes_solns_phi = []
-        self.axes_solns_tth = []
-        self.axes_solns_mu = []
-        self.axes_solns_gamma = []
-        self.axes_solns_delta = []
-        for _ in range(self.num_axes_solns):
-            self.axes_solns_omega.append(0)
-            self.axes_solns_chi.append(0)
-            self.axes_solns_phi.append(0)
-            self.axes_solns_tth.append(0)
-            self.axes_solns_mu.append(0)
-            self.axes_solns_gamma.append(0)
-            self.axes_solns_delta.append(0)
+        if self.geom == 1 or 2:
+            self.axes_solns_omega_e4c = []
+            self.axes_solns_chi_e4c = []
+            self.axes_solns_phi_e4c = []
+            self.axes_solns_tth_e4c = []
+            for _ in range(self.num_axes_solns):
+                self.axes_solns_omega_e4c.append(0)
+                self.axes_solns_chi_e4c.append(0)
+                self.axes_solns_phi_e4c.append(0)
+                self.axes_solns_tth_e4c.append(0)
+        elif self.geom == 3:
+            self.axes_solns_komega_k4c = []
+            self.axes_solns_kappa_k4c = []
+            self.axes_solns_kphi_k4c = []
+            self.axes_solns_tth_k4c = []
+            for _ in range(self.num_axes_solns):
+                self.axes_solns_komega_k4c.append(0)
+                self.axes_solns_kappa_k4c.append(0)
+                self.axes_solns_kphi_k4c.append(0)
+                self.axes_solns_tth_k4c.append(0)
+        elif self.geom == 4:
+            self.axes_solns_mu_e6c = []
+            self.axes_solns_omega_e6c = []
+            self.axes_solns_chi_e6c = []
+            self.axes_solns_phi_e6c = []
+            self.axes_solns_gamma_e6c = []
+            self.axes_solns_delta_e6c = []
+            for _ in range(self.num_axes_solns):
+                self.axes_solns_mu_e6c.append(0)
+                self.axes_solns_omega_e6c.append(0)
+                self.axes_solns_chi_e6c.append(0)
+                self.axes_solns_phi_e6c.append(0)
+                self.axes_solns_gamma_e6c.append(0)
+                self.axes_solns_delta_e6c.append(0)
+        elif self.geom == 5:
+            self.axes_solns_mu_k6c = []
+            self.axes_solns_komega_k6c = []
+            self.axes_solns_kappa_k6c = []
+            self.axes_solns_kphi_k6c = []
+            self.axes_solns_gamma_k6c = []
+            self.axes_solns_delta_k6c = []
+            for _ in range(self.num_axes_solns):
+                self.axes_solns_mu_k6c.append(0)
+                self.axes_solns_komega_k6c.append(0)
+                self.axes_solns_kappa_k6c.append(0)
+                self.axes_solns_kphi_k6c.append(0)
+                self.axes_solns_gamma_k6c.append(0)
+                self.axes_solns_delta_k6c.append(0)
 
 
     def add_reflection1(self):
         '''
         adds reflection #1 to sample for busing-levy calculation
         '''
-        self.axes_omega_UB = self.refl1_input[3]
-        self.axes_chi_UB   = self.refl1_input[4]
-        self.axes_phi_UB   = self.refl1_input[5]
-        self.axes_tth_UB   = self.refl1_input[6]
-        self.forward_UB() # replace with an update of sample with motor positions 
-        # Hkl.SampleReflection(self.geometry, self.detector, h, k, l)
-        self.refl1 = self.sample.add_reflection(self.geometry, self.detector, \
-                    self.refl1_input[0], self.refl1_input[1], self.refl1_input[2])
+        if self.geom == 1 or 2:
+            self.axes_UB_e4c[0] = self.refl1_input_e4c[3]
+            self.axes_UB_e4c[1] = self.refl1_input_e4c[4]
+            self.axes_UB_e4c[2] = self.refl1_input_e4c[5]
+            self.axes_UB_e4c[3] = self.refl1_input_e4c[6]
+        elif self.geom == 3:
+            self.axes_UB_k4c[0] = self.refl1_input_k4c[3]
+            self.axes_UB_k4c[1] = self.refl1_input_k4c[4]
+            self.axes_UB_k4c[2] = self.refl1_input_k4c[5]
+            self.axes_UB_k4c[3] = self.refl1_input_k4c[6]
+        elif self.geom == 4:
+            self.axes_UB_e6c[0] = self.refl1_input_e6c[3]
+            self.axes_UB_e6c[1] = self.refl1_input_e6c[4]
+            self.axes_UB_e6c[2] = self.refl1_input_e6c[5]
+            self.axes_UB_e6c[3] = self.refl1_input_e6c[6]
+            self.axes_UB_e6c[4] = self.refl1_input_e6c[7]
+            self.axes_UB_e6c[5] = self.refl1_input_e6c[8]
+        elif self.geom == 5:
+            self.axes_UB_k6c[0] = self.refl1_input_k6c[3]
+            self.axes_UB_k6c[1] = self.refl1_input_k6c[4]
+            self.axes_UB_k6c[2] = self.refl1_input_k6c[5]
+            self.axes_UB_k6c[3] = self.refl1_input_k6c[6]
+            self.axes_UB_k6c[4] = self.refl1_input_k6c[7]
+            self.axes_UB_k6c[5] = self.refl1_input_k6c[8]
+        self.forward_UB()
+        if self.geom == 1 or 2:
+            self.refl1 = self.sample.add_reflection(self.geometry, \
+                                                    self.detector, \
+                                                    self.refl1_input_e4c[0], \
+                                                    self.refl1_input_e4c[1], \
+                                                    self.refl1_input_e4c[2])
+        if self.geom == 3:
+            self.refl1 = self.sample.add_reflection(self.geometry, \
+                                                    self.detector, \
+                                                    self.refl1_input_k4c[0], \
+                                                    self.refl1_input_k4c[1], \
+                                                    self.refl1_input_k4c[2])
+        if self.geom == 4:
+            self.refl1 = self.sample.add_reflection(self.geometry, \
+                                                    self.detector, \
+                                                    self.refl1_input_e6c[0], \
+                                                    self.refl1_input_e6c[1], \
+                                                    self.refl1_input_e6c[2])
+        if self.geom == 5:
+            self.refl1 = self.sample.add_reflection(self.geometry, \
+                                                    self.detector, \
+                                                    self.refl1_input_k6c[0], \
+                                                    self.refl1_input_k6c[1], \
+                                                    self.refl1_input_k6c[2])
 
     def add_reflection2(self):
         '''
         adds reflection #2 to sample for busing levy calculation
         '''
-        self.axes_omega_UB = self.refl2_input[3]
-        self.axes_chi_UB   = self.refl2_input[4]
-        self.axes_phi_UB   = self.refl2_input[5]
-        self.axes_tth_UB   = self.refl2_input[6]
+        if self.geom == 1 or 2:
+            self.axes_UB_e4c[0] = self.refl2_input_e4c[3]
+            self.axes_UB_e4c[1] = self.refl2_input_e4c[4]
+            self.axes_UB_e4c[2] = self.refl2_input_e4c[5]
+            self.axes_UB_e4c[3] = self.refl2_input_e4c[6]
+        elif self.geom == 3:
+            self.axes_UB_k4c[0] = self.refl2_input_k4c[3]
+            self.axes_UB_k4c[1] = self.refl2_input_k4c[4]
+            self.axes_UB_k4c[2] = self.refl2_input_k4c[5]
+            self.axes_UB_k4c[3] = self.refl2_input_k4c[6]
+        elif self.geom == 4:
+            self.axes_UB_e6c[0] = self.refl2_input_e6c[3]
+            self.axes_UB_e6c[1] = self.refl2_input_e6c[4]
+            self.axes_UB_e6c[2] = self.refl2_input_e6c[5]
+            self.axes_UB_e6c[3] = self.refl2_input_e6c[6]
+            self.axes_UB_e6c[4] = self.refl2_input_e6c[7]
+            self.axes_UB_e6c[5] = self.refl2_input_e6c[8]
+        elif self.geom == 5:
+            self.axes_UB_k6c[0] = self.refl2_input_k6c[3]
+            self.axes_UB_k6c[1] = self.refl2_input_k6c[4]
+            self.axes_UB_k6c[2] = self.refl2_input_k6c[5]
+            self.axes_UB_k6c[3] = self.refl2_input_k6c[6]
+            self.axes_UB_k6c[4] = self.refl2_input_k6c[7]
+            self.axes_UB_k6c[5] = self.refl2_input_k6c[8]
         self.forward_UB()
         # Hkl.SampleReflection(self.geometry, self.detector, h, k, l)
-        self.refl2 = self.sample.add_reflection(self.geometry, self.detector, \
-                    self.refl2_input[0], self.refl2_input[1], self.refl2_input[2])
+        if self.geom == 1 or 2:
+            self.refl2 = self.sample.add_reflection(self.geometry, \
+                                                    self.detector, \
+                                                    self.refl2_input_e4c[0], \
+                                                    self.refl2_input_e4c[1], \
+                                                    self.refl2_input_e4c[2])
+        elif self.geom == 3:
+            self.refl2 = self.sample.add_reflection(self.geometry, \
+                                                    self.detector, \
+                                                    self.refl2_input_k4c[0], \
+                                                    self.refl2_input_k4c[1], \
+                                                    self.refl2_input_k4c[2])
+        elif self.geom == 4:
+            self.refl2 = self.sample.add_reflection(self.geometry, \
+                                                    self.detector, \
+                                                    self.refl2_input_e6c[0], \
+                                                    self.refl2_input_e6c[1], \
+                                                    self.refl2_input_e6c[2])
+        elif self.geom == 5:
+            self.refl2 = self.sample.add_reflection(self.geometry, \
+                                                    self.detector, \
+                                                    self.refl2_input_k6c[0], \
+                                                    self.refl2_input_k6c[1], \
+                                                    self.refl2_input_k6c[2])
  
+
     def compute_UB_matrix(self):
         '''
         busing-levy UB calculation
@@ -516,29 +706,59 @@ class hklCalculator():
             self.lattice.get(Hkl.UnitEnum.USER)             
                 
     def add_refl_refine(self):
-        self.axes_omega_UB = self.refl_refine_input[3]
-        self.axes_chi_UB = self.refl_refine_input[4]
-        self.axes_phi_UB = self.refl_refine_input[5]
-        self.axes_tth_UB = self.refl_refine_input[6]
+        if self.geom == 1 or 2:
+            self.axes_UB_e4c[0] = self.refl_refine_input_e4c[3]
+            self.axes_UB_e4c[1] = self.refl_refine_input_e4c[4]
+            self.axes_UB_e4c[2] = self.refl_refine_input_e4c[5]
+            self.axes_UB_e4c[3] = self.refl_refine_input_e4c[6]
+        elif self.geom == 3:
+            self.axes_UB_k4c[0] = self.refl_refine_input_k4c[3]
+            self.axes_UB_k4c[1] = self.refl_refine_input_k4c[4]
+            self.axes_UB_k4c[2] = self.refl_refine_input_k4c[5]
+            self.axes_UB_k4c[3] = self.refl_refine_input_k4c[6]
+        elif self.geom == 4:
+            self.axes_UB_e6c[0] = self.refl_refine_input_e6c[3]
+            self.axes_UB_e6c[1] = self.refl_refine_input_e6c[4]
+            self.axes_UB_e6c[2] = self.refl_refine_input_e6c[5]
+            self.axes_UB_e6c[3] = self.refl_refine_input_e6c[6]
+            self.axes_UB_e6c[4] = self.refl_refine_input_e6c[7]
+            self.axes_UB_e6c[5] = self.refl_refine_input_e6c[8]
+        elif self.geom == 5:
+            self.axes_UB_k6c[0] = self.refl_refine_input_e6c[3]
+            self.axes_UB_k6c[1] = self.refl_refine_input_e6c[4]
+            self.axes_UB_k6c[2] = self.refl_refine_input_e6c[5]
+            self.axes_UB_k6c[3] = self.refl_refine_input_e6c[6]
+            self.axes_UB_k6c[4] = self.refl_refine_input_e6c[7]
+            self.axes_UB_k6c[5] = self.refl_refine_input_e6c[8]
+
         self.forward_UB()
-        self.refl_refine = self.sample.add_reflection(self.geometry, \
-                self.detector, self.refl_refine_input[0], \
-                self.refl_refine_input[1], self.refl_refine_input[2])   
+        if self.geom == 1 or 2:
+            self.refl_refine = self.sample.add_reflection(self.geometry, \
+                self.detector, self.refl_refine_input_e4c[0], \
+                self.refl_refine_input_e4c[1], self.refl_refine_input_e4c[2])   
+        if self.geom == 3:
+            self.refl_refine = self.sample.add_reflection(self.geometry, \
+                self.detector, self.refl_refine_input_k4c[0], \
+                self.refl_refine_input_k4c[1], self.refl_refine_input_k4c[2])   
+        if self.geom == 4:
+            self.refl_refine = self.sample.add_reflection(self.geometry, \
+                self.detector, self.refl_refine_input_e6c[0], \
+                self.refl_refine_input_e6c[1], self.refl_refine_input_e6c[2])   
+        if self.geom == 5:
+            self.refl_refine = self.sample.add_reflection(self.geometry, \
+                self.detector, self.refl_refine_input_k6c[0], \
+                self.refl_refine_input_k6c[1], self.refl_refine_input_k6c[2])   
+
         self.refl_refine_list.append(self.refl_refine)
         self.refl_refine_input_list[self.curr_num_refls] = self.refl_refine_input.copy()
         self.curr_num_refls += 1
 
-    def del_refl_refine(self):
-        self.selected_refl
-        self.refl_refine = self.sample.del_reflection(self.geometry, \
-                    self.detector, self.refl_refine_input[0], \
-                    self.refl_refine_input[1], self.refl_refine[2])   
-        self.refl_refine_list.append(self.refl.refine)
-
-    def reset(self):
-        #DELETE
-        # replace with conventional way
-        self.__init__()
+    #def del_refl_refine(self):
+    #    self.selected_refl
+    #    self.refl_refine = self.sample.del_reflection(self.geometry, \
+    #                self.detector, self.refl_refine_input[0], \
+    #                self.refl_refine_input[1], self.refl_refine[2])   
+    #    self.refl_refine_list.append(self.refl.refine)
 
     def get_sample_rotation(self):
         rot = self.geometry.sample_rotation_get(self.sample).to_matrix()
@@ -570,6 +790,7 @@ class hklCalculator():
         print(self.lattice_vol)
 
     def get_info(self):
+        print(f'self.geom: {self.geom}')
         diff_geom = self.factory.name_get()
         print(diff_geom)
         samp = self.sample.lattice_get()
@@ -577,4 +798,4 @@ class hklCalculator():
         print(f'a: {a}, b: {b}, c: {c}, alpha: {alpha}, beta: {beta}, gamma: {gamma}')
         print(f'UB: {self.UB_matrix}')
         print(f'latt vol: {self.lattice_vol}')
-        
+         
