@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-26 11:46:14 by l3b-->
+<!--Saved on 2024-07-28 19:54:55 by l3b-->
 <display version="2.0.0">
   <name>Initials</name>
   <macros>
@@ -143,12 +143,12 @@
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_3</name>
     <macros>
-      <Ax1Name>a</Ax1Name>
-      <Ax2Name>b</Ax2Name>
-      <Ax3Name>c</Ax3Name>
-      <Ax4Name>alpha</Ax4Name>
-      <Ax5Name>beta</Ax5Name>
-      <Ax6Name>gamma</Ax6Name>
+      <Ax1Name>latt_a</Ax1Name>
+      <Ax2Name>latt_b</Ax2Name>
+      <Ax3Name>latt_c</Ax3Name>
+      <Ax4Name>latt_alpha</Ax4Name>
+      <Ax5Name>latt_beta</Ax5Name>
+      <Ax6Name>latt_gamma</Ax6Name>
     </macros>
     <file>../lattice/_lattice.bob</file>
     <x>10</x>

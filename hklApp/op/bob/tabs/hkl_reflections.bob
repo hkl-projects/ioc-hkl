@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-25 08:33:57 by l3b-->
+<!--Saved on 2024-07-28 20:00:59 by l3b-->
 <display version="2.0.0">
   <name>hkl_reflections</name>
   <macros>
@@ -9,7 +9,7 @@
   <height>500</height>
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display</name>
-    <file>E4CV/reflections.bob</file>
+    <file>../windows/reflections.bob</file>
     <x>20</x>
     <y>10</y>
     <width>880</width>

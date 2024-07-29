@@ -30,18 +30,22 @@ class hklCalculator():
         # sample orientation
         # initial 2 reflections
         self.num_reflections = num_reflections
-        self.refl1_input = [0., 0., 0., 0., 0., 0., 0.]
-        self.refl2_input = [0., 0., 0., 0., 0., 0., 0.]
-        #self.refl1_input_6c = [0., 0., 0., 0., 0., 0., 0., 0., 0.]
-        #self.refl2_input_6c = [0., 0., 0., 0., 0., 0., 0., 0., 0.]
+        self.refl1_input_e4c = [0., 0., 0., 0., 0., 0., 0.]
+        self.refl2_input_e4c = [0., 0., 0., 0., 0., 0., 0.]
+        self.refl1_input_k4c = [0., 0., 0., 0., 0., 0., 0.]
+        self.refl2_input_k4c = [0., 0., 0., 0., 0., 0., 0.]
+        self.refl1_input_e6c = [0., 0., 0., 0., 0., 0., 0., 0., 0.]
+        self.refl2_input_e6c = [0., 0., 0., 0., 0., 0., 0., 0., 0.]
+        self.refl1_input_k6c = [0., 0., 0., 0., 0., 0., 0., 0., 0.]
+        self.refl2_input_k6c = [0., 0., 0., 0., 0., 0., 0., 0., 0.]
         self.refl1 = np.nan
         self.refl2 = np.nan
         
         self.curr_num_refls = 0
  
         # refine with reflections
-        self.refl_refine_input = [0., 0., 0., 0., 0., 0., 0.]
-        #self.refl_refine_input_6c = [0., 0., 0., 0., 0., 0., 0., 0., 0.]
+        self.refl_refine_input_4c = [0., 0., 0., 0., 0., 0., 0.]
+        self.refl_refine_input_6c = [0., 0., 0., 0., 0., 0., 0., 0., 0.]
         self.refl_refine_input_list = []
         for i in range(self.num_reflections):
             self.refl_refine_input_list.append([0., 0., 0., 0., 0., 0., 0.])
@@ -68,18 +72,23 @@ class hklCalculator():
         # UB simplex
         self.UB_matrix_simplex = np.zeros((3,3), dtype=float)
         
-        # axes
+        ### axes
         self.num_axes_solns = num_axes_solns
-        self.axes_omega = 0.
-        self.axes_chi = 0.
-        self.axes_phi = 0.
-        self.axes_tth = 0.
-    
-        self.axes_mu = 0.
-        self.axes_gamma = 0.
-        self.axes_delta = 0.
 
-        # axes for UB calculation - only used internally - avoids setting on calculation
+        # Eulerian 4-circle (omega, chi, phi, tth)
+        self.axes_e4c[0.,0.,0.,0.]
+
+        # Kappa 4-circle (komega, kappa, kphi, tth)
+        self.axes_k4c[0.,0.,0.,0.]
+
+        # Eulerian 6-circle (mu, omega, chi, phi, gamma, delta)
+        self.axes_e6c[0.,0.,0.,0.,0.,0.]
+
+        # Kappa 4-circle (mu, komega, kappa, kphi, gamma, delta)
+        self.axes_k4c[0.,0.,0.,0.]
+
+        #TODO move to arrays for each geom
+        ### axes for UB calculation - only used internally - avoids setting on calculation
         self.axes_omega_UB = 0.
         self.axes_chi_UB = 0.
         self.axes_phi_UB = 0.
@@ -90,7 +99,7 @@ class hklCalculator():
         self.axes_delta_UB = 0.
 
 
-        # pseduoaxes 
+        ### pseduoaxes 
         self.pseudoaxes_h = 0.
         self.pseudoaxes_k = 0.
         self.pseudoaxes_l = 0.
@@ -101,22 +110,58 @@ class hklCalculator():
         self.pseudoaxes_emergence = 0.
         self.pseudoaxes_azimuth2 = 0.
        
-        # axes solutions 
-        self.axes_solns_omega = []
-        self.axes_solns_chi = []
-        self.axes_solns_phi = []
-        self.axes_solns_tth = []
+        ### axes solutions 
+        # Eulerian 4-circle
+        self.axes_solns_omega_e4c = []
+        self.axes_solns_chi_e4c = []
+        self.axes_solns_phi_e4c = []
+        self.axes_solns_tth_e4c = []
 
-        self.axes_solns_mu = []
-        self.axes_solns_gamma = []
-        self.axes_solns_delta = []
+        # Kappa 4-circle
+        self.axes_solns_komega_e4c = []
+        self.axes_solns_kappa_e4c = []
+        self.axes_solns_kphi_e4c = []
+        self.axes_solns_tth_e4c = []
+
+        # Eulerian 6-circle
+        self.axes_solns_mu_e6c = []
+        self.axes_solns_omega_e6c = []
+        self.axes_solns_chi_e6c = []
+        self.axes_solns_phi_e6c = []
+        self.axes_solns_gamma_e6c = []
+        self.axes_solns_delta_e6c = []
+
+        # Kappa 6-circle
+        self.axes_solns_mu_k6c = []
+        self.axes_solns_komega_k6c = []
+        self.axes_solns_kappa_k6c = []
+        self.axes_solns_kphi_k6c = []
+        self.axes_solns_gamma_k6c = []
+        self.axes_solns_delta_k6c = []
 
         for _ in range(self.num_axes_solns):
+            # Eulerian 4-circle
+            self.axes_solns_omega_e4c.append(0)
+            self.axes_solns_chi_e4c.append(0)
+            self.axes_solns_phi_e4c.append(0)
+            self.axes_solns_tth_e4c.append(0)
+            # Kappa 4-circle
+            self.axes_solns_komega_k4c.append(0)
+            self.axes_solns_kappa_k4c.append(0)
+            self.axes_solns_kphi_k4c.append(0)
+            self.axes_solns_tth_k4c.append(0)
+            # Eulerian 6-circle
+            self.axes_solns_mu.append(0)
             self.axes_solns_omega.append(0)
             self.axes_solns_chi.append(0)
             self.axes_solns_phi.append(0)
-            self.axes_solns_tth.append(0)
+            self.axes_solns_gamma.append(0)
+            self.axes_solns_delta.append(0)
+            # Kappa 6-circle
             self.axes_solns_mu.append(0)
+            self.axes_solns_komega.append(0)
+            self.axes_solns_kappa.append(0)
+            self.axes_solns_kphi.append(0)
             self.axes_solns_gamma.append(0)
             self.axes_solns_delta.append(0)
         
@@ -159,60 +204,67 @@ class hklCalculator():
     
     def switch_geom(self):
         if self.geom == 0:
-            self.reset()
             print("switching to TwoC")
             self.geom_name = "TwoC"
-            self.__init__(geom = 0, geom_name="TwoC")
-            self.start()
 
         if self.geom == 1:
-            self.reset()
             print("switching to E4CH")
             self.geom_name = "E4CH"
-            self.__init__(geom = 0, geom_name="E4CH")
             self.start()
 
         if self.geom == 2:
-            self.reset()
             print("switching to E4CV")
             self.geom_name = "E4CV"
-            self.__init__(geom = 2, geom_name = "E4CV")
             self.start()
 
         if self.geom == 3:
-            self.reset()
             print("switching to K4CV")
-            self.__init__(geom = 3, geom_name = "K4CV")
             self.start()
 
         if self.geom == 4:
-            self.reset()
             print("switching to E6C")
-            self.__init__(geom = 4, geom_name = "E6C")
             self.start()
 
         if self.geom == 5:
-            self.reset()
             print("switching to K6C")
-            self.__init__(geom = 5, geom_name = "K6C")
             self.start()
 
         if self.geom == 6:
-            self.reset()
             print("switching to ZAXIS")
-            self.__init__(geom = 6, geom_name = "ZAXIS")
             self.start()
 
     def forward(self):
         print("Forward function start")
         self.reset_pseudoaxes_solns()
         if self.geom == 1 or 2:
-            values_w = [float(self.axes_omega), \
-                        float(self.axes_chi), \
-                        float(self.axes_phi), \
-                        float(self.axes_tth)] 
-
+            values_w = [float(self.axes_e4c[0]), \
+                        float(self.axes_e4c[1]), \
+                        float(self.axes_e4c[2]), \
+                        float(self.axes_e4c[3])] 
             print(values_w)
+        elif self.geom == 3:
+            values_w = [float(self.axes_k4c[0]), \
+                        float(self.axes_k4c[1]), \
+                        float(self.axes_k4c[2]), \
+                        float(self.axes_k4c[3])] 
+            print(values_w)
+        elif self.geom == 4:
+            values_w = [float(self.axes_e6c[0]), \
+                        float(self.axes_e6c[1]), \
+                        float(self.axes_e6c[2]), \
+                        float(self.axes_e6c[3]), \
+                        float(self.axes_e6c[4]), \
+                        float(self.axes_e6c[5])] 
+            print(values_w)
+        elif self.geom == 5:
+            values_w = [float(self.axes_k6c[0]), \
+                        float(self.axes_k6c[1]), \
+                        float(self.axes_k6c[2]), \
+                        float(self.axes_k6c[3]), \
+                        float(self.axes_k6c[4]), \
+                        float(self.axes_k6c[5])] 
+            print(values_w)
+
         try:
             self.geometry.axis_values_set(values_w, Hkl.UnitEnum.USER)
         except:

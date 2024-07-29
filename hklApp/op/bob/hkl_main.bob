@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-25 08:44:32 by l3b-->
+<!--Saved on 2024-07-28 19:59:40 by l3b-->
 <display version="2.0.0">
   <name>HKL_main</name>
   <macros>
@@ -12,35 +12,35 @@
     <tabs>
       <tab>
         <name>Initials</name>
-        <file>hkl_initials.bob</file>
+        <file>tabs/hkl_initials.bob</file>
         <macros>
         </macros>
         <group_name></group_name>
       </tab>
       <tab>
         <name>Reflections</name>
-        <file>hkl_reflections.bob</file>
+        <file>tabs/hkl_reflections.bob</file>
         <macros>
         </macros>
         <group_name></group_name>
       </tab>
       <tab>
         <name>Refine</name>
-        <file>hkl_refine.bob</file>
+        <file>tabs/hkl_refine.bob</file>
         <macros>
         </macros>
         <group_name></group_name>
       </tab>
       <tab>
         <name>Forward</name>
-        <file>hkl_forward.bob</file>
+        <file>tabs/hkl_forward.bob</file>
         <macros>
         </macros>
         <group_name></group_name>
       </tab>
       <tab>
         <name>Backward</name>
-        <file>hkl_backward.bob</file>
+        <file>tabs/hkl_backward.bob</file>
         <macros>
         </macros>
         <group_name></group_name>
