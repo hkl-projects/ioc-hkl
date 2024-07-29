@@ -44,13 +44,31 @@ class hklCalculator():
         self.curr_num_refls = 0
  
         # refine with reflections
-        self.refl_refine_input_4c = [0., 0., 0., 0., 0., 0., 0.]
-        self.refl_refine_input_6c = [0., 0., 0., 0., 0., 0., 0., 0., 0.]
-        self.refl_refine_input_list = []
+        self.refl_refine_input_e4c = [0., 0., 0., 0., 0., 0., 0.]
+        self.refl_refine_input_k4c = [0., 0., 0., 0., 0., 0., 0.]
+        self.refl_refine_input_e6c = [0., 0., 0., 0., 0., 0., 0., 0., 0.]
+        self.refl_refine_input_k6c = [0., 0., 0., 0., 0., 0., 0., 0., 0.]
+        self.refl_refine_input_list_e4c = []
+        self.refl_refine_input_list_k4c = []
+        self.refl_refine_input_list_e6c = []
+        self.refl_refine_input_list_k6c = []
+
         for i in range(self.num_reflections):
-            self.refl_refine_input_list.append([0., 0., 0., 0., 0., 0., 0.])
-        self.refl_refine = np.nan
-        self.refl_refine_list = []
+            self.refl_refine_input_list_e4c.append([0., 0., 0., 0., 0., 0., 0.])
+            self.refl_refine_input_list_k4c.append([0., 0., 0., 0., 0., 0., 0.])
+            self.refl_refine_input_list_e6c.append([0., 0., 0., 0., 0., 0., 0., 0., 0.])
+            self.refl_refine_input_list_k6c.append([0., 0., 0., 0., 0., 0., 0., 0., 0.])
+
+        self.refl_refine_e4c = np.nan
+        self.refl_refine_k4c = np.nan
+        self.refl_refine_e6c = np.nan
+        self.refl_refine_k6c = np.nan
+
+        self.refl_refine_list_e4c = []
+        self.refl_refine_list_k4c = []
+        self.refl_refine_list_e6c = []
+        self.refl_refine_list_k6c = []
+
         self.selected_refl = [] # used for deleting reflection from list
         self.latt_refine = [0., 0., 0., 0., 0., 0.]
         # UB
@@ -84,12 +102,12 @@ class hklCalculator():
         # Eulerian 6-circle (mu, omega, chi, phi, gamma, delta)
         self.axes_e6c[0.,0.,0.,0.,0.,0.]
 
-        # Kappa 4-circle (mu, komega, kappa, kphi, gamma, delta)
-        self.axes_k4c[0.,0.,0.,0.]
+        # Kappa 6-circle (mu, komega, kappa, kphi, gamma, delta)
+        self.axes_k4c[0.,0.,0.,0.,0.,0.]
 
         #TODO move to arrays for each geom
         ### axes for UB calculation - only used internally - avoids setting on calculation
-        self.axes_omega_UB = 0.
+        self.axes_UB_e4c = [0., 0., 0., 0.]
         self.axes_chi_UB = 0.
         self.axes_phi_UB = 0.
         self.axes_tth_UB = 0.

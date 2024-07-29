@@ -1,56 +1,261 @@
-record(ai, "$(P)$(R)refl_refine_input_list_h$(C)") {
+# Input reflections to the simplex UB/lattice refinement technique
+# Eulerian 4-circle
+record(ai, "$(P)$(R)refl_refine_input_list_h_e4c$(C)") {
     field(DESC, "reflection $(C)")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(INP, "@hkl_calc.refl_refine_input_list[$(C)][0]")
+    field(INP, "@hkl_calc.refl_refine_input_list_e4c[$(C)][0]")
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)refl_refine_input_list_k$(C)") {
+record(ai, "$(P)$(R)refl_refine_input_list_k_e4c$(C)") {
     field(DESC, "reflection $(C)")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(INP, "@hkl_calc.refl_refine_input_list[$(C)][1]")
+    field(INP, "@hkl_calc.refl_refine_input_list_e4c[$(C)][1]")
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)refl_refine_input_list_l$(C)") {
+record(ai, "$(P)$(R)refl_refine_input_list_l_e4c$(C)") {
     field(DESC, "reflection $(C)")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(INP, "@hkl_calc.refl_refine_input_list[$(C)][2]")
+    field(INP, "@hkl_calc.refl_refine_input_list_e4c[$(C)][2]")
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)refl_refine_input_list_omega$(C)") {
+record(ai, "$(P)$(R)refl_refine_input_list_omega_e4c$(C)") {
     field(DESC, "reflection $(C)")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(INP, "@hkl_calc.refl_refine_input_list[$(C)][3]")
+    field(INP, "@hkl_calc.refl_refine_input_list_e4c[$(C)][3]")
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)refl_refine_input_list_chi$(C)") {
+record(ai, "$(P)$(R)refl_refine_input_list_chi_e4c$(C)") {
     field(DESC, "reflection $(C)")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(INP, "@hkl_calc.refl_refine_input_list[$(C)][4]")
+    field(INP, "@hkl_calc.refl_refine_input_list_e4c[$(C)][4]")
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)refl_refine_input_list_phi$(C)") {
+record(ai, "$(P)$(R)refl_refine_input_list_phi_e4c$(C)") {
     field(DESC, "reflection $(C)")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(INP, "@hkl_calc.refl_refine_input_list[$(C)][5]")
+    field(INP, "@hkl_calc.refl_refine_input_list_e4c[$(C)][5]")
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)refl_refine_input_list_tth$(C)") {
+record(ai, "$(P)$(R)refl_refine_input_list_tth_e4c$(C)") {
     field(DESC, "reflection $(C)")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(INP, "@hkl_calc.refl_refine_input_list[$(C)][6]")
+    field(INP, "@hkl_calc.refl_refine_input_list_e4c[$(C)][6]")
     field(SCAN, "1 second")
 }
-                                                      
+           
+# Kappa 4-circle
+record(ai, "$(P)$(R)refl_refine_input_list_h_k4c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_k4c[$(C)][0]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_k_k4c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_k4c[$(C)][1]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_l_k4c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_k4c[$(C)][2]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_komega_k4c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_k4c[$(C)][3]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_kappa_k4c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_k4c[$(C)][4]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_kphi_k4c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_k4c[$(C)][5]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_tth_k4c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_k4c[$(C)][6]")
+    field(SCAN, "1 second")
+}
+          
+# Eulerian 4-circle
+record(ai, "$(P)$(R)refl_refine_input_list_h_e6c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_e6c[$(C)][0]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_k_e6c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_e6c[$(C)][1]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_l_e6c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_e6c[$(C)][2]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_mu_e6c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_e6c[$(C)][3]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_omega_e6c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_e6c[$(C)][4]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_chi_e6c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_e6c[$(C)][5]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_phi_e6c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_e6c[$(C)][6]")
+    field(SCAN, "1 second")
+}
+ 
+record(ai, "$(P)$(R)refl_refine_input_list_gamma_e6c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_e6c[$(C)][5]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_delta_e6c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_e6c[$(C)][6]")
+    field(SCAN, "1 second")
+}
+                                               
+# Kappa 6-circle       
+record(ai, "$(P)$(R)refl_refine_input_list_h_k6c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_k6c[$(C)][0]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_k_k6c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_k6c[$(C)][1]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_l_k6c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_k6c[$(C)][2]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_mu_k6c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_k6c[$(C)][3]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_komega_k6c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_k6c[$(C)][4]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_kappa_k6c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_k6c[$(C)][5]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_kphi_k6c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_k6c[$(C)][6]")
+    field(SCAN, "1 second")
+}
+ 
+record(ai, "$(P)$(R)refl_refine_input_list_gamma_k6c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_k6c[$(C)][5]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_delta_k6c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_k6c[$(C)][6]")
+    field(SCAN, "1 second")
+}
+                                                                                                                                                  

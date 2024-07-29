@@ -755,8 +755,7 @@ record(ai, "$(P)$(R)UBa33bl") {
     field(SCAN, "1 second")
 }
 
-
-#simplex
+# UB from simplex
 record(ai, "$(P)$(R)UBa11si") {
     field(PINI, "YES")
     field(DTYP, "pydev")
@@ -828,48 +827,48 @@ record(ai, "$(P)$(R)UBa33si") {
     field(SCAN, "1 second")
 }
 
-
-record(ai, "$(P)$(R)asi") {
+# Resulting lattice from simplex
+record(ai, "$(P)$(R)latt_a_si") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.latt_refine[0]")
-    field(FLNK, "$(P)$(R)bsi")
+    field(FLNK, "$(P)$(R)latt_b_si")
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)bsi") {
+record(ai, "$(P)$(R)latt_b_si") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.latt_refine[1]")
-    field(FLNK, "$(P)$(R)csi")
+    field(FLNK, "$(P)$(R)latt_c_si")
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)csi") {
+record(ai, "$(P)$(R)latt_c_si") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.latt_refine[2]")
-    field(FLNK, "$(P)$(R)alphasi")
+    field(FLNK, "$(P)$(R)latt_alpha_si")
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)alphasi") {
+record(ai, "$(P)$(R)latt_alpha_si") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.latt_refine[3]")
-    field(FLNK, "$(P)$(R)betasi")
+    field(FLNK, "$(P)$(R)latt_beta_si")
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)betasi") {
+record(ai, "$(P)$(R)latt_beta_si") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.latt_refine[4]")
-    field(FLNK, "$(P)$(R)gammasi")
+    field(FLNK, "$(P)$(R)latt_gamma_si")
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)gammasi") {
+record(ai, "$(P)$(R)latt_gamma_si") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.latt_refine[5]")
