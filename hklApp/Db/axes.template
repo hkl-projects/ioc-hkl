@@ -109,10 +109,10 @@ record(ao, "$(P)$(R)kphi_k4c") {
     field(LOPR, "-180")
     field(HOPR, "180")
     field(OUT, "@hkl_calc.axes_k4c[2]=VAL")
-    field(FLNK, "$(P)$(R)kphi_e4c_RBV")
+    field(FLNK, "$(P)$(R)kphi_k4c_RBV")
 }
 
-record(ai, "$(P)$(R)kphi_e4c_RBV") {
+record(ai, "$(P)$(R)kphi_k4c_RBV") {
     field(DESC, "kphi")
     field(DTYP, "pydev")
     field(PINI, "YES")

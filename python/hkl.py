@@ -211,8 +211,7 @@ class hklCalculator():
         self.get_latt_vol()
         print(f'{self.geom_name} started')
         print(self.get_info())
-        x = self.engine_hkl.axis_names_get(Hkl.UnitEnum.USER)
-        print(x)
+
     
     def switch_geom(self):
         if self.geom == 0:
@@ -311,14 +310,14 @@ class hklCalculator():
                         float(self.axes_UB_k4c[2]), \
                         float(self.axes_UB_k4c[3])] 
         elif self.geom == 4:
-            values_w = [float(self.axes_UB_e6c[0]),
+            values_w = [float(self.axes_UB_e6c[0]), \
                         float(self.axes_UB_e6c[1]), \
                         float(self.axes_UB_e6c[2]), \
                         float(self.axes_UB_e6c[3]), \
                         float(self.axes_UB_e6c[4]), \
                         float(self.axes_UB_e6c[5])] 
         elif self.geom == 5:
-            values_w = [float(self.axes_UB_k6c[0]),
+            values_w = [float(self.axes_UB_k6c[0]), \
                         float(self.axes_UB_k6c[1]), \
                         float(self.axes_UB_k6c[2]), \
                         float(self.axes_UB_k6c[3]), \
@@ -798,4 +797,8 @@ class hklCalculator():
         print(f'a: {a}, b: {b}, c: {c}, alpha: {alpha}, beta: {beta}, gamma: {gamma}')
         print(f'UB: {self.UB_matrix}')
         print(f'latt vol: {self.lattice_vol}')
-         
+        #x = self.engine_hkl.axis_names_get(Hkl.UnitEnum.USER)
+        #x = self.engine_hkl.axis_names_get(Hkl.EngineAxisNamesGet.WRITE) ???
+        # https://repo.or.cz/hkl.git/blob/5a20e852030a90f6920f4040fc437395bec3b532:/tests/bindings/python.py
+        x = self.engine_hkl.axis_names_get(Hkl.EngineAxisNamesGet.READ)
+        print(x)

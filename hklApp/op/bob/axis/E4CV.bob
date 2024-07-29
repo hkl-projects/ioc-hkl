@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-11 23:13:28 by kg1-->
+<!--Saved on 2024-07-29 11:34:53 by l3b-->
 <display version="2.0.0">
   <name>E4CV</name>
   <widget type="label" version="2.0.0">
@@ -23,10 +23,10 @@
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display</name>
     <macros>
-      <Ax1Name>omega</Ax1Name>
-      <Ax2Name>chi</Ax2Name>
-      <Ax3Name>phi</Ax3Name>
-      <Ax4Name>tth</Ax4Name>
+      <Ax1Name>omega_e4c</Ax1Name>
+      <Ax2Name>chi_e4c</Ax2Name>
+      <Ax3Name>phi_e4c</Ax3Name>
+      <Ax4Name>tth_e4c</Ax4Name>
     </macros>
     <file>_4axes.bob</file>
     <y>25</y>

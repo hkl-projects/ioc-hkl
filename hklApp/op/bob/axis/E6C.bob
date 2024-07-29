@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-11 22:51:34 by kg1-->
+<!--Saved on 2024-07-29 11:37:07 by l3b-->
 <display version="2.0.0">
   <name>E6C</name>
+  <macros>
+    <Ax1Name>mu_e6c</Ax1Name>
+    <Ax2Name>omega_e6c</Ax2Name>
+    <Ax3Name>chi_e6c</Ax3Name>
+    <Ax4Name>phi_e6c</Ax4Name>
+    <Ax5Name>gamma_e6c</Ax5Name>
+    <Ax6Name>delta_e6c</Ax6Name>
+  </macros>
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
@@ -23,12 +31,12 @@
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display</name>
     <macros>
-      <Ax1Name>mu</Ax1Name>
-      <Ax2Name>omega</Ax2Name>
-      <Ax3Name>chi</Ax3Name>
-      <Ax4Name>phi</Ax4Name>
-      <Ax5Name>gamma</Ax5Name>
-      <Ax6Name>delta</Ax6Name>
+      <Ax1Name>mu_e6c</Ax1Name>
+      <Ax2Name>omega_e6c</Ax2Name>
+      <Ax3Name>chi_e6c</Ax3Name>
+      <Ax4Name>phi_e6c</Ax4Name>
+      <Ax5Name>gamma_e6c</Ax5Name>
+      <Ax6Name>delta_e6c</Ax6Name>
     </macros>
     <file>_6axes.bob</file>
     <y>25</y>

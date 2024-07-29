@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-12 10:01:14 by kg1-->
+<!--Saved on 2024-07-29 11:37:57 by l3b-->
 <display version="2.0.0">
-  <name>E4CH</name>
+  <name>K4CV</name>
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
@@ -23,10 +23,10 @@
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display</name>
     <macros>
-      <Ax1Name>omega</Ax1Name>
-      <Ax2Name>kappa</Ax2Name>
-      <Ax3Name>phi</Ax3Name>
-      <Ax4Name>tth</Ax4Name>
+      <Ax1Name>komega_k4c</Ax1Name>
+      <Ax2Name>kappa_k4c</Ax2Name>
+      <Ax3Name>kphi_k4c</Ax3Name>
+      <Ax4Name>tth_k4c</Ax4Name>
     </macros>
     <file>_4axes.bob</file>
     <y>25</y>
