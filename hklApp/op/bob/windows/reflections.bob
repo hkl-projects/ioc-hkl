@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-29 11:01:12 by l3b-->
+<!--Saved on 2024-07-29 13:33:52 by l3b-->
 <display version="2.0.0">
   <name>Reflections</name>
   <macros>
@@ -283,6 +283,22 @@
     <rules>
       <rule name="Visible" prop_id="visible" out_exp="false">
         <exp bool_exp="pv0==2">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_0</name>
+    <file>../reflections/reflections_input_e4c.bob</file>
+    <y>20</y>
+    <width>1220</width>
+    <height>90</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visible" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==1">
           <value>true</value>
         </exp>
         <pv_name>$(Sys)geom</pv_name>

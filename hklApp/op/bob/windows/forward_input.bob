@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-29 11:31:22 by l3b-->
+<!--Saved on 2024-07-29 13:49:40 by l3b-->
 <display version="2.0.0">
   <name>Forward_input</name>
   <macros>
@@ -87,9 +87,9 @@
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_5</name>
     <macros>
-      <Ax1Name>omega_k4c</Ax1Name>
-      <Ax2Name>chi_k4c</Ax2Name>
-      <Ax3Name>phi_k4c</Ax3Name>
+      <Ax1Name>komega_k4c</Ax1Name>
+      <Ax2Name>kappa_k4c</Ax2Name>
+      <Ax3Name>kphi_k4c</Ax3Name>
       <Ax4Name>tth_k4c</Ax4Name>
     </macros>
     <file>../axis/K4CV.bob</file>

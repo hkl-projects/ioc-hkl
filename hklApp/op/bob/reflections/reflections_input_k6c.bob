@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-29 11:01:46 by l3b-->
+<!--Saved on 2024-07-29 14:01:34 by l3b-->
 <display version="2.0.0">
   <name>Reflections_input_k6c</name>
   <macros>
@@ -97,7 +97,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_6</name>
-    <pv_name>$(Sys)refl1_omega_k6c</pv_name>
+    <pv_name>$(Sys)refl1_komega_k6c</pv_name>
     <x>511</x>
     <y>20</y>
     <width>108</width>
@@ -119,7 +119,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_7</name>
-    <pv_name>$(Sys)refl1_chi_k6c</pv_name>
+    <pv_name>$(Sys)refl1_kappa_k6c</pv_name>
     <x>631</x>
     <y>20</y>
     <width>108</width>
@@ -141,7 +141,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_8</name>
-    <pv_name>$(Sys)refl1_phi_k6c</pv_name>
+    <pv_name>$(Sys)refl1_kphi_k6c</pv_name>
     <x>751</x>
     <y>20</y>
     <width>108</width>
@@ -251,7 +251,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_13</name>
-    <pv_name>$(Sys)refl2_omega_k6c</pv_name>
+    <pv_name>$(Sys)refl2_komega_k6c</pv_name>
     <x>511</x>
     <y>60</y>
     <width>108</width>
@@ -273,7 +273,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_14</name>
-    <pv_name>$(Sys)refl2_chi_k6c</pv_name>
+    <pv_name>$(Sys)refl2_kappa_k6c</pv_name>
     <x>631</x>
     <y>60</y>
     <width>108</width>
@@ -295,7 +295,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_15</name>
-    <pv_name>$(Sys)refl2_phi_k6c</pv_name>
+    <pv_name>$(Sys)refl2_kphi_k6c</pv_name>
     <x>751</x>
     <y>60</y>
     <width>108</width>

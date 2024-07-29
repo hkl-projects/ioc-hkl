@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-13 17:38:17 by kg1-->
+<!--Saved on 2024-07-29 14:00:08 by l3b-->
 <display version="2.0.0">
   <name>K6C_PseudoAxInput</name>
   <widget type="label" version="2.0.0">
@@ -43,7 +43,7 @@
     </macros>
     <file>_pseudoAxes.bob</file>
     <y>30</y>
-    <width>580</width>
-    <height>270</height>
+    <width>460</width>
+    <height>430</height>
   </widget>
 </display>

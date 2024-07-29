@@ -1,12 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-29 12:10:13 by l3b-->
+<!--Saved on 2024-07-29 13:57:57 by l3b-->
 <display version="2.0.0">
   <name>Backward_output</name>
   <macros>
     <Sys>HB3:ioc-hkl:</Sys>
   </macros>
-  <width>1260</width>
+  <width>1190</width>
   <height>390</height>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_1</name>
+    <macros>
+      <Ax1Name>omega_e4c</Ax1Name>
+      <Ax2Name>chi_e4c</Ax2Name>
+      <Ax3Name>phi_e4c</Ax3Name>
+      <Ax4Name>tth_e4c</Ax4Name>
+    </macros>
+    <file>../axis/_multi_axis_solutions_e4c.bob</file>
+    <x>20</x>
+    <y>110</y>
+    <width>1130</width>
+    <height>270</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==1">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+  </widget>
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_2</name>
     <macros>
@@ -18,7 +41,7 @@
     <file>../axis/_multi_axis_solutions_e4c.bob</file>
     <x>10</x>
     <y>110</y>
-    <width>800</width>
+    <width>1140</width>
     <height>270</height>
     <visible>false</visible>
     <rules>
@@ -70,7 +93,7 @@
     <file>../axis/_multi_axis_solutions_k4c.bob</file>
     <x>10</x>
     <y>110</y>
-    <width>800</width>
+    <width>1140</width>
     <height>270</height>
     <visible>false</visible>
     <rules>
@@ -95,7 +118,7 @@
     <file>../axis/_multi_axis_solutions_e6c.bob</file>
     <x>10</x>
     <y>110</y>
-    <width>1080</width>
+    <width>1180</width>
     <height>270</height>
     <visible>false</visible>
     <rules>
@@ -120,8 +143,8 @@
     <file>../axis/_multi_axis_solutions_k6c.bob</file>
     <x>10</x>
     <y>110</y>
-    <width>1080</width>
-    <height>270</height>
+    <width>1160</width>
+    <height>260</height>
     <visible>false</visible>
     <rules>
       <rule name="Visibility" prop_id="visible" out_exp="false">
