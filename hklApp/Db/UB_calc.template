@@ -127,21 +127,21 @@ record(ao, "$(P)$(R)refl_omega_si_e4c") {
     field(OUT, "@hkl_calc.refl_refine_input_e4c[3]=VAL")
 }
 
-record(ao, "$(P)$(R)reflchisi") {
+record(ao, "$(P)$(R)refl_chi_si_e4c") {
     field(DESC, "h")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.refl_refine_input_e4c[4]=VAL")
 }
 
-record(ao, "$(P)$(R)reflphisi") {
+record(ao, "$(P)$(R)refl_phi_si_e4c") {
     field(DESC, "h")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.refl_refine_input_e4c[5]=VAL")
 }
 
-record(ao, "$(P)$(R)refltthsi") {
+record(ao, "$(P)$(R)refl_tth_si_e4c") {
     field(DESC, "h")
     field(PINI, "YES")
     field(DTYP, "pydev")
@@ -299,7 +299,7 @@ record(ao, "$(P)$(R)refl_tth_si_k4c") {
 
 
 
-#6-circle
+# Eulerian 6-circle
 
 record(ao, "$(P)$(R)refl1_h_e6c") {
     field(DESC, "h")

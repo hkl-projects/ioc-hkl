@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-28 20:01:05 by l3b-->
+<!--Saved on 2024-07-29 19:02:32 by l3b-->
 <display version="2.0.0">
   <name>HKL_refine</name>
   <macros>
     <Sys>HB3:ioc-hkl:</Sys>
   </macros>
-  <width>1050</width>
+  <width>1350</width>
   <height>900</height>
   <widget type="arc" version="2.0.0">
     <name>Arc</name>
@@ -17,8 +17,8 @@
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_1</name>
     <file>../windows/reflections_refine.bob</file>
-    <width>1020</width>
-    <height>809</height>
+    <width>1310</width>
+    <height>850</height>
   </widget>
   <widget type="polyline" version="2.0.0">
     <name>Polyline_1</name>

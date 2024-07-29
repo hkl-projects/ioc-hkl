@@ -27,6 +27,16 @@ class hklCalculator():
         
         self.errors = 'test string'
         
+        self.particle_type = 0
+        self.neutron = 0.
+        self.velocity = 0. # sqrt(2E/m) 
+        self.e = 1.6021766300e-19 # [C]
+        self.h = 6.6260701500e-34 # [m^2*kg/s]
+        self.c = 299792458 # [m/s^2]
+        self.m_neutron = 1.6749274710e-27 #[kg]
+        self.m_proton = 1.6726219200e-27 #[kg]
+        self.m_electron = 9.1093837e-27 #[kg]
+
         # sample orientation
         # initial 2 reflections
         self.num_reflections = num_reflections
@@ -212,7 +222,18 @@ class hklCalculator():
         print(f'{self.geom_name} started')
         print(self.get_info())
 
-    
+    def energy_to_wavelength_neutron(self):
+        # from milli_ev to Angstrom
+        if (self.particle_type == 0) and (self.energy > 0): # Xray
+            # E [kev] = hc/lambda [m^2kgs^-2]
+            coeff = 12.39841987 # hc [kev*A]
+            self.wavelength = coeff/self.energy # hc/energy
+            
+        elif (self.particle_type == 1) and (self.energy > 0): # neutron
+            # E [mev] = p^2/2m = h^2/(2m*lambda^2) [...]
+            coeff = 81.804211883 # h^2/2m_neutron [mevA^2] for neutrons
+            self.wavelength = math.sqrt(coeff/self.energy)
+
     def switch_geom(self):
         if self.geom == 0:
             print("switching to TwoC")
