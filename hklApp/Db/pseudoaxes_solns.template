@@ -104,3 +104,28 @@ record(ai, "$(P)$(R)sol:azimuthE") {
     field(SCAN, "1 second")
 }
 
+record(ai, "$(P)$(R)sol:omega") {
+    field(DESC, "omega")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.pseudoaxes_solns_omega")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)sol:chi") {
+    field(DESC, "chi")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.pseudoaxes_solns_chi")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)sol:phi") {
+    field(DESC, "phi")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.pseudoaxes_solns_phi")
+    field(SCAN, "1 second")
+}
+
+

@@ -131,6 +131,9 @@ class hklCalculator():
         self.pseudoaxes_azimuth1 = 0.
         self.pseudoaxes_emergence = 0.
         self.pseudoaxes_azimuth2 = 0.
+        self.pseudoaxes_omega = 0.
+        self.pseudoaxes_chi = 0.
+        self.pseudoaxes_phi = 0.
        
         ### axes solutions 
         # Eulerian 4-circle
@@ -219,8 +222,7 @@ class hklCalculator():
 
         self.get_UB_matrix()    
         self.get_latt_vol()
-        print(f'{self.geom_name} started')
-        print(self.get_info())
+        self.errors = f'{self.geom_name} started\n {self.get_info()}'
 
     def energy_to_wavelength_neutron(self):
         # from milli_ev to Angstrom
@@ -697,7 +699,7 @@ class hklCalculator():
         try:
             self.sample.affine()
         except RuntimeError as e:
-            print(traceback.print_exc()) # credit to Alex S
+            self.errors = traceback.print_exc() # credit to Alex S
             
         self.start()
         UB = self.sample.UB_get()
@@ -750,27 +752,28 @@ class hklCalculator():
             self.axes_UB_k6c[3] = self.refl_refine_input_e6c[6]
             self.axes_UB_k6c[4] = self.refl_refine_input_e6c[7]
             self.axes_UB_k6c[5] = self.refl_refine_input_e6c[8]
-
         self.forward_UB()
         if self.geom == 1 or 2:
             self.refl_refine = self.sample.add_reflection(self.geometry, \
                 self.detector, self.refl_refine_input_e4c[0], \
                 self.refl_refine_input_e4c[1], self.refl_refine_input_e4c[2])   
+            #self.refl_refine_list.append(self.refl_refine)
+            self.refl_refine_input_list_e4c[self.curr_num_refls] = self.refl_refine_input_e4c.copy()
         if self.geom == 3:
             self.refl_refine = self.sample.add_reflection(self.geometry, \
                 self.detector, self.refl_refine_input_k4c[0], \
                 self.refl_refine_input_k4c[1], self.refl_refine_input_k4c[2])   
+            self.refl_refine_input_list_k4c[self.curr_num_refls] = self.refl_refine_input_k4c.copy()
         if self.geom == 4:
             self.refl_refine = self.sample.add_reflection(self.geometry, \
                 self.detector, self.refl_refine_input_e6c[0], \
                 self.refl_refine_input_e6c[1], self.refl_refine_input_e6c[2])   
+            self.refl_refine_input_list_e6c[self.curr_num_refls] = self.refl_refine_input_e6c.copy()
         if self.geom == 5:
             self.refl_refine = self.sample.add_reflection(self.geometry, \
                 self.detector, self.refl_refine_input_k6c[0], \
                 self.refl_refine_input_k6c[1], self.refl_refine_input_k6c[2])   
-
-        self.refl_refine_list.append(self.refl_refine)
-        self.refl_refine_input_list[self.curr_num_refls] = self.refl_refine_input.copy()
+            self.refl_refine_input_list_k6c[self.curr_num_refls] = self.refl_refine_input_k6c.copy()
         self.curr_num_refls += 1
 
     #def del_refl_refine(self):
