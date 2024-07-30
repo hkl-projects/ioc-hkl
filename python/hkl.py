@@ -371,7 +371,7 @@ class hklCalculator():
         print("Backward function start")
         self.reset_axes_solns()
         # set mode
-        if self.geom == (1 or 2 or 3):
+        if (self.geom == 1) or (self.geom==2) or (self.geom==3):
             if self.mode_4c == 0:
                 self.engine_hkl.current_mode_set('bissector')
             elif self.mode_4c == 1:
@@ -402,7 +402,7 @@ class hklCalculator():
             values_w_all.append(read)
         if len_solns > self.num_axes_solns: # truncate if above max available soln slots
             len_solns = self.num_axes_solns
-        if self.geom == 1 or 2:
+        if (self.geom == 1) or (self.geom==2):
             for i in range(len_solns): 
                 self.axes_solns_omega_e4c[i], \
                 self.axes_solns_chi_e4c[i], \
@@ -779,7 +779,7 @@ class hklCalculator():
             self.axes_UB_k6c[4] = self.refl_refine_input_e6c[7]
             self.axes_UB_k6c[5] = self.refl_refine_input_e6c[8]
         self.forward_UB()
-        if self.geom == 1 or 2:
+        if (self.geom == 1) or (self.geom==2):
             self.refl_refine = self.sample.add_reflection(self.geometry, \
                 self.detector, self.refl_refine_input_e4c[0], \
                 self.refl_refine_input_e4c[1], self.refl_refine_input_e4c[2])   

@@ -31,7 +31,7 @@ hkl - https://repo.or.cz/hkl.git
 ```bash
 cd /epics/support
 git clone https://repo.or.cz/hkl.git
-git checkout tags/v5.0.0.3357
+git checkout tags/v5.0.0.3357 # DELETE, UPDATE TO NEWEST
 cd hkl
 ```
 
@@ -41,7 +41,7 @@ sudo apt install gtk-doc-tools autoconf libgtkmm-3.0-dev libyaml-dev gettext aut
 
 ```bash
 ./autogen
-./configure --enable-introspection
+./configure --enable-introspection --disable-binoculars
 make
 sudo make install
 ```
