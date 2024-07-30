@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-29 13:42:11 by l3b-->
+<!--Saved on 2024-07-30 14:43:29 by l3b-->
 <display version="2.0.0">
   <name>HKL_backward</name>
   <macros>
@@ -25,10 +25,10 @@
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_5</name>
     <file>../windows/backward_input.bob</file>
-    <x>110</x>
+    <x>40</x>
     <y>20</y>
-    <width>620</width>
-    <height>400</height>
+    <width>1200</width>
+    <height>470</height>
   </widget>
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_7</name>
@@ -37,33 +37,5 @@
     <y>510</y>
     <width>1230</width>
     <height>400</height>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label</name>
-    <text>Mode:</text>
-    <x>50</x>
-    <y>430</y>
-    <width>60</width>
-    <height>30</height>
-  </widget>
-  <widget type="choice" version="2.0.0">
-    <name>Choice Button</name>
-    <pv_name>$(Sys)mode</pv_name>
-    <x>120</x>
-    <y>440</y>
-    <width>620</width>
-    <height>20</height>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <items>
-      <item></item>
-    </items>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>Label_1</name>
-    <text>*constant to the rotation value set in "forward"</text>
-    <x>290</x>
-    <y>470</y>
-    <width>340</width>
-    <height>30</height>
   </widget>
 </display>

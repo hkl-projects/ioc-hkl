@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-25 13:06:39 by l3b-->
+<!--Saved on 2024-07-30 14:52:51 by l3b-->
 <display version="2.0.0">
   <name>Backward_input</name>
   <macros>
     <Sys>HB3:ioc-hkl:</Sys>
   </macros>
-  <width>560</width>
-  <height>360</height>
+  <width>1200</width>
+  <height>450</height>
   <widget type="label" version="2.0.0">
     <name>Label_13</name>
     <text>Reciprocal space input</text>
@@ -23,7 +23,7 @@
     <file>../axis/TwoCpseudoAxes.bob</file>
     <y>40</y>
     <width>550</width>
-    <height>310</height>
+    <height>400</height>
     <visible>false</visible>
     <rules>
       <rule name="Visible" prop_id="visible" out_exp="false">
@@ -39,7 +39,7 @@
     <file>../axis/E4CHpseudoAxes.bob</file>
     <y>40</y>
     <width>550</width>
-    <height>310</height>
+    <height>400</height>
     <visible>false</visible>
     <rules>
       <rule name="Visible" prop_id="visible" out_exp="false">
@@ -55,7 +55,7 @@
     <file>../axis/E4CVpseudoAxes.bob</file>
     <y>40</y>
     <width>550</width>
-    <height>310</height>
+    <height>400</height>
     <visible>false</visible>
     <rules>
       <rule name="Visible" prop_id="visible" out_exp="false">
@@ -71,7 +71,7 @@
     <file>../axis/K4CVpseudoAxes.bob</file>
     <y>40</y>
     <width>550</width>
-    <height>310</height>
+    <height>400</height>
     <visible>false</visible>
     <rules>
       <rule name="Visible" prop_id="visible" out_exp="false">
@@ -87,7 +87,7 @@
     <file>../axis/E6CpseudoAxes.bob</file>
     <y>40</y>
     <width>550</width>
-    <height>310</height>
+    <height>400</height>
     <visible>false</visible>
     <rules>
       <rule name="Visible" prop_id="visible" out_exp="false">
@@ -103,7 +103,7 @@
     <file>../axis/K6CpseudoAxes.bob</file>
     <y>40</y>
     <width>550</width>
-    <height>310</height>
+    <height>400</height>
     <visible>false</visible>
     <rules>
       <rule name="Visible" prop_id="visible" out_exp="false">
@@ -119,7 +119,7 @@
     <file>../axis/ZAXISpseudoAxes.bob</file>
     <y>40</y>
     <width>550</width>
-    <height>310</height>
+    <height>400</height>
     <visible>false</visible>
     <rules>
       <rule name="Visible" prop_id="visible" out_exp="false">
@@ -129,5 +129,126 @@
         <pv_name>$(Sys)geom</pv_name>
       </rule>
     </rules>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>Choice Button</name>
+    <pv_name>$(Sys)mode_4c</pv_name>
+    <x>570</x>
+    <y>120</y>
+    <width>610</width>
+    <height>50</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==1">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <items>
+      <item></item>
+    </items>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>Choice Button_1</name>
+    <pv_name>$(Sys)mode_4c</pv_name>
+    <x>570</x>
+    <y>120</y>
+    <width>610</width>
+    <height>50</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==2">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <items>
+      <item></item>
+    </items>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>Choice Button_2</name>
+    <pv_name>$(Sys)mode_4c</pv_name>
+    <x>570</x>
+    <y>120</y>
+    <width>610</width>
+    <height>50</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==3">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <items>
+      <item></item>
+    </items>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>Choice Button_3</name>
+    <pv_name>$(Sys)mode_6c</pv_name>
+    <x>570</x>
+    <y>100</y>
+    <width>610</width>
+    <height>90</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==4">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <items>
+      <item></item>
+    </items>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>Choice Button_4</name>
+    <pv_name>$(Sys)mode_6c</pv_name>
+    <x>570</x>
+    <y>100</y>
+    <width>610</width>
+    <height>90</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==5">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <items>
+      <item></item>
+    </items>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_1</name>
+    <text>*constant to the rotation value set in "forward"</text>
+    <x>740</x>
+    <y>210</y>
+    <width>340</width>
+    <height>30</height>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_2</name>
+    <text>Mode:</text>
+    <x>850</x>
+    <y>60</y>
+    <width>60</width>
+    <height>30</height>
   </widget>
 </display>

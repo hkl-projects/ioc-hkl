@@ -128,4 +128,11 @@ record(ai, "$(P)$(R)sol:phi") {
     field(SCAN, "1 second")
 }
 
+record(ai, "$(P)$(R)sol:tth") {
+    field(DESC, "phi")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.pseudoaxes_solns_tth")
+    field(SCAN, "1 second")
+}
 

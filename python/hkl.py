@@ -19,7 +19,8 @@ class hklCalculator():
         self.sample = np.nan # hkl object placeholder
         self.engines = np.nan # hkl object placeholder
         self.engine_hkl = np.nan # hkl object placeholder
-        self.mode = 0 # bissector, constant omega...
+        self.mode_4c = 0 # bissector, constant omega...
+        self.mode_6c = 0 # bissector_vertical, constant_omega_vertical
         self.latt = [0., 0., 0., 0., 0., 0.] 
         # ^ [a1, a2, a3, alpha, beta, gamma], angstroms and radians
         self.lattice = np.nan 
@@ -200,6 +201,14 @@ class hklCalculator():
         self.pseudoaxes_solns_azimuth1 = 0.
         self.pseudoaxes_solns_emergence = 0.
         self.pseudoaxes_solns_azimuth2 = 0.
+        self.pseudoaxes_solns_omega = 0.
+        self.pseudoaxes_solns_chi = 0.
+        self.pseudoaxes_solns_phi = 0.
+        self.pseudoaxes_solns_tth = 0.
+        self.pseudoaxes_solns_alpha = 0.
+        self.pseudoaxes_solns_alpha2 = 0.
+        self.pseudoaxes_solns_qper = 0.
+        self.pseudoaxes_solns_qpar = 0.
  
     def start(self):
         self.detector = Hkl.Detector.factory_new(Hkl.DetectorType(0))
@@ -274,19 +283,24 @@ class hklCalculator():
     def forward(self):
         print("Forward function start")
         self.reset_pseudoaxes_solns()
-        if self.geom == 1 or 2:
+        print(f"geom: {self.geom}")
+        print(f"geom name: {self.geom_name}")
+        if (self.geom_name == 'E4CH') or (self.geom_name == 'E4CV'):
+            print("aaaaaaaaaaa")
             values_w = [float(self.axes_e4c[0]), \
                         float(self.axes_e4c[1]), \
                         float(self.axes_e4c[2]), \
                         float(self.axes_e4c[3])] 
             print(values_w)
-        elif self.geom == 3:
+        if self.geom_name == "K4CV":
+            print("bbbbbbbbbbb")
             values_w = [float(self.axes_k4c[0]), \
                         float(self.axes_k4c[1]), \
                         float(self.axes_k4c[2]), \
                         float(self.axes_k4c[3])] 
             print(values_w)
-        elif self.geom == 4:
+        elif self.geom_name == "E6C":
+            print("ccccccccccc")
             values_w = [float(self.axes_e6c[0]), \
                         float(self.axes_e6c[1]), \
                         float(self.axes_e6c[2]), \
@@ -294,7 +308,8 @@ class hklCalculator():
                         float(self.axes_e6c[4]), \
                         float(self.axes_e6c[5])] 
             print(values_w)
-        elif self.geom == 5:
+        elif self.geom_name == "K6C":
+            print("ddddddddddd")
             values_w = [float(self.axes_k6c[0]), \
                         float(self.axes_k6c[1]), \
                         float(self.axes_k6c[2]), \
@@ -356,14 +371,25 @@ class hklCalculator():
         print("Backward function start")
         self.reset_axes_solns()
         # set mode
-        if self.mode == 0:
-            self.engine_hkl.current_mode_set('bissector')
-        elif self.mode == 1:
-            self.engine_hkl.current_mode_set('constant_omega')
-        elif self.mode == 2:
-            self.engine_hkl.current_mode_set('constant_chi')
-        elif self.mode == 3:
-            self.engine_hkl.current_mode_set('constant_phi')
+        if self.geom == (1 or 2 or 3):
+            if self.mode_4c == 0:
+                self.engine_hkl.current_mode_set('bissector')
+            elif self.mode_4c == 1:
+                self.engine_hkl.current_mode_set('constant_omega')
+            elif self.mode_4c == 2:
+                self.engine_hkl.current_mode_set('constant_chi')
+            elif self.mode_4c == 3:
+                self.engine_hkl.current_mode_set('constant_phi')
+        elif self.geom == (4 or 5):
+            if self.mode_6c == 0: 
+                self.engine_hkl.current_mode_set('bissector_vertical')
+            if self.mode_6c == 1: 
+                self.engine_hkl.current_mode_set('constant_omega_vertical')
+            if self.mode_6c == 2: 
+                self.engine_hkl.current_mode_set('constant_chi_vertical')
+            if self.mode_6c == 3: 
+                self.engine_hkl.current_mode_set('constant_phi_vertical')
+
         values_hkl = [float(self.pseudoaxes_h), \
                       float(self.pseudoaxes_k), \
                       float(self.pseudoaxes_l)]

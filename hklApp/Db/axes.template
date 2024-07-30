@@ -344,8 +344,8 @@ record(ai, "$(P)$(R)delta_k6c_RBV") {
 
 
 # Constraints for inverse calculations
-# 4-circle
-record(mbbo, "$(P)$(R)mode") {
+# all 4-circles
+record(mbbo, "$(P)$(R)mode_4c") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(ZRVL, "0")
@@ -356,6 +356,30 @@ record(mbbo, "$(P)$(R)mode") {
     field(ONST, "constant omega")
     field(TWST, "constant chi")
     field(THST, "constant phi")
-    field(OUT, "@hkl_calc.mode=VAL")
+    field(OUT, "@hkl_calc.mode_4c=VAL")
+}
+
+# all 6-circles
+record(mbbo, "$(P)$(R)mode_6c") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(ZRVL, "0")
+    field(ONVL, "1")
+    field(TWVL, "2")
+    field(THVL, "3")
+    field(FRVL, "4")
+    field(FVVL, "5")
+    field(SXVL, "6")
+    field(SVVL, "7")
+    field(EIVL, "8")
+    field(ZRST, "bissector vertical")
+    field(ONST, "constant omega vertical")
+    field(TWST, "constant chi vertical")
+    field(THST, "constant phi vertical")
+    field(FRST, "bissector horizontal")
+    field(FVST, "constant omega horizontal")
+    field(SXST, "constant chi horizontal")
+    field(SVST, "constant phi horizontal")
+    field(OUT, "@hkl_calc.mode_6c=VAL")
 }
 
