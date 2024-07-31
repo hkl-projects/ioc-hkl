@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-25 13:05:32 by l3b-->
+<!--Saved on 2024-07-29 13:49:40 by l3b-->
 <display version="2.0.0">
   <name>Forward_input</name>
   <macros>
@@ -43,10 +43,10 @@
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_3</name>
     <macros>
-      <Ax1Name>omega</Ax1Name>
-      <Ax2Name>chi</Ax2Name>
-      <Ax3Name>phi</Ax3Name>
-      <Ax4Name>tth</Ax4Name>
+      <Ax1Name>omega_e4c</Ax1Name>
+      <Ax2Name>chi_e4c</Ax2Name>
+      <Ax3Name>phi_e4c</Ax3Name>
+      <Ax4Name>tth_e4c</Ax4Name>
     </macros>
     <file>../axis/E4CH.bob</file>
     <y>50</y>
@@ -65,10 +65,10 @@
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_4</name>
     <macros>
-      <Ax1Name>omega</Ax1Name>
-      <Ax2Name>chi</Ax2Name>
-      <Ax3Name>phi</Ax3Name>
-      <Ax4Name>tth</Ax4Name>
+      <Ax1Name>omega_e4c</Ax1Name>
+      <Ax2Name>chi_e4c</Ax2Name>
+      <Ax3Name>phi_e4c</Ax3Name>
+      <Ax4Name>tth_e4c</Ax4Name>
     </macros>
     <file>../axis/E4CV.bob</file>
     <y>50</y>
@@ -87,10 +87,10 @@
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_5</name>
     <macros>
-      <Ax1Name>omega</Ax1Name>
-      <Ax2Name>chi</Ax2Name>
-      <Ax3Name>phi</Ax3Name>
-      <Ax4Name>tth</Ax4Name>
+      <Ax1Name>komega_k4c</Ax1Name>
+      <Ax2Name>kappa_k4c</Ax2Name>
+      <Ax3Name>kphi_k4c</Ax3Name>
+      <Ax4Name>tth_k4c</Ax4Name>
     </macros>
     <file>../axis/K4CV.bob</file>
     <y>50</y>
@@ -109,10 +109,12 @@
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_6</name>
     <macros>
-      <Ax1Name>omega</Ax1Name>
-      <Ax2Name>chi</Ax2Name>
-      <Ax3Name>phi</Ax3Name>
-      <Ax4Name>tth</Ax4Name>
+      <Ax1Name>mu_e6c</Ax1Name>
+      <Ax2Name>omega_e6c</Ax2Name>
+      <Ax3Name>chi_e6c</Ax3Name>
+      <Ax4Name>phi_e6c</Ax4Name>
+      <Ax5Name>gamma_e6c</Ax5Name>
+      <Ax6Name>delta_e6c</Ax6Name>
     </macros>
     <file>../axis/E6C.bob</file>
     <y>50</y>
@@ -131,10 +133,12 @@
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_7</name>
     <macros>
-      <Ax1Name>omega</Ax1Name>
-      <Ax2Name>chi</Ax2Name>
-      <Ax3Name>phi</Ax3Name>
-      <Ax4Name>tth</Ax4Name>
+      <Ax1Name>mu_k6c</Ax1Name>
+      <Ax2Name>komega_k6c</Ax2Name>
+      <Ax3Name>kappa_k6c</Ax3Name>
+      <Ax4Name>kphi_k6c</Ax4Name>
+      <Ax5Name>gamma_k6c</Ax5Name>
+      <Ax6Name>delta_k6c</Ax6Name>
     </macros>
     <file>../axis/K6C.bob</file>
     <y>50</y>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-13 16:50:38 by kg1-->
+<!--Saved on 2024-07-31 09:55:56 by l3b-->
 <display version="2.0.0">
-  <name>E4CH_PseudoAxInput</name>
+  <name>K4CV_PseudoAxInput</name>
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
@@ -23,22 +23,19 @@
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display</name>
     <macros>
-      <Ax1Name>h</Ax1Name>
-      <Ax2Name>k</Ax2Name>
-      <Ax3Name>l</Ax3Name>
-      <Ax4Name>omega</Ax4Name>
-      <Ax5Name>chi</Ax5Name>
-      <Ax6Name>phi</Ax6Name>
-      <Ax7Name>psi</Ax7Name>
-      <Ax8Name>q</Ax8Name>
-      <Ax9Name>incidence</Ax9Name>
-      <Ax10Name>azimuthI</Ax10Name>
-      <Ax11Name>emergence</Ax11Name>
-      <Ax12Name>azimuthE</Ax12Name>
+      <Ax1Name>pseudoaxes_h</Ax1Name>
+      <Ax2Name>pseudoaxes_k</Ax2Name>
+      <Ax3Name>pseudoaxes_l</Ax3Name>
+      <Ax4Name>pseudoaxes_psi</Ax4Name>
+      <Ax5Name>pseudoaxes_q</Ax5Name>
+      <Ax6Name>pseudoaxes_incidence</Ax6Name>
+      <Ax7Name>pseudoaxes_azimuthI</Ax7Name>
+      <Ax8Name>pseudoaxes_emergence</Ax8Name>
+      <Ax9Name>pseudoaxes_azimuthE</Ax9Name>
     </macros>
-    <file>_pseudoAxes.bob</file>
+    <file>_pseudoAxes_k4c.bob</file>
     <y>30</y>
-    <width>580</width>
-    <height>270</height>
+    <width>460</width>
+    <height>230</height>
   </widget>
 </display>

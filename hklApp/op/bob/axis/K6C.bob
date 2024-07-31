@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-12 10:00:13 by kg1-->
+<!--Saved on 2024-07-29 13:50:49 by l3b-->
 <display version="2.0.0">
   <name>K6C</name>
   <widget type="label" version="2.0.0">
@@ -23,12 +23,12 @@
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display</name>
     <macros>
-      <Ax1Name>mu</Ax1Name>
-      <Ax2Name>omega</Ax2Name>
-      <Ax3Name>kappa</Ax3Name>
-      <Ax4Name>phi</Ax4Name>
-      <Ax5Name>gamma</Ax5Name>
-      <Ax6Name>delta</Ax6Name>
+      <Ax1Name>mu_k6c</Ax1Name>
+      <Ax2Name>komega_k6c</Ax2Name>
+      <Ax3Name>kappa_k6c</Ax3Name>
+      <Ax4Name>kphi_k6c</Ax4Name>
+      <Ax5Name>gamma_k6c</Ax5Name>
+      <Ax6Name>delta_k6c</Ax6Name>
     </macros>
     <file>_6axes.bob</file>
     <y>25</y>

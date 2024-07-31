@@ -1,4 +1,4 @@
-record(ai, "$(P)$(R)sol:h") {
+record(ai, "$(P)$(R)sol:pseudoaxes_h") {
     field(DESC, "h")
     field(PINI, "YES")
     field(DTYP, "pydev")
@@ -6,7 +6,7 @@ record(ai, "$(P)$(R)sol:h") {
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)sol:k") {
+record(ai, "$(P)$(R)sol:pseudoaxes_k") {
     field(DESC, "k")
     field(PINI, "YES")
     field(DTYP, "pydev")
@@ -14,7 +14,7 @@ record(ai, "$(P)$(R)sol:k") {
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)sol:l") {
+record(ai, "$(P)$(R)sol:pseudoaxes_l") {
     field(DESC, "l")
     field(PINI, "YES")
     field(DTYP, "pydev")
@@ -22,7 +22,7 @@ record(ai, "$(P)$(R)sol:l") {
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)sol:psi") {
+record(ai, "$(P)$(R)sol:pseudoaxes_psi") {
     field(DESC, "psi")
     field(PINI, "YES")
     field(DTYP, "pydev")
@@ -30,7 +30,7 @@ record(ai, "$(P)$(R)sol:psi") {
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)sol:q") {
+record(ai, "$(P)$(R)sol:pseudoaxes_q") {
     field(DESC, "q")
     field(PINI, "YES")
     field(DTYP, "pydev")
@@ -38,7 +38,7 @@ record(ai, "$(P)$(R)sol:q") {
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)sol:alpha") {
+record(ai, "$(P)$(R)sol:pseudoaxes_alpha") {
     field(DESC, "alpha")
     field(PINI, "YES")
     field(DTYP, "pydev")
@@ -46,7 +46,7 @@ record(ai, "$(P)$(R)sol:alpha") {
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)sol:qper") {
+record(ai, "$(P)$(R)sol:pseudoaxes_qper") {
     field(DESC, "qper")
     field(PINI, "YES")
     field(DTYP, "pydev")
@@ -54,7 +54,7 @@ record(ai, "$(P)$(R)sol:qper") {
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)sol:qpar") {
+record(ai, "$(P)$(R)sol:pseudoaxes_qpar") {
     field(DESC, "qpar")
     field(PINI, "YES")
     field(DTYP, "pydev")
@@ -62,7 +62,7 @@ record(ai, "$(P)$(R)sol:qpar") {
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)sol:alpha2") {
+record(ai, "$(P)$(R)sol:pseudoaxes_alpha2") {
     field(DESC, "alpha2")
     field(PINI, "YES")
     field(DTYP, "pydev")
@@ -70,9 +70,7 @@ record(ai, "$(P)$(R)sol:alpha2") {
     field(SCAN, "1 second")
 }
 
-
-
-record(ai, "$(P)$(R)sol:incidence") {
+record(ai, "$(P)$(R)sol:pseudoaxes_incidence") {
     field(DESC, "incidence")
     field(PINI, "YES")
     field(DTYP, "pydev")
@@ -80,7 +78,7 @@ record(ai, "$(P)$(R)sol:incidence") {
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)sol:azimuthI") {
+record(ai, "$(P)$(R)sol:pseudoaxes_azimuthI") {
     field(DESC, "azimuthI")
     field(PINI, "YES")
     field(DTYP, "pydev")
@@ -88,7 +86,7 @@ record(ai, "$(P)$(R)sol:azimuthI") {
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)sol:emergence") {
+record(ai, "$(P)$(R)sol:pseudoaxes_emergence") {
     field(DESC, "emergence")
     field(PINI, "YES")
     field(DTYP, "pydev")
@@ -96,11 +94,43 @@ record(ai, "$(P)$(R)sol:emergence") {
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)sol:azimuthE") {
+record(ai, "$(P)$(R)sol:pseudoaxes_azimuthE") {
     field(DESC, "azimuthE")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_solns_azimuth2")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)sol:pseudoaxes_omega") {
+    field(DESC, "omega")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.pseudoaxes_solns_omega")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)sol:pseudoaxes_chi") {
+    field(DESC, "chi")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.pseudoaxes_solns_chi")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)sol:pseudoaxes_phi") {
+    field(DESC, "phi")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.pseudoaxes_solns_phi")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)sol:pseudoaxes_tth") {
+    field(DESC, "phi")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.pseudoaxes_solns_tth")
     field(SCAN, "1 second")
 }
 

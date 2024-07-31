@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-07-31 10:00:33 by l3b-->
+<display version="2.0.0">
+  <name>Backward_input</name>
+  <macros>
+    <Sys>HB3:ioc-hkl:</Sys>
+  </macros>
+  <width>1200</width>
+  <height>500</height>
+  <widget type="label" version="2.0.0">
+    <name>Label_13</name>
+    <text>Reciprocal space input</text>
+    <x>190</x>
+    <y>10</y>
+    <width>169</width>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_5</name>
+    <file>../axis/TwoCpseudoAxes.bob</file>
+    <y>40</y>
+    <width>550</width>
+    <height>450</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visible" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==0">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_6</name>
+    <file>../axis/E4CHpseudoAxes.bob</file>
+    <y>40</y>
+    <width>550</width>
+    <height>450</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visible" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==1">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_7</name>
+    <file>../axis/E4CVpseudoAxes.bob</file>
+    <y>40</y>
+    <width>550</width>
+    <height>450</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visible" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==2">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_8</name>
+    <file>../axis/K4CVpseudoAxes.bob</file>
+    <y>40</y>
+    <width>550</width>
+    <height>450</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visible" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==3">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_9</name>
+    <file>../axis/E6CpseudoAxes.bob</file>
+    <y>40</y>
+    <width>550</width>
+    <height>450</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visible" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==4">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_10</name>
+    <file>../axis/K6CpseudoAxes.bob</file>
+    <y>40</y>
+    <width>550</width>
+    <height>450</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visible" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==5">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_11</name>
+    <file>../axis/ZAXISpseudoAxes.bob</file>
+    <y>40</y>
+    <width>550</width>
+    <height>450</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visible" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==6">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>Choice Button</name>
+    <pv_name>$(Sys)mode_4c</pv_name>
+    <x>570</x>
+    <y>120</y>
+    <width>610</width>
+    <height>50</height>
+    <visible>false</visible>
+    <selected_color>
+      <color name="On" red="0" green="255" blue="0">
+      </color>
+    </selected_color>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==1">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <items>
+      <item></item>
+    </items>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>Choice Button_1</name>
+    <pv_name>$(Sys)mode_4c</pv_name>
+    <x>570</x>
+    <y>120</y>
+    <width>610</width>
+    <height>50</height>
+    <visible>false</visible>
+    <selected_color>
+      <color name="On" red="0" green="255" blue="0">
+      </color>
+    </selected_color>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==2">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <items>
+      <item></item>
+    </items>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>Choice Button_2</name>
+    <pv_name>$(Sys)mode_4c</pv_name>
+    <x>570</x>
+    <y>120</y>
+    <width>610</width>
+    <height>50</height>
+    <visible>false</visible>
+    <selected_color>
+      <color name="On" red="0" green="255" blue="0">
+      </color>
+    </selected_color>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==3">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <items>
+      <item></item>
+    </items>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>Choice Button_3</name>
+    <pv_name>$(Sys)mode_6c</pv_name>
+    <x>570</x>
+    <y>100</y>
+    <width>610</width>
+    <height>90</height>
+    <visible>false</visible>
+    <selected_color>
+      <color name="On" red="0" green="255" blue="0">
+      </color>
+    </selected_color>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==4">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <items>
+      <item></item>
+    </items>
+  </widget>
+  <widget type="choice" version="2.0.0">
+    <name>Choice Button_4</name>
+    <pv_name>$(Sys)mode_6c</pv_name>
+    <x>570</x>
+    <y>100</y>
+    <width>610</width>
+    <height>90</height>
+    <visible>false</visible>
+    <selected_color>
+      <color name="On" red="0" green="255" blue="0">
+      </color>
+    </selected_color>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==5">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <items>
+      <item></item>
+    </items>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_1</name>
+    <text>*constant to the rotation value set in "forward"</text>
+    <x>740</x>
+    <y>210</y>
+    <width>340</width>
+    <height>30</height>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_2</name>
+    <text>Mode:</text>
+    <x>850</x>
+    <y>60</y>
+    <width>60</width>
+    <height>30</height>
+  </widget>
+</display>

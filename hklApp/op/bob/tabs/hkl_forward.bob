@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-25 16:31:12 by l3b-->
+<!--Saved on 2024-07-28 20:00:11 by l3b-->
 <display version="2.0.0">
   <name>HKL_forward</name>
   <macros>
@@ -24,7 +24,7 @@
   </widget>
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_4</name>
-    <file>E4CV/forward_input.bob</file>
+    <file>../windows/forward_input.bob</file>
     <x>40</x>
     <y>20</y>
     <width>810</width>
@@ -32,7 +32,7 @@
   </widget>
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_6</name>
-    <file>E4CV/forward_output.bob</file>
+    <file>../windows/forward_output.bob</file>
     <x>40</x>
     <y>280</y>
     <width>550</width>

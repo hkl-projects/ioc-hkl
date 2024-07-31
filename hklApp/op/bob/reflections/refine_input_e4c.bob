@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-07-29 18:16:23 by l3b-->
+<display version="2.0.0">
+  <name>refine input e4c</name>
+  <macros>
+    <Sys>HB3:ioc-hkl:</Sys>
+    <Ax1Name>refl_refine_input_list_h</Ax1Name>
+    <Ax2Name>refl_refine_input_list_k</Ax2Name>
+    <Ax3Name>refl_refine_input_list_l</Ax3Name>
+    <Ax4Name>refl_refine_input_list_omega</Ax4Name>
+    <Ax5Name>refl_refine_input_list_chi</Ax5Name>
+    <Ax6Name>refl_refine_input_list_phi</Ax6Name>
+    <Ax7Name>refl_refine_input_list_tth</Ax7Name>
+  </macros>
+  <width>1100</width>
+  <height>50</height>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_25</name>
+    <pv_name>$(Sys)refl_h_si_e4c</pv_name>
+    <y>20</y>
+    <width>108</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_26</name>
+    <pv_name>$(Sys)refl_k_si_e4c</pv_name>
+    <x>119</x>
+    <y>20</y>
+    <width>108</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_27</name>
+    <pv_name>$(Sys)refl_l_si_e4c</pv_name>
+    <x>237</x>
+    <y>20</y>
+    <width>108</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_28</name>
+    <pv_name>$(Sys)refl_omega_si_e4c</pv_name>
+    <x>360</x>
+    <y>20</y>
+    <width>108</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_29</name>
+    <pv_name>$(Sys)refl_chi_si_e4c</pv_name>
+    <x>480</x>
+    <y>20</y>
+    <width>108</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_30</name>
+    <pv_name>$(Sys)refl_phi_si_e4c</pv_name>
+    <x>600</x>
+    <y>20</y>
+    <width>108</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_31</name>
+    <pv_name>$(Sys)refl_tth_si_e4c</pv_name>
+    <x>720</x>
+    <y>20</y>
+    <width>108</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_39</name>
+    <text>h</text>
+    <width>51</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_40</name>
+    <text>k</text>
+    <x>124</x>
+    <width>51</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_41</name>
+    <text>l</text>
+    <x>237</x>
+    <width>51</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_42</name>
+    <text>omega</text>
+    <x>360</x>
+    <width>51</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_43</name>
+    <text>chi</text>
+    <x>490</x>
+    <width>51</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_44</name>
+    <text>phi</text>
+    <x>600</x>
+    <width>51</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_45</name>
+    <text>tth</text>
+    <x>720</x>
+    <width>51</width>
+  </widget>
+</display>

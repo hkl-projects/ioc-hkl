@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-21 14:02:05 by l3b-->
+<!--Saved on 2024-07-29 11:55:23 by l3b-->
 <display version="2.0.0">
+  <name>axis_solns_e4c</name>
   <width>775</width>
   <height>365</height>
   <background_color>
@@ -18,6 +19,7 @@
       <Solution>0</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
+    <y>18</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -44,7 +46,7 @@
       <Solution>1</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>25</y>
+    <y>43</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -71,7 +73,7 @@
       <Solution>2</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>50</y>
+    <y>68</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -98,7 +100,7 @@
       <Solution>3</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>75</y>
+    <y>93</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -125,7 +127,7 @@
       <Solution>4</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>100</y>
+    <y>118</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -152,7 +154,7 @@
       <Solution>5</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>125</y>
+    <y>143</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -179,7 +181,7 @@
       <Solution>6</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>147</y>
+    <y>165</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -206,7 +208,7 @@
       <Solution>7</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>172</y>
+    <y>190</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -233,7 +235,7 @@
       <Solution>8</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>197</y>
+    <y>215</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -260,7 +262,7 @@
       <Solution>9</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>222</y>
+    <y>240</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -287,7 +289,7 @@
       <Solution>10</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>247</y>
+    <y>265</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -314,7 +316,7 @@
       <Solution>11</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>272</y>
+    <y>290</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -341,7 +343,7 @@
       <Solution>12</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>294</y>
+    <y>312</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -368,7 +370,7 @@
       <Solution>13</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>319</y>
+    <y>337</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -395,7 +397,7 @@
       <Solution>14</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>342</y>
+    <y>360</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -422,7 +424,7 @@
       <Solution>15</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>365</y>
+    <y>383</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -449,7 +451,7 @@
       <Solution>16</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>390</y>
+    <y>408</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -476,7 +478,7 @@
       <Solution>17</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>415</y>
+    <y>433</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -503,7 +505,7 @@
       <Solution>18</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>440</y>
+    <y>458</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -530,7 +532,7 @@
       <Solution>19</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>465</y>
+    <y>483</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -557,7 +559,7 @@
       <Solution>20</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>490</y>
+    <y>508</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -584,7 +586,7 @@
       <Solution>21</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>512</y>
+    <y>530</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -611,7 +613,7 @@
       <Solution>22</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>537</y>
+    <y>555</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -638,7 +640,7 @@
       <Solution>23</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>562</y>
+    <y>580</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -665,7 +667,7 @@
       <Solution>24</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>587</y>
+    <y>605</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -692,7 +694,7 @@
       <Solution>25</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>612</y>
+    <y>630</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -719,7 +721,7 @@
       <Solution>26</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>637</y>
+    <y>655</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -746,7 +748,7 @@
       <Solution>27</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>659</y>
+    <y>677</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -773,7 +775,7 @@
       <Solution>28</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>684</y>
+    <y>702</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -800,7 +802,7 @@
       <Solution>29</Solution>
     </macros>
     <file>solutions_axis_1h_wide_center.bob</file>
-    <y>707</y>
+    <y>725</y>
     <width>780</width>
     <height>22</height>
     <resize>2</resize>
@@ -819,5 +821,29 @@
       <color red="0" green="128" blue="255">
       </color>
     </border_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_7</name>
+    <text>Axes Solutions</text>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_14</name>
+    <text>omega</text>
+    <x>140</x>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_15</name>
+    <text>chi</text>
+    <x>300</x>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_16</name>
+    <text>phi</text>
+    <x>456</x>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_17</name>
+    <text>tth</text>
+    <x>620</x>
   </widget>
 </display>

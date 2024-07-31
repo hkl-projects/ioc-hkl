@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-13 17:29:37 by kg1-->
+<!--Saved on 2024-07-31 09:55:08 by l3b-->
 <display version="2.0.0">
   <name>E6C_PseudoAxInput</name>
   <widget type="label" version="2.0.0">
@@ -23,24 +23,24 @@
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display</name>
     <macros>
-      <Ax10Name>alpha2</Ax10Name>
-      <Ax11Name>incidence</Ax11Name>
-      <Ax12Name>azimuthI</Ax12Name>
-      <Ax13Name>emergence</Ax13Name>
-      <Ax14Name>azimuthE</Ax14Name>
-      <Ax1Name>h</Ax1Name>
-      <Ax2Name>k</Ax2Name>
-      <Ax3Name>l</Ax3Name>
-      <Ax4Name>psi</Ax4Name>
-      <Ax5Name>q</Ax5Name>
-      <Ax6Name>alpha</Ax6Name>
-      <Ax7Name>qper</Ax7Name>
-      <Ax8Name>qpar</Ax8Name>
-      <Ax9Name>tth</Ax9Name>
+      <Ax10Name>pseudoaxes_alpha2</Ax10Name>
+      <Ax11Name>pseudoaxes_incidence</Ax11Name>
+      <Ax12Name>pseudoaxes_azimuthI</Ax12Name>
+      <Ax13Name>pseudoaxes_emergence</Ax13Name>
+      <Ax14Name>pseudoaxes_azimuthE</Ax14Name>
+      <Ax1Name>pseudoaxes_h</Ax1Name>
+      <Ax2Name>pseudoaxes_k</Ax2Name>
+      <Ax3Name>pseudoaxes_l</Ax3Name>
+      <Ax4Name>pseudoaxes_psi</Ax4Name>
+      <Ax5Name>pseudoaxes_q</Ax5Name>
+      <Ax6Name>pseudoaxes_alpha</Ax6Name>
+      <Ax7Name>pseudoaxes_qper</Ax7Name>
+      <Ax8Name>pseudoaxes_qpar</Ax8Name>
+      <Ax9Name>pseudoaxes_tth</Ax9Name>
     </macros>
-    <file>_pseudoAxes.bob</file>
+    <file>_pseudoAxes_e6c.bob</file>
     <y>30</y>
-    <width>580</width>
-    <height>270</height>
+    <width>460</width>
+    <height>350</height>
   </widget>
 </display>

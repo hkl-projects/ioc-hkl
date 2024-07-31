@@ -1,32 +1,164 @@
-record(ai, "$(P)$(R)omega$(C)") {
+# Eulerian 4-circle
+record(ai, "$(P)$(R)omega_e4c$(C)") {
     field(DESC, "$(C)")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(INP, "@hkl_calc.axes_solns_omega[$(C)]")
+    field(INP, "@hkl_calc.axes_solns_omega_e4c[$(C)]")
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)chi$(C)") {
+record(ai, "$(P)$(R)chi_e4c$(C)") {
     field(DESC, "$(C)")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(INP, "@hkl_calc.axes_solns_chi[$(C)]")
+    field(INP, "@hkl_calc.axes_solns_chi_e4c[$(C)]")
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)phi$(C)") {
+record(ai, "$(P)$(R)phi_e4c$(C)") {
     field(DESC, "$(C)")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(INP, "@hkl_calc.axes_solns_phi[$(C)]")
+    field(INP, "@hkl_calc.axes_solns_phi_e4c[$(C)]")
     field(SCAN, "1 second")
 }
 
-record(ai, "$(P)$(R)tth$(C)") {
+record(ai, "$(P)$(R)tth_e4c$(C)") {
     field(DESC, "$(C)")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(INP, "@hkl_calc.axes_solns_tth[$(C)]")
+    field(INP, "@hkl_calc.axes_solns_tth_e4c[$(C)]")
+    field(SCAN, "1 second")
+}
+
+# Kappa 4-circle
+record(ai, "$(P)$(R)komega_k4c$(C)") {
+    field(DESC, "$(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_solns_komega_k4c[$(C)]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)kappa_k4c$(C)") {
+    field(DESC, "$(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_solns_kappa_k4c[$(C)]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)kphi_k4c$(C)") {
+    field(DESC, "$(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_solns_kphi_k4c[$(C)]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)tth_k4c$(C)") {
+    field(DESC, "$(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_solns_tth_k4c[$(C)]")
+    field(SCAN, "1 second")
+}
+
+# Eulerian 6-circle
+record(ai, "$(P)$(R)mu_e6c$(C)") {
+    field(DESC, "$(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_solns_mu_e6c[$(C)]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)omega_e6c$(C)") {
+    field(DESC, "$(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_solns_omega_e6c[$(C)]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)chi_e6c$(C)") {
+    field(DESC, "$(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_solns_chi_e6c[$(C)]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)phi_e6c$(C)") {
+    field(DESC, "$(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_solns_phi_e6c[$(C)]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)gamma_e6c$(C)") {
+    field(DESC, "$(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_solns_gamma_e6c[$(C)]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)delta_e6c$(C)") {
+    field(DESC, "$(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_solns_delta_e6c[$(C)]")
+    field(SCAN, "1 second")
+}
+
+# Kappa 6-circle
+record(ai, "$(P)$(R)mu_k6c$(C)") {
+    field(DESC, "$(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_solns_mu_k6c[$(C)]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)komega_k6c$(C)") {
+    field(DESC, "$(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_solns_komega_k6c[$(C)]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)kappa_k6c$(C)") {
+    field(DESC, "$(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_solns_kappa_k6c[$(C)]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)kphi_k6c$(C)") {
+    field(DESC, "$(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_solns_kphi_k6c[$(C)]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)gamma_k6c$(C)") {
+    field(DESC, "$(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_solns_gamma_k6c[$(C)]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)delta_k6c$(C)") {
+    field(DESC, "$(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_solns_delta_k6c[$(C)]")
     field(SCAN, "1 second")
 }
 

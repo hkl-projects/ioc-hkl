@@ -1,134 +1,351 @@
-record(ao, "$(P)$(R)mu") {
-    field(DESC, "mu")
-    field(PINI, "YES")
-    field(DTYP, "pydev")
-    field(LOPR, "-180")
-    field(HOPR, "180")
-    field(OUT, "@hkl_calc.axes_mu=VAL")
-    field(FLNK, "$(P)$(R)mu_RBV")
-}
-
-record(ai, "$(P)$(R)mu_RBV") {
-    field(DESC, "mu")
-    field(PINI, "YES")
-    field(DTYP, "pydev")
-    field(INP, "@hkl_calc.axes_mu")
-}
-
-record(ao, "$(P)$(R)omega") {
+# Eulerian 4-circle
+record(ao, "$(P)$(R)omega_e4c") {
     field(DESC, "omega")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(LOPR, "-180")
     field(HOPR, "180")
-    field(OUT, "@hkl_calc.axes_omega=VAL")
-    field(FLNK, "$(P)$(R)omega_RBV")
+    field(OUT, "@hkl_calc.axes_e4c[0]=VAL")
+    field(FLNK, "$(P)$(R)omega_e4c_RBV")
 }
 
-record(ai, "$(P)$(R)omega_RBV") {
+record(ai, "$(P)$(R)omega_e4c_RBV") {
     field(DESC, "omega")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(INP, "@hkl_calc.axes_omega")
+    field(INP, "@hkl_calc.axes_e4c[0]")
 }
 
-record(ao, "$(P)$(R)chi") {
+record(ao, "$(P)$(R)chi_e4c") {
     field(DESC, "chi")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(LOPR, "-180")
     field(HOPR, "180")
-    field(OUT, "@hkl_calc.axes_chi=VAL")
-    field(FLNK, "$(P)$(R)chi_RBV")
+    field(OUT, "@hkl_calc.axes_e4c[1]=VAL")
+    field(FLNK, "$(P)$(R)chi_e4c_RBV")
 }
 
-record(ai, "$(P)$(R)chi_RBV") {
+record(ai, "$(P)$(R)chi_e4c_RBV") {
     field(DESC, "chi")
     field(DTYP, "pydev")
     field(PINI, "YES")
-    field(LOPR, "-180")
-    field(HOPR, "180")
-    field(INP, "@hkl_calc.axes_chi")
+    field(INP, "@hkl_calc.axes_e4c[1]")
 }
 
-record(ao, "$(P)$(R)phi") {
+record(ao, "$(P)$(R)phi_e4c") {
     field(DESC, "phi")
     field(DTYP, "pydev")
     field(PINI, "YES")
     field(LOPR, "-180")
     field(HOPR, "180")
-    field(OUT, "@hkl_calc.axes_phi=VAL")
-    field(FLNK, "$(P)$(R)phi_RBV")
+    field(OUT, "@hkl_calc.axes_e4c[2]=VAL")
+    field(FLNK, "$(P)$(R)phi_e4c_RBV")
 }
 
-record(ai, "$(P)$(R)phi_RBV") {
+record(ai, "$(P)$(R)phi_e4c_RBV") {
+    field(DESC, "phi")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(INP, "@hkl_calc.axes_e4c[2]")
+}
+
+record(ao, "$(P)$(R)tth_e4c") {
+    field(DESC, "tth")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(LOPR, "-180")
+    field(HOPR, "180")
+    field(OUT, "@hkl_calc.axes_e4c[3]=VAL")
+    field(FLNK, "$(P)$(R)tth_e4c_RBV")
+}
+
+record(ai, "$(P)$(R)tth_e4c_RBV") {
+    field(DESC, "tth")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(INP, "@hkl_calc.axes_e4c[3]")
+}
+
+# Kappa 4-circle
+record(ao, "$(P)$(R)komega_k4c") {
+    field(DESC, "komega")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(LOPR, "-180")
+    field(HOPR, "180")
+    field(OUT, "@hkl_calc.axes_k4c[0]=VAL")
+    field(FLNK, "$(P)$(R)komega_k4c_RBV")
+}
+
+record(ai, "$(P)$(R)komega_k4c_RBV") {
+    field(DESC, "komega")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_k4c[0]")
+}
+
+record(ao, "$(P)$(R)kappa_k4c") {
+    field(DESC, "kappa")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(LOPR, "-180")
+    field(HOPR, "180")
+    field(OUT, "@hkl_calc.axes_k4c[1]=VAL")
+    field(FLNK, "$(P)$(R)kappa_k4c_RBV")
+}
+
+record(ai, "$(P)$(R)kappa_k4c_RBV") {
+    field(DESC, "chi")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(INP, "@hkl_calc.axes_k4c[1]")
+}
+
+record(ao, "$(P)$(R)kphi_k4c") {
+    field(DESC, "kphi")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(LOPR, "-180")
+    field(HOPR, "180")
+    field(OUT, "@hkl_calc.axes_k4c[2]=VAL")
+    field(FLNK, "$(P)$(R)kphi_k4c_RBV")
+}
+
+record(ai, "$(P)$(R)kphi_k4c_RBV") {
+    field(DESC, "kphi")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(INP, "@hkl_calc.axes_k4c[2]")
+}
+
+record(ao, "$(P)$(R)tth_k4c") {
+    field(DESC, "tth")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(LOPR, "-180")
+    field(HOPR, "180")
+    field(OUT, "@hkl_calc.axes_k4c[3]=VAL")
+    field(FLNK, "$(P)$(R)tth_k4c_RBV")
+}
+
+record(ai, "$(P)$(R)tth_k4c_RBV") {
+    field(DESC, "tth")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(INP, "@hkl_calc.axes_k4c[3]")
+}
+
+# Eulerian 6-circle
+record(ao, "$(P)$(R)mu_e6c") {
+    field(DESC, "mu")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(LOPR, "-180")
+    field(HOPR, "180")
+    field(OUT, "@hkl_calc.axes_e6c[0]=VAL")
+    field(FLNK, "$(P)$(R)mu_e6c_RBV")
+}
+
+record(ai, "$(P)$(R)mu_e6c_RBV") {
+    field(DESC, "mu")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_e6c[0]")
+}
+
+record(ao, "$(P)$(R)omega_e6c") {
+    field(DESC, "omega")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(LOPR, "-180")
+    field(HOPR, "180")
+    field(OUT, "@hkl_calc.axes_e6c[1]=VAL")
+    field(FLNK, "$(P)$(R)omega_e6c_RBV")
+}
+
+record(ai, "$(P)$(R)omega_e6c_RBV") {
+    field(DESC, "omega")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_e6c[1]")
+}
+
+record(ao, "$(P)$(R)chi_e6c") {
+    field(DESC, "chi")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(LOPR, "-180")
+    field(HOPR, "180")
+    field(OUT, "@hkl_calc.axes_e6c[2]=VAL")
+    field(FLNK, "$(P)$(R)chi_e6c_RBV")
+}
+
+record(ai, "$(P)$(R)chi_e6c_RBV") {
+    field(DESC, "chi")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(INP, "@hkl_calc.axes_e6c[2]")
+}
+
+record(ao, "$(P)$(R)phi_e6c") {
     field(DESC, "phi")
     field(DTYP, "pydev")
     field(PINI, "YES")
     field(LOPR, "-180")
     field(HOPR, "180")
-    field(INP, "@hkl_calc.axes_phi")
+    field(OUT, "@hkl_calc.axes_e6c[3]=VAL")
+    field(FLNK, "$(P)$(R)phi_e6c_RBV")
 }
 
-record(ao, "$(P)$(R)tth") {
-    field(DESC, "tth")
+record(ai, "$(P)$(R)phi_e6c_RBV") {
+    field(DESC, "phi")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(INP, "@hkl_calc.axes_e6c[3]")
+}
+
+record(ao, "$(P)$(R)gamma_e6c") {
+    field(DESC, "gamma")
     field(DTYP, "pydev")
     field(PINI, "YES")
     field(LOPR, "-180")
     field(HOPR, "180")
-    field(OUT, "@hkl_calc.axes_tth=VAL")
-    field(FLNK, "$(P)$(R)tth_RBV")
+    field(OUT, "@hkl_calc.axes_e6c[4]=VAL")
+    field(FLNK, "$(P)$(R)gamma_e6c_RBV")
 }
 
-record(ai, "$(P)$(R)tth_RBV") {
-    field(DESC, "tth")
+record(ai, "$(P)$(R)gamma_e6c_RBV") {
+    field(DESC, "gamma")
     field(DTYP, "pydev")
     field(PINI, "YES")
-    field(LOPR, "-180")
-    field(HOPR, "180")
-    field(INP, "@hkl_calc.axes_tth")
+    field(INP, "@hkl_calc.axes_e6c[4]")
 }
 
-# duplicate with lattice params
-#record(ao, "$(P)$(R)gamma") {
-#    field(DESC, "gamma")
-#    field(DTYP, "pydev")
-#    field(PINI, "YES")
-#    field(LOPR, "-180")
-#    field(HOPR, "180")
-#    field(OUT, "@hkl_calc.axes_gamma=VAL")
-#    field(FLNK, "$(P)$(R)gamma_RBV")
-#}
-
-#record(ai, "$(P)$(R)gamma_RBV") {
-#    field(DESC, "tth")
-#    field(DTYP, "pydev")
-#    field(PINI, "YES")
-#    field(LOPR, "-180")
-#    field(HOPR, "180")
-#    field(INP, "@hkl_calc.axes_gamma")
-#}
-
-record(ao, "$(P)$(R)delta") {
+record(ao, "$(P)$(R)delta_e6c") {
     field(DESC, "delta")
     field(DTYP, "pydev")
     field(PINI, "YES")
     field(LOPR, "-180")
     field(HOPR, "180")
-    field(OUT, "@hkl_calc.axes_delta=VAL")
-    field(FLNK, "$(P)$(R)delta_RBV")
+    field(OUT, "@hkl_calc.axes_e6c[5]=VAL")
+    field(FLNK, "$(P)$(R)delta_e6c_RBV")
 }
 
-record(ai, "$(P)$(R)delta_RBV") {
+record(ai, "$(P)$(R)delta_e6c_RBV") {
+    field(DESC, "delta")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(INP, "@hkl_calc.axes_e6c[5]")
+}
+
+# Kappa 6-circle
+record(ao, "$(P)$(R)mu_k6c") {
+    field(DESC, "mu")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(LOPR, "-180")
+    field(HOPR, "180")
+    field(OUT, "@hkl_calc.axes_k6c[0]=VAL")
+    field(FLNK, "$(P)$(R)mu_k6c_RBV")
+}
+
+record(ai, "$(P)$(R)mu_k6c_RBV") {
+    field(DESC, "mu")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_k6c[0]")
+}
+
+record(ao, "$(P)$(R)komega_k6c") {
+    field(DESC, "komega")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(LOPR, "-180")
+    field(HOPR, "180")
+    field(OUT, "@hkl_calc.axes_ekc[1]=VAL")
+    field(FLNK, "$(P)$(R)komega_k6c_RBV")
+}
+
+record(ai, "$(P)$(R)komega_k6c_RBV") {
+    field(DESC, "komega")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_k6c[1]")
+}
+
+record(ao, "$(P)$(R)kappa_k6c") {
+    field(DESC, "kappa")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(LOPR, "-180")
+    field(HOPR, "180")
+    field(OUT, "@hkl_calc.axes_k6c[2]=VAL")
+    field(FLNK, "$(P)$(R)kappa_k6c_RBV")
+}
+
+record(ai, "$(P)$(R)kappa_k6c_RBV") {
+    field(DESC, "kappa")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(INP, "@hkl_calc.axes_k6c[2]")
+}
+
+record(ao, "$(P)$(R)kphi_k6c") {
+    field(DESC, "kphi")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(LOPR, "-180")
+    field(HOPR, "180")
+    field(OUT, "@hkl_calc.axes_k6c[3]=VAL")
+    field(FLNK, "$(P)$(R)kphi_k6c_RBV")
+}
+
+record(ai, "$(P)$(R)kphi_k6c_RBV") {
+    field(DESC, "kphi")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(INP, "@hkl_calc.axes_k6c[3]")
+}
+
+record(ao, "$(P)$(R)gamma_k6c") {
+    field(DESC, "gamma")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(LOPR, "-180")
+    field(HOPR, "180")
+    field(OUT, "@hkl_calc.axes_k6c[4]=VAL")
+    field(FLNK, "$(P)$(R)gamma_k6c_RBV")
+}
+
+record(ai, "$(P)$(R)gamma_k6c_RBV") {
+    field(DESC, "gamma")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(INP, "@hkl_calc.axes_k6c[4]")
+}
+
+record(ao, "$(P)$(R)delta_k6c") {
     field(DESC, "delta")
     field(DTYP, "pydev")
     field(PINI, "YES")
     field(LOPR, "-180")
     field(HOPR, "180")
-    field(INP, "@hkl_calc.axes_delta")
+    field(OUT, "@hkl_calc.axes_k6c[5]=VAL")
+    field(FLNK, "$(P)$(R)delta_k6c_RBV")
 }
 
-record(mbbo, "$(P)$(R)mode") {
+record(ai, "$(P)$(R)delta_k6c_RBV") {
+    field(DESC, "delta")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(INP, "@hkl_calc.axes_k6c[5]")
+}
+
+
+# Constraints for inverse calculations
+# all 4-circles
+record(mbbo, "$(P)$(R)mode_4c") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(ZRVL, "0")
@@ -139,6 +356,30 @@ record(mbbo, "$(P)$(R)mode") {
     field(ONST, "constant omega")
     field(TWST, "constant chi")
     field(THST, "constant phi")
-    field(OUT, "@hkl_calc.mode=VAL")
+    field(OUT, "@hkl_calc.mode_4c=VAL")
+}
+
+# all 6-circles
+record(mbbo, "$(P)$(R)mode_6c") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(ZRVL, "0")
+    field(ONVL, "1")
+    field(TWVL, "2")
+    field(THVL, "3")
+    field(FRVL, "4")
+    field(FVVL, "5")
+    field(SXVL, "6")
+    field(SVVL, "7")
+    field(EIVL, "8")
+    field(ZRST, "bissector vertical")
+    field(ONST, "constant omega vertical")
+    field(TWST, "constant chi vertical")
+    field(THST, "constant phi vertical")
+    field(FRST, "bissector horizontal")
+    field(FVST, "constant omega horizontal")
+    field(SXST, "constant chi horizontal")
+    field(SVST, "constant phi horizontal")
+    field(OUT, "@hkl_calc.mode_6c=VAL")
 }
 

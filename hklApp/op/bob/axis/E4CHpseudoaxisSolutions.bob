@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-13 14:42:16 by kg1-->
+<!--Saved on 2024-07-31 09:48:37 by l3b-->
 <display version="2.0.0">
   <name>E4CH_PseudoAxSol</name>
   <width>320</width>
-  <height>440</height>
+  <height>250</height>
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
@@ -25,19 +25,19 @@
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display</name>
     <macros>
-      <Ax1Name>sol:h</Ax1Name>
-      <Ax2Name>sol:k</Ax2Name>
-      <Ax3Name>sol:l</Ax3Name>
-      <Ax4Name>sol:psi</Ax4Name>
-      <Ax5Name>sol:q</Ax5Name>
-      <Ax6Name>sol:incidence</Ax6Name>
-      <Ax7Name>sol:azimuthI</Ax7Name>
-      <Ax8Name>sol:emergence</Ax8Name>
-      <Ax9Name>sol:azimuthE</Ax9Name>
+      <Ax1Name>sol:pseudoaxes_h</Ax1Name>
+      <Ax2Name>sol:pseudoaxes_k</Ax2Name>
+      <Ax3Name>sol:pseudoaxes_l</Ax3Name>
+      <Ax4Name>sol:pseudoaxes_psi</Ax4Name>
+      <Ax5Name>sol:pseudoaxes_q</Ax5Name>
+      <Ax6Name>sol:pseudoaxes_incidence</Ax6Name>
+      <Ax7Name>sol:pseudoaxes_azimuthI</Ax7Name>
+      <Ax8Name>sol:pseudoaxes_emergence</Ax8Name>
+      <Ax9Name>sol:pseudoaxes_azimuthE</Ax9Name>
     </macros>
-    <file>_multi_pseudoaxis_solutions.bob</file>
+    <file>_multi_pseudoaxis_solutions_E4CV.bob</file>
     <y>31</y>
     <width>320</width>
-    <height>410</height>
+    <height>219</height>
   </widget>
 </display>

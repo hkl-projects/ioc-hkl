@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-07-29 13:57:57 by l3b-->
+<display version="2.0.0">
+  <name>Backward_output</name>
+  <macros>
+    <Sys>HB3:ioc-hkl:</Sys>
+  </macros>
+  <width>1190</width>
+  <height>390</height>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_1</name>
+    <macros>
+      <Ax1Name>omega_e4c</Ax1Name>
+      <Ax2Name>chi_e4c</Ax2Name>
+      <Ax3Name>phi_e4c</Ax3Name>
+      <Ax4Name>tth_e4c</Ax4Name>
+    </macros>
+    <file>../axis/_multi_axis_solutions_e4c.bob</file>
+    <x>20</x>
+    <y>110</y>
+    <width>1130</width>
+    <height>270</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==1">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_2</name>
+    <macros>
+      <Ax1Name>omega_e4c</Ax1Name>
+      <Ax2Name>chi_e4c</Ax2Name>
+      <Ax3Name>phi_e4c</Ax3Name>
+      <Ax4Name>tth_e4c</Ax4Name>
+    </macros>
+    <file>../axis/_multi_axis_solutions_e4c.bob</file>
+    <x>10</x>
+    <y>110</y>
+    <width>1140</width>
+    <height>270</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==2">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_3</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(Sys)backward</pv_name>
+        <value>1</value>
+        <description>WritePV</description>
+      </action>
+    </actions>
+    <pv_name>$(Sys)backward</pv_name>
+    <text>Reciprocal-&gt;Real</text>
+    <x>330</x>
+    <y>40</y>
+    <width>140</width>
+    <height>40</height>
+    <tooltip>$(actions)</tooltip>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_13</name>
+    <text>Real space output solutions</text>
+    <x>30</x>
+    <y>40</y>
+    <width>220</width>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_3</name>
+    <macros>
+      <Ax1Name>komega_k4c</Ax1Name>
+      <Ax2Name>kappa_k4c</Ax2Name>
+      <Ax3Name>kphi_k4c</Ax3Name>
+      <Ax4Name>tth_k4c</Ax4Name>
+    </macros>
+    <file>../axis/_multi_axis_solutions_k4c.bob</file>
+    <x>10</x>
+    <y>110</y>
+    <width>1140</width>
+    <height>270</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==3">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_4</name>
+    <macros>
+      <Ax1Name>mu_e6c</Ax1Name>
+      <Ax2Name>omega_e6c</Ax2Name>
+      <Ax3Name>chi_e6c</Ax3Name>
+      <Ax4Name>phi_e6c</Ax4Name>
+      <Ax5Name>gamma_e6c</Ax5Name>
+      <Ax6Name>delta_e6c</Ax6Name>
+    </macros>
+    <file>../axis/_multi_axis_solutions_e6c.bob</file>
+    <x>10</x>
+    <y>110</y>
+    <width>1180</width>
+    <height>270</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==4">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_5</name>
+    <macros>
+      <Ax1Name>mu_k6c</Ax1Name>
+      <Ax2Name>komega_k6c</Ax2Name>
+      <Ax3Name>kappa_k6c</Ax3Name>
+      <Ax4Name>kphi_k6c</Ax4Name>
+      <Ax5Name>gamma_k6c</Ax5Name>
+      <Ax6Name>delta_k6c</Ax6Name>
+    </macros>
+    <file>../axis/_multi_axis_solutions_k6c.bob</file>
+    <x>10</x>
+    <y>110</y>
+    <width>1160</width>
+    <height>260</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==5">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+  </widget>
+</display>

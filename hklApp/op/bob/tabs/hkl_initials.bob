@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-26 12:11:22 by l3b-->
+<!--Saved on 2024-07-28 20:00:29 by l3b-->
 <display version="2.0.0">
-  <name>HKL_refine</name>
+  <name>HKL_initials</name>
   <macros>
     <Sys>HB3:ioc-hkl:</Sys>
   </macros>
-  <width>1050</width>
-  <height>900</height>
+  <width>1500</width>
+  <height>700</height>
   <widget type="arc" version="2.0.0">
     <name>Arc</name>
-    <x>140</x>
-    <y>10</y>
+    <x>980</x>
+    <y>300</y>
     <width>1</width>
     <height>1</height>
   </widget>
   <widget type="embedded" version="2.0.0">
-    <name>Embedded Display_1</name>
-    <file>E4CV/reflections_refine.bob</file>
-    <width>1020</width>
-    <height>809</height>
+    <name>Embedded Display_3</name>
+    <file>../windows/initials.bob</file>
+    <x>160</x>
+    <width>1340</width>
+    <height>600</height>
   </widget>
   <widget type="polyline" version="2.0.0">
     <name>Polyline_1</name>

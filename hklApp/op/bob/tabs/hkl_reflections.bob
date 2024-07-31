@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-25 08:33:57 by l3b-->
+<!--Saved on 2024-07-29 11:02:20 by l3b-->
 <display version="2.0.0">
   <name>hkl_reflections</name>
   <macros>
     <Sys>HB3:ioc-hkl:</Sys>
   </macros>
-  <width>1000</width>
+  <width>1250</width>
   <height>500</height>
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display</name>
-    <file>E4CV/reflections.bob</file>
+    <file>../windows/reflections.bob</file>
     <x>20</x>
     <y>10</y>
-    <width>880</width>
-    <height>320</height>
+    <width>1220</width>
+    <height>440</height>
   </widget>
 </display>
