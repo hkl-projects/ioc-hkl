@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-28 20:00:29 by l3b-->
+<!--Saved on 2024-07-31 12:51:28 by l3b-->
 <display version="2.0.0">
   <name>HKL_initials</name>
   <macros>
@@ -17,9 +17,8 @@
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_3</name>
     <file>../windows/initials.bob</file>
-    <x>160</x>
-    <width>1340</width>
-    <height>600</height>
+    <width>1470</width>
+    <height>650</height>
   </widget>
   <widget type="polyline" version="2.0.0">
     <name>Polyline_1</name>
