@@ -1,124 +1,237 @@
-record(ao, "$(P)$(R)h") {
+record(ao, "$(P)$(R)pseudoaxes_h") {
     field(DESC, "h")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_h=VAL")
-    field(FLNK, "$(P)$(R)h_RBV")
+    field(FLNK, "$(P)$(R)pseudoaxes_h_RBV")
 }
 
-record(ai, "$(P)$(R)h_RBV") {
+record(ai, "$(P)$(R)pseudoaxes_h_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_h")
 }
 
-record(ao, "$(P)$(R)k") {
+record(ao, "$(P)$(R)pseudoaxes_k") {
     field(DESC, "k")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_k=VAL")
-    field(FLNK, "$(P)$(R)k_RBV")
+    field(FLNK, "$(P)$(R)pseudoaxes_k_RBV")
 }
 
-record(ai, "$(P)$(R)k_RBV") {
+record(ai, "$(P)$(R)pseudoaxes_k_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_k")
 }
 
-record(ao, "$(P)$(R)l") {
+record(ao, "$(P)$(R)pseudoaxes_l") {
     field(DESC, "l")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_l=VAL")
-    field(FLNK, "$(P)$(R)l_RBV")
+    field(FLNK, "$(P)$(R)pseudoaxes_l_RBV")
 }
 
-record(ai, "$(P)$(R)l_RBV") {
+record(ai, "$(P)$(R)pseudoaxes_l_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_l")
 }
 
-record(ao, "$(P)$(R)psi") {
+record(ao, "$(P)$(R)pseudoaxes_psi") {
     field(DESC, "psi")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_psi=VAL")
-    field(FLNK, "$(P)$(R)psi_RBV")
+    field(FLNK, "$(P)$(R)pseudoaxes_psi_RBV")
 }
 
-record(ai, "$(P)$(R)psi_RBV") {
+record(ai, "$(P)$(R)pseudoaxes_psi_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_psi")
 }
 
-record(ao, "$(P)$(R)q") {
+record(ao, "$(P)$(R)pseudoaxes_q") {
     field(DESC, "q")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_q=VAL")
-    field(FLNK, "$(P)$(R)q_RBV")
+    field(FLNK, "$(P)$(R)pseudoaxes_q_RBV")
 }
 
-record(ai, "$(P)$(R)q_RBV") {
+record(ai, "$(P)$(R)pseudoaxes_q_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_q")
 }
 
-record(ao, "$(P)$(R)incidence") {
+record(ao, "$(P)$(R)pseudoaxes_alpha") {
+    field(DESC, "alpha")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.pseudoaxes_alpha=VAL")
+    field(FLNK, "$(P)$(R)pseudoaxes_alpha_RBV")
+}
+
+record(ai, "$(P)$(R)pseudoaxes_alpha_RBV") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.pseudoaxes_alpha")
+}
+
+record(ao, "$(P)$(R)pseudoaxes_alpha2") {
+    field(DESC, "alpha2")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.pseudoaxes_alpha2=VAL")
+    field(FLNK, "$(P)$(R)pseudoaxes_alpha2_RBV")
+}
+
+record(ai, "$(P)$(R)pseudoaxes_alpha2_RBV") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.pseudoaxes_alpha2")
+}
+
+record(ao, "$(P)$(R)pseudoaxes_qper") {
+    field(DESC, "qper")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.pseudoaxes_qper=VAL")
+    field(FLNK, "$(P)$(R)pseudoaxes_qper_RBV")
+}
+
+record(ai, "$(P)$(R)pseudoaxes_qper_RBV") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.pseudoaxes_qper")
+}
+
+record(ao, "$(P)$(R)pseudoaxes_qpar") {
+    field(DESC, "qpar")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.pseudoaxes_qpar=VAL")
+    field(FLNK, "$(P)$(R)pseudoaxes_qpar_RBV")
+}
+
+record(ai, "$(P)$(R)pseudoaxes_qpar_RBV") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.pseudoaxes_qpar")
+}
+
+
+record(ao, "$(P)$(R)pseudoaxes_omega") {
+    field(DESC, "omega")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.pseudoaxes_omega=VAL")
+    field(FLNK, "$(P)$(R)pseudoaxes_omega_RBV")
+}
+
+record(ai, "$(P)$(R)pseudoaxes_omega_RBV") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.pseudoaxes_omega")
+}
+
+record(ao, "$(P)$(R)pseudoaxes_chi") {
+    field(DESC, "chi")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.pseudoaxes_chi=VAL")
+    field(FLNK, "$(P)$(R)pseudoaxes_chi_RBV")
+}
+
+record(ai, "$(P)$(R)pseudoaxes_chi_RBV") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.pseudoaxes_chi")
+}
+
+record(ao, "$(P)$(R)pseudoaxes_phi") {
+    field(DESC, "phi")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.pseudoaxes_phi=VAL")
+    field(FLNK, "$(P)$(R)pseudoaxes_phi_RBV")
+}
+
+record(ai, "$(P)$(R)pseudoaxes_phi_RBV") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.pseudoaxes_phi")
+}
+
+record(ao, "$(P)$(R)pseudoaxes_tth") {
+    field(DESC, "tth")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.pseudoaxes_tth=VAL")
+    field(FLNK, "$(P)$(R)pseudoaxes_tth_RBV")
+}
+
+record(ai, "$(P)$(R)pseudoaxes_tth_RBV") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.pseudoaxes_tth")
+}
+
+record(ao, "$(P)$(R)pseudoaxes_incidence") {
     field(DESC, "incidence")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_incidence=VAL")
-    field(FLNK, "$(P)$(R)incidence_RBV")
+    field(FLNK, "$(P)$(R)pseudoaxes_incidence_RBV")
 }
 
-record(ai, "$(P)$(R)incidence_RBV") {
+record(ai, "$(P)$(R)pseudoaxes_incidence_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_incidence")
 }
 
-record(ao, "$(P)$(R)azimuthI") {
+record(ao, "$(P)$(R)pseudoaxes_azimuthI") {
     field(DESC, "azimuthI")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_inc_azimuth=VAL")
-    field(FLNK, "$(P)$(R)azimuthI_RBV")
+    field(FLNK, "$(P)$(R)pseudoaxes_azimuthI_RBV")
 }
 
-record(ai, "$(P)$(R)azimuthI_RBV") {
+record(ai, "$(P)$(R)pseudoaxes_azimuthI_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_inc_azimuth")
 }
 
-record(ao, "$(P)$(R)emergence") {
+record(ao, "$(P)$(R)pseudoaxes_emergence") {
     field(DESC, "emergence")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_emergence=VAL")
-    field(FLNK, "$(P)$(R)emergence_RBV")
+    field(FLNK, "$(P)$(R)pseudoaxes_emergence_RBV")
 }
 
-record(ai, "$(P)$(R)emergence_RBV") {
+record(ai, "$(P)$(R)pseudoaxes_emergence_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_emergence")
 }
 
-record(ao, "$(P)$(R)azimuthE") {
+record(ao, "$(P)$(R)pseudoaxes_azimuthE") {
     field(DESC, "azimuthE")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.pseudoaxes_emer_azimuth=VAL")
-    field(FLNK, "$(P)$(R)azimuthE_RBV")
+    field(FLNK, "$(P)$(R)pseudoaxes_azimuthE_RBV")
 }
 
-record(ai, "$(P)$(R)azimuthE_RBV") {
+record(ai, "$(P)$(R)pseudoaxes_azimuthE_RBV") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_emer_azimuth")

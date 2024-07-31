@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-29 19:09:26 by l3b-->
+<!--Saved on 2024-07-31 10:05:41 by l3b-->
 <display version="2.0.0">
   <name>Reflections Refine</name>
   <macros>
@@ -498,7 +498,7 @@
     <macros>
       <Ax1Name>refl_refine_input_list_h_e4c</Ax1Name>
       <Ax2Name>refl_refine_input_list_k_e4c</Ax2Name>
-      <Ax3Name>refl_refine_input_list_k_e4c</Ax3Name>
+      <Ax3Name>refl_refine_input_list_l_e4c</Ax3Name>
       <Ax4Name>refl_refine_input_list_omega_e4c</Ax4Name>
       <Ax5Name>refl_refine_input_list_chi_e4c</Ax5Name>
       <Ax6Name>refl_refine_input_list_phi_e4c</Ax6Name>

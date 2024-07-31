@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-30 15:18:52 by l3b-->
+<!--Saved on 2024-07-31 10:00:33 by l3b-->
 <display version="2.0.0">
   <name>Backward_input</name>
   <macros>
     <Sys>HB3:ioc-hkl:</Sys>
   </macros>
   <width>1200</width>
-  <height>450</height>
+  <height>500</height>
   <widget type="label" version="2.0.0">
     <name>Label_13</name>
     <text>Reciprocal space input</text>
@@ -23,7 +23,7 @@
     <file>../axis/TwoCpseudoAxes.bob</file>
     <y>40</y>
     <width>550</width>
-    <height>400</height>
+    <height>450</height>
     <visible>false</visible>
     <rules>
       <rule name="Visible" prop_id="visible" out_exp="false">
@@ -39,7 +39,7 @@
     <file>../axis/E4CHpseudoAxes.bob</file>
     <y>40</y>
     <width>550</width>
-    <height>400</height>
+    <height>450</height>
     <visible>false</visible>
     <rules>
       <rule name="Visible" prop_id="visible" out_exp="false">
@@ -55,7 +55,7 @@
     <file>../axis/E4CVpseudoAxes.bob</file>
     <y>40</y>
     <width>550</width>
-    <height>400</height>
+    <height>450</height>
     <visible>false</visible>
     <rules>
       <rule name="Visible" prop_id="visible" out_exp="false">
@@ -71,7 +71,7 @@
     <file>../axis/K4CVpseudoAxes.bob</file>
     <y>40</y>
     <width>550</width>
-    <height>400</height>
+    <height>450</height>
     <visible>false</visible>
     <rules>
       <rule name="Visible" prop_id="visible" out_exp="false">
@@ -87,7 +87,7 @@
     <file>../axis/E6CpseudoAxes.bob</file>
     <y>40</y>
     <width>550</width>
-    <height>400</height>
+    <height>450</height>
     <visible>false</visible>
     <rules>
       <rule name="Visible" prop_id="visible" out_exp="false">
@@ -103,7 +103,7 @@
     <file>../axis/K6CpseudoAxes.bob</file>
     <y>40</y>
     <width>550</width>
-    <height>400</height>
+    <height>450</height>
     <visible>false</visible>
     <rules>
       <rule name="Visible" prop_id="visible" out_exp="false">
@@ -119,7 +119,7 @@
     <file>../axis/ZAXISpseudoAxes.bob</file>
     <y>40</y>
     <width>550</width>
-    <height>400</height>
+    <height>450</height>
     <visible>false</visible>
     <rules>
       <rule name="Visible" prop_id="visible" out_exp="false">

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-29 18:24:30 by l3b-->
+<!--Saved on 2024-07-31 10:02:53 by l3b-->
 <display version="2.0.0">
   <name>refine input k6c</name>
   <macros>
@@ -96,7 +96,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_29</name>
-    <pv_name>$(Sys)refl_omega_si_k6c</pv_name>
+    <pv_name>$(Sys)refl_komega_si_k6c</pv_name>
     <x>480</x>
     <y>20</y>
     <width>108</width>
@@ -118,7 +118,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_30</name>
-    <pv_name>$(Sys)refl_chi_si_k6c</pv_name>
+    <pv_name>$(Sys)refl_kappa_si_k6c</pv_name>
     <x>600</x>
     <y>20</y>
     <width>108</width>
@@ -140,7 +140,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_31</name>
-    <pv_name>$(Sys)refl_phi_si_k6c</pv_name>
+    <pv_name>$(Sys)refl_kphi_si_k6c</pv_name>
     <x>720</x>
     <y>20</y>
     <width>108</width>

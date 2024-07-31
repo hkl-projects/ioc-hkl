@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-30 08:44:35 by l3b-->
+<!--Saved on 2024-07-31 09:58:27 by l3b-->
 <display version="2.0.0">
   <name>K4CV_PseudoAxSol</name>
   <width>320</width>
@@ -25,18 +25,18 @@
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display</name>
     <macros>
-      <Ax1Name>sol:h</Ax1Name>
-      <Ax2Name>sol:k</Ax2Name>
-      <Ax3Name>sol:l</Ax3Name>
-      <Ax4Name>sol:omega</Ax4Name>
-      <Ax5Name>sol:chi</Ax5Name>
-      <Ax6Name>sol:phi</Ax6Name>
-      <Ax7Name>sol:psi</Ax7Name>
-      <Ax8Name>sol:q</Ax8Name>
-      <Ax9Name>sol:incidence</Ax9Name>
-      <Ax10Name>sol:azimuthI</Ax10Name>
-      <Ax11Name>sol:emergence</Ax11Name>
-      <Ax12Name>sol:azimuthE</Ax12Name>
+      <Ax10Name>sol:pseudoaxes_azimuthI</Ax10Name>
+      <Ax11Name>sol:pseudoaxes_emergence</Ax11Name>
+      <Ax12Name>sol:pseudoaxes_azimuthE</Ax12Name>
+      <Ax1Name>sol:pseudoaxes_h</Ax1Name>
+      <Ax2Name>sol:pseudoaxes_k</Ax2Name>
+      <Ax3Name>sol:pseudoaxes_l</Ax3Name>
+      <Ax4Name>sol:pseudoaxes_omega</Ax4Name>
+      <Ax5Name>sol:pseudoaxes_chi</Ax5Name>
+      <Ax6Name>sol:pseudoaxes_phi</Ax6Name>
+      <Ax7Name>sol:pseudoaxes_psi</Ax7Name>
+      <Ax8Name>sol:pseudoaxes_q</Ax8Name>
+      <Ax9Name>sol:pseudoaxes_incidence</Ax9Name>
     </macros>
     <file>_multi_pseudoaxis_solutions_k4c.bob</file>
     <y>31</y>

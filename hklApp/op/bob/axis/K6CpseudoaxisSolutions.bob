@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-13 15:13:02 by kg1-->
+<!--Saved on 2024-07-31 09:50:42 by l3b-->
 <display version="2.0.0">
   <name>K6C_PseudoAxSol</name>
   <width>320</width>
@@ -25,23 +25,23 @@
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display</name>
     <macros>
-      <Ax1Name>sol:h</Ax1Name>
-      <Ax2Name>sol:k</Ax2Name>
-      <Ax3Name>sol:l</Ax3Name>
-      <Ax4Name>sol:omega</Ax4Name>
-      <Ax5Name>sol:chi</Ax5Name>
-      <Ax6Name>sol:phi</Ax6Name>
-      <Ax7Name>sol:psi</Ax7Name>
-      <Ax8Name>sol:q</Ax8Name>
-      <Ax9Name>sol:alpha</Ax9Name>
-      <Ax10Name>sol:qper</Ax10Name>
-      <Ax11Name>sol:qpar</Ax11Name>
-      <Ax12Name>sol:incidence</Ax12Name>
-      <Ax13Name>sol:azimuthI</Ax13Name>
-      <Ax14Name>sol:tth</Ax14Name>
-      <Ax15Name>sol:alpha2</Ax15Name>
-      <Ax16Name>sol:emergence</Ax16Name>
-      <Ax17Name>sol:azimuthE</Ax17Name>
+      <Ax1Name>sol:pseudoaxes_h</Ax1Name>
+      <Ax2Name>sol:pseudoaxes_k</Ax2Name>
+      <Ax3Name>sol:pseudoaxes_l</Ax3Name>
+      <Ax4Name>sol:pseudoaxes_omega</Ax4Name>
+      <Ax5Name>sol:pseudoaxes_chi</Ax5Name>
+      <Ax6Name>sol:pseudoaxes_phi</Ax6Name>
+      <Ax7Name>sol:pseudoaxes_psi</Ax7Name>
+      <Ax8Name>sol:pseudoaxes_q</Ax8Name>
+      <Ax9Name>sol:pseudoaxes_alpha</Ax9Name>
+      <Ax10Name>sol:pseudoaxes_qper</Ax10Name>
+      <Ax11Name>sol:pseudoaxes_qpar</Ax11Name>
+      <Ax12Name>sol:pseudoaxes_incidence</Ax12Name>
+      <Ax13Name>sol:pseudoaxes_azimuthI</Ax13Name>
+      <Ax14Name>sol:pseudoaxes_tth</Ax14Name>
+      <Ax15Name>sol:pseudoaxes_alpha2</Ax15Name>
+      <Ax16Name>sol:pseudoaxes_emergence</Ax16Name>
+      <Ax17Name>sol:pseudoaxes_azimuthE</Ax17Name>
     </macros>
     <file>_multi_pseudoaxis_solutions.bob</file>
     <y>31</y>

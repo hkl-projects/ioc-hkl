@@ -75,6 +75,7 @@ class hklCalculator():
         self.refl_refine_e6c = np.nan
         self.refl_refine_k6c = np.nan
 
+        #TODO split e4c into v and h
         self.refl_refine_list_e4c = []
         self.refl_refine_list_k4c = []
         self.refl_refine_list_e6c = []
@@ -128,6 +129,11 @@ class hklCalculator():
         self.pseudoaxes_l = 0.
         self.pseudoaxes_psi = 0.
         self.pseudoaxes_q = 0.
+        self.pseudoaxes_alpha = 0.
+        self.pseudoaxes_qper = 0.
+        self.pseudoaxes_qpar = 0.
+        self.pseudoaxes_alpha = 0.
+        self.pseudoaxes_alpha2 = 0.
         self.pseudoaxes_incidence = 0.
         self.pseudoaxes_azimuth1 = 0.
         self.pseudoaxes_emergence = 0.
@@ -135,7 +141,7 @@ class hklCalculator():
         self.pseudoaxes_omega = 0.
         self.pseudoaxes_chi = 0.
         self.pseudoaxes_phi = 0.
-       
+        self.pseudoaxes_tth = 0.
         ### axes solutions 
         # Eulerian 4-circle
         self.axes_solns_omega_e4c = []
@@ -229,6 +235,8 @@ class hklCalculator():
         self.engines.get()
         self.engine_hkl = self.engines.engine_get_by_name("hkl")
 
+        self.curr_num_refls = 0        
+
         self.get_UB_matrix()    
         self.get_latt_vol()
         self.errors = f'{self.geom_name} started\n {self.get_info()}'
@@ -286,21 +294,18 @@ class hklCalculator():
         print(f"geom: {self.geom}")
         print(f"geom name: {self.geom_name}")
         if (self.geom_name == 'E4CH') or (self.geom_name == 'E4CV'):
-            print("aaaaaaaaaaa")
             values_w = [float(self.axes_e4c[0]), \
                         float(self.axes_e4c[1]), \
                         float(self.axes_e4c[2]), \
                         float(self.axes_e4c[3])] 
             print(values_w)
         if self.geom_name == "K4CV":
-            print("bbbbbbbbbbb")
             values_w = [float(self.axes_k4c[0]), \
                         float(self.axes_k4c[1]), \
                         float(self.axes_k4c[2]), \
                         float(self.axes_k4c[3])] 
             print(values_w)
         elif self.geom_name == "E6C":
-            print("ccccccccccc")
             values_w = [float(self.axes_e6c[0]), \
                         float(self.axes_e6c[1]), \
                         float(self.axes_e6c[2]), \
@@ -309,7 +314,6 @@ class hklCalculator():
                         float(self.axes_e6c[5])] 
             print(values_w)
         elif self.geom_name == "K6C":
-            print("ddddddddddd")
             values_w = [float(self.axes_k6c[0]), \
                         float(self.axes_k6c[1]), \
                         float(self.axes_k6c[2]), \
