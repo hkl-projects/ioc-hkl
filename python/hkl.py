@@ -6,6 +6,7 @@ from gi.repository import GLib
 gi.require_version('Hkl', '5.0')
 from gi.repository import Hkl
 import sys
+import traceback
 
 class hklCalculator():
     def __init__(self, num_axes_solns=30, num_reflections = 10, geom=2, geom_name = 'E4CV'):
@@ -329,10 +330,7 @@ class hklCalculator():
             #TODO catch different types of errors
             return
 
-        self.engines.init(self.geometry, self.detector, self.sample)
-        self.engines.get()
-        self.engine_hkl = self.engines.engine_get_by_name("hkl")
-        print(self.engine_hkl)
+        self.engines.get() # applies changes in geometry to the hkl engine
  
         values_hkl = self.engine_hkl.pseudo_axis_values_get(Hkl.UnitEnum.USER)
         print(values_hkl)
@@ -730,8 +728,8 @@ class hklCalculator():
             self.sample.affine()
         except RuntimeError as e:
             self.errors = traceback.print_exc() # credit to Alex S
+            print("failed")
             
-        self.start()
         UB = self.sample.UB_get()
         for i in range(3):
             for j in range(3):
