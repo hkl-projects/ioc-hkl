@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-31 10:00:36 by l3b-->
+<!--Saved on 2024-08-02 13:33:16 by l3b-->
 <display version="2.0.0">
   <name>K6C_PseudoAxInput</name>
   <widget type="label" version="2.0.0">
@@ -41,9 +41,9 @@
       <Ax16Name>pseudoaxes_emergence</Ax16Name>
       <Ax17Name>pseudoaxes_azimuthE</Ax17Name>
     </macros>
-    <file>_pseudoAxes.bob</file>
+    <file>_pseudoAxes_simple.bob</file>
     <y>30</y>
     <width>460</width>
-    <height>420</height>
+    <height>80</height>
   </widget>
 </display>

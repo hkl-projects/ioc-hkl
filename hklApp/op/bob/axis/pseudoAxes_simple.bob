@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-08-02 13:32:48 by l3b-->
+<!--Saved on 2024-08-02 13:31:57 by l3b-->
 <display version="2.0.0">
-  <name>E6C_PseudoAxInput</name>
+  <name>E4CH_PseudoAxInput</name>
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
-    <text>E6C PseudoAxes Input</text>
+    <text>E4CH PseudoAxes Input</text>
     <x use_class="true">0</x>
     <y use_class="true">0</y>
     <width>550</width>
@@ -23,20 +23,15 @@
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display</name>
     <macros>
-      <Ax10Name>pseudoaxes_alpha2</Ax10Name>
-      <Ax11Name>pseudoaxes_incidence</Ax11Name>
-      <Ax12Name>pseudoaxes_azimuthI</Ax12Name>
-      <Ax13Name>pseudoaxes_emergence</Ax13Name>
-      <Ax14Name>pseudoaxes_azimuthE</Ax14Name>
       <Ax1Name>pseudoaxes_h</Ax1Name>
       <Ax2Name>pseudoaxes_k</Ax2Name>
       <Ax3Name>pseudoaxes_l</Ax3Name>
       <Ax4Name>pseudoaxes_psi</Ax4Name>
       <Ax5Name>pseudoaxes_q</Ax5Name>
-      <Ax6Name>pseudoaxes_alpha</Ax6Name>
-      <Ax7Name>pseudoaxes_qper</Ax7Name>
-      <Ax8Name>pseudoaxes_qpar</Ax8Name>
-      <Ax9Name>pseudoaxes_tth</Ax9Name>
+      <Ax6Name>pseudoaxes_incidence</Ax6Name>
+      <Ax7Name>pseudoaxes_azimuthI</Ax7Name>
+      <Ax8Name>pseudoaxes_emergence</Ax8Name>
+      <Ax9Name>pseudoaxes_azimuthE</Ax9Name>
     </macros>
     <file>_pseudoAxes_simple.bob</file>
     <y>30</y>

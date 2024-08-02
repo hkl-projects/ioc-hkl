@@ -19,6 +19,15 @@ class hklCalculator():
         self.sample = np.nan # hkl object placeholder
         self.engines = np.nan # hkl object placeholder
         self.engine_hkl = np.nan # hkl object placeholder
+        self.engine_psi = np.nan # hkl object placeholder
+        self.engine_q = np.nan # hkl object placeholder
+        self.engine_incidence = np.nan # hkl object placeholder
+        self.engine_emergence = np.nan # hkl object placeholder
+        self.engine_eulerians = np.nan # hkl object placeholder
+        self.engine_psi = np.nan # hkl object placeholder
+        self.engine_q2 = np.nan # hkl object placeholder
+        self.engine_qper_qpar = np.nan # hkl object placeholder
+        self.engine_tth2 = np.nan # hkl object placeholder
         self.mode_4c = 0 # bissector, constant omega...
         self.mode_6c = 0 # bissector_vertical, constant_omega_vertical
         self.latt = [0., 0., 0., 0., 0., 0.] 
@@ -28,7 +37,9 @@ class hklCalculator():
         
         self.errors = 'test string'
         
-        self.particle_type = 0
+        self.energy = 0.
+        self.wavelength_result = 0.
+        self.particle_type = 1 # 0 photon, 1 neutron, ...
         self.neutron = 0.
         self.velocity = 0. # sqrt(2E/m) 
         self.e = 1.6021766300e-19 # [C]
@@ -114,7 +125,7 @@ class hklCalculator():
         self.axes_e6c = [0.,0.,0.,0.,0.,0.]
 
         # Kappa 6-circle (mu, komega, kappa, kphi, gamma, delta)
-        self.axes_k4c = [0.,0.,0.,0.,0.,0.]
+        self.axes_k6c = [0.,0.,0.,0.,0.,0.]
 
         #TODO move to arrays for each geom
         ### axes for UB calculation - only used internally - avoids setting on calculation
@@ -217,6 +228,7 @@ class hklCalculator():
         self.pseudoaxes_solns_qpar = 0.
  
     def start(self):
+        self.reset_pseudoaxes_solns()
         self.detector = Hkl.Detector.factory_new(Hkl.DetectorType(0))
         self.factory  = Hkl.factories()[self.geom_name]
         self.geometry = self.factory.create_new_geometry()
@@ -233,8 +245,37 @@ class hklCalculator():
         self.engines = self.factory.create_new_engine_list()
         self.engines.init(self.geometry, self.detector, self.sample)
         self.engines.get()
-        self.engine_hkl = self.engines.engine_get_by_name("hkl")
 
+        if (self.geom == 1) or (self.geom == 2):
+            self.engine_hkl = self.engines.engine_get_by_name("hkl")
+            self.engine_psi = self.engines.engine_get_by_name("psi")
+            self.engine_q = self.engines.engine_get_by_name("q")
+            self.engine_incidence = self.engines.engine_get_by_name("incidence")
+            self.engine_emergence = self.engines.engine_get_by_name("emergence")
+        elif (self.geom == 3): 
+            self.engine_hkl = self.engines.engine_get_by_name("hkl")
+            self.engine_eulerians = self.engines.engine_get_by_name("eulerians")
+            self.engine_psi = self.engines.engine_get_by_name("psi")
+            self.engine_q = self.engines.engine_get_by_name("q")
+            self.engine_incidence = self.engines.engine_get_by_name("incidence")
+            self.engine_emergence = self.engines.engine_get_by_name("emergence")
+        elif (self.geom == 4): 
+            self.engine_hkl = self.engines.engine_get_by_name("hkl")
+            self.engine_psi = self.engines.engine_get_by_name("psi")
+            self.engine_q2 = self.engines.engine_get_by_name("q2")
+            self.engine_qper_qpar = self.engines.engine_get_by_name("qper_qpar")
+            self.engine_tth2 = self.engines.engine_get_by_name("tth2")
+            self.engine_incidence = self.engines.engine_get_by_name("incidence")
+            self.engine_emergence = self.engines.engine_get_by_name("emergence")
+        elif (self.geom == 5): 
+            self.engine_hkl = self.engines.engine_get_by_name("hkl")
+            self.engine_eulerians = self.engines.engine_get_by_name("eulerians")
+            self.engine_psi = self.engines.engine_get_by_name("psi")
+            self.engine_q2 = self.engines.engine_get_by_name("q2")
+            self.engine_qper_qpar = self.engines.engine_get_by_name("qper_qpar")
+            self.engine_incidence = self.engines.engine_get_by_name("incidence")
+            self.engine_tth2 = self.engines.engine_get_by_name("tth2")
+            self.engine_emergence = self.engines.engine_get_by_name("emergence")
         self.curr_num_refls = 0        
 
         self.get_UB_matrix()    
@@ -242,16 +283,18 @@ class hklCalculator():
         self.errors = f'{self.geom_name} started\n {self.get_info()}'
 
     def energy_to_wavelength_neutron(self):
+        # Xrays
         # from milli_ev to Angstrom
-        if (self.particle_type == 0) and (self.energy > 0): # Xray
-            # E [kev] = hc/lambda [m^2kgs^-2]
-            coeff = 12.39841987 # hc [kev*A]
-            self.wavelength = coeff/self.energy # hc/energy
+        #if (self.particle_type == 0) and (self.energy > 0): # Xray
+        #    # E [kev] = hc/lambda [m^2kgs^-2]
+        #    coeff = 12.39841987 # hc [kev*A]
+        #    self.wavelength = coeff/self.energy # hc/energy
             
-        elif (self.particle_type == 1) and (self.energy > 0): # neutron
+        if (self.particle_type == 1) and (self.energy > 0): # neutron
             # E [mev] = p^2/2m = h^2/(2m*lambda^2) [...]
             coeff = 81.804211883 # h^2/2m_neutron [mevA^2] for neutrons
-            self.wavelength = math.sqrt(coeff/self.energy)
+            self.wavelength_result = math.sqrt(coeff/self.energy)
+            print(f'RESULT: {self.wavelength_result}')
 
     def switch_geom(self):
         if self.geom == 0:
@@ -329,14 +372,59 @@ class hklCalculator():
             #TODO catch different types of errors
             return
 
-        self.engines.init(self.geometry, self.detector, self.sample)
         self.engines.get()
-        self.engine_hkl = self.engines.engine_get_by_name("hkl")
-        print(self.engine_hkl)
- 
+        # common to all geoms
         values_hkl = self.engine_hkl.pseudo_axis_values_get(Hkl.UnitEnum.USER)
-        print(values_hkl)
+        print(f'values_hkl: {values_hkl}')
         self.pseudoaxes_solns_h, self.pseudoaxes_solns_k, self.pseudoaxes_solns_l = values_hkl
+        
+        values_psi = self.engine_psi.pseudo_axis_values_get(Hkl.UnitEnum.USER)
+        print(f'values_psi: {values_psi}')
+        self.pseudoaxes_solns_psi = values_psi[0] # [0] required otherwise assigns as list
+        
+        values_incidence = self.engine_incidence.pseudo_axis_values_get(Hkl.UnitEnum.USER)
+        print(f'values_incidence: {values_incidence}')
+        self.pseudoaxes_solns_incidence, self.pseudoaxes_solns_azimuth1 = values_incidence
+
+        values_emergence = self.engine_emergence.pseudo_axis_values_get(Hkl.UnitEnum.USER)
+        self.pseudoaxes_solns_emergence, self.pseudoaxes_solns_azimuth2 = values_emergence
+        print(f'values_emergence: {values_emergence}')
+        if (self.geom == 1) or (self.geom == 2):
+            values_q = self.engine_q.pseudo_axis_values_get(Hkl.UnitEnum.USER)
+            print(f'values_q: {values_q}')
+            self.pseudoaxes_solns_q = values_q[0]
+        elif self.geom == 3:
+            values_q = self.engine_q.pseudo_axis_values_get(Hkl.UnitEnum.USER)
+            print(f'values_q: {values_q}') 
+            self.pseudoaxes_solns_q = values_q[0]
+            values_eulerians = self.engine_eulerians.pseudo_axis_values_get(Hkl.UnitEnum.USER)
+            print(f'values_eulerians: {values_eulerians}')
+            self.pseudoaxes_solns_omega, self.pseudoaxes_solns_chi, self.pseudoaxes_solns_phi = \
+                values_eulerians
+        elif self.geom == 4:
+            values_q2 = self.engine_q2.pseudo_axis_values_get(Hkl.UnitEnum.USER)
+            print(f'values_q2: {values_q2}')
+            self.pseudoaxes_solns_q, self.pseudoaxes_solns_alpha = values_q2
+            values_qper_qpar = self.engine_qper_qpar.pseudo_axis_values_get(Hkl.UnitEnum.USER)
+            print(f'values_qper_qpar: {values_qper_qpar}')
+            self.pseudoaxes_solns_qper, self.pseudoaxes_solns_qpar = values_qper_qpar
+            values_tth2 = self.engine_tth2.pseudo_axis_values_get(Hkl.UnitEnum.USER)
+            self.pseudoaxes_solns_tth2, self.pseudoaxes_solns_alpha2 = values_tth2
+            print(f'values_tth2: {values_tth2}')
+        elif self.geom == 5:
+            values_q2 = self.engine_q2.pseudo_axis_values_get(Hkl.UnitEnum.USER)
+            print(f'values_q2: {values_q2}') 
+            self.pseudoaxes_solns_q, self.pseudoaxes_solns_alpha = values_q2
+            values_qper_qpar = self.engine_qper_qpar.pseudo_axis_values_get(Hkl.UnitEnum.USER)
+            print(f'values_qper_qpar: {values_qper_qpar}') 
+            self.pseudoaxes_solns_qper, self.pseudoaxes_solns_qpar = values_qper_qpar
+            values_tth2 = self.engine_tth2.pseudo_axis_values_get(Hkl.UnitEnum.USER)
+            print(f'values_tth2: {values_tth2}') 
+            self.pseudoaxes_solns_tth2, self.pseudoaxes_solns_alpha2 = values_tth2
+            values_eulerians = self.engine_eulerians.pseudo_axis_values_get(Hkl.UnitEnum.USER)
+            print(f'values_eulerians: {values_eulerians}')
+            self.pseudoaxes_solns_omega, self.pseudoaxes_solns_chi, self.pseudoaxes_solns_phi = \
+                values_eulerians
         self.get_UB_matrix()
 
     def forward_UB(self):

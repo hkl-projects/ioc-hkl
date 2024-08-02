@@ -68,4 +68,11 @@ record(ao, "$(P)$(R)set_input_UB") {
     field(FLNK, "$(P)$(R)UBa11_input")
 }
 
+record(ao, "$(P)$(R)convert") {
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.energy_to_wavelength_neutron()")
+    field(TPRO, "1")
+    field(FLNK, "$(P)$(R)wavelength_result")
+}
+
 
