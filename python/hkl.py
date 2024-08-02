@@ -35,7 +35,7 @@ class hklCalculator():
         self.lattice = np.nan 
         self.lattice_vol = 0.
         
-        self.errors = 'test string'
+        self.errors = 'test string' #TODO
         
         self.energy = 0.
         self.wavelength_result = 0.
@@ -373,56 +373,53 @@ class hklCalculator():
             return
 
         self.engines.get()
-        # common to all geoms
+        ### common to all geoms
+        # hkl
         values_hkl = self.engine_hkl.pseudo_axis_values_get(Hkl.UnitEnum.USER)
-        print(f'values_hkl: {values_hkl}')
         self.pseudoaxes_solns_h, self.pseudoaxes_solns_k, self.pseudoaxes_solns_l = values_hkl
-        
+        # psi
         values_psi = self.engine_psi.pseudo_axis_values_get(Hkl.UnitEnum.USER)
-        print(f'values_psi: {values_psi}')
         self.pseudoaxes_solns_psi = values_psi[0] # [0] required otherwise assigns as list
-        
+        # incidence
         values_incidence = self.engine_incidence.pseudo_axis_values_get(Hkl.UnitEnum.USER)
-        print(f'values_incidence: {values_incidence}')
         self.pseudoaxes_solns_incidence, self.pseudoaxes_solns_azimuth1 = values_incidence
-
+        # emergence
         values_emergence = self.engine_emergence.pseudo_axis_values_get(Hkl.UnitEnum.USER)
         self.pseudoaxes_solns_emergence, self.pseudoaxes_solns_azimuth2 = values_emergence
-        print(f'values_emergence: {values_emergence}')
         if (self.geom == 1) or (self.geom == 2):
+            # q
             values_q = self.engine_q.pseudo_axis_values_get(Hkl.UnitEnum.USER)
-            print(f'values_q: {values_q}')
             self.pseudoaxes_solns_q = values_q[0]
         elif self.geom == 3:
+            # q
             values_q = self.engine_q.pseudo_axis_values_get(Hkl.UnitEnum.USER)
-            print(f'values_q: {values_q}') 
             self.pseudoaxes_solns_q = values_q[0]
+            # eulerians
             values_eulerians = self.engine_eulerians.pseudo_axis_values_get(Hkl.UnitEnum.USER)
-            print(f'values_eulerians: {values_eulerians}')
             self.pseudoaxes_solns_omega, self.pseudoaxes_solns_chi, self.pseudoaxes_solns_phi = \
                 values_eulerians
         elif self.geom == 4:
+            # q2
             values_q2 = self.engine_q2.pseudo_axis_values_get(Hkl.UnitEnum.USER)
-            print(f'values_q2: {values_q2}')
             self.pseudoaxes_solns_q, self.pseudoaxes_solns_alpha = values_q2
+            #qper, qpar
             values_qper_qpar = self.engine_qper_qpar.pseudo_axis_values_get(Hkl.UnitEnum.USER)
-            print(f'values_qper_qpar: {values_qper_qpar}')
             self.pseudoaxes_solns_qper, self.pseudoaxes_solns_qpar = values_qper_qpar
+            # tth2
             values_tth2 = self.engine_tth2.pseudo_axis_values_get(Hkl.UnitEnum.USER)
             self.pseudoaxes_solns_tth2, self.pseudoaxes_solns_alpha2 = values_tth2
-            print(f'values_tth2: {values_tth2}')
         elif self.geom == 5:
+            # q2
             values_q2 = self.engine_q2.pseudo_axis_values_get(Hkl.UnitEnum.USER)
-            print(f'values_q2: {values_q2}') 
             self.pseudoaxes_solns_q, self.pseudoaxes_solns_alpha = values_q2
+            #qper, qpar
             values_qper_qpar = self.engine_qper_qpar.pseudo_axis_values_get(Hkl.UnitEnum.USER)
-            print(f'values_qper_qpar: {values_qper_qpar}') 
             self.pseudoaxes_solns_qper, self.pseudoaxes_solns_qpar = values_qper_qpar
+            # tth2
             values_tth2 = self.engine_tth2.pseudo_axis_values_get(Hkl.UnitEnum.USER)
-            print(f'values_tth2: {values_tth2}') 
             self.pseudoaxes_solns_tth2, self.pseudoaxes_solns_alpha2 = values_tth2
+            #eulerians
             values_eulerians = self.engine_eulerians.pseudo_axis_values_get(Hkl.UnitEnum.USER)
-            print(f'values_eulerians: {values_eulerians}')
             self.pseudoaxes_solns_omega, self.pseudoaxes_solns_chi, self.pseudoaxes_solns_phi = \
                 values_eulerians
         self.get_UB_matrix()
@@ -817,9 +814,9 @@ class hklCalculator():
         try:
             self.sample.affine()
         except RuntimeError as e:
-            self.errors = traceback.print_exc() # credit to Alex S
+            #TODO
+            self.errors = traceback.print_exc()
             
-        self.start()
         UB = self.sample.UB_get()
         for i in range(3):
             for j in range(3):
