@@ -127,7 +127,7 @@ record(ai, "$(P)$(R)sol:pseudoaxes_phi") {
 }
 
 record(ai, "$(P)$(R)sol:pseudoaxes_tth") {
-    field(DESC, "phi")
+    field(DESC, "tth")
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(INP, "@hkl_calc.pseudoaxes_solns_tth")

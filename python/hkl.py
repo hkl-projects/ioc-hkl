@@ -15,7 +15,7 @@ class hklCalculator():
         self.geom = geom
         self.geometry = np.nan # hkl object placeholder
         self.detector = np.nan # hkl object placeholder
-        self.factory = np.nan
+        self.factory = np.nan # hkl object placeholder
         self.sample = np.nan # hkl object placeholder
         self.engines = np.nan # hkl object placeholder
         self.engine_hkl = np.nan # hkl object placeholder
@@ -294,7 +294,6 @@ class hklCalculator():
             # E [mev] = p^2/2m = h^2/(2m*lambda^2) [...]
             coeff = 81.804211883 # h^2/2m_neutron [mevA^2] for neutrons
             self.wavelength_result = math.sqrt(coeff/self.energy)
-            print(f'RESULT: {self.wavelength_result}')
 
     def switch_geom(self):
         if self.geom == 0:
