@@ -935,8 +935,5 @@ class hklCalculator():
         print(f'a: {a}, b: {b}, c: {c}, alpha: {alpha}, beta: {beta}, gamma: {gamma}')
         print(f'UB: {self.UB_matrix}')
         print(f'latt vol: {self.lattice_vol}')
-        #x = self.engine_hkl.axis_names_get(Hkl.UnitEnum.USER)
-        #x = self.engine_hkl.axis_names_get(Hkl.EngineAxisNamesGet.WRITE) ???
-        # https://repo.or.cz/hkl.git/blob/5a20e852030a90f6920f4040fc437395bec3b532:/tests/bindings/python.py
         x = self.engine_hkl.axis_names_get(Hkl.EngineAxisNamesGet.READ)
         print(x)
