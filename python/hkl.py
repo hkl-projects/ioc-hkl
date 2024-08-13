@@ -890,12 +890,9 @@ class hklCalculator():
             self.refl_refine_input_list_k6c[self.curr_num_refls] = self.refl_refine_input_k6c.copy()
         self.curr_num_refls += 1
 
-    #def del_refl_refine(self):
-    #    self.selected_refl
-    #    self.refl_refine = self.sample.del_reflection(self.geometry, \
-    #                self.detector, self.refl_refine_input[0], \
-    #                self.refl_refine_input[1], self.refl_refine[2])   
-    #    self.refl_refine_list.append(self.refl.refine)
+    def del_refl_refine(self):
+        #self.selected_refl = 0 #TODO
+        pass
 
     def get_sample_rotation(self):
         rot = self.geometry.sample_rotation_get(self.sample).to_matrix()

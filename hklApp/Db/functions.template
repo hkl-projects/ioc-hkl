@@ -42,6 +42,12 @@ record(ao, "$(P)$(R)add_refl_refine") {
     field(TPRO, "1")
 }
 
+record(ao, "$(P)$(R)del_refl_refine") {
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.del_refl_refine()")
+    field(TPRO, "1")
+}
+
 record(ao, "$(P)$(R)switch_geom") {
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.switch_geom()")

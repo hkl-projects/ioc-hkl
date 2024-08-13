@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-31 10:05:41 by l3b-->
+<!--Saved on 2024-08-13 09:27:10 by alexander-->
 <display version="2.0.0">
   <name>Reflections Refine</name>
   <macros>
@@ -283,7 +283,7 @@
         <description>WritePV</description>
       </action>
     </actions>
-    <pv_name>$(Sys)remove_reflection</pv_name>
+    <pv_name>$(Sys)del_refl_refine</pv_name>
     <text>Remove Reflection</text>
     <x>180</x>
     <y>480</y>
