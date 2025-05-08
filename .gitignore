@@ -1,5 +1,6 @@
 *.swp
 __pycache__
+iocBoot/iocpydev/.iocsh_history
 
 # Files generated during build
 configure/CONFIG.PyDevice

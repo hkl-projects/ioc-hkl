@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-28 20:00:11 by l3b-->
+<!--Saved on 2025-05-06 12:23:45 by ab-->
 <display version="2.0.0">
   <name>HKL_forward</name>
   <macros>
     <Sys>HB3:ioc-hkl:</Sys>
   </macros>
-  <width>1000</width>
-  <height>850</height>
+  <width>1400</width>
+  <height>1200</height>
   <widget type="rectangle" version="2.0.0">
     <name>Rectangle</name>
     <x>20</x>
@@ -48,5 +48,13 @@
       <point x="0.0" y="0.0">
       </point>
     </points>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_7</name>
+    <file>../motor8x.bob</file>
+    <x>30</x>
+    <y>820</y>
+    <width>960</width>
+    <height>190</height>
   </widget>
 </display>

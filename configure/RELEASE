@@ -19,7 +19,7 @@
 # Build settings that are NOT module paths should appear in a
 # CONFIG_SITE file.
 
-EPICS_BASE=/epics/base
+EPICS_BASE=/home/ab/epics/base
 TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
 
 # Local sites should create a RELEASE.local file
