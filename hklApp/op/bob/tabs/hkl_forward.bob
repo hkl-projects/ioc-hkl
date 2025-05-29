@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2025-05-06 12:23:45 by ab-->
 <display version="2.0.0">
   <name>HKL_forward</name>
   <macros>
@@ -51,7 +50,7 @@
   </widget>
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_7</name>
-    <file>../motor8x.bob</file>
+    <file>../motors/motor8x.bob</file>
     <x>30</x>
     <y>820</y>
     <width>960</width>

@@ -279,3 +279,64 @@ caget IOC:motorsimtest_ab:m1
 camonitor also helps to check if a PV changes, like
 camonitor HB3:ioc-hkl:omega_e4c
 ```
+
+FLNK not working might be an issue with channel access/port accessibilitiy with two IOCs running, getting these warnings
+
+```
+cas WARNING: Configured TCP port was unavailable.
+cas WARNING: Using dynamically assigned TCP port 46859,
+cas WARNING: but now two or more servers share the same UDP port.
+cas WARNING: Depending on your IP kernel this server may not be
+cas WARNING: reachable with UDP unicast (a host's IP in EPICS_CA_ADDR_LIST)
+iocRun: All initialization complete
+## motorUtil (allstop & alldone)
+motorUtilInit("motorSim:")
+# Boot complete
+epics> CA.Client.Exception...............................................
+    Warning: "User specified timeout on IO operation expired"
+    Context: "ca_search_and_connect"
+    Source File: ../motorUtil.cc line 210
+    Current Time: Thu May 29 2025 09:38:17.303131670
+..................................................................
+motorUtil.cc: getChID(motorSim:moving.VAL) error: 80
+CA.Client.Exception...............................................
+    Warning: "User specified timeout on IO operation expired"
+    Context: "ca_search_and_connect"
+    Source File: ../motorUtil.cc line 210
+    Current Time: Thu May 29 2025 09:39:17.303778029
+..................................................................
+motorUtil.cc: getChID(motorSim:alldone.VAL) error: 80
+
+epics> 
+```
+
+
+
+can try 
+```
+sudo lsof -i :5064
+```
+to see which iocs are on that port, need to look up difference between UDP and TCP ports
+
+
+
+The FLNK is working but the value isn't updating, when I run
+camonitor HB3:ioc-hkl:omega_e4c.PROC
+
+changing an m1 value in phoebus does update the PV as below:
+                        
+HB3:ioc-hkl:omega_e4c.PROC     2025-05-29 10:01:20.121099 0  
+HB3:ioc-hkl:omega_e4c.PROC     2025-05-29 10:01:20.121099 1  
+HB3:ioc-hkl:omega_e4c.PROC     2025-05-29 10:02:10.117501 1  
+HB3:ioc-hkl:omega_e4c.PROC     2025-05-29 10:07:44.227275 1  
+HB3:ioc-hkl:omega_e4c.PROC     2025-05-29 10:07:54.456788 1  
+HB3:ioc-hkl:omega_e4c.PROC     2025-05-29 10:11:25.876751 1  
+
+but the PV for omega doesnt change. Also the update from one IOC to the other is very slow/inconsistent
+
+now seems like I need to add
+field(DOL, "IOC1:source CP")
+field(OMSL, "closed_loop")
+to the target PV in ioc-hkl
+
+works perfectly now, but I need a condition that includes these fields when coupling is on, and doesn't include them when coupling is off
