@@ -87,3 +87,12 @@ pattern {P, R, C}
 { abtest:ioc-hkl, : , 9 }
 { abtest:ioc-hkl, : , 10 }
 }
+
+file motor_coupling.template 
+{
+pattern {P, R}
+{ abtest:ioc-hkl, : }
+}
+
+
+

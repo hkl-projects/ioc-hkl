@@ -53,4 +53,12 @@
     <width>960</width>
     <height>190</height>
   </widget>
+  <widget type="bool_button" version="2.0.0">
+    <name>Boolean Button</name>
+    <pv_name>$(Sys)e4c_sim_couple_button</pv_name>
+    <x>900</x>
+    <y>590</y>
+    <width>60</width>
+    <height>40</height>
+  </widget>
 </display>

@@ -8,8 +8,9 @@ record(ao, "$(P)$(R)omega_e4c_sim") {
     field(OMSL, "closed_loop")
     field(DRVL, "-180")
     field(DRVH, "180")
-    field(OUT, "@hkl_calc.axes_e4c[0]=VAL")
-    field(FLNK, "$(P)$(R)omega_e4c")
+    #field(OUT, "@hkl_calc.axes_e4c[0]=VAL")
+    #field(FLNK, "$(P)$(R)omega_e4c")
+    field(FLNK, "$(P)$(R)omega_e4c_conditional_copy")
 }
 
 record(ao, "$(P)$(R)omega_e4c") {
@@ -37,8 +38,9 @@ record(ao, "$(P)$(R)chi_e4c_sim") {
     field(OMSL, "closed_loop")
     field(DRVL, "-180")
     field(DRVH, "180")
-    field(OUT, "@hkl_calc.axes_e4c[1]=VAL")
-    field(FLNK, "$(P)$(R)chi_e4c")
+    #field(OUT, "@hkl_calc.axes_e4c[1]=VAL")
+    #field(FLNK, "$(P)$(R)chi_e4c")
+    field(FLNK, "$(P)$(R)chi_e4c_conditional_copy")
 }
 
 record(ao, "$(P)$(R)chi_e4c") {
@@ -66,8 +68,9 @@ record(ao, "$(P)$(R)phi_e4c_sim") {
     field(OMSL, "closed_loop")
     field(DRVL, "-180")
     field(DRVH, "180")
-    field(OUT, "@hkl_calc.axes_e4c[2]=VAL")
-    field(FLNK, "$(P)$(R)phi_e4c")
+    #field(OUT, "@hkl_calc.axes_e4c[2]=VAL")
+    #field(FLNK, "$(P)$(R)phi_e4c")
+    field(FLNK, "$(P)$(R)phi_e4c_conditional_copy")
 }
 
 record(ao, "$(P)$(R)phi_e4c") {
@@ -95,8 +98,9 @@ record(ao, "$(P)$(R)tth_e4c_sim") {
     field(OMSL, "closed_loop")
     field(DRVL, "-180")
     field(DRVH, "180")
-    field(OUT, "@hkl_calc.axes_e4c[3]=VAL")
-    field(FLNK, "$(P)$(R)tth_e4c")
+    #field(OUT, "@hkl_calc.axes_e4c[3]=VAL")
+    #field(FLNK, "$(P)$(R)tth_e4c")
+    field(FLNK, "$(P)$(R)tth_e4c_conditional_copy")
 }
 
 record(ao, "$(P)$(R)tth_e4c") {
