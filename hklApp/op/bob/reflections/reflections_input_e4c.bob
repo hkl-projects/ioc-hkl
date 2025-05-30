@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-29 10:51:23 by l3b-->
 <display version="2.0.0">
   <name>Reflections_input_e4c</name>
-  <macros>
-    <Sys>HB3:ioc-hkl:</Sys>
-  </macros>
   <width>1200</width>
   <height>110</height>
   <widget type="textentry" version="3.0.0">

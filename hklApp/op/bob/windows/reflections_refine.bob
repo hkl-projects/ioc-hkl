@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-08-13 09:27:10 by alexander-->
 <display version="2.0.0">
   <name>Reflections Refine</name>
   <macros>
-    <Sys>HB3:ioc-hkl:</Sys>
     <Ax1Name>refl_refine_input_list_h</Ax1Name>
     <Ax2Name>refl_refine_input_list_k</Ax2Name>
     <Ax3Name>refl_refine_input_list_l</Ax3Name>
@@ -235,9 +233,9 @@
     <name>Action Button_6</name>
     <actions>
       <action type="write_pv">
+        <description>WritePV</description>
         <pv_name>$(Sys)affine_set</pv_name>
         <value>1</value>
-        <description>WritePV</description>
       </action>
     </actions>
     <pv_name>$(Sys)affine_set</pv_name>
@@ -260,9 +258,9 @@
     <name>Action Button_5</name>
     <actions>
       <action type="write_pv">
+        <description>WritePV</description>
         <pv_name>$(Sys)add_refl_refine</pv_name>
         <value>1</value>
-        <description>WritePV</description>
       </action>
     </actions>
     <pv_name>$(Sys)add_refl_refine</pv_name>
@@ -278,9 +276,9 @@
     <name>Action Button_7</name>
     <actions>
       <action type="write_pv">
+        <description>WritePV</description>
         <pv_name>$(Sys)del_refl_refine</pv_name>
         <value>1</value>
-        <description>WritePV</description>
       </action>
     </actions>
     <pv_name>$(Sys)del_refl_refine</pv_name>
@@ -296,9 +294,9 @@
     <name>Action Button_8</name>
     <actions>
       <action type="write_pv">
+        <description>WritePV</description>
         <pv_name>$(Sys)affine</pv_name>
         <value>1</value>
-        <description>WritePV</description>
       </action>
     </actions>
     <pv_name>$(Sys)affine</pv_name>

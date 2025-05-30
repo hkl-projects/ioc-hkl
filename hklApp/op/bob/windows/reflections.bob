@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-29 13:33:52 by l3b-->
 <display version="2.0.0">
   <name>Reflections</name>
-  <macros>
-    <Sys>HB3:ioc-hkl:</Sys>
-  </macros>
   <width>1250</width>
   <height>330</height>
   <widget type="rectangle" version="2.0.0">
@@ -241,9 +237,9 @@
     <name>Action Button_4</name>
     <actions>
       <action type="write_pv">
+        <description>WritePV</description>
         <pv_name>$(Sys)compute_UB</pv_name>
         <value>1</value>
-        <description>WritePV</description>
       </action>
     </actions>
     <pv_name>$(Sys)compute_UB</pv_name>
@@ -259,9 +255,9 @@
     <name>Action Button_6</name>
     <actions>
       <action type="write_pv">
+        <description>WritePV</description>
         <pv_name>$(Sys)compute_set_UB</pv_name>
         <value>1</value>
-        <description>WritePV</description>
       </action>
     </actions>
     <pv_name>$(Sys)compute_set_UB</pv_name>

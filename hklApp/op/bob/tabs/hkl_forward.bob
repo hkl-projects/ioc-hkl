@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <display version="2.0.0">
   <name>HKL_forward</name>
-  <macros>
-    <Sys>HB3:ioc-hkl:</Sys>
-  </macros>
   <width>1400</width>
   <height>1200</height>
   <widget type="rectangle" version="2.0.0">

@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-29 13:57:57 by l3b-->
 <display version="2.0.0">
   <name>Backward_output</name>
-  <macros>
-    <Sys>HB3:ioc-hkl:</Sys>
-  </macros>
   <width>1190</width>
   <height>390</height>
   <widget type="embedded" version="2.0.0">
@@ -57,9 +53,9 @@
     <name>Action Button_3</name>
     <actions>
       <action type="write_pv">
+        <description>WritePV</description>
         <pv_name>$(Sys)backward</pv_name>
         <value>1</value>
-        <description>WritePV</description>
       </action>
     </actions>
     <pv_name>$(Sys)backward</pv_name>

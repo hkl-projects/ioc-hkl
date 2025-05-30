@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-29 18:16:23 by l3b-->
 <display version="2.0.0">
   <name>refine input e4c</name>
   <macros>
-    <Sys>HB3:ioc-hkl:</Sys>
     <Ax1Name>refl_refine_input_list_h</Ax1Name>
     <Ax2Name>refl_refine_input_list_k</Ax2Name>
     <Ax3Name>refl_refine_input_list_l</Ax3Name>

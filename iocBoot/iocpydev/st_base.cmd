@@ -5,8 +5,8 @@
 # PYTHONPATH points to folders where Python modules are.
 epicsEnvSet("PYTHONPATH","$(TOP)/python")
 
-# Prefix set for Triple Axis Spectrometer -> TAS
-epicsEnvSet("PREFIX", "HB3:ioc-hkl:")
+# Designate beamline:IOC_name as conventional prefix
+epicsEnvSet("PREFIX", "abtest:ioc-hkl:")
 
 cd ${TOP}
 
@@ -58,4 +58,4 @@ dbpf("$(PREFIX)refl2_tth_e4c","69")
 #dbpf("$(PREFIX)errors","my string test")
 
 
-#dbl > pvlist.dbl
+dbl > pvlist.dbl

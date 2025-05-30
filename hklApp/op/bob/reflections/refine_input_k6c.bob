@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-31 10:02:53 by l3b-->
 <display version="2.0.0">
   <name>refine input k6c</name>
-  <macros>
-    <Sys>HB3:ioc-hkl:</Sys>
-  </macros>
   <width>1075</width>
   <height>50</height>
   <widget type="textentry" version="3.0.0">

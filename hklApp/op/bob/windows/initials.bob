@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-08-02 13:36:43 by l3b-->
 <display version="2.0.0">
   <name>Initials</name>
-  <macros>
-    <Sys>HB3:ioc-hkl:</Sys>
-  </macros>
   <width>1300</width>
   <widget type="label" version="2.0.0">
     <name>Label</name>
@@ -188,9 +184,9 @@
     <name>Action Button_5</name>
     <actions>
       <action type="write_pv">
+        <description>WritePV</description>
         <pv_name>$(Sys)set_sample</pv_name>
         <value>1</value>
-        <description>WritePV</description>
       </action>
     </actions>
     <pv_name>$(Sys)set_sample</pv_name>
@@ -681,9 +677,9 @@
     <name>Action Button_6</name>
     <actions>
       <action type="write_pv">
+        <description>WritePV</description>
         <pv_name>$(Sys)set_input_UB</pv_name>
         <value>1</value>
-        <description>WritePV</description>
       </action>
     </actions>
     <pv_name>$(Sys)set_input_UB</pv_name>
@@ -794,9 +790,9 @@
     <name>Action Button_7</name>
     <actions>
       <action type="write_pv">
+        <description>WritePV</description>
         <pv_name>$(Sys)convert</pv_name>
         <value>1</value>
-        <description>WritePV</description>
       </action>
     </actions>
     <pv_name>$(Sys)convert</pv_name>

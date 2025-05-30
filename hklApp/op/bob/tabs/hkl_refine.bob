@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-29 19:02:32 by l3b-->
 <display version="2.0.0">
   <name>HKL_refine</name>
-  <macros>
-    <Sys>HB3:ioc-hkl:</Sys>
-  </macros>
   <width>1350</width>
   <height>900</height>
   <widget type="arc" version="2.0.0">

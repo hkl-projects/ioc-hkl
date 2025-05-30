@@ -1,3 +1,5 @@
+#TODO unused, delete
+
 # pip install pyepics
 # export EPICS_CA_AUTO_ADDR_LIST=YES
 # export EPICS_CA_ADDR_LIST="127.0.0.1"
@@ -7,7 +9,7 @@
 
 ## source and target PVs
 #source_pv = PV('IOC:m1.VAL') # the PV to read from
-#target_pv = PV('HB3:ioc-hkl:omega_e4c')  # the PV to write to, hardcoded?
+#target_pv = PV('abtest:ioc-hkl:omega_e4c')  # the PV to write to, hardcoded?
 #
 ## callback function: triggered when source PV changes
 #def on_change(pvname=None, value=None, **kwargs):
@@ -30,10 +32,10 @@ import time
 
 # map source PVs to destination PVs
 pv_pairs = {
-    'IOC:m1.VAL': 'HB3:ioc-hkl:omega_e4c.VAL',
-    'IOC:m2.VAL': 'HB3:ioc-hkl:chi_e4c.VAL',
-    'IOC:m3.VAL': 'HB3:ioc-hkl:phi_e4c.VAL',
-    'IOC:m4.VAL': 'HB3:ioc-hkl:tth_e4c.VAL',
+    'IOC:m1.VAL': 'abtest:ioc-hkl:omega_e4c.VAL',
+    'IOC:m2.VAL': 'abtest:ioc-hkl:chi_e4c.VAL',
+    'IOC:m3.VAL': 'abtest:ioc-hkl:phi_e4c.VAL',
+    'IOC:m4.VAL': 'abtest:ioc-hkl:tth_e4c.VAL',
 }
 
 # deadband filtering threshold
