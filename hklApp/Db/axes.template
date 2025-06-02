@@ -149,7 +149,7 @@ record(ao, "$(P)$(R)kappa_k4c") {
 }
 
 record(ai, "$(P)$(R)kappa_k4c_RBV") {
-    field(DESC, "chi")
+    field(DESC, "kappa")
     field(DTYP, "pydev")
     field(PINI, "YES")
     field(INP, "@hkl_calc.axes_k4c[1]")

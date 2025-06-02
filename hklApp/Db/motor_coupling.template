@@ -10,7 +10,7 @@ record(bo, "$(P)$(R)e4c_sim_couple_button") {
 
 # calcout's
 record(calcout, "$(P)$(R)omega_e4c_conditional_copy") {
-    field(DESC, "Copy sim to omega on button press")
+    field(DESC, "Copy sim to omega while button pressed")
     field(INPA, "$(P)$(R)omega_e4c_sim.VAL NPP")
     field(INPB, "$(P)$(R)e4c_sim_couple_button.VAL NPP")
     field(CALC, "B=1?A:VAL")  # if button pressed, copy A to VAL
@@ -20,19 +20,8 @@ record(calcout, "$(P)$(R)omega_e4c_conditional_copy") {
     field(FLNK, "$(P)$(R)chi_e4c_conditional_copy")
 }
 
-#record(calcout, "$(P)$(R)omega_e4c_conditional_copy") {
-#    field(DESC, "Copy sim to omega when button is on")
-#    field(INPA, "$(P)$(R)omega_e4c_sim.VAL NPP")
-#    field(INPB, "$(P)$(R)e4c_sim_couple_button.VAL NPP")
-#    field(CALC, "A")                     # Always just output A
-#    field(DOPT, "Use CALC")
-#    field(OOPT, "When Non-zero")         # Only write when B != 0
-#    field(OUT, "$(P)$(R)omega_e4c.VAL PP")
-#    field(FLNK, "$(P)$(R)chi_e4c_conditional_copy")
-#}
-
 record(calcout, "$(P)$(R)chi_e4c_conditional_copy") {
-    field(DESC, "Copy sim to omega on button press")
+    field(DESC, "Copy sim to chi while button pressed")
     field(INPA, "$(P)$(R)chi_e4c_sim.VAL NPP")
     field(INPB, "$(P)$(R)e4c_sim_couple_button.VAL NPP")
     field(CALC, "B=1?A:VAL")  # if button pressed, copy A to VAL
@@ -43,7 +32,7 @@ record(calcout, "$(P)$(R)chi_e4c_conditional_copy") {
 }
 
 record(calcout, "$(P)$(R)phi_e4c_conditional_copy") {
-    field(DESC, "Copy sim to omega on button press")
+    field(DESC, "Copy sim to phi while button pressed")
     field(INPA, "$(P)$(R)phi_e4c_sim.VAL NPP")
     field(INPB, "$(P)$(R)e4c_sim_couple_button.VAL NPP")
     field(CALC, "B=1?A:VAL")  # if button pressed, copy A to VAL
@@ -54,7 +43,7 @@ record(calcout, "$(P)$(R)phi_e4c_conditional_copy") {
 }
 
 record(calcout, "$(P)$(R)tth_e4c_conditional_copy") {
-    field(DESC, "Copy sim to tth on button press")
+    field(DESC, "Copy sim to tth while button pressed")
     field(INPA, "$(P)$(R)tth_e4c_sim.VAL NPP")
     field(INPB, "$(P)$(R)e4c_sim_couple_button.VAL NPP")
     field(CALC, "B=1?A:VAL")  # if button pressed, copy A to VAL
@@ -65,4 +54,137 @@ record(calcout, "$(P)$(R)tth_e4c_conditional_copy") {
 
 
 
+# E6C
 
+# Apply all coupling (calcout's) button
+record(bo, "$(P)$(R)e6c_sim_couple_button") {
+    field(DESC, "couple all sim motors in e6c")
+    field(ONAM, "Apply")
+    field(ZNAM, "No")
+    #field(FLNK, "$(P)$(R)omega_e4c_conditional_copy")
+}
+
+# calcout's
+record(calcout, "$(P)$(R)mu_e6c_conditional_copy") {
+    field(DESC, "Copy sim to mu while button pressed")
+    field(INPA, "$(P)$(R)mu_e6c_sim.VAL NPP")
+    field(INPB, "$(P)$(R)e6c_sim_couple_button.VAL NPP")
+    field(CALC, "B=1?A:VAL")  # if button pressed, copy A to VAL
+    field(DOPT, "Use CALC")   # use result of CALC as output
+    field(OOPT, "Every Time")     # always write when processed
+    field(OUT, "$(P)$(R)mu_e6c PP")
+    field(FLNK, "$(P)$(R)omega_e6c_conditional_copy")
+}
+
+record(calcout, "$(P)$(R)omega_e6c_conditional_copy") {
+    field(DESC, "Copy sim to omega while button pressed")
+    field(INPA, "$(P)$(R)omega_e6c_sim.VAL NPP")
+    field(INPB, "$(P)$(R)e6c_sim_couple_button.VAL NPP")
+    field(CALC, "B=1?A:VAL")  # if button pressed, copy A to VAL
+    field(DOPT, "Use CALC")   # use result of CALC as output
+    field(OOPT, "Every Time")     # always write when processed
+    field(OUT, "$(P)$(R)omega_e6c PP")
+    field(FLNK, "$(P)$(R)chi_e6c_conditional_copy")
+}
+
+record(calcout, "$(P)$(R)chi_e6c_conditional_copy") {
+    field(DESC, "Copy sim to chi while button pressed")
+    field(INPA, "$(P)$(R)chi_e6c_sim.VAL NPP")
+    field(INPB, "$(P)$(R)e6c_sim_couple_button.VAL NPP")
+    field(CALC, "B=1?A:VAL")  # if button pressed, copy A to VAL
+    field(DOPT, "Use CALC")   # use result of CALC as output
+    field(OOPT, "Every Time")     # always write when processed
+    field(OUT, "$(P)$(R)chi_e6c PP")
+    field(FLNK, "$(P)$(R)phi_e6c_conditional_copy")
+}
+
+record(calcout, "$(P)$(R)phi_e6c_conditional_copy") {
+    field(DESC, "Copy sim to phi while button pressed")
+    field(INPA, "$(P)$(R)phi_e6c_sim.VAL NPP")
+    field(INPB, "$(P)$(R)e6c_sim_couple_button.VAL NPP")
+    field(CALC, "B=1?A:VAL")  # if button pressed, copy A to VAL
+    field(DOPT, "Use CALC")   # use result of CALC as output
+    field(OOPT, "Every Time")     # always write when processed
+    field(OUT, "$(P)$(R)phi_e6c PP") #TODO test if VAL is needed
+    field(FLNK, "$(P)$(R)gamma_e6c_conditional_copy")
+}
+
+record(calcout, "$(P)$(R)gamma_e6c_conditional_copy") {
+    field(DESC, "Copy sim to gamma while button pressed")
+    field(INPA, "$(P)$(R)gamma_e6c_sim.VAL NPP")
+    field(INPB, "$(P)$(R)e6c_sim_couple_button.VAL NPP")
+    field(CALC, "B=1?A:VAL")  # if button pressed, copy A to VAL
+    field(DOPT, "Use CALC")   # use result of CALC as output
+    field(OOPT, "Every Time")     # always write when processed
+    field(OUT, "$(P)$(R)gamma_e6c PP") #TODO test if VAL is needed
+    field(FLNK, "$(P)$(R)tth_e6c_conditional_copy")
+}
+
+record(calcout, "$(P)$(R)tth_e6c_conditional_copy") {
+    field(DESC, "Copy sim to tth while button pressed")
+    field(INPA, "$(P)$(R)tth_e6c_sim.VAL NPP")
+    field(INPB, "$(P)$(R)e6c_sim_couple_button.VAL NPP")
+    field(CALC, "B=1?A:VAL")  # if button pressed, copy A to VAL
+    field(DOPT, "Use CALC")   # use result of CALC as output
+    field(OOPT, "Every Time")     # always write when processed
+    field(OUT, "$(P)$(R)tth_e6c PP")
+}
+
+
+
+# K4C
+# Apply all coupling (calcout's) button
+record(bo, "$(P)$(R)k4c_sim_couple_button") {
+    field(DESC, "couple all sim motors in k4c")
+    field(ONAM, "Apply")
+    field(ZNAM, "No")
+    #field(FLNK, "$(P)$(R)omega_e4c_conditional_copy")
+}
+
+# calcout's
+record(calcout, "$(P)$(R)komega_k4c_conditional_copy") {
+    field(DESC, "Copy sim to komega while button pressed")
+    field(INPA, "$(P)$(R)komega_k4c_sim.VAL NPP")
+    field(INPB, "$(P)$(R)k4c_sim_couple_button.VAL NPP")
+    field(CALC, "B=1?A:VAL")  # if button pressed, copy A to VAL
+    field(DOPT, "Use CALC")   # use result of CALC as output
+    field(OOPT, "Every Time")     # always write when processed
+    field(OUT, "$(P)$(R)komega_k4c PP")
+    field(FLNK, "$(P)$(R)kappa_k4c_conditional_copy")
+}
+
+record(calcout, "$(P)$(R)kappa_k4c_conditional_copy") {
+    field(DESC, "Copy sim to kappa while button pressed")
+    field(INPA, "$(P)$(R)kappa_k4c_sim.VAL NPP")
+    field(INPB, "$(P)$(R)k4c_sim_couple_button.VAL NPP")
+    field(CALC, "B=1?A:VAL")  # if button pressed, copy A to VAL
+    field(DOPT, "Use CALC")   # use result of CALC as output
+    field(OOPT, "Every Time")     # always write when processed
+    field(OUT, "$(P)$(R)kappa_k4c PP")
+    field(FLNK, "$(P)$(R)kphi_e4c_conditional_copy")
+}
+
+record(calcout, "$(P)$(R)kphi_k4c_conditional_copy") {
+    field(DESC, "Copy sim to omega on button press")
+    field(INPA, "$(P)$(R)kphi_k4c_sim.VAL NPP")
+    field(INPB, "$(P)$(R)k4c_sim_couple_button.VAL NPP")
+    field(CALC, "B=1?A:VAL")  # if button pressed, copy A to VAL
+    field(DOPT, "Use CALC")   # use result of CALC as output
+    field(OOPT, "Every Time")     # always write when processed
+    field(OUT, "$(P)$(R)kphi_k4c PP") #TODO test if VAL is needed
+    field(FLNK, "$(P)$(R)tth_k4c_conditional_copy")
+}
+
+record(calcout, "$(P)$(R)tth_k4c_conditional_copy") {
+    field(DESC, "Copy sim to tth on button press")
+    field(INPA, "$(P)$(R)tth_k4c_sim.VAL NPP")
+    field(INPB, "$(P)$(R)k4c_sim_couple_button.VAL NPP")
+    field(CALC, "B=1?A:VAL")  # if button pressed, copy A to VAL
+    field(DOPT, "Use CALC")   # use result of CALC as output
+    field(OOPT, "Every Time")     # always write when processed
+    field(OUT, "$(P)$(R)tth_k4c PP")
+}
+
+
+#TODO
+# K6C
