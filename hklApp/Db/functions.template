@@ -46,7 +46,6 @@ record(ao, "$(P)$(R)backward_tth") {
     field(TPRO, "1")
 }
 
-
 record(ao, "$(P)$(R)backward_eulerians") {
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.backward_eulerians()")

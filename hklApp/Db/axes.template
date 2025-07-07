@@ -15,7 +15,6 @@ record(ao, "$(P)$(R)omega_e4c_min") {
     field(DTYP, "pydev")
     field(DRVL, "-180")
     field(DRVH, "180")
-    #field(OUT, "@hkl_calc.axes_e4c_min[0]=$(P)$(R)omega_e4c.DRVL") # What I want to happen
     field(OUT, "@hkl_calc.axes_e4c_min[0]=VAL")
     field(FLNK, "$(P)$(R)omega_e4c_max")
 }
@@ -706,6 +705,151 @@ record(ao, "$(P)$(R)delta_k6c_max") {
     field(OUT, "@hkl_calc.axes_k6c_max[5]=VAL")
 }
 
+# HB3
+record(ao, "$(P)$(R)omega_hb3") {
+    field(DESC, "omega")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(DRVL, "-180")
+    field(DRVH, "180")
+    field(OUT, "@hkl_calc.axes_hb3[0]=VAL")
+    field(FLNK, "$(P)$(R)omega_e4c_min")
+}
+
+record(ao, "$(P)$(R)omega_hb3_min") {
+    field(DESC, "omega min")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(DRVL, "-180")
+    field(DRVH, "180")
+    field(OUT, "@hkl_calc.axes_e4c_hb3[0]=VAL")
+    field(FLNK, "$(P)$(R)omega_hb3_max")
+}
+
+record(ao, "$(P)$(R)omega_hb3_max") {
+    field(DESC, "omega max")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(DRVL, "-180")
+    field(DRVH, "180")
+    field(OUT, "@hkl_calc.axes_hb3_max[0]=VAL")
+    field(FLNK, "$(P)$(R)omega_hb3_RBV")
+}
+
+record(ai, "$(P)$(R)omega_hb3_RBV") {
+    field(DESC, "omega")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_hb3[0]")
+}
+
+record(ao, "$(P)$(R)chi_hb3") {
+    field(DESC, "chi")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(DRVL, "-180")
+    field(DRVH, "180")
+    field(OUT, "@hkl_calc.axes_hb3[1]=VAL")
+    field(FLNK, "$(P)$(R)chi_hb3_RBV")
+}
+
+record(ai, "$(P)$(R)chi_hb3_RBV") {
+    field(DESC, "chi")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(INP, "@hkl_calc.axes_hb3[1]")
+}
+
+record(ao, "$(P)$(R)chi_hb3_min") {
+    field(DESC, "chi min")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(DRVL, "-180")
+    field(DRVH, "180")
+    field(OUT, "@hkl_calc.axes_hb3_min[1]=VAL")
+}
+
+record(ao, "$(P)$(R)chi_hb3_max") {
+    field(DESC, "chi max")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(DRVL, "-180")
+    field(DRVH, "180")
+    field(OUT, "@hkl_calc.axes_hb3_max[1]=VAL")
+}
+
+record(ao, "$(P)$(R)phi_hb3") {
+    field(DESC, "phi")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(DRVL, "-180")
+    field(DRVH, "180")
+    field(OUT, "@hkl_calc.axes_hb3[2]=VAL")
+    field(FLNK, "$(P)$(R)phi_hb3_RBV")
+}
+
+record(ai, "$(P)$(R)phi_hb3_RBV") {
+    field(DESC, "phi")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(INP, "@hkl_calc.axes_hb3[2]")
+}
+
+record(ao, "$(P)$(R)phi_hb3_min") {
+    field(DESC, "phi")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(DRVL, "-180")
+    field(DRVH, "180")
+    field(OUT, "@hkl_calc.axes_hb3_min[2]=VAL")
+}
+
+record(ao, "$(P)$(R)phi_hb3_max") {
+    field(DESC, "phi max")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(DRVL, "-180")
+    field(DRVH, "180")
+    field(OUT, "@hkl_calc.axes_hb3_max[2]=VAL")
+}
+
+record(ao, "$(P)$(R)tth_hb3") {
+    field(DESC, "tth")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(DRVL, "-180")
+    field(DRVH, "180")
+    field(OUT, "@hkl_calc.axes_hb3[3]=VAL")
+    field(FLNK, "$(P)$(R)tth_hb3_RBV")
+}
+
+record(ai, "$(P)$(R)tth_hb3_RBV") {
+    field(DESC, "tth")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(INP, "@hkl_calc.axes_hb3[3]")
+}
+
+record(ao, "$(P)$(R)tth_hb3_min") {
+    field(DESC, "tth min")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(DRVL, "-180")
+    field(DRVH, "180")
+    field(OUT, "@hkl_calc.axes_hb3_min[3]=VAL")
+}
+
+record(ao, "$(P)$(R)tth_hb3_max") {
+    field(DESC, "tth max")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(DRVL, "-180")
+    field(DRVH, "180")
+    field(OUT, "@hkl_calc.axes_hb3_max[3]=VAL")
+}
+
+
+
 # Constraints for inverse calculations
 # all 4-circles
 record(mbbo, "$(P)$(R)mode_4c") {
@@ -795,4 +939,21 @@ record(mbbo, "$(P)$(R)mode_k6c") {
 }
 
 
-
+#HB3
+record(mbbo, "$(P)$(R)mode_hb3") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(ZRVL, "0")
+    #field(ONVL, "1")
+    #field(TWVL, "2")
+    #field(THVL, "3")
+    #field(FRVL, "4")
+    #field(FVVL, "5")
+    field(ZRST, "bisector")
+    #field(ONST, "constant omega")
+    #field(TWST, "constant chi")
+    #field(THST, "constant phi")
+    #field(FRST, "double diffraction")
+    #field(FVST, "psi constant")
+    field(OUT, "@hkl_calc.mode_hb3=VAL")
+}

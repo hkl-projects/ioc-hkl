@@ -162,3 +162,37 @@ record(ai, "$(P)$(R)delta_k6c$(C)") {
     field(SCAN, "1 second")
 }
 
+# HB3
+record(ai, "$(P)$(R)omega_hb3$(C)") {
+    field(DESC, "$(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_solns_omega_hb3[$(C)]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)chi_hb3$(C)") {
+    field(DESC, "$(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_solns_chi_hb3[$(C)]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)phi_hb3$(C)") {
+    field(DESC, "$(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_solns_phi_hb3[$(C)]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)tth_hb3$(C)") {
+    field(DESC, "$(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_solns_tth_hb3[$(C)]")
+    field(SCAN, "1 second")
+}
+
+

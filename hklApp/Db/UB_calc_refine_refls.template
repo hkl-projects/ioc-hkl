@@ -258,4 +258,61 @@ record(ai, "$(P)$(R)refl_refine_input_list_delta_k6c$(C)") {
     field(INP, "@hkl_calc.refl_refine_input_list_k6c[$(C)][6]")
     field(SCAN, "1 second")
 }
+
+# HB3
+record(ai, "$(P)$(R)refl_refine_input_list_h_hb3$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_hb3[$(C)][0]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_k_hb3$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_hb3[$(C)][1]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_l_hb3$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_hb3[$(C)][2]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_omega_hb3$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_hb3[$(C)][3]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_chi_hb3$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_hb3[$(C)][4]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_phi_hb3$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_hb3[$(C)][5]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_tth_hb3$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_hb3[$(C)][6]")
+    field(SCAN, "1 second")
+}
                                                                                                                                                   

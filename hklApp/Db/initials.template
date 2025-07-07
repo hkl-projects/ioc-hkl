@@ -6,15 +6,13 @@ record(mbbo, "$(P)$(R)geom") {
     field(TWVL, "2")
     field(THVL, "3")
     field(FRVL, "4")
-    #field(FVVL, "5")
-    #field(SXVL, "6")
-    #field(ZRST, "TwoC")
+    field(FVVL, "5")
     field(ZRST, "E4CH")
     field(ONST, "E4CV")
     field(TWST, "K4CV")
     field(THST, "E6C")
     field(FRST, "K6C")
-    #field(FVST, "ZAXIS")
+    field(FVST, "HB3")
     field(OUT, "@hkl_calc.geom=VAL")
     field(FLNK, "$(P)$(R)geom_RBV")
 }
@@ -27,15 +25,13 @@ record(mbbi, "$(P)$(R)geom_RBV") {
     field(TWVL, "2")
     field(THVL, "3")
     field(FRVL, "4")
-    #field(FVVL, "5")
-    #field(SXVL, "6")
-    #field(ZRST, "TwoC")
+    field(FVVL, "5")
     field(ZRST, "E4CH")
     field(ONST, "E4CV")
     field(TWST, "K4CV")
     field(THST, "E6C")
     field(FRST, "K6C")
-    field(FVST, "ZAXIS")
+    field(FVST, "HB3")
     field(INP, "@hkl_calc.geom")
     field(FLNK, "$(P)$(R)switch_geom")
 }
@@ -356,14 +352,4 @@ record(waveform, "$(P)$(R)cif_path") {
     field(FTVL, "CHAR")
     #field(FLNK, "$(P)$(R)cif_path_copy.PROC")
 }
-
-#record(lso, "$(P)$(R)cif_path") {
-#    field(PINI, "YES")
-#    field(DESC, "cif file path")
-#    field(DTYP, "pydev")
-#    field(OUT, "@hkl_calc.cif_path")
-#    field(NELM, "256")
-#    field(FTVL, "CHAR")
-#}
-
 
