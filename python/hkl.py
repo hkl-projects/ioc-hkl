@@ -221,10 +221,10 @@ class hklCalculator():
         self.axes_solns_delta_k6c = []
 
         # HB3 - two-circle plus sample tilt and monochromator
-        self.axes_solns_omega_e4c = []
-        self.axes_solns_chi_e4c = []
-        self.axes_solns_phi_e4c = []
-        self.axes_solns_tth_e4c = []
+        self.axes_solns_omega_hb3 = []
+        self.axes_solns_chi_hb3 = []
+        self.axes_solns_phi_hb3 = []
+        self.axes_solns_tth_hb3 = []
 
         for _ in range(self.num_axes_solns):
             # Eulerian 4-circle
