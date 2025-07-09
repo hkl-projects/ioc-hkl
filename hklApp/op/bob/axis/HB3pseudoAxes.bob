@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>E4CH PseudoInput</name>
+  <macros>
+    <Ax1Name>pseudoaxes_h</Ax1Name>
+    <Ax2Name>pseudoaxes_k</Ax2Name>
+    <Ax3Name>pseudoaxes_l</Ax3Name>
+    <Ax4Name>pseudoaxes_q</Ax4Name>
+    <Ax5Name>pseudoaxes_psi</Ax5Name>
+  </macros>
+  <width>1165</width>
+  <height>350</height>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <class>TITLE</class>
+    <text>HB3 PseudoAxes Input</text>
+    <x use_class="true">0</x>
+    <y use_class="true">0</y>
+    <width>460</width>
+    <height>31</height>
+    <font use_class="true">
+      <font name="Header 1" family="Liberation Sans" style="BOLD" size="22.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="Text" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_5</name>
+    <text>pseudoaxis</text>
+    <x>27</x>
+    <y>95</y>
+    <width>80</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_6</name>
+    <text>input</text>
+    <x>138</x>
+    <y>95</y>
+    <width>40</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_7</name>
+    <text>readback</text>
+    <x>249</x>
+    <y>95</y>
+    <width>110</width>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Linking Container_1</name>
+    <macros>
+      <Dev>$(Ax1Name)</Dev>
+    </macros>
+    <file>pseudoaxis_1h_wide_center.bob</file>
+    <x>27</x>
+    <y>115</y>
+    <width>330</width>
+    <height>22</height>
+    <resize>2</resize>
+    <transparent>true</transparent>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pvStr0==&quot;\${Ax1Name}&quot;">
+          <value>false</value>
+        </exp>
+        <pv_name>loc://${DID}${MA}Ax1Visible("${Ax1Name}")</pv_name>
+      </rule>
+    </rules>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Linking Container_2</name>
+    <macros>
+      <Dev>$(Ax2Name)</Dev>
+    </macros>
+    <file>pseudoaxis_1h_wide_center.bob</file>
+    <x>27</x>
+    <y>140</y>
+    <width>330</width>
+    <height>22</height>
+    <resize>2</resize>
+    <transparent>true</transparent>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pvStr0==&quot;\${Ax2Name}&quot;">
+          <value>false</value>
+        </exp>
+        <pv_name>loc://${DID}${MA}Ax2Visible("${Ax2Name}")</pv_name>
+      </rule>
+    </rules>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Linking Container_3</name>
+    <macros>
+      <Dev>$(Ax3Name)</Dev>
+    </macros>
+    <file>pseudoaxis_1h_wide_center.bob</file>
+    <x>27</x>
+    <y>165</y>
+    <width>330</width>
+    <height>22</height>
+    <resize>2</resize>
+    <transparent>true</transparent>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pvStr0==&quot;\${Ax3Name}&quot;">
+          <value>false</value>
+        </exp>
+        <pv_name>loc://${DID}${MA}Ax3Visible("${Ax3Name}")</pv_name>
+      </rule>
+    </rules>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Linking Container_4</name>
+    <macros>
+      <Dev>$(Ax4Name)</Dev>
+    </macros>
+    <file>pseudoaxis_1h_wide_center.bob</file>
+    <x>423</x>
+    <y>143</y>
+    <width>330</width>
+    <height>22</height>
+    <resize>2</resize>
+    <transparent>true</transparent>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pvStr0==&quot;\${Ax4Name}&quot;">
+          <value>false</value>
+        </exp>
+        <pv_name>loc://${DID}${MA}Ax4Visible("${Ax4Name}")</pv_name>
+      </rule>
+    </rules>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Linking Container_10</name>
+    <macros>
+      <Dev>$(Ax5Name)</Dev>
+    </macros>
+    <file>pseudoaxis_1h_wide_center.bob</file>
+    <x>815</x>
+    <y>144</y>
+    <width>330</width>
+    <height>22</height>
+    <resize>2</resize>
+    <transparent>true</transparent>
+    <actions>
+    </actions>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pvStr0==&quot;\${Ax5Name}&quot;">
+          <value>false</value>
+        </exp>
+        <pv_name>loc://${DID}${MA}Ax5Visible("${Ax5Name}")</pv_name>
+      </rule>
+    </rules>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_8</name>
+    <text>hkl engine</text>
+    <x>127</x>
+    <y>70</y>
+    <width>111</width>
+    <font>
+      <font name="Header 2" family="Liberation Sans" style="BOLD" size="18.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_9</name>
+    <text>q engine</text>
+    <x>533</x>
+    <y>98</y>
+    <width>111</width>
+    <font>
+      <font name="Header 2" family="Liberation Sans" style="BOLD" size="18.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_10</name>
+    <text>psi engine</text>
+    <x>915</x>
+    <y>98</y>
+    <width>111</width>
+    <font>
+      <font name="Header 2" family="Liberation Sans" style="BOLD" size="18.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_11</name>
+    <text>pseudoaxis</text>
+    <x>815</x>
+    <y>122</y>
+    <width>80</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_12</name>
+    <text>input</text>
+    <x>936</x>
+    <y>122</y>
+    <width>40</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_13</name>
+    <text>readback</text>
+    <x>1037</x>
+    <y>122</y>
+    <width>110</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_14</name>
+    <text>pseudoaxis</text>
+    <x>423</x>
+    <y>124</y>
+    <width>80</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_15</name>
+    <text>input</text>
+    <x>544</x>
+    <y>124</y>
+    <width>40</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_16</name>
+    <text>readback</text>
+    <x>645</x>
+    <y>124</y>
+    <width>110</width>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_4</name>
+    <actions>
+      <action type="open_display">
+        <description>Open Display</description>
+        <file>../axis/pseudoaxis_options.bob</file>
+        <target>window</target>
+      </action>
+    </actions>
+    <text>options</text>
+    <x>303</x>
+    <y>20</y>
+    <height>20</height>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_23</name>
+    <text>options, descriptions</text>
+    <x>290</x>
+    <width>150</width>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_5</name>
+    <actions>
+      <action type="write_pv">
+        <description>WritePV</description>
+        <pv_name>$(Sys)backward_q</pv_name>
+        <value>1</value>
+      </action>
+    </actions>
+    <pv_name>$(Sys)backward_q</pv_name>
+    <text>q -&gt; axes</text>
+    <x>517</x>
+    <y>177</y>
+    <width>120</width>
+    <tooltip>$(actions)</tooltip>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_6</name>
+    <actions>
+      <action type="write_pv">
+        <description>WritePV</description>
+        <pv_name>$(Sys)backward_psi</pv_name>
+        <value>1</value>
+      </action>
+    </actions>
+    <pv_name>$(Sys)backward_psi</pv_name>
+    <text>psi -&gt; axes</text>
+    <x>907</x>
+    <y>178</y>
+    <width>120</width>
+    <tooltip>$(actions)</tooltip>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_7</name>
+    <actions>
+      <action type="write_pv">
+        <description>WritePV</description>
+        <pv_name>$(Sys)backward_hkl</pv_name>
+        <value>1</value>
+      </action>
+    </actions>
+    <pv_name>$(Sys)backward_hkl</pv_name>
+    <text>hkl -&gt; axes</text>
+    <x>127</x>
+    <y>200</y>
+    <width>111</width>
+    <tooltip>$(actions)</tooltip>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>Combo Box</name>
+    <pv_name>$(Sys)mode_4c</pv_name>
+    <x>33</x>
+    <y>268</y>
+    <width>289</width>
+    <height>22</height>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_21</name>
+    <text>mode</text>
+    <x>33</x>
+    <y>248</y>
+    <width>80</width>
+  </widget>
+</display>

@@ -59,6 +59,8 @@ export LD_LIBRARY_PATH=LD_LIBRARY_PATH:/usr/local/lib
 export GI_TYPELIB_PATH=/usr/local/lib/girepository-1.0 
 ```
 
+note, if rebuilding, may need to remove all libhkl and girepository from /usr/local/lib then rebuild
+
 ## hkl IOC
 ### download
 ```bash
@@ -324,3 +326,68 @@ data 1
 
 etc for scan 1
 ```
+
+
+## adding a new geom
+
+testing geom addition
+
+add file for geometry hkl/hkl-engine-e4cvg.c
+add test file tests/hkl-e4cgv-test-t.c
+add line hkl-e4cgv-test-t to tests/Makefile.am, at end of "all_tests"
+add geometry name to hkl/api2/hkl.h, hkl/api2/hkl.c
+repeat for E4CVG2
+
+autoreconf -vif
+./configure --disable-binoculars
+make check
+
+
+
+output of doing this:
+
+hkl-e4cgv-test-t
+
+1..1
+# status: 0 hkl-e4cgv-test-t.c:17:register_and_setup
+not ok 1 - E4CVG: bissector mode computes correct pseudoaxes
+# Looks like you failed 1 test of 1
+FAILED 1
+
+
+Failed Set                 Fail/Total (%) Skip Stat  Failing Tests
+-------------------------- -------------- ---- ----  ------------------------
+hkl-e4cgv-test-t              1/1    100%    0    0  1
+
+Failed 1/934 tests, 99.89% okay.
+Files=24,  Tests=934,  1.72 seconds (1.51 usr + 0.27 sys = 1.78 CPU)
+make[3]: *** [Makefile:1329: check-local] Error 1
+make[3]: Leaving directory '/home/9ax/Desktop/hkltests/hkl/tests'
+make[2]: *** [Makefile:1148: check-am] Error 2
+make[2]: Leaving directory '/home/9ax/Desktop/hkltests/hkl/tests'
+make[1]: *** [Makefile:997: check-recursive] Error 1
+make[1]: Leaving directory '/home/9ax/Desktop/hkltests/hkl/tests'
+make: *** [Makefile:587: check-recursive] Error 1
+
+
+Fixed the issue, needed a single correct mapping to test, using [30, 0, 90, 60, 0] -> [1, 0, 0]
+
+Now everything passes
+
+
+
+
+
+
+Making new geometry for hkl package:
+
+~/Desktop/hkltests/hkl-engine-e4cgv.c or something similar
+builds fine, don't know how to test without python bindings
+
+python bindings worked with "make ipython" after I aliased ipython to python3 -m ipython (in ~/.bashrc)
+
+
+created test file called hkl-hb3-test-t.c
+
+added test file name to
+tests/Makefile.am
