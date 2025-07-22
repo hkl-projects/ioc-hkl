@@ -68,12 +68,13 @@ make
 ```
 
 ## Python
-Confirm your default Python installation 
-```bash
-which python3
+Install the python venv environment (named iochkl) with access to system's site-packages via
 ```
-This should show: /usr/bin/python3
-
+cd /epics/iocs/ioc-hkl
+python3 -m venv --system-site-packages /epics/iocs/ioc-hkl/iochkl
+source iochkl/bin/activate
+pip install -r requirements.txt
+```
 
 ## To run 
 ```bash
