@@ -31,5 +31,4 @@ ifdef T_A
  -include $(TOP)/configure/CONFIG_SITE.$(EPICS_HOST_ARCH).$(T_A)
 endif
 
-# Include PyDevice configuration (if it exists)
--include $(TOP)/configure/CONFIG.PyDevice
+

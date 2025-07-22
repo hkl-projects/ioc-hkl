@@ -20,3 +20,8 @@ PYDEV_USR_CXXFLAGS = $(filter -I%,$(shell $(PYTHON_CONFIG) --cflags))
 CONFIG.PyDevice:
 	@echo "SYS_PROD_LIBS += $(PYDEV_SYS_PROD_LIBS)" > $@
 	@echo "USR_CXXFLAGS += $(PYDEV_USR_CXXFLAGS)" >> $@
+
+clean: clean_pydevice
+
+clean_pydevice:
+	$(RM) CONFIG.PyDevice

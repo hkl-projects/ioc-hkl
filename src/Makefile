@@ -1,7 +1,7 @@
 # Makefile
 TOP = ..
 include $(TOP)/configure/CONFIG
-include $(TOP)/configure/CONFIG.PyDevice
+-include $(TOP)/configure/CONFIG.PyDevice
 #----------------------------------------
 #  ADD MACRO DEFINITIONS AFTER THIS LINE
 
