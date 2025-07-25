@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-13 17:04:10 by kg1-->
 <display version="2.0.0">
   <name>TwoC_PseudoAxSol</name>
   <width>320</width>
-  <height>440</height>
+  <height>250</height>
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
@@ -34,9 +33,9 @@
       <Ax7Name>sol:emergence</Ax7Name>
       <Ax8Name>sol:azimuthE</Ax8Name>
     </macros>
-    <file>_multi_pseudoaxis_solutions.bob</file>
+    <file>_multi_pseudoaxis_solutions_twoc.bob</file>
     <y>31</y>
     <width>320</width>
-    <height>410</height>
+    <height>219</height>
   </widget>
 </display>

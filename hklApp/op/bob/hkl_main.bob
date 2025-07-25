@@ -37,6 +37,13 @@
         </macros>
         <group_name></group_name>
       </tab>
+      <tab>
+        <name>Visual</name>
+        <file>tabs/hkl_vis.bob</file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
     </tabs>
     <width>1450</width>
     <height>952</height>
