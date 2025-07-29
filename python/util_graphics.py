@@ -1,0 +1,323 @@
+import numpy as np
+import pandas as pd
+from tqdm import tqdm
+from util import sci2dec
+import math
+import gi
+from gi.repository import GLib
+gi.require_version('Hkl', '5.0')
+from gi.repository import Hkl
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.pyplot as plt
+import subprocess
+# in shell: source /epics/iocs/ioc-hkl/iochkl/bin/activate
+# export GI_TYPELIB_PATH=/usr/local/lib/girepository-1.0
+
+
+# Detector peak positions
+def real2det_e6c(gamma_axis, delta_axis, s_gamma, s_delta, R, cyl_center, ray_origin):
+    gamma = np.deg2rad(s_gamma)
+    z_hit = R*np.tan(gamma)
+    return [-s_delta, z_hit]
+
+def real2det_e4c(tth_axis, s_tth, R, cyl_center, ray_origin):
+    return [-s_tth]
+
+# parse hkl file, format into dataframe
+def hkl2dfhkl(hkl_path):
+    lattice = {}
+    with open(hkl_path, 'r') as f:
+        for line in f:
+            if not line.startswith('#'):
+                continue
+            tokens = line.strip().split()
+            if len(tokens) < 3:
+                continue
+            key = tokens[1]
+            if key == 'lattice_a':
+                lattice['a'] = float(tokens[2])
+            elif key == 'lattice_b':
+                lattice['b'] = float(tokens[2])
+            elif key == 'lattice_c':
+                lattice['c'] = float(tokens[2])
+            elif key == 'lattice_aa':
+                lattice['alpha'] = float(tokens[2])
+            elif key == 'lattice_bb':
+                lattice['beta'] = float(tokens[2])
+            elif key == 'lattice_cc':
+                lattice['gamma'] = float(tokens[2])
+    with open(hkl_path, "r") as f:
+        lines = f.readlines()
+    intensity_lines = []
+    found_data_start = False
+    for line in lines:
+        line = line.strip()
+        if not line:
+            continue
+        if line.startswith("# H") and "|Fc|^2" in line:
+            found_data_start = True
+            continue
+        if not found_data_start or line.startswith("#"):
+            continue
+        parts = line.split()
+        if len(parts) >= 6:
+            h, k, l, mult, d, intensity_sci = parts[:6]
+            intensity_dec = sci2dec(intensity_sci)
+            intensity_lines.append("%3s %3s %3s %12s %8s" % (h, k, l, d, intensity_dec))
+    rows = [line.split() for line in intensity_lines]
+    df = pd.DataFrame(rows, columns=['h', 'k', 'l', 'd', 'intensity'])
+    df = df.astype({
+        'h': int,
+        'k': int,
+        'l': int,
+        'd': float,
+        'intensity': float
+    })
+    return lattice, df
+
+
+# save diffractometer peak positions to df
+def dfhkl2dfhklaxes_e4c(df, min_intensity, factory, geometry, detector, sample, user):
+    rows = []
+    new_df = pd.DataFrame(columns=['h', 'k', 'l',  'omega', 'chi', 'phi', 'tth', 'd', 'intensity']) 
+    engines = factory.create_new_engine_list()
+    engines.init(geometry, detector, sample)
+    engines.get()
+    engine_hkl = engines.engine_get_by_name("hkl")
+    axes = geometry.axis_names_get()
+    for axis in axes:
+        tmp = geometry.axis_get(axis)
+        if (axis=='chi') or (axis=='phi'):
+            tmp.min_max_set(-0.01, 0.01, user)
+            geometry.axis_set(axis, tmp)
+    found = 0
+    not_found = 0
+    total_num_refl = len(df)
+    df = df[df['intensity']>min_intensity]
+    num_refl = len(df)
+    print(f'total reflections: {total_num_refl}\nreflections filtered by intensity: {num_refl}')
+    print(f"Searching through {num_refl} reflections...")
+    for refl in tqdm(df.itertuples(index=False), total=num_refl):
+        h = refl.h
+        k = refl.k
+        l = refl.l
+        d = refl.d
+        inten = refl.intensity
+        try:
+            solutions = engine_hkl.pseudo_axis_values_set([h,k,l], user)
+            # similar to apply_axes_solns in hkl.py
+            for i, item in enumerate(solutions.items()):
+                read = item.geometry_get().axis_values_get(user)
+                if read is not None:
+                    rows.append({'h':h, \
+                                 'k':k, \
+                                 'l':l, \
+                                 'd':d, \
+                                 'intensity':inten, \
+                                 'omega':read[0], \
+                                 'chi':read[1], \
+                                 'phi':read[2], \
+                                 'tth':read[3]})
+                    found += 1
+        except Exception as e:
+            print(f"Exception for hkl=({h},{k},{l}): {e}")
+            not_found += 1
+    new_df = pd.DataFrame(rows, columns=['h', 'k', 'l', 'omega', 'chi', 'phi', 'tth',  'd', 'intensity'])
+    foundrefl = num_refl-not_found
+    print(f"found {found} motor positions in {foundrefl} reflections. Did not find positions for {not_found} reflections.")
+    print("Completed dfhkl2dfhklaxes. Output DataFrame has %d rows", len(new_df))
+    print(f'{new_df}')
+    #new_df.to_csv('test.csv')
+    if new_df is not None:
+        return new_df
+    else:
+        print("empty dataframe, something went wrong")
+        return
+
+
+
+# save diffractometer peak positions to df
+def dfhkl2dfhklaxes_e6c(df, min_intensity, factory, geometry, detector, sample, user):
+    rows = []
+    new_df = pd.DataFrame(columns=['h', 'k', 'l', 'mu', 'omega', 'chi', 'phi', 'gamma','delta', 'd', 'intensity']) 
+    engines = factory.create_new_engine_list()
+    engines.init(geometry, detector, sample)
+    engines.get()
+    engine_hkl = engines.engine_get_by_name("hkl")
+    #engine_hkl.current_mode_set('lifting_detector_mu') # TODO CHECK THIS
+    engine_hkl.current_mode_set('lifting_detector_omega') # TODO CHECK THIS
+    axes = geometry.axis_names_get()
+    for axis in axes:
+        tmp = geometry.axis_get(axis)
+        if (axis=='mu') or (axis=='chi') or (axis=='phi'):
+            tmp.min_max_set(-0.01, 0.01, user)
+            geometry.axis_set(axis, tmp)
+    found = 0
+    not_found = 0
+    total_num_refl = len(df)
+    df = df[df['intensity']>min_intensity]
+    num_refl = len(df)
+    print(f'total reflections: {total_num_refl}\nreflections filtered by intensity: {num_refl}')
+    print(f"Searching through {num_refl} reflections...")
+    for refl in tqdm(df.itertuples(index=False), total=num_refl):
+        h = refl.h
+        k = refl.k
+        l = refl.l
+        d = refl.d
+        inten = refl.intensity
+        try:
+            solutions = engine_hkl.pseudo_axis_values_set([h,k,l], user)
+            # similar to apply_axes_solns in hkl.py
+            for i, item in enumerate(solutions.items()):
+                read = item.geometry_get().axis_values_get(user)
+                if read is not None:
+                    rows.append({'h':h, \
+                                 'k':k, \
+                                 'l':l, \
+                                 'd':d, \
+                                 'intensity':inten, \
+                                 'mu':read[0], \
+                                 'omega':read[1], \
+                                 'chi':read[2], \
+                                 'phi':read[3], \
+                                 'gamma':read[4], \
+                                 'delta':read[5]})
+                    found += 1
+        except Exception as e:
+            print(f"Exception for hkl=({h},{k},{l}): {e}")
+            not_found += 1
+    new_df = pd.DataFrame(rows, columns=['h', 'k', 'l', 'mu', 'omega', 'chi', 'phi', 'gamma', 'delta', 'd', 'intensity'])
+    foundrefl = num_refl-not_found
+    print(f"found {found} motor positions in {foundrefl} reflections. Did not find positions for {not_found} reflections.")
+    print("Completed dfhkl2dfhklaxes. Output DataFrame has %d rows", len(new_df))
+    print(f'{new_df}')
+    #new_df.to_csv('test.csv')
+    if new_df is not None:
+        return new_df
+    else:
+        print("empty dataframe, something went wrong")
+        return
+
+
+# search for diffractometer peak positions
+def intensities2detint_e4c(cif_path, hkl_path, wavelength, min_intensity, R, geom, cyl_center, ray_origin, zmin, zmax, tth_axis):
+    lst = []
+    #generate hkl file with given cif file, wavelength
+    #TODO check if hkl file exists before generating
+    cif2hkl_bin = '/usr/bin/cif2hkl'
+    cmd = [cif2hkl_bin, '--mode', 'NUC', '--out', hkl_path, '--lambda', str(wavelength), '--xtal', cif_path]
+    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    out, err = proc.communicate()
+
+    # go from hkl file output by cif2hkl to a dataframe of reflections/intensities
+    latt, df = hkl2dfhkl(hkl_path)
+    print(latt)
+
+    a = latt['a']
+    b = latt['b']
+    c = latt['c']
+    alpha = latt['alpha']
+    beta = latt['beta']
+    gamma = latt['gamma']
+
+    user = Hkl.UnitEnum.USER
+    detector = Hkl.Detector.factory_new(Hkl.DetectorType(0))
+    factory  = Hkl.factories()[geom]
+    geometry = factory.create_new_geometry()
+    geometry.wavelength_set(wavelength, Hkl.UnitEnum.USER)
+    sample = Hkl.Sample.new("toto") # sample. tab to check attributes
+
+    alpha = math.radians(alpha)
+    beta  = math.radians(beta)
+    gamma = math.radians(gamma)
+    lattice = Hkl.Lattice.new(a,b,c,alpha,beta,gamma)
+    sample.lattice_set(lattice)
+
+    # add columns for real axes motor positions to reflection df
+    df2 = dfhkl2dfhklaxes_e4c(df, min_intensity, factory, geometry, detector, sample, user)
+    theta, z, intensities = [], [], []
+    #df2.to_csv('refls2.csv')
+    for idx, refl in df2.iterrows():
+        omega = refl['omega']
+        chi = refl['chi']
+        phi = refl['phi']
+        tth = refl['tth']
+        h = refl['h']
+        k = refl['k']
+        l = refl['l']
+        inten = refl['intensity']
+        dettheta = real2det_e4c(tth_axis, tth, R, \
+            cyl_center, ray_origin)
+        if (dettheta is not None):
+            theta = float(dettheta[0])
+            z = 0
+            if (z<zmax) and (z>zmin):
+                lst.append((theta, z, inten, h, k, l, omega, chi, phi, tth))
+    if lst is not None:
+        return lst
+    else:
+        print("no points found")
+        return None
+
+# search for diffractometer peak positions
+def intensities2detint_e6c(cif_path, hkl_path, wavelength, min_intensity, R, geom, cyl_center, ray_origin, zmin, zmax, gamma_axis, delta_axis):
+    lst = []
+    #generate hkl file with given cif file, wavelength
+    #TODO check if hkl file exists before generating
+    cif2hkl_bin = '/usr/bin/cif2hkl'
+    cmd = [cif2hkl_bin, '--mode', 'NUC', '--out', hkl_path, '--lambda', str(wavelength), '--xtal', cif_path]
+    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    out, err = proc.communicate()
+
+    # go from hkl file output by cif2hkl to a dataframe of reflections/intensities
+    latt, df = hkl2dfhkl(hkl_path)
+    print(latt)
+
+    a = latt['a']
+    b = latt['b']
+    c = latt['c']
+    alpha = latt['alpha']
+    beta = latt['beta']
+    gamma = latt['gamma']
+
+    user = Hkl.UnitEnum.USER
+    detector = Hkl.Detector.factory_new(Hkl.DetectorType(0))
+    factory  = Hkl.factories()[geom]
+    geometry = factory.create_new_geometry()
+    geometry.wavelength_set(wavelength, Hkl.UnitEnum.USER)
+    sample = Hkl.Sample.new("toto") # sample. tab to check attributes
+
+    alpha = math.radians(alpha)
+    beta  = math.radians(beta)
+    gamma = math.radians(gamma)
+    lattice = Hkl.Lattice.new(a,b,c,alpha,beta,gamma)
+    sample.lattice_set(lattice)
+
+    # add columns for real axes motor positions to reflection df
+    df2 = dfhkl2dfhklaxes_e6c(df, min_intensity, factory, geometry, detector, sample, user)
+    theta, z, intensities = [], [], []
+    #df2.to_csv('refls2.csv')
+    for idx, refl in df2.iterrows():
+        mu = refl['mu']
+        omega = refl['omega']
+        chi = refl['chi']
+        phi = refl['phi']
+        gamma = refl['gamma']
+        delta = refl['delta']
+        h = refl['h']
+        k = refl['k']
+        l = refl['l']
+        inten = refl['intensity']
+        detthetaz = real2det_e6c(gamma_axis, delta_axis, gamma, delta, R, \
+            cyl_center, ray_origin)
+        if (detthetaz is not None):
+            theta = float(detthetaz[0])
+            z = float(detthetaz[1])
+            if (z<zmax) and (z>zmin):
+                lst.append((theta, z, inten, h, k, l, mu, omega, chi, phi, gamma, delta))
+    if lst is not None:
+        return lst
+    else:
+        print("no points found")
+        return None
+

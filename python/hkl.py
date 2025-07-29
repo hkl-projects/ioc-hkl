@@ -5,8 +5,7 @@ import gi
 from gi.repository import GLib
 gi.require_version('Hkl', '5.0')
 from gi.repository import Hkl
-import intensities
-from util import energy2wavelength_neutron
+from util import energy2wavelength_neutron, intensity_calc
 
 class hklCalculator():
     def __init__(self, num_axes_solns=30, num_reflections = 10, geom=1, geom_name = 'E4CV'):
@@ -29,6 +28,7 @@ class hklCalculator():
         self.engine_q2 = np.nan # hkl object placeholder
         self.engine_qper_qpar = np.nan # hkl object placeholder
         self.engine_tth2 = np.nan # hkl object placeholder
+        self.mode_2c = 0 # bissector, constant omega...
         self.mode_4c = 0 # bissector, constant omega...
         self.mode_e6c = 0 # bissector_vertical, constant_omega_vertical
         self.mode_k6c = 0 # bissector_vertical, constant_omega_vertical
@@ -1367,7 +1367,7 @@ class hklCalculator():
     def run_cif(self):
         #TODO better error handling within intensities function
         try:
-            temp_intensities, templatt = intensities.intensity_calc(self.wavelength, self.cif_path)
+            temp_intensities, templatt = intensity_calc(self.wavelength, self.cif_path)
         except Exception as e:
             self.errors = f'run_cif error (input file): {e}'
             return
