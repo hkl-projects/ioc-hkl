@@ -327,10 +327,10 @@ class hklCalculator():
                     tmp = self.geometry.axis_get(axis)
                     tmp.min_max_set(-0.01, 0.01, Hkl.UnitEnum.USER)
                     self.geometry.axis_set(axis, tmp)
-            #self.engine_psi = self.engines.engine_get_by_name("psi") #TODO
-            #self.engine_q = self.engines.engine_get_by_name("q") #TODO
-            #self.engine_incidence = self.engines.engine_get_by_name("incidence") #TODO
-            #self.engine_emergence = self.engines.engine_get_by_name("emergence") #TODO
+            self.engine_psi = self.engines.engine_get_by_name("psi") #TODO
+            self.engine_q = self.engines.engine_get_by_name("q") #TODO
+            self.engine_incidence = self.engines.engine_get_by_name("incidence") #TODO
+            self.engine_emergence = self.engines.engine_get_by_name("emergence") #TODO
             
         self.clear_all_reflections()
         self.businglevyflag=0
@@ -435,8 +435,8 @@ class hklCalculator():
         elif (self.geom == 5):
             # TODO other pseudo engines for 2c`
             # q
-            #values_q = self.engine_q.pseudo_axis_values_get(Hkl.UnitEnum.USER)
-            #self.pseudoaxes_solns_q = values_q[0]
+            values_q = self.engine_q.pseudo_axis_values_get(Hkl.UnitEnum.USER)
+            self.pseudoaxes_solns_q = values_q[0]
             pass
         self.get_UB_matrix()
 
@@ -672,21 +672,18 @@ class hklCalculator():
                                                          self.pseudoaxes_emergence_z], \
                                                          Hkl.UnitEnum.USER)
         elif (self.geom==5):
-            #self.engine_psi.parameters_values_set([self.pseudoaxes_psi_h2, \
-            #                                      self.pseudoaxes_psi_k2, \
-            #                                      self.pseudoaxes_psi_l2], \
-            #                                      Hkl.UnitEnum.USER)
-            #self.engine_incidence.parameters_values_set([self.pseudoaxes_incidence_x, \
-            #                                             self.pseudoaxes_incidence_y, \
-            #                                             self.pseudoaxes_incidence_z], \
-            #                                             Hkl.UnitEnum.USER)
-            #self.engine_emergence.parameters_values_set([self.pseudoaxes_emergence_x, \
-            #                                             self.pseudoaxes_emergence_y, \
-            #                                             self.pseudoaxes_emergence_z], \
-            #                                             Hkl.UnitEnum.USER)
-            #TODO
-            pass
-
+            self.engine_psi.parameters_values_set([self.pseudoaxes_psi_h2, \
+                                                  self.pseudoaxes_psi_k2, \
+                                                  self.pseudoaxes_psi_l2], \
+                                                  Hkl.UnitEnum.USER)
+            self.engine_incidence.parameters_values_set([self.pseudoaxes_incidence_x, \
+                                                         self.pseudoaxes_incidence_y, \
+                                                         self.pseudoaxes_incidence_z], \
+                                                         Hkl.UnitEnum.USER)
+            self.engine_emergence.parameters_values_set([self.pseudoaxes_emergence_x, \
+                                                         self.pseudoaxes_emergence_y, \
+                                                         self.pseudoaxes_emergence_z], \
+                                                         Hkl.UnitEnum.USER)
 
     def apply_axes_solns(self, solutions):
         values_w_all = []

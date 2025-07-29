@@ -92,6 +92,10 @@ dbpf("$(PREFIX)kappa_k6c_max","180.")
 dbpf("$(PREFIX)kphi_k6c_max","180.")
 dbpf("$(PREFIX)gamma_k6c_max","180.")
 dbpf("$(PREFIX)delta_k6c_max","180.")
+dbpf("$(PREFIX)omega_2c_min","-180.")
+dbpf("$(PREFIX)tth_2c_min","-180.")
+dbpf("$(PREFIX)omega_2c_max","180.")
+dbpf("$(PREFIX)tth_2c_max","180.")
 dbpf("$(PREFIX)refl_h_si_e4c","4.")
 dbpf("$(PREFIX)refl_omega_si_e4c","-145.")
 dbpf("$(PREFIX)refl_phi_si_e4c","90.")
@@ -109,7 +113,5 @@ dbpf("$(PREFIX)pseudoaxes_eulerians_solns","1.")
 dbpf("$(PREFIX)pseudoaxes_qperqpar_x","0.")
 dbpf("$(PREFIX)pseudoaxes_qperqpar_y","1.")
 dbpf("$(PREFIX)pseudoaxes_qperqpar_z","0.")
-
-
 
 dbl > pvlist.dbl

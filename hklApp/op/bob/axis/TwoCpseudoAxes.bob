@@ -333,7 +333,7 @@
   </widget>
   <widget type="combo" version="2.0.0">
     <name>Combo Box</name>
-    <pv_name>$(Sys)mode_4c</pv_name>
+    <pv_name>$(Sys)mode_2c</pv_name>
     <x>33</x>
     <y>259</y>
     <width>289</width>
