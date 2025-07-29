@@ -143,7 +143,7 @@ class hklCalculator():
         self.axes_UB_k4c = [0., 0., 0., 0.]
         self.axes_UB_e6c = [0., 0., 0., 0., 0., 0.]
         self.axes_UB_k6c = [0., 0., 0., 0., 0., 0.]
-        self.axes_UB_k4c = [0., 0.]
+        self.axes_UB_2c = [0., 0.]
 
         ### pseduoaxes 
         self.pseudoaxes_h = 0.
@@ -217,8 +217,6 @@ class hklCalculator():
 
         # 2-circle
         self.axes_solns_omega_2c = []
-        self.axes_solns_chi_2c = []
-        self.axes_solns_phi_2c = []
         self.axes_solns_tth_2c = []
 
         for _ in range(self.num_axes_solns):
@@ -323,6 +321,7 @@ class hklCalculator():
             self.engine_emergence = self.engines.engine_get_by_name("emergence")
         elif (self.geom == 5):
             self.engine_hkl = self.engines.engine_get_by_name("hkl")
+            axes = self.geometry.axis_names_get()
             for i, axis in enumerate(axes): 
                 if axis in ['chi', 'phi']:
                     tmp = self.geometry.axis_get(axis)
@@ -351,27 +350,27 @@ class hklCalculator():
             self.geom_name = "E4CH"
             self.start()
 
-        if self.geom == 1:
+        elif self.geom == 1:
             print("switching to E4CV")
             self.geom_name = "E4CV"
             self.start()
 
-        if self.geom == 2:
+        elif self.geom == 2:
             print("switching to K4CV")
             self.geom_name = "K4CV"
             self.start()
 
-        if self.geom == 3:
+        elif self.geom == 3:
             print("switching to E6C")
             self.geom_name = "E6C"
             self.start()
 
-        if self.geom == 4:
+        elif self.geom == 4:
             print("switching to K6C")
             self.geom_name = "K6C"
             self.start()
 
-        if self.geom == 5:
+        elif self.geom == 5:
             print("switching to 2C")
             #self.geom_name = "2C" #TODO
             self.geom_name = "E4CV" #TODO

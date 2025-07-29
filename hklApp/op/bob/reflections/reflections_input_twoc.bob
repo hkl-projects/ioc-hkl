@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <display version="2.0.0">
-  <name>Reflections_input_e4c</name>
+  <name>Reflections_input_twoc</name>
   <width>500</width>
   <height>80</height>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_2</name>
-    <pv_name>$(Sys)refl1_h_twoc</pv_name>
+    <pv_name>$(Sys)refl1_h_2c</pv_name>
     <y>20</y>
     <width>90</width>
     <height>22</height>
@@ -26,7 +26,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_3</name>
-    <pv_name>$(Sys)refl1_k_twoc</pv_name>
+    <pv_name>$(Sys)refl1_k_2c</pv_name>
     <x>101</x>
     <y>20</y>
     <width>90</width>
@@ -48,7 +48,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_4</name>
-    <pv_name>$(Sys)refl1_l_twoc</pv_name>
+    <pv_name>$(Sys)refl1_l_2c</pv_name>
     <x>201</x>
     <y>20</y>
     <width>90</width>
@@ -70,7 +70,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_5</name>
-    <pv_name>$(Sys)refl1_omega_twoc</pv_name>
+    <pv_name>$(Sys)refl1_omega_2c</pv_name>
     <x>301</x>
     <y>20</y>
     <width>90</width>
@@ -92,7 +92,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_6</name>
-    <pv_name>$(Sys)refl1_chi_twoc</pv_name>
+    <pv_name>$(Sys)refl1_tth_2c</pv_name>
     <x>401</x>
     <y>20</y>
     <width>90</width>
@@ -114,7 +114,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_9</name>
-    <pv_name>$(Sys)refl2_h_twoc</pv_name>
+    <pv_name>$(Sys)refl2_h_2c</pv_name>
     <y>50</y>
     <width>90</width>
     <height>22</height>
@@ -135,7 +135,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_10</name>
-    <pv_name>$(Sys)refl2_k_twoc</pv_name>
+    <pv_name>$(Sys)refl2_k_2c</pv_name>
     <x>101</x>
     <y>50</y>
     <width>90</width>
@@ -157,7 +157,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_11</name>
-    <pv_name>$(Sys)refl2_l_twoc</pv_name>
+    <pv_name>$(Sys)refl2_l_2c</pv_name>
     <x>201</x>
     <y>50</y>
     <width>90</width>
@@ -179,7 +179,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_12</name>
-    <pv_name>$(Sys)refl2_omega_twoc</pv_name>
+    <pv_name>$(Sys)refl2_omega_2c</pv_name>
     <x>301</x>
     <y>50</y>
     <width>90</width>
@@ -201,7 +201,7 @@
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_13</name>
-    <pv_name>$(Sys)refl2_chi_twoc</pv_name>
+    <pv_name>$(Sys)refl2_tth_2c</pv_name>
     <x>401</x>
     <y>50</y>
     <width>90</width>

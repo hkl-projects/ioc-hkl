@@ -680,6 +680,112 @@ record(ao, "$(P)$(R)refl_delta_si_k6c") {
     field(OUT, "@hkl_calc.refl_refine_input_k6c[8]=VAL")
 }
 
+# 2-circle
+record(ao, "$(P)$(R)refl1_h_2c") {
+    field(DESC, "h")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.refl1_input_2c[0]=VAL")
+}
+
+record(ao, "$(P)$(R)refl1_k_2c") {
+    field(DESC, "k")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.refl1_input_2c[1]=VAL")
+}
+
+record(ao, "$(P)$(R)refl1_l_2c") {
+    field(DESC, "l")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.refl1_input_2c[2]=VAL")
+}
+
+record(ao, "$(P)$(R)refl1_omega_2c") {
+    field(DESC, "omega")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.refl1_input_2c[3]=VAL")
+}
+
+record(ao, "$(P)$(R)refl1_tth_2c") {
+    field(DESC, "tth")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.refl1_input_2c[4]=VAL")
+}
+
+record(ao, "$(P)$(R)refl2_h_2c") {
+    field(DESC, "h")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.refl2_input_2c[0]=VAL")
+}
+
+record(ao, "$(P)$(R)refl2_k_2c") {
+    field(DESC, "k")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.refl2_input_2c[1]=VAL")
+}
+
+record(ao, "$(P)$(R)refl2_l_2c") {
+    field(DESC, "l")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.refl2_input_2c[2]=VAL")
+}
+
+record(ao, "$(P)$(R)refl2_omega_2c") {
+    field(DESC, "omega")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.refl2_input_2c[3]=VAL")
+}
+
+record(ao, "$(P)$(R)refl2_tth_2c") {
+    field(DESC, "tth")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.refl2_input_2c[4]=VAL")
+}
+
+record(ao, "$(P)$(R)refl_h_si_2c") {
+    field(DESC, "h")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.refl_refine_input_2c[0]=VAL")
+}
+
+record(ao, "$(P)$(R)refl_k_si_2c") {
+    field(DESC, "h")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.refl_refine_input_2c[1]=VAL")
+}
+
+record(ao, "$(P)$(R)refl_l_si_2c") {
+    field(DESC, "h")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.refl_refine_input_2c[2]=VAL")
+}
+
+record(ao, "$(P)$(R)refl_omega_si_2c") {
+    field(DESC, "h")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.refl_refine_input_2c[3]=VAL")
+}
+
+record(ao, "$(P)$(R)refl_tth_si_2c") {
+    field(DESC, "h")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.refl_refine_input_2c[4]=VAL")
+}
+
 # for indexing reflections (in refine) to delete
 record(mbbo, "$(P)$(R)reflection_index_e4c") {
     field(DESC, "reflection index selection")
@@ -792,4 +898,33 @@ record(mbbo, "$(P)$(R)reflection_index_k6c") {
     field(VAL, "0")
     field(OUT, "@hkl_calc.selected_refl_index=VAL")
 }
+
+record(mbbo, "$(P)$(R)reflection_index_2c") {
+    field(DESC, "reflection index selection")
+    field(DTYP, "pydev")
+    field(ZRVL, "0")
+    field(ONVL, "1")
+    field(TWVL, "2")
+    field(THVL, "3")
+    field(FRVL, "4")
+    field(FVVL, "5")
+    field(SXVL, "6")
+    field(SVVL, "7")
+    field(EIVL, "8")
+    field(NIVL, "9")
+    #field(TEVL, "10")
+    field(ZRST, " ")
+    field(ONST, " ")
+    field(TWST, " ")
+    field(THST, " ")
+    field(FRST, " ")
+    field(FVST, " ")
+    field(SXST, " ")
+    field(SVST, " ")
+    field(EIST, " ")
+    field(NIST, " ")
+    field(VAL, "0") 
+    field(OUT, "@hkl_calc.selected_refl_index=VAL")
+}
+
 

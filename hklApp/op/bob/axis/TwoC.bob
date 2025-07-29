@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-11 23:00:27 by kg1-->
 <display version="2.0.0">
   <name>TwoC</name>
   <widget type="label" version="2.0.0">
@@ -22,10 +21,6 @@
   </widget>
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display</name>
-    <macros>
-      <Ax1Name>omega</Ax1Name>
-      <Ax2Name>tth</Ax2Name>
-    </macros>
     <file>_2axes.bob</file>
     <y>25</y>
     <width>780</width>

@@ -1,0 +1,10 @@
+record(waveform, "$(P)$(R)det2dvis") { 
+    field(PINI, "YES") 
+    field(DESC, "reflection intensities") 
+    field(DTYP, "pydev") 
+    field(INP, "@hkl_calc.det2dvis") 
+    #field(NELM, "131072") 
+    field(FTVL, "CHAR") 
+    field(SCAN, "1 second") 
+}
+

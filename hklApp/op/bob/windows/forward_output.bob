@@ -115,6 +115,23 @@
       </rule>
     </rules>
   </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_8</name>
+    <file>../axis/TwoCpseudoaxisSolutions.bob</file>
+    <x>30</x>
+    <y>80</y>
+    <width>320</width>
+    <height>460</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="VisibleNew Rule" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==5">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+  </widget>
   <widget type="label" version="2.0.0">
     <name>Label_13</name>
     <text>Pseudo axes options</text>

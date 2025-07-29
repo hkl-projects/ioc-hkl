@@ -91,6 +91,12 @@ pattern {P, R, C}
 { abtest:ioc-hkl, : , 10 }
 }
 
+file graphics.template 
+{
+pattern {P, R}
+{ abtest:ioc-hkl, : }
+}
+
 # need something like this, but that creates a new file with replacements
 #file ../../python/intensities_test.py
 #{
