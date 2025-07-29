@@ -5,11 +5,6 @@ __pycache__
 iochkl
 
 # temporary
-python/plot_crystal.py
-python/plot_crystal_widget.py
-python/plot_crystal_widget_simple.py
-python/twocircle.py
-python/TAS.py
 hklApp/op/bob/axis/todelete
 
 # Files generated during build
