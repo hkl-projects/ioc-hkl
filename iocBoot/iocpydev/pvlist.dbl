@@ -1392,6 +1392,7 @@ abtest:ioc-hkl:refl_l_si_2c
 abtest:ioc-hkl:refl_omega_si_2c
 abtest:ioc-hkl:refl_tth_si_2c
 abtest:ioc-hkl:cur_angle
+abtest:ioc-hkl:y_offset
 abtest:ioc-hkl:geom_RBV
 abtest:ioc-hkl:geom
 abtest:ioc-hkl:mode_4c

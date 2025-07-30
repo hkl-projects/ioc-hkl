@@ -53,6 +53,7 @@ class hklCalculator():
         self.zmax = 0
         self.cur_angle = -120
         self.y_offset = 0
+        self.detR = 70
 
         self.energy = 0.
         self.wavelength_result = 0.
@@ -1425,31 +1426,31 @@ class hklCalculator():
     def det_vis_lst(self):
         # Assume 6-circle for now #TODO
         # make hardcoded values into PVs #TODO
-        R = 70
         geom = 'E6C'
 
         self.min_intensity = 10
    
         self.wavelength
         angle_deg = 20
-        self.zmax = R*np.tan(np.deg2rad(angle_deg))
+        self.zmax = self.detR*np.tan(np.deg2rad(angle_deg))
         self.zmin = -self.zmax
 
-        det_angle_deg = 7.5
-        det_zmax = R*np.tan(np.deg2rad(det_angle_deg))
-        det_zmin = -det_zmax
-        det_height = det_zmax - det_zmin
-
-        self.visfulllst = intensities2detint_e6c(self.cif_path, self.hkl_path, self.wavelength, self.min_intensity, R, geom, self.zmin, self.zmax) #TODO cyl_center, ray_origin both 0's, gamma/delta axis hardcoded
+        self.visfulllst = intensities2detint_e6c(self.cif_path, self.hkl_path, self.wavelength, self.min_intensity, self.detR, geom, self.zmin, self.zmax) #TODO cyl_center, ray_origin both 0's, gamma/delta axis hardcoded
         
 
     def compute_heatmap(self):
         #TODO
-        threshold = 0.5
-        darwidth = 100
+        threshold = 10
+        darwidth = 10
         gauss_sig = 2
         window_width = 120
         mult = 5
+
+        det_angle_deg = 7.5
+        det_zmax = self.detR*np.tan(np.deg2rad(det_angle_deg))
+        det_zmin = -det_zmax
+        det_height = det_zmax - det_zmin
+
         y_range = 2*self.zmax
         nx, ny = int(mult*window_width), int(mult*y_range)
         theta_grid = np.linspace(0, 360, nx, endpoint=False)
@@ -1476,16 +1477,25 @@ class hklCalculator():
                 #blurred = heatmap
                 if blurred.max() != 0:
                     blurred /= blurred.max()
+                #print(np.shape(blurred))
 
-                flat = blurred.flatten()
+                # slice heatmap
+                z_start = det_zmin + self.y_offset
+                z_end = z_start + (det_zmax - det_zmin)
+                j_start = int(ny*z_start / y_range) + int(ny/2)
+                j_end = j_start + int(ny*det_height / y_range)
+                i_start = 0
+                i_end = int(nx*window_width/360)
+                blurred_window = blurred[j_start:j_end, i_start:i_end]
+                blurred_window.shape == (254, 600)
+                #print(np.shape(blurred_window))
+                flat = blurred_window.flatten()
                 self.det2dvis = flat.astype(float).tolist()
+                #print(self.det2dvis[0:500])
                 # self.peaklist = something #TODO
         else:
             print("NO DATA")
             return
-
-
-
 
     def get_info(self):
         lines = []

@@ -3,11 +3,21 @@ record(waveform, "$(P)$(R)detimage") {
     field(DESC, "reflection visual") 
     field(DTYP, "pydev") 
     field(INP, "@hkl_calc.det2dvis") 
-    field(NELM, "152400") 
+    #field(NELM, "152400") 
+    field(NELM, "18200") 
     field(FTVL, "FLOAT") 
 }
 
 record(ao, "$(P)$(R)cur_angle") {
+    field(PINI, "NO")
+    field(DESC, "cur angle, det center")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.cur_angle=VAL")
+    field(FLNK, "$(P)$(R)run_vis")
+}
+
+record(ao, "$(P)$(R)y_offset") {
     field(PINI, "NO")
     field(DESC, "cur angle, det center")
     field(PINI, "YES")

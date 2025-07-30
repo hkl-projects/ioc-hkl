@@ -7,7 +7,37 @@
     <pv_name>abtest:ioc-hkl:detimage</pv_name>
     <x>40</x>
     <y>80</y>
-    <width>790</width>
+    <width>800</width>
+    <x_axis>
+      <visible>true</visible>
+      <title>X</title>
+      <minimum>0.0</minimum>
+      <maximum>600.0</maximum>
+      <title_font>
+        <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+        </font>
+      </title_font>
+      <scale_font>
+        <font name="Default" family="Liberation Sans" style="REGULAR" size="14.0">
+        </font>
+      </scale_font>
+    </x_axis>
+    <y_axis>
+      <visible>true</visible>
+      <title>Y</title>
+      <minimum>0.0</minimum>
+      <maximum>254.0</maximum>
+      <title_font>
+        <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+        </font>
+      </title_font>
+      <scale_font>
+        <font name="Default" family="Liberation Sans" style="REGULAR" size="14.0">
+        </font>
+      </scale_font>
+    </y_axis>
+    <data_width>200</data_width>
+    <data_height>91</data_height>
   </widget>
   <widget type="scaledslider" version="2.0.0">
     <name>Scaled Slider</name>
@@ -16,6 +46,18 @@
     <y>410</y>
     <width>430</width>
     <height>20</height>
+    <level_hihi>175.0</level_hihi>
+    <level_high>160.0</level_high>
+    <level_low>-160.0</level_low>
+    <level_lolo>-175.0</level_lolo>
+    <show_hihi>false</show_hihi>
+    <show_high>false</show_high>
+    <show_low>false</show_low>
+    <show_lolo>false</show_lolo>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <minimum>-180.0</minimum>
+    <maximum>180.0</maximum>
+    <limits_from_pv>false</limits_from_pv>
   </widget>
   <widget type="scaledslider" version="2.0.0">
     <name>Scaled Slider_1</name>
@@ -24,6 +66,11 @@
     <y>480</y>
     <width>430</width>
     <height>20</height>
+    <show_hihi>false</show_hihi>
+    <show_high>false</show_high>
+    <show_low>false</show_low>
+    <show_lolo>false</show_lolo>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="action_button" version="3.0.0">
     <name>setup</name>
@@ -39,6 +86,7 @@
     <x>30</x>
     <y>400</y>
     <width>70</width>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="action_button" version="3.0.0">
     <name>run</name>
@@ -54,5 +102,6 @@
     <x>30</x>
     <y>470</y>
     <width>70</width>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
 </display>
