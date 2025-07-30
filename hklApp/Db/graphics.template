@@ -22,7 +22,7 @@ record(ao, "$(P)$(R)y_offset") {
     field(DESC, "cur angle, det center")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.cur_angle=VAL")
+    field(OUT, "@hkl_calc.y_offset=VAL")
     field(FLNK, "$(P)$(R)run_vis")
 }
 

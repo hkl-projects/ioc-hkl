@@ -66,11 +66,18 @@
     <y>480</y>
     <width>430</width>
     <height>20</height>
+    <level_hihi>15.0</level_hihi>
+    <level_high>12.0</level_high>
+    <level_low>-12.0</level_low>
+    <level_lolo>-15.0</level_lolo>
     <show_hihi>false</show_hihi>
     <show_high>false</show_high>
     <show_low>false</show_low>
     <show_lolo>false</show_lolo>
     <border_alarm_sensitive>false</border_alarm_sensitive>
+    <minimum>-15.0</minimum>
+    <maximum>15.0</maximum>
+    <limits_from_pv>false</limits_from_pv>
   </widget>
   <widget type="action_button" version="3.0.0">
     <name>setup</name>

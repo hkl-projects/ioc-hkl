@@ -1487,7 +1487,6 @@ class hklCalculator():
                 i_start = 0
                 i_end = int(nx*window_width/360)
                 blurred_window = blurred[j_start:j_end, i_start:i_end]
-                blurred_window.shape == (254, 600)
                 #print(np.shape(blurred_window))
                 flat = blurred_window.flatten()
                 self.det2dvis = flat.astype(float).tolist()
