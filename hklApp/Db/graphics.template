@@ -1,22 +1,20 @@
 record(waveform, "$(P)$(R)detimage") { 
-    field(PINI, "YES") 
+    field(PINI, "NO") 
     field(DESC, "reflection visual") 
     field(DTYP, "pydev") 
     field(INP, "@hkl_calc.det2dvis") 
-    #field(NELM, "131072") 
-    field(FTVL, "CHAR") 
+    field(NELM, "152400") 
+    field(FTVL, "FLOAT") 
     field(SCAN, "1 second") 
 }
 
-record(waveform, "$(P)$(R)detimage") { 
-    field(PINI, "YES") 
-    field(DESC, "reflection visual") 
-    field(DTYP, "pydev") 
-    field(INP, "@hkl_calc.det2dvis") 
-    #field(NELM, "131072") 
-    field(FTVL, "CHAR") 
-    field(SCAN, "1 second") 
+record(ao, "$(P)$(R)cur_angle") {
+    field(PINI, "NO")
+    field(DESC, "cur angle, det center")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.cur_angle=VAL")
+    field(FLNK, "$(P)$(R)run_vis")
 }
-
 
 

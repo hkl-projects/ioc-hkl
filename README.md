@@ -74,7 +74,10 @@ cd /epics/iocs/ioc-hkl
 python3 -m venv --system-site-packages /epics/iocs/ioc-hkl/iochkl
 source iochkl/bin/activate
 pip install -r requirements.txt
+pip install numpy==1.26.4 --no-cache-dir --force-reinstall
 ```
+
+#TODO swap pip numpy version from force-install to version sepcification in requirements.txt
 
 ## To run 
 ```bash

@@ -7,8 +7,8 @@ import gi
 from gi.repository import GLib
 gi.require_version('Hkl', '5.0')
 from gi.repository import Hkl
-from mpl_toolkits.mplot3d import Axes3D
-import matplotlib.pyplot as plt
+#from mpl_toolkits.mplot3d import Axes3D
+#import matplotlib.pyplot as plt
 import subprocess
 import os.path
 # in shell: source /epics/iocs/ioc-hkl/iochkl/bin/activate
@@ -124,13 +124,13 @@ def dfhkl2dfhklaxes_e6c(df, min_intensity, factory, geometry, detector, sample, 
                                  'delta':read[5]})
                     found += 1
         except Exception as e:
-            print(f"Exception for hkl=({h},{k},{l}): {e}")
+            #print(f"Exception for hkl=({h},{k},{l}): {e}")
             not_found += 1
     new_df = pd.DataFrame(rows, columns=['h', 'k', 'l', 'mu', 'omega', 'chi', 'phi', 'gamma', 'delta', 'd', 'intensity'])
     foundrefl = num_refl-not_found
     print(f"found {found} motor positions in {foundrefl} reflections. Did not find positions for {not_found} reflections.")
     print("Completed dfhkl2dfhklaxes. Output DataFrame has %d rows", len(new_df))
-    print(f'{new_df}')
+    #print(f'{new_df}')
     #new_df.to_csv('test.csv')
     if new_df is not None:
         return new_df
@@ -147,7 +147,7 @@ def intensities2detint_e6c(cif_path, hkl_path, wavelength, min_intensity, R, geo
     lst = []
     #generate hkl file with given cif file, wavelength
     #TODO check if hkl file exists before generating
-    if not os.path.isfile(self.hkl_path):
+    if not os.path.isfile(hkl_path):
         cif2hkl_bin = '/usr/bin/cif2hkl'
         cmd = [cif2hkl_bin, '--mode', 'NUC', '--out', hkl_path, '--lambda', str(wavelength), '--xtal', cif_path]
         proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)

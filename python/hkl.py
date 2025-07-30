@@ -7,6 +7,7 @@ gi.require_version('Hkl', '5.0')
 from gi.repository import Hkl
 from util import energy2wavelength_neutron, intensity_calc
 from util_graphics import intensities2detint_e6c
+from scipy.ndimage import gaussian_filter
 
 class hklCalculator():
     def __init__(self, num_axes_solns=30, num_reflections = 10, geom=1, geom_name = 'E4CV'):
@@ -1424,7 +1425,6 @@ class hklCalculator():
     def det_vis_lst(self):
         # Assume 6-circle for now #TODO
         # make hardcoded values into PVs #TODO
-        gauss_sig = 2
         R = 70
         geom = 'E6C'
 
@@ -1440,12 +1440,14 @@ class hklCalculator():
         det_zmin = -det_zmax
         det_height = det_zmax - det_zmin
 
-        self.visfulllst = intensities2detint_e6c(self.cif_path, self.hkl_path, self.wavelength, min_intensity, R, geom, self.zmin, self.zmax) #TODO cyl_center, ray_origin both 0's, gamma/delta axis hardcoded
+        self.visfulllst = intensities2detint_e6c(self.cif_path, self.hkl_path, self.wavelength, self.min_intensity, R, geom, self.zmin, self.zmax) #TODO cyl_center, ray_origin both 0's, gamma/delta axis hardcoded
         
 
     def compute_heatmap(self):
         #TODO
+        threshold = 0.5
         darwidth = 2
+        gauss_sig = 2
         window_width = 120
         mult = 5
         y_range = 2*self.zmax
@@ -1455,34 +1457,36 @@ class hklCalculator():
 
         if self.visfulllst != []:
             data = np.array(self.visfulllst)
-            theta, z, intensity, h, k, l, mu, omega, chi, phi, gamma, delta = ( \
-                data[:, 0], data[:, 1], data[:, 2], data[:, 3], data[:, 4], data[:, 5], \
-                data[:, 6], data[:, 7], data[:, 8], data[:, 9], data[:, 10], data[:, 11])
+            if data.ndim==2:
+                theta, z, intensity, h, k, l, mu, omega, chi, phi, gamma, delta = ( \
+                    data[:, 0], data[:, 1], data[:, 2], data[:, 3], data[:, 4], data[:, 5], \
+                    data[:, 6], data[:, 7], data[:, 8], data[:, 9], data[:, 10], data[:, 11])
+                peaklist = []
+                heatmap = np.zeros((ny,nx))
+                for t,zz,inten,o,hh,kk,ll,ga,de in zip(theta,z,intensity,omega,h,k,l,gamma,delta):
+                    if (inten>threshold) and ((self.cur_angle - darwidth) <= o <= (self.cur_angle + darwidth)):
+                        i = int(nx * t /360) % nx
+                        j = np.searchsorted(z_grid, zz)
+                        if 0 <= j < ny:
+                            heatmap[j,i] += inten
+                            peaklist.append({
+                                'h': hh, 'k': kk, 'l': ll, \
+                                'theta': t, 'z': zz, 'intensity': inten, 'omega':o, \
+                                'gamma':ga, 'delta':de})
+                blurred = gaussian_filter(heatmap, sigma=gauss_sig)
+                #blurred = heatmap
+                if blurred.max() != 0:
+                    blurred /= blurred.max()
+
+                flat = blurred.flatten()
+                self.det2dvis = flat.astype(float).tolist()
+                # self.peaklist = something #TODO
         else:
             print("NO DATA")
+            return
 
-        peaklist = []
-        heatmap = np.zeros((ny,nx))
-        for t,zz,inten,o,hh,kk,ll,ga,de in zip(theta,z,intensity,omega,h,k,l,gamma,delta):
-            if (inten>threshold) and ((self.cur_angle - darwidth) <= o <= (self.cur_angle + darwidth)):
-                i = int(nx * t /360) % nx
-                j = np.searchsorted(z_grid, zz)
-                if 0 <= j < ny:
-                    heatmap[j,i] += inten
-                    peaklist.append({
-                        'h': hh, 'k': kk, 'l': ll, \
-                        'theta': t, 'z': zz, 'intensity': inten, 'omega':o, \
-                        'gamma':ga, 'delta':de})
-        blurred = gaussian_filter(heatmap, sigma=gauss_sig)
-        #blurred = heatmap
-        if blurred.max() != 0:
-            blurred /= blurred.max()
 
-        self.det2dvis = [ord(c) for c in blurred.flatten()]
-        #self.det2dvis = blurred
-        # self.peaklist = something #TODO
 
-        #self.det2dvis = [ord(c) for c in ...] # waveform of heatmap
 
     def get_info(self):
         lines = []
