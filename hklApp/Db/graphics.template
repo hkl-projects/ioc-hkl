@@ -1,10 +1,22 @@
-record(waveform, "$(P)$(R)det2dvis") { 
+record(waveform, "$(P)$(R)detimage") { 
     field(PINI, "YES") 
-    field(DESC, "reflection intensities") 
+    field(DESC, "reflection visual") 
     field(DTYP, "pydev") 
     field(INP, "@hkl_calc.det2dvis") 
     #field(NELM, "131072") 
     field(FTVL, "CHAR") 
     field(SCAN, "1 second") 
 }
+
+record(waveform, "$(P)$(R)detimage") { 
+    field(PINI, "YES") 
+    field(DESC, "reflection visual") 
+    field(DTYP, "pydev") 
+    field(INP, "@hkl_calc.det2dvis") 
+    #field(NELM, "131072") 
+    field(FTVL, "CHAR") 
+    field(SCAN, "1 second") 
+}
+
+
 

@@ -4,8 +4,53 @@
   <width>870</width>
   <widget type="image" version="2.0.0">
     <name>Image</name>
+    <pv_name>abtest:ioc-hkl:detimage</pv_name>
     <x>40</x>
     <y>80</y>
     <width>790</width>
+  </widget>
+  <widget type="scaledslider" version="2.0.0">
+    <name>Scaled Slider</name>
+    <x>220</x>
+    <y>410</y>
+    <width>430</width>
+    <height>20</height>
+  </widget>
+  <widget type="scaledslider" version="2.0.0">
+    <name>Scaled Slider_1</name>
+    <x>220</x>
+    <y>480</y>
+    <width>430</width>
+    <height>20</height>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>setup</name>
+    <actions>
+      <action type="write_pv">
+        <description>Write PV</description>
+        <pv_name>$(Sys)setup_vis</pv_name>
+        <value>1</value>
+      </action>
+    </actions>
+    <pv_name>$(Sys)setup_vis</pv_name>
+    <text>setup</text>
+    <x>30</x>
+    <y>400</y>
+    <width>70</width>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>run</name>
+    <actions>
+      <action type="write_pv">
+        <description>Write PV</description>
+        <pv_name>$(Sys)run_vis</pv_name>
+        <value>1</value>
+      </action>
+    </actions>
+    <pv_name>$(Sys)run_vis</pv_name>
+    <text>run</text>
+    <x>30</x>
+    <y>470</y>
+    <width>70</width>
   </widget>
 </display>

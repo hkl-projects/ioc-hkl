@@ -1278,6 +1278,8 @@ abtest:ioc-hkl:affine_set
 abtest:ioc-hkl:set_input_UB
 abtest:ioc-hkl:convert
 abtest:ioc-hkl:run_cif
+abtest:ioc-hkl:setup_vis
+abtest:ioc-hkl:run_vis
 abtest:ioc-hkl:refl1_h_e4c
 abtest:ioc-hkl:refl1_k_e4c
 abtest:ioc-hkl:refl1_l_e4c
@@ -1404,3 +1406,4 @@ abtest:ioc-hkl:cif_path_copy
 abtest:ioc-hkl:errors
 abtest:ioc-hkl:intensities
 abtest:ioc-hkl:cif_path
+abtest:ioc-hkl:detimage

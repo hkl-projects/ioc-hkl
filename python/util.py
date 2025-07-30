@@ -114,5 +114,5 @@ def intensity_calc(wavelength, cif_path):
     except Exception as e:
         intensity_lines = ["Error: " + str(e)]
     output = "\n".join(intensity_lines)
-    return output, lattice
+    return hkl_path, output, lattice
 

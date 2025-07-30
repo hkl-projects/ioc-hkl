@@ -6,6 +6,7 @@ from gi.repository import GLib
 gi.require_version('Hkl', '5.0')
 from gi.repository import Hkl
 from util import energy2wavelength_neutron, intensity_calc
+from util_graphics import intensities2detint_e6c
 
 class hklCalculator():
     def __init__(self, num_axes_solns=30, num_reflections = 10, geom=1, geom_name = 'E4CV'):
@@ -41,7 +42,16 @@ class hklCalculator():
         self.errors = [ord(c) for c in str(ct)]
         self.intensities = ''
         self.cif_path = ''        
+        self.hkl_path = ''        
+        self.visfulllst = ''
         self.det2dvis = ''
+
+        #graphics
+        self.min_intensity = 0
+        self.zmin = 0
+        self.zmax = 0
+        self.cur_angle = -120
+        self.y_offset = 0
 
         self.energy = 0.
         self.wavelength_result = 0.
@@ -1364,7 +1374,7 @@ class hklCalculator():
     def run_cif(self):
         #TODO better error handling within intensities function
         try:
-            temp_intensities, templatt = intensity_calc(self.wavelength, self.cif_path)
+            self.hkl_path, temp_intensities, templatt = intensity_calc(self.wavelength, self.cif_path)
         except Exception as e:
             self.errors = f'run_cif error (input file): {e}'
             return
@@ -1409,6 +1419,70 @@ class hklCalculator():
     def get_latt_vol(self):
         self.lattice_vol = self.lattice.volume_get().value_get(0)
         print(self.lattice_vol)
+
+
+    def det_vis_lst(self):
+        # Assume 6-circle for now #TODO
+        # make hardcoded values into PVs #TODO
+        gauss_sig = 2
+        R = 70
+        geom = 'E6C'
+
+        self.min_intensity = 10
+   
+        self.wavelength
+        angle_deg = 20
+        self.zmax = R*np.tan(np.deg2rad(angle_deg))
+        self.zmin = -self.zmax
+
+        det_angle_deg = 7.5
+        det_zmax = R*np.tan(np.deg2rad(det_angle_deg))
+        det_zmin = -det_zmax
+        det_height = det_zmax - det_zmin
+
+        self.visfulllst = intensities2detint_e6c(self.cif_path, self.hkl_path, self.wavelength, min_intensity, R, geom, self.zmin, self.zmax) #TODO cyl_center, ray_origin both 0's, gamma/delta axis hardcoded
+        
+
+    def compute_heatmap(self):
+        #TODO
+        darwidth = 2
+        window_width = 120
+        mult = 5
+        y_range = 2*self.zmax
+        nx, ny = int(mult*window_width), int(mult*y_range)
+        theta_grid = np.linspace(0, 360, nx, endpoint=False)
+        z_grid = np.linspace(self.zmin, self.zmax, ny)
+
+        if self.visfulllst != []:
+            data = np.array(self.visfulllst)
+            theta, z, intensity, h, k, l, mu, omega, chi, phi, gamma, delta = ( \
+                data[:, 0], data[:, 1], data[:, 2], data[:, 3], data[:, 4], data[:, 5], \
+                data[:, 6], data[:, 7], data[:, 8], data[:, 9], data[:, 10], data[:, 11])
+        else:
+            print("NO DATA")
+
+        peaklist = []
+        heatmap = np.zeros((ny,nx))
+        for t,zz,inten,o,hh,kk,ll,ga,de in zip(theta,z,intensity,omega,h,k,l,gamma,delta):
+            if (inten>threshold) and ((self.cur_angle - darwidth) <= o <= (self.cur_angle + darwidth)):
+                i = int(nx * t /360) % nx
+                j = np.searchsorted(z_grid, zz)
+                if 0 <= j < ny:
+                    heatmap[j,i] += inten
+                    peaklist.append({
+                        'h': hh, 'k': kk, 'l': ll, \
+                        'theta': t, 'z': zz, 'intensity': inten, 'omega':o, \
+                        'gamma':ga, 'delta':de})
+        blurred = gaussian_filter(heatmap, sigma=gauss_sig)
+        #blurred = heatmap
+        if blurred.max() != 0:
+            blurred /= blurred.max()
+
+        self.det2dvis = [ord(c) for c in blurred.flatten()]
+        #self.det2dvis = blurred
+        # self.peaklist = something #TODO
+
+        #self.det2dvis = [ord(c) for c in ...] # waveform of heatmap
 
     def get_info(self):
         lines = []

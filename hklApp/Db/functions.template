@@ -118,3 +118,19 @@ record(ao, "$(P)$(R)run_cif") {
     field(FLNK, "$(P)$(R)latt_a_RBV")
 }
 
+record(ao, "$(P)$(R)setup_vis") {
+    field(PINI, "NO")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.det_vis_lst()")
+    field(TPRO, "1")
+    field(FLNK, "$(P)$(R)run_vis")
+}
+
+record(ao, "$(P)$(R)run_vis") {
+    field(PINI, "NO")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.compute_heatmap()")
+    field(TPRO, "1")
+}
+
+
