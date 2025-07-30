@@ -1446,7 +1446,7 @@ class hklCalculator():
     def compute_heatmap(self):
         #TODO
         threshold = 0.5
-        darwidth = 2
+        darwidth = 100
         gauss_sig = 2
         window_width = 120
         mult = 5
@@ -1454,7 +1454,6 @@ class hklCalculator():
         nx, ny = int(mult*window_width), int(mult*y_range)
         theta_grid = np.linspace(0, 360, nx, endpoint=False)
         z_grid = np.linspace(self.zmin, self.zmax, ny)
-
         if self.visfulllst != []:
             data = np.array(self.visfulllst)
             if data.ndim==2:

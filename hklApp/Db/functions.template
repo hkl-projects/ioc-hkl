@@ -131,6 +131,7 @@ record(ao, "$(P)$(R)run_vis") {
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.compute_heatmap()")
     field(TPRO, "1")
+    field(FLNK, "$(P)$(R)detimage")
 }
 
 

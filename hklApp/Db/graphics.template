@@ -5,7 +5,6 @@ record(waveform, "$(P)$(R)detimage") {
     field(INP, "@hkl_calc.det2dvis") 
     field(NELM, "152400") 
     field(FTVL, "FLOAT") 
-    field(SCAN, "1 second") 
 }
 
 record(ao, "$(P)$(R)cur_angle") {
