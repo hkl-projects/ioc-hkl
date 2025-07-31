@@ -113,5 +113,8 @@ dbpf("$(PREFIX)pseudoaxes_eulerians_solns","1.")
 dbpf("$(PREFIX)pseudoaxes_qperqpar_x","0.")
 dbpf("$(PREFIX)pseudoaxes_qperqpar_y","1.")
 dbpf("$(PREFIX)pseudoaxes_qperqpar_z","0.")
+dbpf("$(PREFIX)min_intensity","1.")
+dbpf("$(PREFIX)detR","70.")
+dbpf("$(PREFIX)detWidth","120.")
 
 dbl > pvlist.dbl

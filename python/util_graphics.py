@@ -16,13 +16,20 @@ import os.path
 
 
 # Detector peak positions
-def real2det_e6c(gamma_axis, delta_axis, s_gamma, s_delta, R, cyl_center, ray_origin):
+def real2det_curved_e6c(gamma_axis, delta_axis, s_gamma, s_delta, R, cyl_center, ray_origin):
+    #TODO use gamma/delta axes instead of manually flipping
     gamma = np.deg2rad(s_gamma)
     z_hit = R*np.tan(gamma)
     return [-s_delta, z_hit]
 
-def real2det_e4c(tth_axis, s_tth, R, cyl_center, ray_origin):
-    return [-s_tth]
+def real2det_flat_e6c(gamma_axis, delta_axis, s_gamma, s_delta, R, cyl_center, ray_origin):
+    gamma = np.deg2rad(s_gamma)
+    z_hit = R*np.tan(gamma)
+    delta = np.deg2rad(s_delta)
+    x_hit = R*np.tan(delta)
+    return [-x_hit, z_hit]
+
+
 
 # parse hkl file, format into dataframe
 def hkl2dfhkl(hkl_path):
@@ -139,7 +146,7 @@ def dfhkl2dfhklaxes_e6c(df, min_intensity, factory, geometry, detector, sample, 
         return
 
 # search for diffractometer peak positions
-def intensities2detint_e6c(cif_path, hkl_path, wavelength, min_intensity, R, geom, zmin, zmax):
+def intensities2detint_e6c(cif_path, hkl_path, wavelength, min_intensity, R, geom, zmin, zmax, det_shape):
     cyl_center = (0,0)
     ray_origin = np.array([0,0,0])
     gamma_axis = [0,0,-1]
@@ -192,8 +199,13 @@ def intensities2detint_e6c(cif_path, hkl_path, wavelength, min_intensity, R, geo
         k = refl['k']
         l = refl['l']
         inten = refl['intensity']
-        detthetaz = real2det_e6c(gamma_axis, delta_axis, gamma, delta, R, \
-            cyl_center, ray_origin)
+        if det_shape == 0: # curved
+            detthetaz = real2det_curved_e6c(gamma_axis, delta_axis, gamma, delta, R, cyl_center, ray_origin)
+        elif det_shape == 1: # flat
+            detthetaz = real2det_flat_e6c(gamma_axis, delta_axis, gamma, delta, R, cyl_center, ray_origin)
+        else:
+            print("non valid detector shape")
+            return
         if (detthetaz is not None):
             theta = float(detthetaz[0])
             z = float(detthetaz[1])

@@ -26,4 +26,33 @@ record(ao, "$(P)$(R)y_offset") {
     field(FLNK, "$(P)$(R)run_vis")
 }
 
+record(ao, "$(P)$(R)min_intensity") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.min_intensity=VAL")
+}
+
+record(ao, "$(P)$(R)detR") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.detR=VAL")
+}
+
+record(ao, "$(P)$(R)detWidth") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.detWidth=VAL")
+}
+
+
+record(mbbo, "$(P)$(R)detShape") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(ZRVL, "0")
+    field(ONVL, "1")
+    field(ZRST, "curved")
+    field(ONST, "flat")
+    field(OUT, "@hkl_calc.detShape=VAL")
+    #field(FLNK, "$(P)$(R)geom_RBV")
+}
 

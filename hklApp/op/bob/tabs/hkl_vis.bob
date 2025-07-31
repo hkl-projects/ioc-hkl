@@ -2,11 +2,11 @@
 <display version="2.0.0">
   <name>HKL_initials</name>
   <width>1000</width>
-  <height>700</height>
+  <height>810</height>
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display_3</name>
     <file>../windows/vis.bob</file>
     <width>980</width>
-    <height>600</height>
+    <height>800</height>
   </widget>
 </display>

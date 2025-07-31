@@ -2,11 +2,12 @@
 <display version="2.0.0">
   <name>Visual</name>
   <width>870</width>
+  <height>800</height>
   <widget type="image" version="2.0.0">
     <name>Image</name>
     <pv_name>abtest:ioc-hkl:detimage</pv_name>
-    <x>38</x>
-    <y>59</y>
+    <x>16</x>
+    <y>10</y>
     <width>800</width>
     <x_axis>
       <visible>true</visible>
@@ -42,8 +43,8 @@
   <widget type="scaledslider" version="2.0.0">
     <name>Scaled Slider</name>
     <pv_name>$(Sys)cur_angle</pv_name>
-    <x>346</x>
-    <y>410</y>
+    <x>374</x>
+    <y>342</y>
     <width>430</width>
     <height>20</height>
     <level_hihi>175.0</level_hihi>
@@ -62,8 +63,8 @@
   <widget type="scaledslider" version="2.0.0">
     <name>Scaled Slider_1</name>
     <pv_name>$(Sys)y_offset</pv_name>
-    <x>345</x>
-    <y>480</y>
+    <x>373</x>
+    <y>395</y>
     <width>430</width>
     <height>20</height>
     <level_hihi>15.0</level_hihi>
@@ -90,23 +91,163 @@
     </actions>
     <pv_name>$(Sys)setup_vis</pv_name>
     <text>start</text>
-    <x>18</x>
-    <y>439</y>
-    <width>120</width>
+    <x>54</x>
+    <y>370</y>
+    <width>86</width>
+    <height>22</height>
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_11</name>
     <text>sample rotation (omega)</text>
-    <x>180</x>
-    <y>410</y>
+    <x>208</x>
+    <y>342</y>
     <width>166</width>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_12</name>
     <text>detector elevation</text>
-    <x>208</x>
-    <y>480</y>
+    <x>236</x>
+    <y>395</y>
     <width>120</width>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>Combo Box</name>
+    <pv_name>$(Sys)detShape</pv_name>
+    <x>236</x>
+    <y>494</y>
+    <width>120</width>
+    <height>20</height>
+    <items>
+      <item>curved</item>
+      <item>flat</item>
+    </items>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_13</name>
+    <text>detector settings</text>
+    <x>384</x>
+    <y>450</y>
+    <width>120</width>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_14</name>
+    <text>detector shape</text>
+    <x>248</x>
+    <y>474</y>
+    <width>108</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_15</name>
+    <text>detector radius (cm)</text>
+    <x>384</x>
+    <y>474</y>
+    <width>128</width>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_26</name>
+    <pv_name>$(Sys)detR</pv_name>
+    <x>392</x>
+    <y>494</y>
+    <width>98</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_16</name>
+    <text>detector width (degrees)</text>
+    <x>533</x>
+    <y>474</y>
+    <width>160</width>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_27</name>
+    <pv_name>$(Sys)detWidth</pv_name>
+    <x>551</x>
+    <y>494</y>
+    <width>98</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_17</name>
+    <text>min intensity</text>
+    <x>735</x>
+    <y>466</y>
+    <width>86</width>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_28</name>
+    <pv_name>$(Sys)min_intensity</pv_name>
+    <x>723</x>
+    <y>486</y>
+    <width>98</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_1</name>
+    <pv_name>$(Sys)errors</pv_name>
+    <x>40</x>
+    <y>560</y>
+    <width>490</width>
+    <height>210</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>6</format>
+    <wrap_words>true</wrap_words>
+    <multi_line>true</multi_line>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
   </widget>
 </display>
