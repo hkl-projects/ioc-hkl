@@ -41,26 +41,6 @@
     <data_height>91</data_height>
   </widget>
   <widget type="scaledslider" version="2.0.0">
-    <name>Scaled Slider</name>
-    <pv_name>$(Sys)cur_angle</pv_name>
-    <x>374</x>
-    <y>342</y>
-    <width>430</width>
-    <height>20</height>
-    <level_hihi>175.0</level_hihi>
-    <level_high>160.0</level_high>
-    <level_low>-160.0</level_low>
-    <level_lolo>-175.0</level_lolo>
-    <show_hihi>false</show_hihi>
-    <show_high>false</show_high>
-    <show_low>false</show_low>
-    <show_lolo>false</show_lolo>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <minimum>-180.0</minimum>
-    <maximum>180.0</maximum>
-    <limits_from_pv>false</limits_from_pv>
-  </widget>
-  <widget type="scaledslider" version="2.0.0">
     <name>Scaled Slider_1</name>
     <pv_name>$(Sys)y_offset</pv_name>
     <x>373</x>
@@ -100,8 +80,8 @@
   <widget type="label" version="2.0.0">
     <name>Label_11</name>
     <text>sample rotation (omega)</text>
-    <x>208</x>
-    <y>342</y>
+    <x>305</x>
+    <y>344</y>
     <width>166</width>
   </widget>
   <widget type="label" version="2.0.0">
@@ -165,6 +145,7 @@
     <actions>
     </actions>
     <border_alarm_sensitive>false</border_alarm_sensitive>
+    <enabled>false</enabled>
     <border_color>
       <color red="0" green="128" blue="255">
       </color>
@@ -194,6 +175,7 @@
     <actions>
     </actions>
     <border_alarm_sensitive>false</border_alarm_sensitive>
+    <enabled>false</enabled>
     <border_color>
       <color red="0" green="128" blue="255">
       </color>
@@ -201,16 +183,17 @@
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_17</name>
-    <text>min intensity</text>
-    <x>735</x>
-    <y>466</y>
-    <width>86</width>
+    <text>min integrated intensity</text>
+    <x>724</x>
+    <y>462</y>
+    <width>111</width>
+    <height>36</height>
   </widget>
   <widget type="textentry" version="3.0.0">
     <name>Text Input_28</name>
     <pv_name>$(Sys)min_intensity</pv_name>
     <x>723</x>
-    <y>486</y>
+    <y>498</y>
     <width>98</width>
     <height>22</height>
     <background_color>
@@ -249,5 +232,85 @@
       <color red="0" green="128" blue="255">
       </color>
     </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_30</name>
+    <pv_name>$(Sys)det_pos_start</pv_name>
+    <x>491</x>
+    <y>352</y>
+    <width>74</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>1</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_31</name>
+    <pv_name>$(Sys)y_offset</pv_name>
+    <x>816</x>
+    <y>395</y>
+    <width>44</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>1</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_32</name>
+    <pv_name>$(Sys)det_pos_end</pv_name>
+    <x>588</x>
+    <y>352</y>
+    <width>74</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>1</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_18</name>
+    <text>start</text>
+    <x>511</x>
+    <y>330</y>
+    <width>32</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_19</name>
+    <text>end</text>
+    <x>610</x>
+    <y>331</y>
+    <width>32</width>
   </widget>
 </display>

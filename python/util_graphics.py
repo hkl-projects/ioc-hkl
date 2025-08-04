@@ -20,9 +20,11 @@ def real2det_curved_e6c(gamma_axis, delta_axis, s_gamma, s_delta, R, cyl_center,
     #TODO use gamma/delta axes instead of manually flipping
     gamma = np.deg2rad(s_gamma)
     z_hit = R*np.tan(gamma)
-    return [-s_delta, z_hit]
+    return [s_delta, z_hit]
 
 def real2det_flat_e6c(gamma_axis, delta_axis, s_gamma, s_delta, R, cyl_center, ray_origin):
+    #x_center = -120 # 60 degrees from minumum rotation -180
+    #s_delta = s_delta+120 # 0 point is at -120 for left side of detector starting at -180 and having width 120
     gamma = np.deg2rad(s_gamma)
     z_hit = R*np.tan(gamma)
     delta = np.deg2rad(s_delta)
@@ -91,7 +93,6 @@ def dfhkl2dfhklaxes_e6c(df, min_intensity, factory, geometry, detector, sample, 
     engines.init(geometry, detector, sample)
     engines.get()
     engine_hkl = engines.engine_get_by_name("hkl")
-    #engine_hkl.current_mode_set('lifting_detector_mu') # TODO CHECK THIS
     engine_hkl.current_mode_set('lifting_detector_omega') # TODO CHECK THIS
     axes = geometry.axis_names_get()
     for axis in axes:
@@ -106,6 +107,7 @@ def dfhkl2dfhklaxes_e6c(df, min_intensity, factory, geometry, detector, sample, 
     num_refl = len(df)
     print(f'total reflections: {total_num_refl}\nreflections filtered by intensity: {num_refl}')
     print(f"Searching through {num_refl} reflections...")
+    #TODO get tqdm progress bar into CSS, like IOC error messages
     for refl in tqdm(df.itertuples(index=False), total=num_refl):
         h = refl.h
         k = refl.k
@@ -147,6 +149,7 @@ def dfhkl2dfhklaxes_e6c(df, min_intensity, factory, geometry, detector, sample, 
 
 # search for diffractometer peak positions
 def intensities2detint_e6c(cif_path, hkl_path, wavelength, min_intensity, R, geom, zmin, zmax, det_shape):
+    print(f"det shape: {det_shape}")
     cyl_center = (0,0)
     ray_origin = np.array([0,0,0])
     gamma_axis = [0,0,-1]

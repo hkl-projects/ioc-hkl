@@ -56,6 +56,8 @@ class hklCalculator():
         self.detR = 70
         self.detShape = 0 # 0 for curved, 1 for flat
         self.detWidth = 120 # degrees
+        self.det_pos_start = 0
+        self.det_pos_end = 0
 
         self.energy = 0.
         self.wavelength_result = 0.
@@ -1436,10 +1438,10 @@ class hklCalculator():
         self.zmin = -self.zmax
 
         self.visfulllst = intensities2detint_e6c(self.cif_path, self.hkl_path, self.wavelength, self.min_intensity, self.detR, geom, self.zmin, self.zmax, self.detShape) #TODO cyl_center, ray_origin both 0's, gamma/delta axis hardcoded
-        
+       #TODO incorrect, x positions depend on the center of rotation values 
 
     def compute_heatmap(self):
-        darwidth = 10
+        #darwidth = 1 #degree
         gauss_sig = 2
         mult = 5
 
@@ -1461,7 +1463,8 @@ class hklCalculator():
                 peaklist = []
                 heatmap = np.zeros((ny,nx))
                 for t,zz,inten,o,hh,kk,ll,ga,de in zip(theta,z,intensity,omega,h,k,l,gamma,delta):
-                    if (inten>self.min_intensity) and ((self.cur_angle - darwidth) <= o <= (self.cur_angle + darwidth)):
+                    #if (inten>self.min_intensity) and ((self.cur_angle - darwidth) <= o <= (self.cur_angle + darwidth)):
+                    if (inten>self.min_intensity) and (self.det_pos_start <= o <= self.det_pos_end):
                         i = int(nx * t /360) % nx
                         j = np.searchsorted(z_grid, zz)
                         if 0 <= j < ny:
@@ -1472,8 +1475,11 @@ class hklCalculator():
                                 'gamma':ga, 'delta':de})
                 blurred = gaussian_filter(heatmap, sigma=gauss_sig)
                 #blurred = heatmap
-                if blurred.max() != 0:
-                    blurred /= blurred.max()
+                global_max = np.max(intensity)  # from entire dataset before filtering
+                #if global_max != 0:
+                #    blurred /= global_max
+                #if blurred.max() != 0:
+                #    blurred /= blurred.max()
                 print(np.shape(blurred))
 
                 # slice heatmap

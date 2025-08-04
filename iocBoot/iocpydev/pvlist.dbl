@@ -1391,7 +1391,8 @@ abtest:ioc-hkl:refl_k_si_2c
 abtest:ioc-hkl:refl_l_si_2c
 abtest:ioc-hkl:refl_omega_si_2c
 abtest:ioc-hkl:refl_tth_si_2c
-abtest:ioc-hkl:cur_angle
+abtest:ioc-hkl:det_pos_start
+abtest:ioc-hkl:det_pos_end
 abtest:ioc-hkl:y_offset
 abtest:ioc-hkl:min_intensity
 abtest:ioc-hkl:detR

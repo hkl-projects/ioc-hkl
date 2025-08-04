@@ -8,12 +8,30 @@ record(waveform, "$(P)$(R)detimage") {
     field(FTVL, "FLOAT") 
 }
 
-record(ao, "$(P)$(R)cur_angle") {
+#record(ao, "$(P)$(R)cur_angle") {
+#    field(PINI, "NO")
+#    field(DESC, "cur angle, det center")
+#    field(PINI, "YES")
+#    field(DTYP, "pydev")
+#    field(OUT, "@hkl_calc.cur_angle=VAL")
+#    field(FLNK, "$(P)$(R)run_vis")
+#}
+
+record(ao, "$(P)$(R)det_pos_start") {
     field(PINI, "NO")
-    field(DESC, "cur angle, det center")
+    field(DESC, "sample angle start")
     field(PINI, "YES")
     field(DTYP, "pydev")
-    field(OUT, "@hkl_calc.cur_angle=VAL")
+    field(OUT, "@hkl_calc.det_pos_start=VAL")
+    field(FLNK, "$(P)$(R)run_vis")
+}
+
+record(ao, "$(P)$(R)det_pos_end") {
+    field(PINI, "NO")
+    field(DESC, "sample angle end")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.det_pos_end=VAL")
     field(FLNK, "$(P)$(R)run_vis")
 }
 
@@ -30,6 +48,7 @@ record(ao, "$(P)$(R)min_intensity") {
     field(PINI, "YES")
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.min_intensity=VAL")
+    field(FLNK, "$(P)$(R)run_vis")
 }
 
 record(ao, "$(P)$(R)detR") {
