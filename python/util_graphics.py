@@ -18,17 +18,17 @@ import os.path
 # Detector peak positions
 def real2det_curved_e6c(gamma_axis, delta_axis, s_gamma, s_delta, R, cyl_center, ray_origin):
     #TODO use gamma/delta axes instead of manually flipping
-    gamma = np.deg2rad(s_gamma)
-    z_hit = R*np.tan(gamma)
-    return [s_delta, z_hit]
+    delta = np.deg2rad(s_delta)
+    z_hit = R*np.tan(delta)
+    return [s_gamma, z_hit]
 
 def real2det_flat_e6c(gamma_axis, delta_axis, s_gamma, s_delta, R, cyl_center, ray_origin):
     #x_center = -120 # 60 degrees from minumum rotation -180
     #s_delta = s_delta+120 # 0 point is at -120 for left side of detector starting at -180 and having width 120
-    gamma = np.deg2rad(s_gamma)
-    z_hit = R*np.tan(gamma)
-    delta = np.deg2rad(s_delta)
-    x_hit = R*np.tan(delta)
+    gamma = np.deg2rad(s_delta)
+    z_hit = R*np.tan(delta)
+    delta = np.deg2rad(s_gamma)
+    x_hit = R*np.tan(gamma)
     return [-x_hit, z_hit]
 
 
@@ -93,13 +93,15 @@ def dfhkl2dfhklaxes_e6c(df, min_intensity, factory, geometry, detector, sample, 
     engines.init(geometry, detector, sample)
     engines.get()
     engine_hkl = engines.engine_get_by_name("hkl")
-    engine_hkl.current_mode_set('lifting_detector_omega') # TODO CHECK THIS
+    #engine_hkl.current_mode_set('lifting_detector_omega') # TODO CHECK THIS
+    engine_hkl.current_mode_set('lifting_detector_mu') # TODO CHECK THIS
     axes = geometry.axis_names_get()
-    for axis in axes:
-        tmp = geometry.axis_get(axis)
-        if (axis=='mu') or (axis=='chi') or (axis=='phi'):
-            tmp.min_max_set(-0.01, 0.01, user)
-            geometry.axis_set(axis, tmp)
+    #for axis in axes:
+    #    tmp = geometry.axis_get(axis)
+    #    #if (axis=='mu') or (axis=='chi') or (axis=='phi'):
+    #    if (axis=='omega') or (axis=='chi') or (axis=='phi'):
+    #        tmp.min_max_set(-0.01, 0.01, user)
+    #        geometry.axis_set(axis, tmp)
     found = 0
     not_found = 0
     total_num_refl = len(df)
@@ -148,8 +150,8 @@ def dfhkl2dfhklaxes_e6c(df, min_intensity, factory, geometry, detector, sample, 
         return
 
 # search for diffractometer peak positions
-def intensities2detint_e6c(cif_path, hkl_path, wavelength, min_intensity, R, geom, zmin, zmax, det_shape):
-    print(f"det shape: {det_shape}")
+def intensities2detint_e6c(cif_path, hkl_path, wavelength, UB, min_intensity, R, geom, zmin, zmax, det_shape):
+    #print(f"det shape: {det_shape}")
     cyl_center = (0,0)
     ray_origin = np.array([0,0,0])
     gamma_axis = [0,0,-1]
@@ -165,7 +167,7 @@ def intensities2detint_e6c(cif_path, hkl_path, wavelength, min_intensity, R, geo
 
     # go from hkl file output by cif2hkl to a dataframe of reflections/intensities
     latt, df = hkl2dfhkl(hkl_path)
-    print(latt)
+    #print(latt)
 
     a = latt['a']
     b = latt['b']
@@ -185,10 +187,19 @@ def intensities2detint_e6c(cif_path, hkl_path, wavelength, min_intensity, R, geo
     beta  = math.radians(beta)
     gamma = math.radians(gamma)
     lattice = Hkl.Lattice.new(a,b,c,alpha,beta,gamma)
+    
     sample.lattice_set(lattice)
+    #UB_temp = sample.UB_get()
+    #Hkl.Matrix.init(UB_temp, UB)
+    #Hkl.Matrix.init(UB_temp, *UB.ravel())
+    try:
+        sample.UB_set(UB)
+    except Exception as e:
+        print(f"UB set error: {e}")
 
     # add columns for real axes motor positions to reflection df
     df2 = dfhkl2dfhklaxes_e6c(df, min_intensity, factory, geometry, detector, sample, user)
+    #print(f"DF2 {df2}")
     theta, z, intensities = [], [], []
     #df2.to_csv('refls2.csv')
     for idx, refl in df2.iterrows():
@@ -209,12 +220,14 @@ def intensities2detint_e6c(cif_path, hkl_path, wavelength, min_intensity, R, geo
         else:
             print("non valid detector shape")
             return
+        #print(f"detthetaz: {detthetaz}")
         if (detthetaz is not None):
             theta = float(detthetaz[0])
             z = float(detthetaz[1])
             if (z<zmax) and (z>zmin):
                 lst.append((theta, z, inten, h, k, l, mu, omega, chi, phi, gamma, delta))
-    if lst is not None:
+    if lst is not []:
+        #print(f"LST: {lst}")
         return lst
     else:
         print("no points found")

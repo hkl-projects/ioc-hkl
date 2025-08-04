@@ -48,7 +48,7 @@ class hklCalculator():
         self.det2dvis = ''
 
         #graphics
-        self.min_intensity = 5
+        self.min_intensity = 1
         self.zmin = 0
         self.zmax = 0
         self.cur_angle = -120
@@ -1437,7 +1437,9 @@ class hklCalculator():
         self.zmax = self.detR*np.tan(np.deg2rad(angle_deg))
         self.zmin = -self.zmax
 
-        self.visfulllst = intensities2detint_e6c(self.cif_path, self.hkl_path, self.wavelength, self.min_intensity, self.detR, geom, self.zmin, self.zmax, self.detShape) #TODO cyl_center, ray_origin both 0's, gamma/delta axis hardcoded
+        UB = self.sample.UB_get()
+
+        self.visfulllst = intensities2detint_e6c(self.cif_path, self.hkl_path, self.wavelength, UB, self.min_intensity, self.detR, geom, self.zmin, self.zmax, self.detShape) #TODO cyl_center, ray_origin both 0's, gamma/delta axis hardcoded
        #TODO incorrect, x positions depend on the center of rotation values 
 
     def compute_heatmap(self):
@@ -1458,20 +1460,24 @@ class hklCalculator():
             data = np.array(self.visfulllst)
             if data.ndim==2:
                 theta, z, intensity, h, k, l, mu, omega, chi, phi, gamma, delta = ( \
-                    data[:, 0], data[:, 1], data[:, 2], data[:, 3], data[:, 4], data[:, 5], \
-                    data[:, 6], data[:, 7], data[:, 8], data[:, 9], data[:, 10], data[:, 11])
+                    data[:, 0], data[:, 1], data[:, 2], \
+                    data[:, 3], data[:, 4], data[:, 5], \
+                    data[:, 6], data[:, 7], data[:, 8], \
+                    data[:, 9], data[:, 10], data[:, 11])
                 peaklist = []
                 heatmap = np.zeros((ny,nx))
-                for t,zz,inten,o,hh,kk,ll,ga,de in zip(theta,z,intensity,omega,h,k,l,gamma,delta):
+                #for t,zz,inten,o,hh,kk,ll,ga,de in zip(theta,z,intensity,omega,h,k,l,gamma,delta):
+                for t,zz,inten,m,hh,kk,ll,ga,de in zip(theta,z,intensity,mu,h,k,l,gamma,delta):
                     #if (inten>self.min_intensity) and ((self.cur_angle - darwidth) <= o <= (self.cur_angle + darwidth)):
-                    if (inten>self.min_intensity) and (self.det_pos_start <= o <= self.det_pos_end):
+                    #if (inten>self.min_intensity) and (self.det_pos_start <= o <= self.det_pos_end):
+                    if (inten>self.min_intensity) and (self.det_pos_start <= m <= self.det_pos_end):
                         i = int(nx * t /360) % nx
                         j = np.searchsorted(z_grid, zz)
                         if 0 <= j < ny:
                             heatmap[j,i] += inten
                             peaklist.append({
                                 'h': hh, 'k': kk, 'l': ll, \
-                                'theta': t, 'z': zz, 'intensity': inten, 'omega':o, \
+                                'theta': t, 'z': zz, 'intensity': inten, 'mu':m, \
                                 'gamma':ga, 'delta':de})
                 blurred = gaussian_filter(heatmap, sigma=gauss_sig)
                 #blurred = heatmap
@@ -1480,7 +1486,7 @@ class hklCalculator():
                 #    blurred /= global_max
                 #if blurred.max() != 0:
                 #    blurred /= blurred.max()
-                print(np.shape(blurred))
+                #print(np.shape(blurred))
 
                 # slice heatmap
                 z_start = det_zmin + self.y_offset
@@ -1490,7 +1496,7 @@ class hklCalculator():
                 i_start = 0
                 i_end = int(nx*self.detWidth/360)
                 blurred_window = blurred[j_start:j_end, i_start:i_end]
-                print(np.shape(blurred_window))
+                #print(np.shape(blurred_window))
                 flat = blurred_window.flatten()
                 self.det2dvis = flat.astype(float).tolist()
                 #print(self.det2dvis[0:500])
