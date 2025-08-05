@@ -6,7 +6,7 @@ from gi.repository import GLib
 gi.require_version('Hkl', '5.0')
 from gi.repository import Hkl
 from util import energy2wavelength_neutron, intensity_calc
-from util_graphics import intensities2detint_e6c
+from util_graphics import intensities2detint_e6c, intensities2detint_e4c
 from scipy.ndimage import gaussian_filter
 
 class hklCalculator():
@@ -1452,20 +1452,27 @@ class hklCalculator():
     def det_vis_lst(self):
         # Assume 6-circle for now #TODO
         # make hardcoded values into PVs #TODO
-        geom = 'E6C'
+        #geom = 'E6C'
+
+        geom = 'E4CV'
 
         self.wavelength
         angle_deg = 20
         self.zmax = self.detR*np.tan(np.deg2rad(angle_deg))
         self.zmin = -self.zmax
 
-        UB = self.sample.UB_get()
+        #UB = self.sample.UB_get()
 
-        self.visfulllst = intensities2detint_e6c(self.cif_path, self.hkl_path, self.wavelength, UB, self.min_intensity, self.detR, geom, self.zmin, self.zmax, self.detShape) #TODO cyl_center, ray_origin both 0's, gamma/delta axis hardcoded
+        samp = self.sample.copy()
+
+        #self.visfulllst = intensities2detint_e6c(self.cif_path, self.hkl_path, self.wavelength, samp, self.min_intensity, self.detR, geom, self.zmin, self.zmax, self.detShape) #TODO cyl_center, ray_origin both 0's, gamma/delta axis hardcoded
        #TODO incorrect, x positions depend on the center of rotation values 
+
+        self.visfulllst = intensities2detint_e4c(self.cif_path, self.hkl_path, self.wavelength, samp, self.min_intensity, self.detR, geom, self.detShape) 
 
     def compute_heatmap(self):
         #darwidth = 1 #degree
+        geom='E4CV'
         gauss_sig = 2
         mult = 5
 
@@ -1478,34 +1485,67 @@ class hklCalculator():
         nx, ny = int(mult*self.detWidth), int(mult*y_range)
         theta_grid = np.linspace(0, 360, nx, endpoint=False)
         z_grid = np.linspace(self.zmin, self.zmax, ny)
+        
+        empty_heatmap = np.zeros((ny,nx))
+        heatmap = np.zeros((ny,nx))
+        
         if self.visfulllst != []:
+
+
             data = np.array(self.visfulllst)
             if data.ndim==2:
-                theta, z, intensity, h, k, l, mu, omega, chi, phi, gamma, delta = ( \
-                    data[:, 0], data[:, 1], data[:, 2], \
-                    data[:, 3], data[:, 4], data[:, 5], \
-                    data[:, 6], data[:, 7], data[:, 8], \
-                    data[:, 9], data[:, 10], data[:, 11])
+                if geom=='E4CV':
+                    theta, intensity, h, k, l, omega, chi, phi, tth = ( \
+                        data[:, 0], data[:, 1], data[:, 2], \
+                        data[:, 3], data[:, 4], data[:, 5], \
+                        data[:, 6], data[:, 7], data[:, 8]) 
+                elif geom=='E6C':
+                    theta, z, intensity, h, k, l, mu, omega, chi, phi, gamma, delta = ( \
+                        data[:, 0], data[:, 1], data[:, 2], \
+                        data[:, 3], data[:, 4], data[:, 5], \
+                        data[:, 6], data[:, 7], data[:, 8], \
+                        data[:, 9], data[:, 10], data[:, 11])
                 self.peaklist = []
                 #self.peaklist = ["h,k,l,theta,z,intensity,mu,gamma,delta"]
-                heatmap = np.zeros((ny,nx))
                 #for t,zz,inten,o,hh,kk,ll,ga,de in zip(theta,z,intensity,omega,h,k,l,gamma,delta):
-                for t,zz,inten,m,hh,kk,ll,ga,de in zip(theta,z,intensity,mu,h,k,l,gamma,delta):
-                    #if (inten>self.min_intensity) and ((self.cur_angle - darwidth) <= o <= (self.cur_angle + darwidth)):
-                    #if (inten>self.min_intensity) and (self.det_pos_start <= o <= self.det_pos_end):
-                    if (inten>self.min_intensity) and (self.det_pos_start <= m <= self.det_pos_end):
-                        i = int(nx * t /360) % nx
-                        j = np.searchsorted(z_grid, zz)
-                        if 0 <= j < ny:
-                            heatmap[j,i] += inten
-                            #self.peaklist.append({
-                            #    'h': hh, 'k': kk, 'l': ll, \
-                            #    'theta': t, 'z': zz, 'intensity': inten, \
-                            #    'mu':m, 'gamma':ga, 'delta':de})
-                            #TODO add d_spacing, q, psi, etc
-                            for item in (hh,kk,ll,t,zz,inten,m,ga,de):
-                                self.peaklist.append(float(item))
-                            #self.peaklist.append(f"{hh},{kk},{ll},{t:.3f},{zz:.3f},{inten:.1f},{m:.2f},{ga:.2f},{de:.2f}")
+                if geom=='E4CV':
+                    for t,inten,o,hh,kk,ll,tth in zip(theta,intensity,omega,h,k,l,tth):
+                        if (inten>self.min_intensity) and \
+                        (self.det_pos_start <= o <= self.det_pos_end) and \
+                        (t>-180) and (t<-60):
+                            #(t>0) and (t <120): # for tth=0,120
+                            i = int(nx * (t+180) /360) #between tth=-180,-60
+                            #i = int((nx/2) + (nx*t/360)) # between tth=0,120 
+                            j = int(ny/2)
+                            #print(f'i: {i}')
+                            #print(f'j: {j}')
+                            if 0 <= j < ny:
+                                heatmap[j,i] += inten
+                                #self.peaklist.append({
+                                #    'h': hh, 'k': kk, 'l': ll, \
+                                #    'theta': t, 'z': zz, 'intensity': inten, \
+                                #    'mu':m, 'gamma':ga, 'delta':de})
+                                #TODO add d_spacing, q, psi, etc
+                                for item in (hh,kk,ll,t,inten,o,tth):
+                                    self.peaklist.append(float(item))
+                                #self.peaklist.append(f"{hh},{kk},{ll},{t:.3f},{zz:.3f},{inten:.1f},{m:.2f},{ga:.2f},{de:.2f}")
+                elif geom=='E6C':
+                    for t,zz,inten,o,hh,kk,ll,ga,de in zip(theta,z,intensity,omega,h,k,l,gamma,delta):
+                        #if (inten>self.min_intensity) and ((self.cur_angle - darwidth) <= o <= (self.cur_angle + darwidth)):
+                        #if (inten>self.min_intensity) and (self.det_pos_start <= o <= self.det_pos_end):
+                        if (inten>self.min_intensity) and (self.det_pos_start <= o <= self.det_pos_end):
+                            i = int(nx * t /360) % nx
+                            j = np.searchsorted(z_grid, zz)
+                            if 0 <= j < ny:
+                                heatmap[j,i] += inten
+                                #self.peaklist.append({
+                                #    'h': hh, 'k': kk, 'l': ll, \
+                                #    'theta': t, 'z': zz, 'intensity': inten, \
+                                #    'mu':m, 'gamma':ga, 'delta':de})
+                                #TODO add d_spacing, q, psi, etc
+                                for item in (hh,kk,ll,t,zz,inten,o,ga,de):
+                                    self.peaklist.append(float(item))
+                                #self.peaklist.append(f"{hh},{kk},{ll},{t:.3f},{zz:.3f},{inten:.1f},{m:.2f},{ga:.2f},{de:.2f}")
                 blurred = gaussian_filter(heatmap, sigma=gauss_sig)
                 #blurred = heatmap
                 global_max = np.max(intensity)  # from entire dataset before filtering
@@ -1515,24 +1555,40 @@ class hklCalculator():
                 #    blurred /= blurred.max()
                 #print(np.shape(blurred))
 
+
                 # slice heatmap
                 z_start = det_zmin + self.y_offset
                 z_end = z_start + (det_zmax - det_zmin)
                 j_start = int(ny*z_start / y_range) + int(ny/2)
                 j_end = j_start + int(ny*det_height / y_range)
-                i_start = 0
-                i_end = int(nx*self.detWidth/360)
+                #i_start = int(nx/2) # tth=0,120
+                #i_end = int(nx*300/360) # tth=0,120
+                i_start=0 # tth = -180,-60
+                i_end = int(nx*self.detWidth/360) #tth=-180,-60
+
                 blurred_window = blurred[j_start:j_end, i_start:i_end]
                 #print(np.shape(blurred_window))
                 flat = blurred_window.flatten()
                 self.det2dvis = flat.astype(float).tolist()
-                print(self.det2dvis)
+                #print(self.det2dvis)
                 #print(self.det2dvis[0:500])
                 # self.peaklist = something #TODO
-                print(self.peaklist)
-
+                #print(self.peaklist)
         else:
+            # slice heatmap
+            z_start = det_zmin + self.y_offset
+            z_end = z_start + (det_zmax - det_zmin)
+            j_start = int(ny*z_start / y_range) + int(ny/2)
+            j_end = j_start + int(ny*det_height / y_range)
+            #i_start = int(nx/2) # tth=0,120
+            #i_end = int(nx*300/360) # tth=0,120
+            i_start=0 # tth = -180,-60
+            i_end = int(nx*self.detWidth/360) #tth=-180,-60
+
             print("NO DATA")
+            empty_heatmap = empty_heatmap[j_start:j_end, i_start:i_end]
+            flat = empty_heatmap.flatten()
+            self.det2dvis = flat.astype(float).tolist()
             return
 
     def get_info(self):
