@@ -6,9 +6,6 @@ abtest:ioc-hkl:latt_alpha_RBV
 abtest:ioc-hkl:latt_beta_RBV
 abtest:ioc-hkl:latt_gamma_RBV
 abtest:ioc-hkl:latt_vol_RBV
-abtest:ioc-hkl:Ux
-abtest:ioc-hkl:Uy
-abtest:ioc-hkl:Uz
 abtest:ioc-hkl:UBa11
 abtest:ioc-hkl:UBa12
 abtest:ioc-hkl:UBa13
@@ -1156,6 +1153,9 @@ abtest:ioc-hkl:latt_c
 abtest:ioc-hkl:latt_alpha
 abtest:ioc-hkl:latt_beta
 abtest:ioc-hkl:latt_gamma
+abtest:ioc-hkl:Ux
+abtest:ioc-hkl:Uy
+abtest:ioc-hkl:Uz
 abtest:ioc-hkl:UBa11_input
 abtest:ioc-hkl:UBa12_input
 abtest:ioc-hkl:UBa13_input
@@ -1270,6 +1270,7 @@ abtest:ioc-hkl:backward_tth
 abtest:ioc-hkl:backward_eulerians
 abtest:ioc-hkl:reset
 abtest:ioc-hkl:set_sample
+abtest:ioc-hkl:rotate_sample
 abtest:ioc-hkl:compute_set_UB
 abtest:ioc-hkl:add_refl_refine
 abtest:ioc-hkl:del_refl_refine
@@ -1414,3 +1415,4 @@ abtest:ioc-hkl:errors
 abtest:ioc-hkl:intensities
 abtest:ioc-hkl:cif_path
 abtest:ioc-hkl:detimage
+abtest:ioc-hkl:peaklist

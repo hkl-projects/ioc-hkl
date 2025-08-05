@@ -46,7 +46,6 @@ record(ao, "$(P)$(R)backward_tth") {
     field(TPRO, "1")
 }
 
-
 record(ao, "$(P)$(R)backward_eulerians") {
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.backward_eulerians()")
@@ -62,6 +61,12 @@ record(ao, "$(P)$(R)reset") {
 record(ao, "$(P)$(R)set_sample") {
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.start()")
+    field(TPRO, "1")
+}
+
+record(ao, "$(P)$(R)rotate_sample") {
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.rotate_sample()")
     field(TPRO, "1")
 }
 

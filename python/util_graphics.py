@@ -93,8 +93,8 @@ def dfhkl2dfhklaxes_e6c(df, min_intensity, factory, geometry, detector, sample, 
     engines.init(geometry, detector, sample)
     engines.get()
     engine_hkl = engines.engine_get_by_name("hkl")
-    #engine_hkl.current_mode_set('lifting_detector_omega') # TODO CHECK THIS
-    engine_hkl.current_mode_set('lifting_detector_mu') # TODO CHECK THIS
+    engine_hkl.current_mode_set('lifting_detector_omega') # TODO CHECK THIS
+    #engine_hkl.current_mode_set('lifting_detector_mu') # TODO CHECK THIS
     axes = geometry.axis_names_get()
     #for axis in axes:
     #    tmp = geometry.axis_get(axis)

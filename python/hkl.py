@@ -46,6 +46,7 @@ class hklCalculator():
         self.hkl_path = ''        
         self.visfulllst = ''
         self.det2dvis = ''
+        self.peaklist = ''
 
         #graphics
         self.min_intensity = 1
@@ -456,6 +457,27 @@ class hklCalculator():
             pass
         self.get_UB_matrix()
 
+
+    def set_ux(self):
+        param_ux = self.sample.ux_get()
+        param_ux.value_set(self.ux, Hkl.UnitEnum.USER)
+        self.sample.ux_set(param_ux)
+
+    def set_uy(self):
+        param_uy = self.sample.uy_get()
+        param_uy.value_set(self.uy, Hkl.UnitEnum.USER)
+        self.sample.uy_set(param_uy)
+
+    def set_uz(self):
+        param_uz = self.sample.uz_get()
+        param_uz.value_set(self.uz, Hkl.UnitEnum.USER)
+        self.sample.uz_set(param_uz)
+
+    def rotate_sample(self):
+        self.set_ux()
+        self.set_uy()
+        self.set_uz()
+        self.get_UB_matrix()
 
     def set_axes_to_sample(self):
         #TODO rename? sets diffractometer to ready adding a reflection
@@ -1464,7 +1486,8 @@ class hklCalculator():
                     data[:, 3], data[:, 4], data[:, 5], \
                     data[:, 6], data[:, 7], data[:, 8], \
                     data[:, 9], data[:, 10], data[:, 11])
-                peaklist = []
+                self.peaklist = []
+                #self.peaklist = ["h,k,l,theta,z,intensity,mu,gamma,delta"]
                 heatmap = np.zeros((ny,nx))
                 #for t,zz,inten,o,hh,kk,ll,ga,de in zip(theta,z,intensity,omega,h,k,l,gamma,delta):
                 for t,zz,inten,m,hh,kk,ll,ga,de in zip(theta,z,intensity,mu,h,k,l,gamma,delta):
@@ -1475,10 +1498,14 @@ class hklCalculator():
                         j = np.searchsorted(z_grid, zz)
                         if 0 <= j < ny:
                             heatmap[j,i] += inten
-                            peaklist.append({
-                                'h': hh, 'k': kk, 'l': ll, \
-                                'theta': t, 'z': zz, 'intensity': inten, 'mu':m, \
-                                'gamma':ga, 'delta':de})
+                            #self.peaklist.append({
+                            #    'h': hh, 'k': kk, 'l': ll, \
+                            #    'theta': t, 'z': zz, 'intensity': inten, \
+                            #    'mu':m, 'gamma':ga, 'delta':de})
+                            #TODO add d_spacing, q, psi, etc
+                            for item in (hh,kk,ll,t,zz,inten,m,ga,de):
+                                self.peaklist.append(float(item))
+                            #self.peaklist.append(f"{hh},{kk},{ll},{t:.3f},{zz:.3f},{inten:.1f},{m:.2f},{ga:.2f},{de:.2f}")
                 blurred = gaussian_filter(heatmap, sigma=gauss_sig)
                 #blurred = heatmap
                 global_max = np.max(intensity)  # from entire dataset before filtering
@@ -1499,8 +1526,11 @@ class hklCalculator():
                 #print(np.shape(blurred_window))
                 flat = blurred_window.flatten()
                 self.det2dvis = flat.astype(float).tolist()
+                print(self.det2dvis)
                 #print(self.det2dvis[0:500])
                 # self.peaklist = something #TODO
+                print(self.peaklist)
+
         else:
             print("NO DATA")
             return

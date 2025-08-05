@@ -6,6 +6,7 @@ record(waveform, "$(P)$(R)detimage") {
     #field(NELM, "152400") 
     field(NELM, "18200") 
     field(FTVL, "FLOAT") 
+    field(FLNK, "$(P)$(R)peaklist")
 }
 
 #record(ao, "$(P)$(R)cur_angle") {
@@ -73,5 +74,14 @@ record(mbbo, "$(P)$(R)detShape") {
     field(ONST, "flat")
     field(OUT, "@hkl_calc.detShape=VAL")
     #field(FLNK, "$(P)$(R)geom_RBV")
+}
+
+record(waveform, "$(P)$(R)peaklist") {
+    field(PINI, "NO")
+    field(DESC, "detector vis reflection list")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.peaklist")
+    field(NELM, "524288")
+    field(FTVL, "FLOAT")
 }
 

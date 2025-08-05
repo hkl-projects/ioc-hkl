@@ -32,10 +32,10 @@ engines.get()
 engine_hkl       = engines.engine_get_by_name("hkl")
 engine_psi       = engines.engine_get_by_name("psi")
 engine_q         = engines.engine_get_by_name("q")
-engine_q2        = engines.engine_get_by_name("q2")
-engine_qperqpar  = engines.engine_get_by_name("qper_qpar")
-engine_tth       = engines.engine_get_by_name("tth2")
-engine_eulerians = engines.engine_get_by_name("eulerians")
+#engine_q2        = engines.engine_get_by_name("q2")
+#engine_qperqpar  = engines.engine_get_by_name("qper_qpar")
+#engine_tth       = engines.engine_get_by_name("tth2")
+#engine_eulerians = engines.engine_get_by_name("eulerians")
 engine_incidence = engines.engine_get_by_name("incidence")
 engine_emergence = engines.engine_get_by_name("emergence")
 
@@ -100,10 +100,10 @@ l = 1
 solutions = engine_hkl.pseudo_axis_values_set([h,k,l], Hkl.UnitEnum.USER)
 
 psi = 56.0
-solutions = engine_psi.pseudo_axis_values_set([psi], Hkl.UnitEnum.USER)
+#solutions = engine_psi.pseudo_axis_values_set([psi], Hkl.UnitEnum.USER)
 
 q = 5.
-solutions = engine_q.pseudo_axis_values_set([q], Hkl.UnitEnum.USER)
+#solutions = engine_q.pseudo_axis_values_set([q], Hkl.UnitEnum.USER)
 
 # set engine parameters
-engine_psi.parameters_values_set([values...], Hkl.UnitEnum.USER)
+#engine_psi.parameters_values_set([values...], Hkl.UnitEnum.USER)

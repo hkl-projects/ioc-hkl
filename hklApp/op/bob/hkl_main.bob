@@ -17,7 +17,7 @@
         <group_name></group_name>
       </tab>
       <tab>
-        <name>Reflections</name>
+        <name>Alignment</name>
         <file>tabs/hkl_reflections.bob</file>
         <macros>
         </macros>
