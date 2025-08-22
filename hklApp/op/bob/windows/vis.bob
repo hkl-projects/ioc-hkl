@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2025-08-21 19:09:38 by ab-->
 <display version="2.0.0">
   <name>Visual</name>
   <width>870</width>
@@ -81,7 +80,7 @@
   <widget type="label" version="2.0.0">
     <name>Label_11</name>
     <text>sample rotation (omega)</text>
-    <x>218</x>
+    <x>159</x>
     <y>334</y>
     <width>166</width>
   </widget>
@@ -215,7 +214,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_30</name>
     <pv_name>$(Sys)det_pos_start</pv_name>
-    <x>395</x>
+    <x>336</x>
     <y>342</y>
     <width>74</width>
     <height>22</height>
@@ -259,7 +258,7 @@
   <widget type="textentry" version="3.0.0">
     <name>Text Input_32</name>
     <pv_name>$(Sys)det_pos_end</pv_name>
-    <x>487</x>
+    <x>428</x>
     <y>342</y>
     <width>74</width>
     <height>22</height>
@@ -281,14 +280,14 @@
   <widget type="label" version="2.0.0">
     <name>Label_18</name>
     <text>start</text>
-    <x>415</x>
+    <x>356</x>
     <y>320</y>
     <width>32</width>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_19</name>
     <text>end</text>
-    <x>509</x>
+    <x>450</x>
     <y>321</y>
     <width>32</width>
   </widget>
@@ -359,5 +358,34 @@
       <color red="0" green="128" blue="255">
       </color>
     </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_33</name>
+    <pv_name>$(Sys)tth_start</pv_name>
+    <x>724</x>
+    <y>321</y>
+    <width>74</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>1</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_21</name>
+    <text>detector position (tth start)</text>
+    <x>550</x>
+    <y>321</y>
+    <width>166</width>
   </widget>
 </display>

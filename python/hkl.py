@@ -59,6 +59,7 @@ class hklCalculator():
         self.detWidth = 120 # degrees
         self.det_pos_start = 0
         self.det_pos_end = 0
+        self.tth_start = 0
 
         self.energy = 0.
         self.wavelength_result = 0.
@@ -1522,7 +1523,8 @@ class hklCalculator():
                             #print(f'i: {i}')
                             #print(f'j: {j}')
                             if 0 <= j < ny:
-                                heatmap[j,i] += inten #TODO don't count duplicate intensities
+                                if heatmap[j,i] == 0: #don't count duplicate intensities 
+                                    heatmap[j,i] += inten #TODO which intensity goes here if multiple?
                                 #self.peaklist.append({
                                 #    'h': hh, 'k': kk, 'l': ll, \
                                 #    'theta': t, 'z': zz, 'intensity': inten, \
@@ -1567,8 +1569,8 @@ class hklCalculator():
                 #i_end = int(nx*300/360) # tth=0,120
                 #i_start=0 # tth = -180,-60 #TODO fix, should be 5-125degrees
                 #i_end = int(nx*self.detWidth/360) #tth=-180,-60
-                i_start=int((nx/2)+(5*nx/360)) # tth = 5-125degrees
-                i_end = int(((nx/2)+(5*nx/360))+nx*self.detWidth/360) #tth=5,125
+                i_start=int((nx/2)+(self.tth_start*nx/360)) # tth = 5-125degrees
+                i_end = int(((nx/2)+(self.tth_start*nx/360))+nx*self.detWidth/360) #tth=5,125
 
                 blurred_window = blurred[j_start:j_end, i_start:i_end]
                 #print(np.shape(blurred_window))

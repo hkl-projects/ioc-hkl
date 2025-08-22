@@ -45,6 +45,17 @@ record(ao, "$(P)$(R)y_offset") {
     field(FLNK, "$(P)$(R)run_vis")
 }
 
+record(ao, "$(P)$(R)tth_start") {
+    field(PINI, "NO")
+    field(DESC, "cur tth angle of left side of det")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.tth_start=VAL")
+    field(FLNK, "$(P)$(R)run_vis")
+}
+
+
+
 record(ao, "$(P)$(R)min_intensity") {
     field(PINI, "YES")
     field(DTYP, "pydev")

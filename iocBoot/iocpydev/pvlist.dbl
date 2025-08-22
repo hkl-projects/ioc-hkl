@@ -1395,6 +1395,7 @@ abtest:ioc-hkl:refl_tth_si_2c
 abtest:ioc-hkl:det_pos_start
 abtest:ioc-hkl:det_pos_end
 abtest:ioc-hkl:y_offset
+abtest:ioc-hkl:tth_start
 abtest:ioc-hkl:min_intensity
 abtest:ioc-hkl:detR
 abtest:ioc-hkl:detWidth
