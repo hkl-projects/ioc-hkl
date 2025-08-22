@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2025-08-21 19:09:38 by ab-->
 <display version="2.0.0">
   <name>Visual</name>
   <width>870</width>
@@ -331,16 +332,6 @@
       </column>
       <column>
         <name>mu</name>
-        <width>70</width>
-        <editable>false</editable>
-      </column>
-      <column>
-        <name>gamma</name>
-        <width>70</width>
-        <editable>false</editable>
-      </column>
-      <column>
-        <name>delta</name>
         <width>70</width>
         <editable>false</editable>
       </column>

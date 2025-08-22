@@ -144,7 +144,7 @@ def dfhkl2dfhklaxes_e6c(df, min_intensity, factory, geometry, detector, sample, 
     print(f"found {found} motor positions in {foundrefl} reflections. Did not find positions for {not_found} reflections.")
     print("Completed dfhkl2dfhklaxes. Output DataFrame has %d rows", len(new_df))
     #print(f'{new_df}')
-    #new_df.to_csv('test.csv')
+    new_df.to_csv('test.csv')
     if new_df is not None:
         return new_df
     else:
@@ -161,7 +161,8 @@ def dfhkl2dfhklaxes_e4c(df, min_intensity, factory, geometry, detector, sample, 
     axes = geometry.axis_names_get()
     for axis in axes:
         tmp = geometry.axis_get(axis)
-        if (axis=='chi') or (axis=='phi'):
+        #if (axis=='chi') or (axis=='phi'):
+        if (axis=='chi'):
             tmp.min_max_set(-0.01, 0.01, user)
             geometry.axis_set(axis, tmp)
     found = 0
@@ -202,7 +203,7 @@ def dfhkl2dfhklaxes_e4c(df, min_intensity, factory, geometry, detector, sample, 
     print(f"found {found} motor positions in {foundrefl} reflections. Did not find positions for {not_found} reflections.")
     print("Completed dfhkl2dfhklaxes. Output DataFrame has %d rows", len(new_df))
     #print(f'{new_df}')
-    #new_df.to_csv('test.csv')
+    new_df.to_csv('test.csv')
     if new_df is not None:
         return new_df
     else:
@@ -240,7 +241,7 @@ def intensities2detint_e6c(cif_path, hkl_path, wavelength, samp, min_intensity, 
     df2 = dfhkl2dfhklaxes_e6c(df, min_intensity, factory, geometry, detector, samp, user)
     #print(f"DF2 {df2}")
     theta, z, intensities = [], [], []
-    #df2.to_csv('refls2.csv')
+    df2.to_csv('refls2.csv')
     for idx, refl in df2.iterrows():
         mu = refl['mu']
         omega = refl['omega']
@@ -298,7 +299,7 @@ def intensities2detint_e4c(cif_path, hkl_path, wavelength, samp, min_intensity, 
     df2 = dfhkl2dfhklaxes_e4c(df, min_intensity, factory, geometry, detector, samp, user)
     #print(f"DF2 {df2}")
     theta, z, intensities = [], [], []
-    #df2.to_csv('refls2.csv')
+    df2.to_csv('refls2.csv')
     for idx, refl in df2.iterrows():
         omega = refl['omega']
         chi = refl['chi']
@@ -308,6 +309,8 @@ def intensities2detint_e4c(cif_path, hkl_path, wavelength, samp, min_intensity, 
         k = refl['k']
         l = refl['l']
         inten = refl['intensity']
+        if (np.abs(phi)>0.01): # add phi values to sample rotation
+            omega = omega+phi
         if det_shape == 0: # curved
             detthetaz = real2det_curved_e4c(tth, R)
         elif det_shape == 1: # flat

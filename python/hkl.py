@@ -1512,15 +1512,17 @@ class hklCalculator():
                     for t,inten,o,hh,kk,ll,tth in zip(theta,intensity,omega,h,k,l,tth):
                         if (inten>self.min_intensity) and \
                         (self.det_pos_start <= o <= self.det_pos_end) and \
-                        (t>-180) and (t<-60):
+                        (t>5) and (t<125):
+                            #(t>-180) and (t<-60):
                             #(t>0) and (t <120): # for tth=0,120
-                            i = int(nx * (t+180) /360) #between tth=-180,-60
+                            #i = int(nx * (t+180) /360) #between tth=-180,-60
                             #i = int((nx/2) + (nx*t/360)) # between tth=0,120 
-                            j = int(ny/2)
+                            i = int((nx/2) + (nx*t/360)) # between tth=5,125 
+                            j = int(ny/2) # fix to in-plane
                             #print(f'i: {i}')
                             #print(f'j: {j}')
                             if 0 <= j < ny:
-                                heatmap[j,i] += inten
+                                heatmap[j,i] += inten #TODO don't count duplicate intensities
                                 #self.peaklist.append({
                                 #    'h': hh, 'k': kk, 'l': ll, \
                                 #    'theta': t, 'z': zz, 'intensity': inten, \
@@ -1563,8 +1565,10 @@ class hklCalculator():
                 j_end = j_start + int(ny*det_height / y_range)
                 #i_start = int(nx/2) # tth=0,120
                 #i_end = int(nx*300/360) # tth=0,120
-                i_start=0 # tth = -180,-60
-                i_end = int(nx*self.detWidth/360) #tth=-180,-60
+                #i_start=0 # tth = -180,-60 #TODO fix, should be 5-125degrees
+                #i_end = int(nx*self.detWidth/360) #tth=-180,-60
+                i_start=int((nx/2)+(5*nx/360)) # tth = 5-125degrees
+                i_end = int(((nx/2)+(5*nx/360))+nx*self.detWidth/360) #tth=5,125
 
                 blurred_window = blurred[j_start:j_end, i_start:i_end]
                 #print(np.shape(blurred_window))

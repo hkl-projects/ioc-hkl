@@ -9,6 +9,8 @@ iochkl
 
 # temporary
 hklApp/op/bob/axis/todelete
+iocBoot/iocpydev/refls2.csv
+iocBoot/iocpydev/test.csv
 
 # Files generated during build
 configure/CONFIG.PyDevice
