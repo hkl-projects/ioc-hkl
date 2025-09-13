@@ -4,7 +4,8 @@ record(waveform, "$(P)$(R)detimage") {
     field(DTYP, "pydev") 
     field(INP, "@hkl_calc.det2dvis") 
     #field(NELM, "152400") 
-    field(NELM, "18200") 
+    #field(NELM, "18200") 
+    field(NELM, "54600") 
     field(FTVL, "FLOAT") 
     field(FLNK, "$(P)$(R)peaklist")
 }

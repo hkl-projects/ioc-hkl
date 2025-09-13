@@ -1483,7 +1483,8 @@ class hklCalculator():
         det_height = det_zmax - det_zmin
 
         y_range = 2*self.zmax
-        nx, ny = int(mult*self.detWidth), int(mult*y_range)
+        #nx, ny = int(mult*self.detWidth), int(mult*y_range)
+        nx, ny = int(mult*360), int(mult*y_range)
         theta_grid = np.linspace(0, 360, nx, endpoint=False)
         z_grid = np.linspace(self.zmin, self.zmax, ny)
         
@@ -1550,7 +1551,7 @@ class hklCalculator():
                                 for item in (hh,kk,ll,t,zz,inten,o,ga,de):
                                     self.peaklist.append(float(item))
                                 #self.peaklist.append(f"{hh},{kk},{ll},{t:.3f},{zz:.3f},{inten:.1f},{m:.2f},{ga:.2f},{de:.2f}")
-                blurred = gaussian_filter(heatmap, sigma=gauss_sig)
+                #blurred = gaussian_filter(heatmap, sigma=gauss_sig)
                 #blurred = heatmap
                 global_max = np.max(intensity)  # from entire dataset before filtering
                 #if global_max != 0:
@@ -1569,11 +1570,27 @@ class hklCalculator():
                 #i_end = int(nx*300/360) # tth=0,120
                 #i_start=0 # tth = -180,-60 #TODO fix, should be 5-125degrees
                 #i_end = int(nx*self.detWidth/360) #tth=-180,-60
-                i_start=int((nx/2)+(self.tth_start*nx/360)) # tth = 5-125degrees
-                i_end = int(((nx/2)+(self.tth_start*nx/360))+nx*self.detWidth/360) #tth=5,125
 
-                blurred_window = blurred[j_start:j_end, i_start:i_end]
-                #print(np.shape(blurred_window))
+
+                i_start=int((nx/2)+(self.tth_start*nx/360)) # tth = 5-125degrees
+                #i_start=int((nx/2)+(self.tth_start*mult)) # tth = 5-125degrees
+   
+
+                i_end = int(((nx/2)+(self.tth_start*nx/360))+nx*self.detWidth/360) #tth=5,125
+                #i_end = int(i_start+self.detWidth*mult) #tth=5,125
+
+
+
+
+
+                heatmap_sliced = heatmap[j_start:j_end, i_start:i_end]
+                blurred_window = gaussian_filter(heatmap_sliced, sigma=gauss_sig)
+                heatmap_shape = np.shape(heatmap)
+                heatmap_sliced_shape = np.shape(heatmap_sliced)
+                heatmap_blurred_sliced_shape = np.shape(blurred_window)
+                print(f'shape of original heatmap {heatmap_shape}')
+                print(f'shape of sliced heatmap {heatmap_sliced_shape}')
+                print(f'shape of blurred sliced heatmap {heatmap_blurred_sliced_shape}')
                 flat = blurred_window.flatten()
                 self.det2dvis = flat.astype(float).tolist()
                 #print(self.det2dvis)
@@ -1590,6 +1607,8 @@ class hklCalculator():
             #i_end = int(nx*300/360) # tth=0,120
             i_start=0 # tth = -180,-60
             i_end = int(nx*self.detWidth/360) #tth=-180,-60
+
+
 
             print("NO DATA")
             empty_heatmap = empty_heatmap[j_start:j_end, i_start:i_end]

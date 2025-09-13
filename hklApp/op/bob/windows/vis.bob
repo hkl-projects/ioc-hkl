@@ -27,7 +27,7 @@
       <visible>true</visible>
       <title>Y</title>
       <minimum>0.0</minimum>
-      <maximum>254.0</maximum>
+      <maximum>91.0</maximum>
       <title_font>
         <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
         </font>
@@ -37,7 +37,7 @@
         </font>
       </scale_font>
     </y_axis>
-    <data_width>200</data_width>
+    <data_width>600</data_width>
     <data_height>91</data_height>
   </widget>
   <widget type="scaledslider" version="2.0.0">
