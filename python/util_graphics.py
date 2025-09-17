@@ -16,8 +16,7 @@ import os.path
 
 
 # Detector peak positions
-def real2det_curved_e6c(gamma_axis, delta_axis, s_gamma, s_delta, R, cyl_center, ray_origin):
-    #TODO use gamma/delta axes instead of manually flipping
+def real2det_curved_e6c(s_gamma, s_delta, R):
     gamma = np.deg2rad(s_gamma)
     z_hit = R*np.tan(gamma)
     return [s_delta, z_hit]
@@ -212,13 +211,14 @@ def dfhkl2dfhklaxes_e4c(df, min_intensity, factory, geometry, detector, sample, 
 
 
 # search for diffractometer peak positions
-def intensities2detint_e6c(cif_path, hkl_path, wavelength, samp, min_intensity, R, geom, zmin, zmax, det_shape):
+#def intensities2detint_e6c(cif_path, hkl_path, wavelength, samp, min_intensity, R, geom, zmin, zmax, det_shape):
+def intensities2detint_e6c(cif_path, hkl_path, wavelength, samp, min_intensity, R, geom, det_shape):
     #print(f"det shape: {det_shape}")
-    cyl_center = (0,0)
-    ray_origin = np.array([0,0,0])
-    gamma_axis = [0,0,-1]
-    delta_axis = [0,-1,0]
     lst = []
+    #cyl_center = (0,0)
+    #ray_origin = np.array([0,0,0])
+    #gamma_axis = [0,0,-1]
+    #delta_axis = [0,-1,0]
     #generate hkl file with given cif file, wavelength
     #TODO check if hkl file exists before generating
     if not os.path.isfile(hkl_path):
@@ -254,18 +254,20 @@ def intensities2detint_e6c(cif_path, hkl_path, wavelength, samp, min_intensity, 
         l = refl['l']
         inten = refl['intensity']
         if det_shape == 0: # curved
-            detthetaz = real2det_curved_e6c(gamma_axis, delta_axis, gamma, delta, R, cyl_center, ray_origin)
+            #detthetaz = real2det_curved_e6c(gamma_axis, delta_axis, gamma, delta, R, cyl_center, ray_origin)
+            detthetaz = real2det_curved_e6c(gamma, delta, R)
         elif det_shape == 1: # flat
-            detthetaz = real2det_flat_e6c(gamma_axis, delta_axis, gamma, delta, R, cyl_center, ray_origin)
+            #detthetaz = real2det_flat_e6c(gamma_axis, delta_axis, gamma, delta, R, cyl_center, ray_origin)
+            detthetaz = real2det_curved_e6c(gamma, delta, R)
         else:
-            print("non valid detector shape")
+            print("invalid detector shape")
             return
         #print(f"detthetaz: {detthetaz}")
         if (detthetaz is not None):
             theta = float(detthetaz[0])
             z = float(detthetaz[1])
-            if (z<zmax) and (z>zmin):
-                lst.append((theta, z, inten, h, k, l, mu, omega, chi, phi, gamma, delta))
+            #if (z<zmax) and (z>zmin):
+            lst.append((theta, z, inten, h, k, l, mu, omega, chi, phi, gamma, delta))
     if lst is not []:
         #print(f"LST: {lst}")
         return lst

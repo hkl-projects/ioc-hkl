@@ -1449,16 +1449,15 @@ class hklCalculator():
         self.lattice_vol = self.lattice.volume_get().value_get(0)
         print(self.lattice_vol)
 
-
     def det_vis_lst(self):
         # Assume 6-circle for now #TODO
         # make hardcoded values into PVs #TODO
-        #geom = 'E6C'
+        geom = 'E6C'
 
-        geom = 'E4CV'
+        #geom = 'E4CV'
 
-        self.wavelength
-        angle_deg = 20
+        angle_deg = 20 # arbitrary, enough vertical space to move plot around
+        #TODO eventually, this range of motion should match instrument specs
         self.zmax = self.detR*np.tan(np.deg2rad(angle_deg))
         self.zmin = -self.zmax
 
@@ -1468,12 +1467,14 @@ class hklCalculator():
 
         #self.visfulllst = intensities2detint_e6c(self.cif_path, self.hkl_path, self.wavelength, samp, self.min_intensity, self.detR, geom, self.zmin, self.zmax, self.detShape) #TODO cyl_center, ray_origin both 0's, gamma/delta axis hardcoded
        #TODO incorrect, x positions depend on the center of rotation values 
-
-        self.visfulllst = intensities2detint_e4c(self.cif_path, self.hkl_path, self.wavelength, samp, self.min_intensity, self.detR, geom, self.detShape) 
+        if geom=='E4CV':
+            self.visfulllst = intensities2detint_e4c(self.cif_path, self.hkl_path, self.wavelength, samp, self.min_intensity, self.detR, geom, self.detShape) 
+        elif geom=='E6C':
+            self.visfulllst = intensities2detint_e6c(self.cif_path, self.hkl_path, self.wavelength, samp, self.min_intensity, self.detR, geom, self.detShape) 
 
     def compute_heatmap(self):
         #darwidth = 1 #degree
-        geom='E4CV'
+        geom='E6C'
         gauss_sig = 2
         mult = 5
 
@@ -1487,13 +1488,10 @@ class hklCalculator():
         nx, ny = int(mult*360), int(mult*y_range)
         theta_grid = np.linspace(0, 360, nx, endpoint=False)
         z_grid = np.linspace(self.zmin, self.zmax, ny)
-        
         empty_heatmap = np.zeros((ny,nx))
         heatmap = np.zeros((ny,nx))
         
         if self.visfulllst != []:
-
-
             data = np.array(self.visfulllst)
             if data.ndim==2:
                 if geom=='E4CV':
@@ -1514,7 +1512,7 @@ class hklCalculator():
                     for t,inten,o,hh,kk,ll,tth in zip(theta,intensity,omega,h,k,l,tth):
                         if (inten>self.min_intensity) and \
                         (self.det_pos_start <= o <= self.det_pos_end) and \
-                        (t>5) and (t<125):
+                        (t>5) and (t<125): #TODO get rid of theta constraint
                             #(t>-180) and (t<-60):
                             #(t>0) and (t <120): # for tth=0,120
                             #i = int(nx * (t+180) /360) #between tth=-180,-60
@@ -1539,10 +1537,11 @@ class hklCalculator():
                         #if (inten>self.min_intensity) and ((self.cur_angle - darwidth) <= o <= (self.cur_angle + darwidth)):
                         #if (inten>self.min_intensity) and (self.det_pos_start <= o <= self.det_pos_end):
                         if (inten>self.min_intensity) and (self.det_pos_start <= o <= self.det_pos_end):
-                            i = int(nx * t /360) % nx
+                            i = int((nx/2) + (nx*t/360))
                             j = np.searchsorted(z_grid, zz)
                             if 0 <= j < ny:
-                                heatmap[j,i] += inten
+                                if heatmap[j,i] == 0:
+                                    heatmap[j,i] += inten
                                 #self.peaklist.append({
                                 #    'h': hh, 'k': kk, 'l': ll, \
                                 #    'theta': t, 'z': zz, 'intensity': inten, \
