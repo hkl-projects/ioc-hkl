@@ -7,10 +7,13 @@ iocBoot/iocpydev/.iocsh_history
 # venv dependencies
 iochkl
 
+# cif files
+crystal/EntryWithCollCode55782.cif
+crystal/EntryWithCollCode55782.hkl
+
 # temporary
 hklApp/op/bob/axis/todelete
-iocBoot/iocpydev/refls2.csv
-iocBoot/iocpydev/test.csv
+tmp/
 
 # Files generated during build
 configure/CONFIG.PyDevice

@@ -1281,6 +1281,7 @@ abtest:ioc-hkl:convert
 abtest:ioc-hkl:run_cif
 abtest:ioc-hkl:setup_vis
 abtest:ioc-hkl:run_vis
+abtest:ioc-hkl:compute_trajectory
 abtest:ioc-hkl:refl1_h_e4c
 abtest:ioc-hkl:refl1_k_e4c
 abtest:ioc-hkl:refl1_l_e4c
@@ -1399,6 +1400,13 @@ abtest:ioc-hkl:tth_start
 abtest:ioc-hkl:min_intensity
 abtest:ioc-hkl:detR
 abtest:ioc-hkl:detWidth
+abtest:ioc-hkl:traj_h_1
+abtest:ioc-hkl:traj_k_1
+abtest:ioc-hkl:traj_l_1
+abtest:ioc-hkl:traj_h_2
+abtest:ioc-hkl:traj_k_2
+abtest:ioc-hkl:traj_l_2
+abtest:ioc-hkl:traj_step_size
 abtest:ioc-hkl:geom_RBV
 abtest:ioc-hkl:geom
 abtest:ioc-hkl:mode_4c

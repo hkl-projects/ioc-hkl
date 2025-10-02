@@ -97,6 +97,14 @@ pattern {P, R}
 { abtest:ioc-hkl, : }
 }
 
+file trajectory.template 
+{
+pattern {P, R}
+{ abtest:ioc-hkl, : }
+}
+
+
+
 # need something like this, but that creates a new file with replacements
 #file ../../python/intensities_test.py
 #{

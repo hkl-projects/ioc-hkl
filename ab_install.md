@@ -59,6 +59,18 @@ export LD_LIBRARY_PATH=LD_LIBRARY_PATH:/usr/local/lib
 export GI_TYPELIB_PATH=/usr/local/lib/girepository-1.0 
 ```
 
+
+### Alternative, easier hkl install
+
+conda install -c conda-forge hkl
+
+import gi
+gi.require_version("Hkl", "5.0")
+from gi.repository iport Hkl
+print(Hkl)
+
+
+
 ## hkl IOC
 ### download
 ```bash

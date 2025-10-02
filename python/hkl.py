@@ -5,7 +5,7 @@ import gi
 from gi.repository import GLib
 gi.require_version('Hkl', '5.0')
 from gi.repository import Hkl
-from util import energy2wavelength_neutron, intensity_calc
+from util import energy2wavelength_neutron, intensity_calc, format_save_txt
 from util_graphics import intensities2detint_e6c, intensities2detint_e4c
 from scipy.ndimage import gaussian_filter
 
@@ -48,6 +48,18 @@ class hklCalculator():
         self.det2dvis = ''
         self.peaklist = ''
 
+        self.energy = 0.
+        self.wavelength_result = 0.
+        #self.particle_type = 1 # 0 photon, 1 neutron, ... #TODO
+        self.neutron = 0.
+        self.velocity = 0. # sqrt(2E/m) 
+        self.e = 1.6021766300e-19 # [C]
+        self.h = 6.6260701500e-34 # [m^2*kg/s]
+        self.c = 299792458 # [m/s^2]
+        self.m_neutron = 1.6749274710e-27 #[kg]
+        self.m_proton = 1.6726219200e-27 #[kg]
+        self.m_electron = 9.1093837e-27 #[kg]
+
         #graphics
         self.min_intensity = 1
         self.zmin = 0
@@ -61,17 +73,14 @@ class hklCalculator():
         self.det_pos_end = 0
         self.tth_start = 0
 
-        self.energy = 0.
-        self.wavelength_result = 0.
-        #self.particle_type = 1 # 0 photon, 1 neutron, ... #TODO
-        self.neutron = 0.
-        self.velocity = 0. # sqrt(2E/m) 
-        self.e = 1.6021766300e-19 # [C]
-        self.h = 6.6260701500e-34 # [m^2*kg/s]
-        self.c = 299792458 # [m/s^2]
-        self.m_neutron = 1.6749274710e-27 #[kg]
-        self.m_proton = 1.6726219200e-27 #[kg]
-        self.m_electron = 9.1093837e-27 #[kg]
+        # trajectory
+        self.traj_h_1 = 0
+        self.traj_k_1 = 0
+        self.traj_l_1 = 0
+        self.traj_h_2 = 0
+        self.traj_k_2 = 0
+        self.traj_l_2 = 0
+        self.traj_step_size = 100
 
         # sample orientation
         # initial 2 reflections
@@ -1452,9 +1461,9 @@ class hklCalculator():
     def det_vis_lst(self):
         # Assume 6-circle for now #TODO
         # make hardcoded values into PVs #TODO
-        geom = 'E6C'
+        #geom = 'E6C'
 
-        #geom = 'E4CV'
+        geom = 'E4CV'
 
         angle_deg = 20 # arbitrary, enough vertical space to move plot around
         #TODO eventually, this range of motion should match instrument specs
@@ -1474,7 +1483,8 @@ class hklCalculator():
 
     def compute_heatmap(self):
         #darwidth = 1 #degree
-        geom='E6C'
+        #geom='E6C'
+        geom='E4CV'
         gauss_sig = 2
         mult = 5
 
@@ -1531,6 +1541,7 @@ class hklCalculator():
                                 #TODO add d_spacing, q, psi, etc
                                 for item in (hh,kk,ll,t,inten,o,tth):
                                     self.peaklist.append(float(item))
+                                #self.peaklist = [ord(c) for c in self.peaklist]
                                 #self.peaklist.append(f"{hh},{kk},{ll},{t:.3f},{zz:.3f},{inten:.1f},{m:.2f},{ga:.2f},{de:.2f}")
                 elif geom=='E6C':
                     for t,zz,inten,o,hh,kk,ll,ga,de in zip(theta,z,intensity,omega,h,k,l,gamma,delta):
@@ -1549,6 +1560,7 @@ class hklCalculator():
                                 #TODO add d_spacing, q, psi, etc
                                 for item in (hh,kk,ll,t,zz,inten,o,ga,de):
                                     self.peaklist.append(float(item))
+                                #self.peaklist = [ord(c) for c in self.peaklist]
                                 #self.peaklist.append(f"{hh},{kk},{ll},{t:.3f},{zz:.3f},{inten:.1f},{m:.2f},{ga:.2f},{de:.2f}")
                 #blurred = gaussian_filter(heatmap, sigma=gauss_sig)
                 #blurred = heatmap
@@ -1607,13 +1619,49 @@ class hklCalculator():
             i_start=0 # tth = -180,-60
             i_end = int(nx*self.detWidth/360) #tth=-180,-60
 
-
-
             print("NO DATA")
             empty_heatmap = empty_heatmap[j_start:j_end, i_start:i_end]
             flat = empty_heatmap.flatten()
             self.det2dvis = flat.astype(float).tolist()
             return
+
+    def trajectory(self):
+        hkl1 = [self.traj_h_1, self.traj_k_1, self.traj_l_1]
+        hkl2 = [self.traj_h_2, self.traj_k_2, self.traj_l_2]
+        n = int(self.traj_step_size)
+
+        h = np.linspace(hkl1[0], hkl2[0], n + 1)
+        k = np.linspace(hkl1[1], hkl2[1], n + 1)
+        l = np.linspace(hkl1[2], hkl2[2], n + 1)
+   
+        trajectories = []
+        for hh, kk, ll in zip(h, k, l):
+            try:
+                solutions = self.engine_hkl.pseudo_axis_values_set([hh, kk, ll], Hkl.UnitEnum.USER)
+                first_solution = solutions.items()[0]
+                for i, item in enumerate(solutions.items()):
+                    read = item.geometry_get().axis_values_get(Hkl.UnitEnum.USER)
+
+                    if i==0:  #TODO instead of this, select closest next position, first position at \vec{0}
+                        trajectories.append(read)
+
+                #for i, item in enumerate(solutions.items()):
+                #    try:
+                #        trajectories[i]
+                #    except IndexError:
+                #        trajectories.append([])
+                #    values = item.geometry_get().axis_values_get(Hkl.UnitEnum.USER)
+                #    print('\n\n\n\n\n')
+                #    print(values)
+                #    print('\n\n\n\n\n')
+                #    #trajectories[i].append(values)
+                #    #trajectories[i].append(values[0])
+                #    trajectories.append(values)
+                #self.engines.select_solution(first_solution) # saving the current diffractometer position to list, then setting to next
+            except GLib.GError as err:
+                pass 
+        cols = self.engine_hkl.axis_names_get(Hkl.EngineAxisNamesGet.READ)
+        format_save_txt(trajectories, cols)
 
     def get_info(self):
         lines = []

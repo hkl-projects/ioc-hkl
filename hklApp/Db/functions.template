@@ -139,4 +139,12 @@ record(ao, "$(P)$(R)run_vis") {
     field(FLNK, "$(P)$(R)detimage")
 }
 
+record(ao, "$(P)$(R)compute_trajectory") {
+    field(PINI, "NO")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.trajectory()")
+    field(TPRO, "1")
+    #field(FLNK, "$(P)$(R)detimage")
+}
+
 

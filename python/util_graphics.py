@@ -143,7 +143,7 @@ def dfhkl2dfhklaxes_e6c(df, min_intensity, factory, geometry, detector, sample, 
     print(f"found {found} motor positions in {foundrefl} reflections. Did not find positions for {not_found} reflections.")
     print("Completed dfhkl2dfhklaxes. Output DataFrame has %d rows", len(new_df))
     #print(f'{new_df}')
-    new_df.to_csv('test.csv')
+    new_df.to_csv('../../tmp/test.csv')
     if new_df is not None:
         return new_df
     else:
@@ -202,7 +202,7 @@ def dfhkl2dfhklaxes_e4c(df, min_intensity, factory, geometry, detector, sample, 
     print(f"found {found} motor positions in {foundrefl} reflections. Did not find positions for {not_found} reflections.")
     print("Completed dfhkl2dfhklaxes. Output DataFrame has %d rows", len(new_df))
     #print(f'{new_df}')
-    new_df.to_csv('test.csv')
+    new_df.to_csv('../../tmp/test.csv')
     if new_df is not None:
         return new_df
     else:
@@ -241,7 +241,7 @@ def intensities2detint_e6c(cif_path, hkl_path, wavelength, samp, min_intensity, 
     df2 = dfhkl2dfhklaxes_e6c(df, min_intensity, factory, geometry, detector, samp, user)
     #print(f"DF2 {df2}")
     theta, z, intensities = [], [], []
-    df2.to_csv('refls2.csv')
+    df2.to_csv('../../tmp/refls2.csv')
     for idx, refl in df2.iterrows():
         mu = refl['mu']
         omega = refl['omega']
@@ -301,7 +301,7 @@ def intensities2detint_e4c(cif_path, hkl_path, wavelength, samp, min_intensity, 
     df2 = dfhkl2dfhklaxes_e4c(df, min_intensity, factory, geometry, detector, samp, user)
     #print(f"DF2 {df2}")
     theta, z, intensities = [], [], []
-    df2.to_csv('refls2.csv')
+    df2.to_csv('../../tmp/refls2.csv')
     for idx, refl in df2.iterrows():
         omega = refl['omega']
         chi = refl['chi']

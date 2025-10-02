@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 import math
 import subprocess
 import re
@@ -115,4 +116,16 @@ def intensity_calc(wavelength, cif_path):
         intensity_lines = ["Error: " + str(e)]
     output = "\n".join(intensity_lines)
     return hkl_path, output, lattice
+
+
+def format_save_txt(t_list, cols):
+    '''
+    format trajectory list from python list of coords
+    '''
+    print(f'trajectory list shape: {np.shape(t_list)}')
+    rows = t_list
+    df = pd.DataFrame(rows, columns=cols)
+
+    df.to_csv('../../tmp/test_traj.csv')
+    # df.to_txt('test_traj.txt') #TODO
 
