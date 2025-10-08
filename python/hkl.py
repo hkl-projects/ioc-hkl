@@ -5,7 +5,7 @@ import gi
 from gi.repository import GLib
 gi.require_version('Hkl', '5.0')
 from gi.repository import Hkl
-from util import energy2wavelength_neutron, intensity_calc, format_save_txt
+from util import energy2wavelength_neutron, intensity_calc, format_plot_save_txt
 from util_graphics import intensities2detint_e6c, intensities2detint_e4c
 from scipy.ndimage import gaussian_filter
 
@@ -1636,32 +1636,30 @@ class hklCalculator():
    
         trajectories = []
         for hh, kk, ll in zip(h, k, l):
+            print(f'{hh}, {kk}, {ll}')
             try:
                 solutions = self.engine_hkl.pseudo_axis_values_set([hh, kk, ll], Hkl.UnitEnum.USER)
                 first_solution = solutions.items()[0]
-                for i, item in enumerate(solutions.items()):
-                    read = item.geometry_get().axis_values_get(Hkl.UnitEnum.USER)
-
-                    if i==0:  #TODO instead of this, select closest next position, first position at \vec{0}
-                        trajectories.append(read)
-
                 #for i, item in enumerate(solutions.items()):
-                #    try:
-                #        trajectories[i]
-                #    except IndexError:
-                #        trajectories.append([])
-                #    values = item.geometry_get().axis_values_get(Hkl.UnitEnum.USER)
-                #    print('\n\n\n\n\n')
-                #    print(values)
-                #    print('\n\n\n\n\n')
-                #    #trajectories[i].append(values)
-                #    #trajectories[i].append(values[0])
-                #    trajectories.append(values)
-                #self.engines.select_solution(first_solution) # saving the current diffractometer position to list, then setting to next
+                #    read = item.geometry_get().axis_values_get(Hkl.UnitEnum.USER)
+                #    if i==0:  #TODO instead of this, select closest next position, first position at \vec{0}
+                #        trajectories.append(read)
+                print(f'\n')
+                print(f'{hh}, {kk}, {ll}')
+                for i, item in enumerate(solutions.items()):
+                    try:
+                        trajectories[i]
+                    except IndexError:
+                        trajectories.append([])
+                    values = item.geometry_get().axis_values_get(Hkl.UnitEnum.USER)
+                    print(values)
+                    trajectories[i].append(values)
+                    #trajectories.append(values)
+                self.engines.select_solution(first_solution) # saving the current diffractometer position to list, then setting to next
             except GLib.GError as err:
                 pass 
         cols = self.engine_hkl.axis_names_get(Hkl.EngineAxisNamesGet.READ)
-        format_save_txt(trajectories, cols)
+        format_plot_save_txt(trajectories, cols, hkl1, hkl2)        
 
     def get_info(self):
         lines = []

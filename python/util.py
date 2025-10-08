@@ -3,6 +3,9 @@ import pandas as pd
 import math
 import subprocess
 import re
+import datetime
+import matplotlib.pyplot as plt
+
 
 e = 1.6021766300e-19 # [C]
 h = 6.6260701500e-34 # [m^2*kg/s]
@@ -118,14 +121,75 @@ def intensity_calc(wavelength, cif_path):
     return hkl_path, output, lattice
 
 
-def format_save_txt(t_list, cols):
+def format_plot_save_txt(t_list, cols, hkl_start, hkl_end):
     '''
     format trajectory list from python list of coords
     '''
-    print(f'trajectory list shape: {np.shape(t_list)}')
-    rows = t_list
-    df = pd.DataFrame(rows, columns=cols)
+    #print(f'trajectory list shape: {np.shape(t_list)}')
+    #for i, a in enumerate(t_list):
+    #    #print(np.shape(a))
+    #    print(a)
+    #    print('\n.\n')
 
-    df.to_csv('../../tmp/test_traj.csv')
+    #rows = t_list
+    #df = pd.DataFrame(rows, columns=cols)
+    #df.to_csv('../../tmp/test_traj.csv')
     # df.to_txt('test_traj.txt') #TODO
 
+    opt_traj = t_list[0]
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f'../../tmp/trajectory_{timestamp}.txt'
+    plotname = f'../../tmp/trajectory_{timestamp}.png'
+    with open(filename, 'w') as file:
+        for inner_list in opt_traj:
+            line = ','.join(str(item) for item in inner_list)
+            file.write(line + '\n')
+
+    arr = np.array(opt_traj)
+    T, D = arr.shape
+    x = np.arange(T) 
+    plt.figure(figsize=(8, 5))
+    for i in range(D):
+        #plt.plot(opt_traj[:, i], label=f's{i+1}')
+        plt.plot(x, arr[:, i], label=f'{cols[i]}')
+
+    #plt.annotate(f"{hkl_start}", (x[0], y[0]), textcoords="offset points", xytext=(-10,5), ha='right', fontsize=8)
+    #plt.annotate(f"{hkl_end}", (x[-1], y[-1]), textcoords="offset points", xytext=(10,-10), ha='left', fontsize=8)
+
+
+    plt.xticks(x)
+
+    ymin, ymax = np.min(arr), np.max(arr)
+    ypad = 0.03 * (ymax - ymin) if ymax > ymin else 0.5
+
+    y_first_max = np.max(arr[0, :])
+    y_last_max  = np.max(arr[-1, :])
+
+    plt.annotate(
+        f"{hkl_start}",
+        (x[0], y_first_max + ypad),
+        textcoords="offset points",
+        xytext=(0, 6),
+        ha='center', va='bottom',
+        fontsize=9,
+        bbox=dict(boxstyle="round,pad=0.2", fc="white", alpha=0.8)
+    )
+
+    plt.annotate(
+        f"{hkl_end}",
+        (x[-1], y_last_max + ypad),
+        textcoords="offset points",
+        xytext=(0, 6),
+        ha='center', va='bottom',
+        fontsize=9,
+        bbox=dict(boxstyle="round,pad=0.2", fc="white", alpha=0.8)
+    )
+
+
+    plt.xlabel('recip step')
+    plt.ylabel('motor rotations')
+    plt.legend()
+    #plt.grid(True)
+    plt.grid(True, alpha=0.6)
+    plt.tight_layout()
+    plt.savefig(plotname)
