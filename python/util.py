@@ -125,17 +125,6 @@ def format_plot_save_txt(t_list, cols, hkl_start, hkl_end):
     '''
     format trajectory list from python list of coords
     '''
-    #print(f'trajectory list shape: {np.shape(t_list)}')
-    #for i, a in enumerate(t_list):
-    #    #print(np.shape(a))
-    #    print(a)
-    #    print('\n.\n')
-
-    #rows = t_list
-    #df = pd.DataFrame(rows, columns=cols)
-    #df.to_csv('../../tmp/test_traj.csv')
-    # df.to_txt('test_traj.txt') #TODO
-
     opt_traj = t_list[0]
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     filename = f'../../tmp/trajectory_{timestamp}.txt'
@@ -153,12 +142,7 @@ def format_plot_save_txt(t_list, cols, hkl_start, hkl_end):
         #plt.plot(opt_traj[:, i], label=f's{i+1}')
         plt.plot(x, arr[:, i], label=f'{cols[i]}')
 
-    #plt.annotate(f"{hkl_start}", (x[0], y[0]), textcoords="offset points", xytext=(-10,5), ha='right', fontsize=8)
-    #plt.annotate(f"{hkl_end}", (x[-1], y[-1]), textcoords="offset points", xytext=(10,-10), ha='left', fontsize=8)
-
-
     plt.xticks(x)
-
     ymin, ymax = np.min(arr), np.max(arr)
     ypad = 0.03 * (ymax - ymin) if ymax > ymin else 0.5
 
@@ -185,11 +169,10 @@ def format_plot_save_txt(t_list, cols, hkl_start, hkl_end):
         bbox=dict(boxstyle="round,pad=0.2", fc="white", alpha=0.8)
     )
 
-
+    #TODO add annotation and vlines whenever motors pass integer hkl
     plt.xlabel('recip step')
     plt.ylabel('motor rotations')
     plt.legend()
-    #plt.grid(True)
     plt.grid(True, alpha=0.6)
     plt.tight_layout()
     plt.savefig(plotname)

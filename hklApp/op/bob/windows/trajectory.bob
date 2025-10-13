@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <display version="2.0.0">
-  <name>Visual</name>
+  <name>Trajectory</name>
   <width>870</width>
   <height>800</height>
   <widget type="label" version="2.0.0">

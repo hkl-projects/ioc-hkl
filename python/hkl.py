@@ -72,6 +72,7 @@ class hklCalculator():
         self.det_pos_start = 0
         self.det_pos_end = 0
         self.tth_start = 0
+        self.flip = 0
 
         # trajectory
         self.traj_h_1 = 0
@@ -1482,8 +1483,6 @@ class hklCalculator():
             self.visfulllst = intensities2detint_e6c(self.cif_path, self.hkl_path, self.wavelength, samp, self.min_intensity, self.detR, geom, self.detShape) 
 
     def compute_heatmap(self):
-        #darwidth = 1 #degree
-        #geom='E6C'
         geom='E4CV'
         gauss_sig = 2
         mult = 5
@@ -1494,7 +1493,6 @@ class hklCalculator():
         det_height = det_zmax - det_zmin
 
         y_range = 2*self.zmax
-        #nx, ny = int(mult*self.detWidth), int(mult*y_range)
         nx, ny = int(mult*360), int(mult*y_range)
         theta_grid = np.linspace(0, 360, nx, endpoint=False)
         z_grid = np.linspace(self.zmin, self.zmax, ny)
@@ -1516,86 +1514,44 @@ class hklCalculator():
                         data[:, 6], data[:, 7], data[:, 8], \
                         data[:, 9], data[:, 10], data[:, 11])
                 self.peaklist = []
-                #self.peaklist = ["h,k,l,theta,z,intensity,mu,gamma,delta"]
-                #for t,zz,inten,o,hh,kk,ll,ga,de in zip(theta,z,intensity,omega,h,k,l,gamma,delta):
                 if geom=='E4CV':
                     for t,inten,o,hh,kk,ll,tth in zip(theta,intensity,omega,h,k,l,tth):
                         if (inten>self.min_intensity) and \
                         (self.det_pos_start <= o <= self.det_pos_end) and \
                         (t>5) and (t<125): #TODO get rid of theta constraint
-                            #(t>-180) and (t<-60):
-                            #(t>0) and (t <120): # for tth=0,120
-                            #i = int(nx * (t+180) /360) #between tth=-180,-60
-                            #i = int((nx/2) + (nx*t/360)) # between tth=0,120 
-                            i = int((nx/2) + (nx*t/360)) # between tth=5,125 
+                            i = int((nx/2) + (nx*t/360))
                             j = int(ny/2) # fix to in-plane
-                            #print(f'i: {i}')
-                            #print(f'j: {j}')
                             if 0 <= j < ny:
                                 if heatmap[j,i] == 0: #don't count duplicate intensities 
                                     heatmap[j,i] += inten #TODO which intensity goes here if multiple?
-                                #self.peaklist.append({
-                                #    'h': hh, 'k': kk, 'l': ll, \
-                                #    'theta': t, 'z': zz, 'intensity': inten, \
-                                #    'mu':m, 'gamma':ga, 'delta':de})
-                                #TODO add d_spacing, q, psi, etc
                                 for item in (hh,kk,ll,t,inten,o,tth):
                                     self.peaklist.append(float(item))
-                                #self.peaklist = [ord(c) for c in self.peaklist]
-                                #self.peaklist.append(f"{hh},{kk},{ll},{t:.3f},{zz:.3f},{inten:.1f},{m:.2f},{ga:.2f},{de:.2f}")
                 elif geom=='E6C':
                     for t,zz,inten,o,hh,kk,ll,ga,de in zip(theta,z,intensity,omega,h,k,l,gamma,delta):
-                        #if (inten>self.min_intensity) and ((self.cur_angle - darwidth) <= o <= (self.cur_angle + darwidth)):
-                        #if (inten>self.min_intensity) and (self.det_pos_start <= o <= self.det_pos_end):
                         if (inten>self.min_intensity) and (self.det_pos_start <= o <= self.det_pos_end):
                             i = int((nx/2) + (nx*t/360))
                             j = np.searchsorted(z_grid, zz)
                             if 0 <= j < ny:
                                 if heatmap[j,i] == 0:
                                     heatmap[j,i] += inten
-                                #self.peaklist.append({
-                                #    'h': hh, 'k': kk, 'l': ll, \
-                                #    'theta': t, 'z': zz, 'intensity': inten, \
-                                #    'mu':m, 'gamma':ga, 'delta':de})
-                                #TODO add d_spacing, q, psi, etc
                                 for item in (hh,kk,ll,t,zz,inten,o,ga,de):
                                     self.peaklist.append(float(item))
                                 #self.peaklist = [ord(c) for c in self.peaklist]
                                 #self.peaklist.append(f"{hh},{kk},{ll},{t:.3f},{zz:.3f},{inten:.1f},{m:.2f},{ga:.2f},{de:.2f}")
-                #blurred = gaussian_filter(heatmap, sigma=gauss_sig)
-                #blurred = heatmap
                 global_max = np.max(intensity)  # from entire dataset before filtering
-                #if global_max != 0:
-                #    blurred /= global_max
-                #if blurred.max() != 0:
-                #    blurred /= blurred.max()
-                #print(np.shape(blurred))
-
 
                 # slice heatmap
                 z_start = det_zmin + self.y_offset
                 z_end = z_start + (det_zmax - det_zmin)
                 j_start = int(ny*z_start / y_range) + int(ny/2)
                 j_end = j_start + int(ny*det_height / y_range)
-                #i_start = int(nx/2) # tth=0,120
-                #i_end = int(nx*300/360) # tth=0,120
-                #i_start=0 # tth = -180,-60 #TODO fix, should be 5-125degrees
-                #i_end = int(nx*self.detWidth/360) #tth=-180,-60
-
-
-                i_start=int((nx/2)+(self.tth_start*nx/360)) # tth = 5-125degrees
-                #i_start=int((nx/2)+(self.tth_start*mult)) # tth = 5-125degrees
-   
-
+                i_start=int((nx/2)+(self.tth_start*nx/360)) # tth = 5-125degrees 
                 i_end = int(((nx/2)+(self.tth_start*nx/360))+nx*self.detWidth/360) #tth=5,125
-                #i_end = int(i_start+self.detWidth*mult) #tth=5,125
-
-
-
-
 
                 heatmap_sliced = heatmap[j_start:j_end, i_start:i_end]
                 blurred_window = gaussian_filter(heatmap_sliced, sigma=gauss_sig)
+                if self.flip==1:
+                    blurred_window = blurred_window[:, ::-1]
                 heatmap_shape = np.shape(heatmap)
                 heatmap_sliced_shape = np.shape(heatmap_sliced)
                 heatmap_blurred_sliced_shape = np.shape(blurred_window)
@@ -1604,22 +1560,16 @@ class hklCalculator():
                 print(f'shape of blurred sliced heatmap {heatmap_blurred_sliced_shape}')
                 flat = blurred_window.flatten()
                 self.det2dvis = flat.astype(float).tolist()
-                #print(self.det2dvis)
-                #print(self.det2dvis[0:500])
-                # self.peaklist = something #TODO
-                #print(self.peaklist)
         else:
             # slice heatmap
             z_start = det_zmin + self.y_offset
             z_end = z_start + (det_zmax - det_zmin)
             j_start = int(ny*z_start / y_range) + int(ny/2)
             j_end = j_start + int(ny*det_height / y_range)
-            #i_start = int(nx/2) # tth=0,120
-            #i_end = int(nx*300/360) # tth=0,120
             i_start=0 # tth = -180,-60
             i_end = int(nx*self.detWidth/360) #tth=-180,-60
 
-            print("NO DATA")
+            print("NO DATA") #TODO add to error box
             empty_heatmap = empty_heatmap[j_start:j_end, i_start:i_end]
             flat = empty_heatmap.flatten()
             self.det2dvis = flat.astype(float).tolist()
@@ -1636,7 +1586,7 @@ class hklCalculator():
    
         trajectories = []
         for hh, kk, ll in zip(h, k, l):
-            print(f'{hh}, {kk}, {ll}')
+            #print(f'{hh}, {kk}, {ll}')
             try:
                 solutions = self.engine_hkl.pseudo_axis_values_set([hh, kk, ll], Hkl.UnitEnum.USER)
                 first_solution = solutions.items()[0]
@@ -1644,15 +1594,15 @@ class hklCalculator():
                 #    read = item.geometry_get().axis_values_get(Hkl.UnitEnum.USER)
                 #    if i==0:  #TODO instead of this, select closest next position, first position at \vec{0}
                 #        trajectories.append(read)
-                print(f'\n')
-                print(f'{hh}, {kk}, {ll}')
+                #print(f'\n')
+                #print(f'{hh}, {kk}, {ll}')
                 for i, item in enumerate(solutions.items()):
                     try:
                         trajectories[i]
                     except IndexError:
                         trajectories.append([])
                     values = item.geometry_get().axis_values_get(Hkl.UnitEnum.USER)
-                    print(values)
+                    #print(values)
                     trajectories[i].append(values)
                     #trajectories.append(values)
                 self.engines.select_solution(first_solution) # saving the current diffractometer position to list, then setting to next

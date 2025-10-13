@@ -55,8 +55,6 @@ record(ao, "$(P)$(R)tth_start") {
     field(FLNK, "$(P)$(R)run_vis")
 }
 
-
-
 record(ao, "$(P)$(R)min_intensity") {
     field(PINI, "YES")
     field(DTYP, "pydev")
@@ -75,7 +73,6 @@ record(ao, "$(P)$(R)detWidth") {
     field(DTYP, "pydev")
     field(OUT, "@hkl_calc.detWidth=VAL")
 }
-
 
 record(mbbo, "$(P)$(R)detShape") {
     field(PINI, "YES")
@@ -97,3 +94,9 @@ record(waveform, "$(P)$(R)peaklist") {
     field(FTVL, "FLOAT")
 }
 
+record(bo, "$(P)$(R)flip") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.flip=VAL")
+    field(FLNK, "$(P)$(R)run_vis")
+}

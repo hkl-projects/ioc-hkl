@@ -388,4 +388,11 @@
     <y>321</y>
     <width>166</width>
   </widget>
+  <widget type="checkbox" version="2.0.0">
+    <name>Check Box</name>
+    <pv_name>$(Sys)flip</pv_name>
+    <label>flip image</label>
+    <x>16</x>
+    <y>420</y>
+  </widget>
 </display>
