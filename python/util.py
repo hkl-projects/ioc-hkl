@@ -1,11 +1,13 @@
+import os
 import numpy as np
 import pandas as pd
 import math
 import subprocess
 import re
 import datetime
+os.environ["MPLBACKEND"] = "Agg"
 import matplotlib.pyplot as plt
-
+from matplotlib.ticker import MaxNLocator
 
 e = 1.6021766300e-19 # [C]
 h = 6.6260701500e-34 # [m^2*kg/s]
@@ -142,9 +144,12 @@ def format_plot_save_txt(t_list, cols, hkl_start, hkl_end):
         #plt.plot(opt_traj[:, i], label=f's{i+1}')
         plt.plot(x, arr[:, i], label=f'{cols[i]}')
 
-    plt.xticks(x)
+    #plt.xticks(x)
     ymin, ymax = np.min(arr), np.max(arr)
     ypad = 0.03 * (ymax - ymin) if ymax > ymin else 0.5
+
+    ax = plt.gca()
+    ax.xaxis.set_major_locator(MaxNLocator(nbins=8, integer=True))
 
     y_first_max = np.max(arr[0, :])
     y_last_max  = np.max(arr[-1, :])
@@ -170,9 +175,11 @@ def format_plot_save_txt(t_list, cols, hkl_start, hkl_end):
     )
 
     #TODO add annotation and vlines whenever motors pass integer hkl
+
     plt.xlabel('recip step')
     plt.ylabel('motor rotations')
     plt.legend()
     plt.grid(True, alpha=0.6)
     plt.tight_layout()
     plt.savefig(plotname)
+    plt.close()
