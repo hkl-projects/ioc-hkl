@@ -1516,6 +1516,8 @@ class hklCalculator():
                 self.peaklist = []
                 if geom=='E4CV':
                     for t,inten,o,hh,kk,ll,tth in zip(theta,intensity,omega,h,k,l,tth):
+                        zz = 0 #TODO temporary, only in-plane for E4CV, only 1 detector axis
+                        de = 0 #TODO temporary, only in-plane for E4CV, only 1 detector axis
                         if (inten>self.min_intensity) and \
                         (self.det_pos_start <= o <= self.det_pos_end) and \
                         (t>5) and (t<125): #TODO get rid of theta constraint
@@ -1524,7 +1526,7 @@ class hklCalculator():
                             if 0 <= j < ny:
                                 if heatmap[j,i] == 0: #don't count duplicate intensities 
                                     heatmap[j,i] += inten #TODO which intensity goes here if multiple?
-                                for item in (hh,kk,ll,t,inten,o,tth):
+                                for item in (hh,kk,ll,t,zz,inten,o,tth,de):
                                     self.peaklist.append(float(item))
                 elif geom=='E6C':
                     for t,zz,inten,o,hh,kk,ll,ga,de in zip(theta,z,intensity,omega,h,k,l,gamma,delta):

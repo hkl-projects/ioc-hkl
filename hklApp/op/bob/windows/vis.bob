@@ -293,7 +293,7 @@
   </widget>
   <widget type="table" version="2.0.0">
     <name>Table</name>
-    <pv_name>abtest:ioc-hkl:peaklist</pv_name>
+    <pv_name>$(Sys)peaklist</pv_name>
     <x>16</x>
     <y>520</y>
     <width>800</width>
@@ -315,12 +315,12 @@
         <editable>false</editable>
       </column>
       <column>
-        <name>theta</name>
+        <name>theta (x)</name>
         <width>70</width>
         <editable>false</editable>
       </column>
       <column>
-        <name>z</name>
+        <name>z (y)</name>
         <width>70</width>
         <editable>false</editable>
       </column>
@@ -330,11 +330,49 @@
         <editable>false</editable>
       </column>
       <column>
-        <name>mu</name>
+        <name>omega</name>
         <width>70</width>
         <editable>false</editable>
       </column>
+      <column>
+        <name>tth</name>
+        <width>100</width>
+        <editable>true</editable>
+      </column>
+      <column>
+        <name>delta</name>
+        <width>100</width>
+        <editable>true</editable>
+      </column>
     </columns>
+    <actions>
+    </actions>
+    <scripts>
+      <script file="EmbeddedPy">
+        <text><![CDATA[from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+import math
+
+data = []
+N_COLS = 9
+
+wf = list(PVUtil.getDoubleArray(pvs[0]))
+def fmt(x):
+    # NaN-safe -> empty string; else %.6g
+    try:
+        if x != x:           # NaN check (NaN != NaN)
+            return ""
+    except:
+        pass
+    return "%.6g" % x
+
+rows = [wf[i:i+N_COLS] for i in range(0, len(wf), N_COLS)]
+data = [[fmt(v) for v in row] for row in rows]
+
+widget.setValue(data)
+]]></text>
+        <pv_name>$(Sys)peaklist</pv_name>
+      </script>
+    </scripts>
     <border_alarm_sensitive>false</border_alarm_sensitive>
     <editable>false</editable>
   </widget>
