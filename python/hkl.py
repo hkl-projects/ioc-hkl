@@ -1541,7 +1541,7 @@ class hklCalculator():
                 global_max = np.max(intensity)  # from entire dataset before filtering
 
                 # slice heatmap
-                z_start = det_zmin + self.y_offset
+                z_start = det_zmin - self.y_offset
                 z_end = z_start + (det_zmax - det_zmin)
                 j_start = int(ny*z_start / y_range) + int(ny/2)
                 j_end = j_start + int(ny*det_height / y_range)
