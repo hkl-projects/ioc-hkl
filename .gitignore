@@ -26,3 +26,6 @@ db/
 dbd/
 include/
 *.pyc
+# pixi environments
+.pixi/*
+!.pixi/config.toml
