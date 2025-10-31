@@ -1518,9 +1518,7 @@ class hklCalculator():
                     for t,inten,o,hh,kk,ll,tth in zip(theta,intensity,omega,h,k,l,tth):
                         zz = 0 #TODO temporary, only in-plane for E4CV, only 1 detector axis
                         de = 0 #TODO temporary, only in-plane for E4CV, only 1 detector axis
-                        if (inten>self.min_intensity) and \
-                        (self.det_pos_start <= o <= self.det_pos_end) and \
-                        (t>5) and (t<125): #TODO get rid of theta constraint
+                        if (inten>self.min_intensity) and (self.det_pos_start <= self.det_pos_end):
                             i = int((nx/2) + (nx*t/360))
                             j = int(ny/2) # fix to in-plane
                             if 0 <= j < ny:
@@ -1538,8 +1536,6 @@ class hklCalculator():
                                     heatmap[j,i] += inten
                                 for item in (hh,kk,ll,t,zz,inten,o,ga,de):
                                     self.peaklist.append(float(item))
-                                #self.peaklist = [ord(c) for c in self.peaklist]
-                                #self.peaklist.append(f"{hh},{kk},{ll},{t:.3f},{zz:.3f},{inten:.1f},{m:.2f},{ga:.2f},{de:.2f}")
                 global_max = np.max(intensity)  # from entire dataset before filtering
 
                 # slice heatmap
@@ -1557,9 +1553,9 @@ class hklCalculator():
                 heatmap_shape = np.shape(heatmap)
                 heatmap_sliced_shape = np.shape(heatmap_sliced)
                 heatmap_blurred_sliced_shape = np.shape(blurred_window)
-                print(f'shape of original heatmap {heatmap_shape}')
-                print(f'shape of sliced heatmap {heatmap_sliced_shape}')
-                print(f'shape of blurred sliced heatmap {heatmap_blurred_sliced_shape}')
+                #print(f'shape of original heatmap {heatmap_shape}')
+                #print(f'shape of sliced heatmap {heatmap_sliced_shape}')
+                #print(f'shape of blurred sliced heatmap {heatmap_blurred_sliced_shape}')
                 flat = blurred_window.flatten()
                 self.det2dvis = flat.astype(float).tolist()
         else:

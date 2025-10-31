@@ -141,10 +141,8 @@ def format_plot_save_txt(t_list, cols, hkl_start, hkl_end):
     x = np.arange(T) 
     plt.figure(figsize=(8, 5))
     for i in range(D):
-        #plt.plot(opt_traj[:, i], label=f's{i+1}')
         plt.plot(x, arr[:, i], label=f'{cols[i]}')
 
-    #plt.xticks(x)
     ymin, ymax = np.min(arr), np.max(arr)
     ypad = 0.03 * (ymax - ymin) if ymax > ymin else 0.5
 

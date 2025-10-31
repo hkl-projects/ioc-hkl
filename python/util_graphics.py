@@ -142,8 +142,6 @@ def dfhkl2dfhklaxes_e6c(df, min_intensity, factory, geometry, detector, sample, 
     foundrefl = num_refl-not_found
     print(f"found {found} motor positions in {foundrefl} reflections. Did not find positions for {not_found} reflections.")
     print("Completed dfhkl2dfhklaxes. Output DataFrame has %d rows", len(new_df))
-    #print(f'{new_df}')
-    new_df.to_csv('../../tmp/test.csv')
     if new_df is not None:
         return new_df
     else:
@@ -201,8 +199,6 @@ def dfhkl2dfhklaxes_e4c(df, min_intensity, factory, geometry, detector, sample, 
     foundrefl = num_refl-not_found
     print(f"found {found} motor positions in {foundrefl} reflections. Did not find positions for {not_found} reflections.")
     print("Completed dfhkl2dfhklaxes. Output DataFrame has %d rows", len(new_df))
-    #print(f'{new_df}')
-    new_df.to_csv('../../tmp/test.csv')
     if new_df is not None:
         return new_df
     else:
@@ -213,7 +209,6 @@ def dfhkl2dfhklaxes_e4c(df, min_intensity, factory, geometry, detector, sample, 
 # search for diffractometer peak positions
 #def intensities2detint_e6c(cif_path, hkl_path, wavelength, samp, min_intensity, R, geom, zmin, zmax, det_shape):
 def intensities2detint_e6c(cif_path, hkl_path, wavelength, samp, min_intensity, R, geom, det_shape):
-    #print(f"det shape: {det_shape}")
     lst = []
     #cyl_center = (0,0)
     #ray_origin = np.array([0,0,0])
@@ -229,7 +224,6 @@ def intensities2detint_e6c(cif_path, hkl_path, wavelength, samp, min_intensity, 
 
     # go from hkl file output by cif2hkl to a dataframe of reflections/intensities
     latt, df = hkl2dfhkl(hkl_path)
-    #print(latt)
 
     user = Hkl.UnitEnum.USER
     detector = Hkl.Detector.factory_new(Hkl.DetectorType(0))
@@ -239,9 +233,7 @@ def intensities2detint_e6c(cif_path, hkl_path, wavelength, samp, min_intensity, 
 
     # add columns for real axes motor positions to reflection df
     df2 = dfhkl2dfhklaxes_e6c(df, min_intensity, factory, geometry, detector, samp, user)
-    #print(f"DF2 {df2}")
     theta, z, intensities = [], [], []
-    df2.to_csv('../../tmp/refls2.csv')
     for idx, refl in df2.iterrows():
         mu = refl['mu']
         omega = refl['omega']
@@ -254,22 +246,18 @@ def intensities2detint_e6c(cif_path, hkl_path, wavelength, samp, min_intensity, 
         l = refl['l']
         inten = refl['intensity']
         if det_shape == 0: # curved
-            #detthetaz = real2det_curved_e6c(gamma_axis, delta_axis, gamma, delta, R, cyl_center, ray_origin)
             detthetaz = real2det_curved_e6c(gamma, delta, R)
         elif det_shape == 1: # flat
-            #detthetaz = real2det_flat_e6c(gamma_axis, delta_axis, gamma, delta, R, cyl_center, ray_origin)
-            detthetaz = real2det_curved_e6c(gamma, delta, R)
+            detthetaz = real2det_curved_e6c(gamma, delta, R) #TODO
         else:
             print("invalid detector shape")
             return
-        #print(f"detthetaz: {detthetaz}")
         if (detthetaz is not None):
             theta = float(detthetaz[0])
             z = float(detthetaz[1])
             #if (z<zmax) and (z>zmin):
             lst.append((theta, z, inten, h, k, l, mu, omega, chi, phi, gamma, delta))
     if lst is not []:
-        #print(f"LST: {lst}")
         return lst
     else:
         print("no points found")
@@ -277,10 +265,8 @@ def intensities2detint_e6c(cif_path, hkl_path, wavelength, samp, min_intensity, 
 
 
 def intensities2detint_e4c(cif_path, hkl_path, wavelength, samp, min_intensity, R, geom, det_shape):
-    #print(f"det shape: {det_shape}")
     lst = []
     #generate hkl file with given cif file, wavelength
-    #TODO check if hkl file exists before generating
     if not os.path.isfile(hkl_path):
         cif2hkl_bin = '/usr/bin/cif2hkl'
         cmd = [cif2hkl_bin, '--mode', 'NUC', '--out', hkl_path, '--lambda', str(wavelength), '--xtal', cif_path]
@@ -289,7 +275,6 @@ def intensities2detint_e4c(cif_path, hkl_path, wavelength, samp, min_intensity, 
 
     # go from hkl file output by cif2hkl to a dataframe of reflections/intensities
     latt, df = hkl2dfhkl(hkl_path)
-    #print(latt)
 
     user = Hkl.UnitEnum.USER
     detector = Hkl.Detector.factory_new(Hkl.DetectorType(0))
@@ -299,9 +284,7 @@ def intensities2detint_e4c(cif_path, hkl_path, wavelength, samp, min_intensity, 
 
     # add columns for real axes motor positions to reflection df
     df2 = dfhkl2dfhklaxes_e4c(df, min_intensity, factory, geometry, detector, samp, user)
-    #print(f"DF2 {df2}")
     theta, z, intensities = [], [], []
-    df2.to_csv('../../tmp/refls2.csv')
     for idx, refl in df2.iterrows():
         omega = refl['omega']
         chi = refl['chi']
@@ -320,7 +303,6 @@ def intensities2detint_e4c(cif_path, hkl_path, wavelength, samp, min_intensity, 
         else:
             print("non valid detector shape")
             return
-        #print(f"detthetaz: {detthetaz}")
         if (detthetaz is not None):
             theta = float(detthetaz[0])
             lst.append((theta, inten, h, k, l, omega, chi, phi, tth))
