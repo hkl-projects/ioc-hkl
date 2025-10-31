@@ -59,6 +59,18 @@ export LD_LIBRARY_PATH=LD_LIBRARY_PATH:/usr/local/lib
 export GI_TYPELIB_PATH=/usr/local/lib/girepository-1.0 
 ```
 
+
+### Alternative, easier hkl install
+
+conda install -c conda-forge hkl
+
+import gi
+gi.require_version("Hkl", "5.0")
+from gi.repository iport Hkl
+print(Hkl)
+
+
+
 ## hkl IOC
 ### download
 ```bash
@@ -174,9 +186,20 @@ check location of executable, should be
 /usr/bin/cif2hkl
 ```
 
-### python environment #TODO move to st_base.cmd?
-```
+### python environment (venv)
+```bash
 python3 -m venv iochkl && source iochkl/bin/activate && pip install -r requirements.txt
+```
+
+### python environment (pixi)
+
+```bash
+curl -fsSL https://pixi.sh/install.sh | bash
+exec $SHELL
+pixi --version
+cd /epics/iocs/ioc-hkl
+pixi init
+pixi add python=3.12 numpy=2.3.4 pandas scipy matplotlib tqdm pygobject hkl
 ```
 
 ### gi within a python environment (Ubuntu 24.04, venv environment)

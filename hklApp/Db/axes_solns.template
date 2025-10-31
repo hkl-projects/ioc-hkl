@@ -162,3 +162,20 @@ record(ai, "$(P)$(R)delta_k6c$(C)") {
     field(SCAN, "1 second")
 }
 
+# 2-circle
+record(ai, "$(P)$(R)omega_2c$(C)") {
+    field(DESC, "$(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_solns_omega_2c[$(C)]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)tth_2c$(C)") {
+    field(DESC, "$(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_solns_tth_2c[$(C)]")
+    field(SCAN, "1 second")
+}
+

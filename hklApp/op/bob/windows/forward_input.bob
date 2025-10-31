@@ -112,4 +112,23 @@
       </rule>
     </rules>
   </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_8</name>
+    <macros>
+      <Ax1Name>omega_2c</Ax1Name>
+      <Ax2Name>tth_2c</Ax2Name>
+    </macros>
+    <file>../axis/TwoC.bob</file>
+    <width>780</width>
+    <height>130</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="E4CV" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==5">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+  </widget>
 </display>

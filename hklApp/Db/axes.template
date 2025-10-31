@@ -15,7 +15,6 @@ record(ao, "$(P)$(R)omega_e4c_min") {
     field(DTYP, "pydev")
     field(DRVL, "-180")
     field(DRVH, "180")
-    #field(OUT, "@hkl_calc.axes_e4c_min[0]=$(P)$(R)omega_e4c.DRVL") # What I want to happen
     field(OUT, "@hkl_calc.axes_e4c_min[0]=VAL")
     field(FLNK, "$(P)$(R)omega_e4c_max")
 }
@@ -706,6 +705,79 @@ record(ao, "$(P)$(R)delta_k6c_max") {
     field(OUT, "@hkl_calc.axes_k6c_max[5]=VAL")
 }
 
+# 2-circle
+record(ao, "$(P)$(R)omega_2c") {
+    field(DESC, "omega")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(DRVL, "-180")
+    field(DRVH, "180")
+    field(OUT, "@hkl_calc.axes_2c[0]=VAL")
+    field(FLNK, "$(P)$(R)omega_2c_min")
+}
+
+record(ao, "$(P)$(R)omega_2c_min") {
+    field(DESC, "omega min")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(DRVL, "-180")
+    field(DRVH, "180")
+    field(OUT, "@hkl_calc.axes_2c_min[0]=VAL")
+    field(FLNK, "$(P)$(R)omega_2c_max")
+}
+
+record(ao, "$(P)$(R)omega_2c_max") {
+    field(DESC, "omega max")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(DRVL, "-180")
+    field(DRVH, "180")
+    field(OUT, "@hkl_calc.axes_2c_max[0]=VAL")
+    field(FLNK, "$(P)$(R)omega_2c_RBV")
+}
+
+record(ai, "$(P)$(R)omega_2c_RBV") {
+    field(DESC, "omega")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.axes_2c[0]")
+}
+
+record(ao, "$(P)$(R)tth_2c") {
+    field(DESC, "tth")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(DRVL, "-180")
+    field(DRVH, "180")
+    field(OUT, "@hkl_calc.axes_2c[1]=VAL")
+    field(FLNK, "$(P)$(R)tth_2c_RBV")
+}
+
+record(ai, "$(P)$(R)tth_2c_RBV") {
+    field(DESC, "tth")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(INP, "@hkl_calc.axes_2c[1]")
+}
+
+record(ao, "$(P)$(R)tth_2c_min") {
+    field(DESC, "tth min")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(DRVL, "-180")
+    field(DRVH, "180")
+    field(OUT, "@hkl_calc.axes_2c_min[1]=VAL")
+}
+
+record(ao, "$(P)$(R)tth_2c_max") {
+    field(DESC, "tth max")
+    field(DTYP, "pydev")
+    field(PINI, "YES")
+    field(DRVL, "-180")
+    field(DRVH, "180")
+    field(OUT, "@hkl_calc.axes_2c_max[1]=VAL")
+}
+
 # Constraints for inverse calculations
 # all 4-circles
 record(mbbo, "$(P)$(R)mode_4c") {
@@ -794,5 +866,21 @@ record(mbbo, "$(P)$(R)mode_k6c") {
     field(OUT, "@hkl_calc.mode_e6c=VAL")
 }
 
-
-
+# 2-circle
+record(mbbo, "$(P)$(R)mode_2c") {
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(ZRVL, "0")
+    #field(ONVL, "1")
+    #field(TWVL, "2")
+    #field(THVL, "3")
+    #field(FRVL, "4")
+    #field(FVVL, "5")
+    field(ZRST, "bisector")
+    #field(ONST, "constant omega")
+    #field(TWST, "constant chi")
+    #field(THST, "constant phi")
+    #field(FRST, "double diffraction")
+    #field(FVST, "psi constant")
+    field(OUT, "@hkl_calc.mode_4c=VAL")
+}

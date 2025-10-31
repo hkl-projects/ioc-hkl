@@ -5,8 +5,9 @@ import gi
 from gi.repository import GLib
 gi.require_version('Hkl', '5.0')
 from gi.repository import Hkl
-import intensities
-from util import energy2wavelength_neutron
+from util import energy2wavelength_neutron, intensity_calc, format_plot_save_txt
+from util_graphics import intensities2detint_e6c, intensities2detint_e4c
+from scipy.ndimage import gaussian_filter
 
 class hklCalculator():
     def __init__(self, num_axes_solns=30, num_reflections = 10, geom=1, geom_name = 'E4CV'):
@@ -29,6 +30,7 @@ class hklCalculator():
         self.engine_q2 = np.nan # hkl object placeholder
         self.engine_qper_qpar = np.nan # hkl object placeholder
         self.engine_tth2 = np.nan # hkl object placeholder
+        self.mode_2c = 0 # bissector, constant omega...
         self.mode_4c = 0 # bissector, constant omega...
         self.mode_e6c = 0 # bissector_vertical, constant_omega_vertical
         self.mode_k6c = 0 # bissector_vertical, constant_omega_vertical
@@ -40,7 +42,11 @@ class hklCalculator():
         ct = datetime.datetime.now().isoformat()
         self.errors = [ord(c) for c in str(ct)]
         self.intensities = ''
-        self.cif_path=''        
+        self.cif_path = ''        
+        self.hkl_path = ''        
+        self.visfulllst = ''
+        self.det2dvis = ''
+        self.peaklist = ''
 
         self.energy = 0.
         self.wavelength_result = 0.
@@ -54,6 +60,29 @@ class hklCalculator():
         self.m_proton = 1.6726219200e-27 #[kg]
         self.m_electron = 9.1093837e-27 #[kg]
 
+        #graphics
+        self.min_intensity = 1
+        self.zmin = 0
+        self.zmax = 0
+        self.cur_angle = -120
+        self.y_offset = 0
+        self.detR = 70
+        self.detShape = 0 # 0 for curved, 1 for flat
+        self.detWidth = 120 # degrees
+        self.det_pos_start = 0
+        self.det_pos_end = 0
+        self.tth_start = 0
+        self.flip = 0
+
+        # trajectory
+        self.traj_h_1 = 0
+        self.traj_k_1 = 0
+        self.traj_l_1 = 0
+        self.traj_h_2 = 0
+        self.traj_k_2 = 0
+        self.traj_l_2 = 0
+        self.traj_step_size = 100
+
         # sample orientation
         # initial 2 reflections
         self.num_reflections = num_reflections
@@ -65,39 +94,45 @@ class hklCalculator():
         self.refl1_input_e6c = [0., 0., 0., 0., 0., 0., 0., 0., 0.]
         self.refl2_input_e6c = [0., 0., 0., 0., 0., 0., 0., 0., 0.]
         self.refl1_input_k6c = [0., 0., 0., 0., 0., 0., 0., 0., 0.]
-        self.refl2_input_k6c = [0., 0., 0., 0., 0., 0., 0., 0., 0.]
+        self.refl2_input_k6c = [0., 0., 0., 0., 0., 0., 0., 0., 0.] 
+        self.refl1_input_2c = [0., 0., 0., 0., 0.]
+        self.refl2_input_2c = [0., 0., 0., 0., 0.]
         self.refl1 = np.nan
         self.refl2 = np.nan
         
-
         # refine with reflections
         self.refl_refine_input_e4c = [0., 0., 0., 0., 0., 0., 0.]
         self.refl_refine_input_k4c = [0., 0., 0., 0., 0., 0., 0.]
         self.refl_refine_input_e6c = [0., 0., 0., 0., 0., 0., 0., 0., 0.]
         self.refl_refine_input_k6c = [0., 0., 0., 0., 0., 0., 0., 0., 0.]
-        # Pre-allocate lists to avoid multiple append operations
+        self.refl_refine_input_2c = [0., 0., 0., 0., 0.]
         self.refl_refine_input_list_e4c = [[0., 0., 0., 0., 0., 0., 0.] for _ in range(self.num_reflections)]
         self.refl_refine_input_list_k4c = [[0., 0., 0., 0., 0., 0., 0.] for _ in range(self.num_reflections)]
         self.refl_refine_input_list_e6c = [[0., 0., 0., 0., 0., 0., 0., 0., 0.] for _ in range(self.num_reflections)]
         self.refl_refine_input_list_k6c = [[0., 0., 0., 0., 0., 0., 0., 0., 0.] for _ in range(self.num_reflections)]
+        self.refl_refine_input_list_2c = [[0., 0., 0., 0., 0.] for _ in range(self.num_reflections)]
 
         self.refl_list_e4c = [] #TODO maybe delete - depends if the list returned and stored in the_refl_list is in the correct order everytime it is received - store reflection objects, for deleting
         self.refl_list_k4c = [] #TODO maybe delete store reflection objects, for deleting
         self.refl_list_e6c = [] #TODO maybe delete store reflection objects, for deleting
         self.refl_list_k6c = [] #TODO maybe delete store reflection objects, for deleting
+        self.refl_list_2c = [] #TODO maybe delete store reflection objects, for deleting
         self.curr_refl_index_e4c = 0
         self.curr_refl_index_k4c = 0
         self.curr_refl_index_e6c = 0
         self.curr_refl_index_k6c = 0
+        self.curr_refl_index_2c = 0
  
         self.selected_refl_index = 0 # reflection to delete, index of refl_list
         # UB
         self.UB_matrix = np.zeros((3,3), dtype=float)
         self.UB_matrix_input = np.zeros((3,3), dtype=float)
 
+        #TODO add to screens
         #self.sample_rot_matrix = np.zeros((8,8), dtype=float)
         self.u_matrix = np.zeros((3,3), dtype=float)
         
+        #TODO add to screens
         # U vector
         self.ux = 0.
         self.uy = 0.
@@ -126,11 +161,17 @@ class hklCalculator():
         self.axes_k6c_min = [-180.,-180.,-180.,-180.,-180.,-180.] 
         self.axes_k6c_max = [180.,180.,180.,180.,180.,180.] 
 
-        ### axes for UB calculation - only used internally - avoids setting on calculation
+        # 2-circle (omega, tth)
+        self.axes_2c = [0.,0.]
+        self.axes_2c_min = [-180.,-180.]
+        self.axes_2c_max = [180.,180.]
+
+        ### axes for UB calculation - only used internally - avoids setting on calculation #TODO delete ? 
         self.axes_UB_e4c = [0., 0., 0., 0.]
         self.axes_UB_k4c = [0., 0., 0., 0.]
         self.axes_UB_e6c = [0., 0., 0., 0., 0., 0.]
         self.axes_UB_k6c = [0., 0., 0., 0., 0., 0.]
+        self.axes_UB_2c = [0., 0.]
 
         ### pseduoaxes 
         self.pseudoaxes_h = 0.
@@ -202,6 +243,10 @@ class hklCalculator():
         self.axes_solns_gamma_k6c = []
         self.axes_solns_delta_k6c = []
 
+        # 2-circle
+        self.axes_solns_omega_2c = []
+        self.axes_solns_tth_2c = []
+
         for _ in range(self.num_axes_solns):
             # Eulerian 4-circle
             self.axes_solns_omega_e4c.append(0)
@@ -227,7 +272,10 @@ class hklCalculator():
             self.axes_solns_kphi_k6c.append(0)
             self.axes_solns_gamma_k6c.append(0)
             self.axes_solns_delta_k6c.append(0)
-        
+            # 2-circle
+            self.axes_solns_omega_2c.append(0)
+            self.axes_solns_tth_2c.append(0)       
+
         # pseudoaxes solutions
         self.pseudoaxes_solns_h = 0.
         self.pseudoaxes_solns_k = 0.
@@ -299,6 +347,19 @@ class hklCalculator():
             self.engine_incidence = self.engines.engine_get_by_name("incidence")
             self.engine_tth2 = self.engines.engine_get_by_name("tth2")
             self.engine_emergence = self.engines.engine_get_by_name("emergence")
+        elif (self.geom == 5):
+            self.engine_hkl = self.engines.engine_get_by_name("hkl")
+            axes = self.geometry.axis_names_get()
+            for i, axis in enumerate(axes): 
+                if axis in ['chi', 'phi']:
+                    tmp = self.geometry.axis_get(axis)
+                    tmp.min_max_set(-0.01, 0.01, Hkl.UnitEnum.USER)
+                    self.geometry.axis_set(axis, tmp)
+            self.engine_psi = self.engines.engine_get_by_name("psi") #TODO
+            self.engine_q = self.engines.engine_get_by_name("q") #TODO
+            self.engine_incidence = self.engines.engine_get_by_name("incidence") #TODO
+            self.engine_emergence = self.engines.engine_get_by_name("emergence") #TODO
+            
         self.clear_all_reflections()
         self.businglevyflag=0
         self.get_UB_matrix()    
@@ -317,25 +378,32 @@ class hklCalculator():
             self.geom_name = "E4CH"
             self.start()
 
-        if self.geom == 1:
+        elif self.geom == 1:
             print("switching to E4CV")
             self.geom_name = "E4CV"
             self.start()
 
-        if self.geom == 2:
+        elif self.geom == 2:
             print("switching to K4CV")
             self.geom_name = "K4CV"
             self.start()
 
-        if self.geom == 3:
+        elif self.geom == 3:
             print("switching to E6C")
             self.geom_name = "E6C"
             self.start()
 
-        if self.geom == 4:
+        elif self.geom == 4:
             print("switching to K6C")
             self.geom_name = "K6C"
             self.start()
+
+        elif self.geom == 5:
+            print("switching to 2C")
+            #self.geom_name = "2C" #TODO
+            self.geom_name = "E4CV" #TODO
+            self.start()
+
 
     def forward(self):
         print("Forward function start")
@@ -392,8 +460,35 @@ class hklCalculator():
             values_eulerians = self.engine_eulerians.pseudo_axis_values_get(Hkl.UnitEnum.USER)
             self.pseudoaxes_solns_omega, self.pseudoaxes_solns_chi, self.pseudoaxes_solns_phi = \
                 values_eulerians
+        elif (self.geom == 5):
+            # TODO other pseudo engines for 2c`
+            # q
+            values_q = self.engine_q.pseudo_axis_values_get(Hkl.UnitEnum.USER)
+            self.pseudoaxes_solns_q = values_q[0]
+            pass
         self.get_UB_matrix()
 
+
+    def set_ux(self):
+        param_ux = self.sample.ux_get()
+        param_ux.value_set(self.ux, Hkl.UnitEnum.USER)
+        self.sample.ux_set(param_ux)
+
+    def set_uy(self):
+        param_uy = self.sample.uy_get()
+        param_uy.value_set(self.uy, Hkl.UnitEnum.USER)
+        self.sample.uy_set(param_uy)
+
+    def set_uz(self):
+        param_uz = self.sample.uz_get()
+        param_uz.value_set(self.uz, Hkl.UnitEnum.USER)
+        self.sample.uz_set(param_uz)
+
+    def rotate_sample(self):
+        self.set_ux()
+        self.set_uy()
+        self.set_uz()
+        self.get_UB_matrix()
 
     def set_axes_to_sample(self):
         #TODO rename? sets diffractometer to ready adding a reflection
@@ -423,9 +518,12 @@ class hklCalculator():
                         float(self.axes_k6c[3]), \
                         float(self.axes_k6c[4]), \
                         float(self.axes_k6c[5])] 
+        elif (self.geom==5):
+            values_w = [float(self.axes_2c[0]), \
+                        float(0), \
+                        float(0), \
+                        float(self.axes_2c[1])]
         try:
-            #TODO check if this is how UB calculation is done in hkl package
-            # currently need to run this function when adding reflections for some reason
             print(f'geom {self.geom}')
             print(f'values {values_w}')
             self.geometry.axis_values_set(values_w, Hkl.UnitEnum.USER)
@@ -462,6 +560,11 @@ class hklCalculator():
                         float(self.axes_UB_k6c[3]), \
                         float(self.axes_UB_k6c[4]), \
                         float(self.axes_UB_k6c[5])] 
+        elif (self.geom==5):
+            values_w = [float(self.axes_UB_2c[0]), \
+                        float(0), \
+                        float(0), \
+                        float(self.axes_UB_2c[1])] 
         try:
             #TODO check if this is how UB calculation is done in hkl package
             # currently need to run this function when adding reflections for some reason
@@ -548,6 +651,9 @@ class hklCalculator():
             if self.mode_k6c == 13:
                 self.engine_hkl.current_mode_set("constant_incidence")
 
+        elif (self.geom==5):
+            if self.mode_2c == 0:
+                self.engine_hkl.current_mode_set('bissector')
 
     def set_engine_parameters(self):
         if (self.geom==0) or (self.geom==1):
@@ -614,7 +720,19 @@ class hklCalculator():
                                                          self.pseudoaxes_emergence_y, \
                                                          self.pseudoaxes_emergence_z], \
                                                          Hkl.UnitEnum.USER)
-
+        elif (self.geom==5):
+            self.engine_psi.parameters_values_set([self.pseudoaxes_psi_h2, \
+                                                  self.pseudoaxes_psi_k2, \
+                                                  self.pseudoaxes_psi_l2], \
+                                                  Hkl.UnitEnum.USER)
+            self.engine_incidence.parameters_values_set([self.pseudoaxes_incidence_x, \
+                                                         self.pseudoaxes_incidence_y, \
+                                                         self.pseudoaxes_incidence_z], \
+                                                         Hkl.UnitEnum.USER)
+            self.engine_emergence.parameters_values_set([self.pseudoaxes_emergence_x, \
+                                                         self.pseudoaxes_emergence_y, \
+                                                         self.pseudoaxes_emergence_z], \
+                                                         Hkl.UnitEnum.USER)
 
     def apply_axes_solns(self, solutions):
         values_w_all = []
@@ -630,7 +748,7 @@ class hklCalculator():
                 self.axes_solns_omega_e4c[i], \
                 self.axes_solns_chi_e4c[i], \
                 self.axes_solns_phi_e4c[i], \
-                self.axes_solns_tth_e4c[i] = values_w_all[i]         
+                self.axes_solns_tth_e4c[i] = values_w_all[i]
         elif self.geom == 2:
             for i in range(len_solns): 
                 self.axes_solns_komega_k4c[i], \
@@ -653,7 +771,12 @@ class hklCalculator():
                 self.axes_solns_kphi_k6c[i], \
                 self.axes_solns_gamma_k6c[i], \
                 self.axes_solns_delta_k6c[i] = values_w_all[i]
-    
+        elif (self.geom == 5):
+            for i in range(len_solns): 
+                self.axes_solns_omega_2c[i], \
+                _, \
+                _, \
+                self.axes_solns_tth_2c[i] = values_w_all[i]
 
     def backward_hkl(self):
         print("Backward hkl function start")
@@ -838,6 +961,13 @@ class hklCalculator():
             values_eulerians = self.engine_eulerians.pseudo_axis_values_get(Hkl.UnitEnum.USER)
             self.pseudoaxes_omega, self.pseudoaxes_chi, self.pseudoaxes_phi = \
                 values_eulerians
+        elif (self.geom == 5):
+            # q
+            #values_q = self.engine_q.pseudo_axis_values_get(Hkl.UnitEnum.USER)
+            #print(f'values q: {values_q[0]}')
+            #self.pseudoaxes_q = values_q[0]
+            #TODO
+            pass
 
 
     def set_axis_limits(self):
@@ -870,6 +1000,20 @@ class hklCalculator():
                                 self.axes_k6c_max[i], \
                                 Hkl.UnitEnum.USER)
                 self.geometry.axis_set(axis, tmp)
+        elif (self.geom==5):
+            for i, axis in enumerate(axes):
+                if axis in ['chi', 'phi']:
+                    tmp = self.geometry.axis_get(axis)
+                    tmp.min_max_set(self.axes_e4c_min[i], \
+                                    self.axes_e4c_max[i], \
+                                    Hkl.UnitEnum.USER)
+                    self.geometry.axis_set(axis, tmp)
+                else:
+                    tmp = self.geometry.axis_get(axis)
+                    tmp.min_max_set(self.axes_e4c_min[i], \
+                                    self.axes_e4c_max[i], \
+                                    Hkl.UnitEnum.USER)
+                    self.geometry.axis_set(axis, tmp)
 
     def reset_pseudoaxes_solns(self):
         self.pseudoaxes_solns_h = 0
@@ -913,6 +1057,11 @@ class hklCalculator():
                         self.axes_solns_gamma_k6c, \
                         self.axes_solns_delta_k6c]:
                 lst[:] = [0 for _ in lst]
+        elif (self.geom==5):
+            for lst in [self.axes_solns_omega_2c, \
+                        self.axes_solns_tth_2c]:
+                lst[:] = [0 for _ in lst]
+
 
     def add_reflection1(self):
         '''
@@ -931,6 +1080,9 @@ class hklCalculator():
         elif (self.geom==4):
             for i in range(6):
                 self.axes_UB_k6c[i] = self.refl1_input_k6c[(i+3)]
+        elif (self.geom==5):
+            for i in range(2):
+                self.axes_UB_2c[i] = self.refl1_input_2c[(i+3)]
         self.set_axes_to_sample_UB()
         if (self.geom==0) or (self.geom==1):
             self.refl1 = self.sample.add_reflection(self.geometry, \
@@ -968,6 +1120,16 @@ class hklCalculator():
             self.refl_refine_input_list_k6c[self.curr_refl_index_k6c] = self.refl1_input_k6c.copy()
             #self.refl_list_k6c.append(self.refl1) #TODO maybe delete
             self.curr_refl_index_k6c += 1
+        elif (self.geom==5):
+            self.refl1 = self.sample.add_reflection(self.geometry, \
+                                                    self.detector, \
+                                                    self.refl1_input_2c[0], \
+                                                    self.refl1_input_2c[1], \
+                                                    self.refl1_input_2c[2])
+            self.refl_refine_input_list_2c[self.curr_refl_index_2c] = self.refl1_input_2c.copy()
+            #self.refl_list_e4c.append(self.refl1) #TODO maybe delete
+            self.curr_refl_index_2c += 1
+
 
     def add_reflection2(self):
         '''
@@ -986,6 +1148,9 @@ class hklCalculator():
         elif (self.geom==4):
             for i in range(6):
                 self.axes_UB_k6c[i] = self.refl2_input_k6c[(i+3)]
+        elif (self.geom==5):
+            for i in range(2):
+                self.axes_UB_2c[i] = self.refl2_input_2c[(i+3)]
         self.set_axes_to_sample_UB()
         # Hkl.SampleReflection(self.geometry, self.detector, h, k, l)
         if (self.geom==0) or (self.geom==1):
@@ -1024,7 +1189,16 @@ class hklCalculator():
             self.refl_refine_input_list_k6c[self.curr_refl_index_k6c] = self.refl2_input_k6c.copy()
             #self.refl_list_k6c.append(self.refl2) #TODO maybe delete
             self.curr_refl_index_k6c += 1
- 
+        elif (self.geom==5):
+            self.refl2 = self.sample.add_reflection(self.geometry, \
+                                                    self.detector, \
+                                                    self.refl2_input_2c[0], \
+                                                    self.refl2_input_2c[1], \
+                                                    self.refl2_input_2c[2])
+            self.refl_refine_input_list_2c[self.curr_refl_index_2c] = self.refl2_input_2c.copy()
+            #self.refl_list_e4c.append(self.refl2) #TODO maybe delete
+            self.curr_refl_index_2c += 1
+
     def compute_set_UB_matrix(self):
         #TODO replace by feeding into user input UB
         '''
@@ -1098,10 +1272,8 @@ class hklCalculator():
                
     def add_refl_refine(self):
         if (self.geom==0) or (self.geom==1):
-            print(f"E4CV add_refl_refine axes {self.refl_refine_input_e4c}")
             for i in range(4):
-                self.axes_UB_e4c[i] = self.refl_refine_input_e4c[i+3]
-            print(self.axes_UB_e4c)
+                self.axes_UB_e4c[i] = self.refl_refine_input_e4c[(i+3)]
         elif (self.geom==2):
             for i in range(4):
                 self.axes_UB_k4c[i] = self.refl_refine_input_k4c[(i+3)]
@@ -1111,9 +1283,11 @@ class hklCalculator():
         elif (self.geom==4):
             for i in range(6):
                 self.axes_UB_k6c[i] = self.refl_refine_input_k6c[(i+3)]
+        elif (self.geom==5):
+            for i in range(2):
+                self.axes_UB_2c[i] = self.refl_refine_input_2c[(i+3)]
         self.set_axes_to_sample_UB()
         if (self.geom==0) or (self.geom==1) and (self.curr_refl_index_e4c<9):
-            print(f'curr index: {self.curr_refl_index_e4c}')
             #self.refl_refine = self.sample.add_reflection(self.geometry, \
             #    self.detector, self.refl_refine_input_e4c[0], \
             #    self.refl_refine_input_e4c[1], self.refl_refine_input_e4c[2])
@@ -1147,13 +1321,19 @@ class hklCalculator():
             self.refl_refine_input_list_k6c[self.curr_refl_index_k6c] = self.refl_refine_input_k6c.copy()
             #self.refl_list_k6c.append(self.refl_refine) #TODO maybe delete
             self.curr_refl_index_k6c += 1
+        elif (self.geom==5) and (self.curr_refl_index_2c<9):
+            self.sample.add_reflection(self.geometry, \
+                self.detector, self.refl_refine_input_2c[0], \
+                self.refl_refine_input_2c[1], self.refl_refine_input_2c[2])
+            self.refl_refine_input_list_2c[self.curr_refl_index_2c] = self.refl_refine_input_2c.copy()
+            #self.refl_list_e4c.append(self.refl_refine) #TODO maybe delete
+            self.curr_refl_index_2c += 1
+
 
     def del_refl_refine(self): #TODO verify that the index selected matches the_refl_list
         i = self.selected_refl_index
         the_refl_list = self.sample.reflections_get()
         print(f'\nindex: {i}\n')
-        #print(the_refl_list)
-        #print(the_refl_list[i]) #TODO check list is ordered by time entered
         if (self.geom==0) or (self.geom==1) and (i<=self.curr_refl_index_e4c):
             self.sample.del_reflection(the_refl_list[i])
             self.refl_refine_input_list_e4c[i] = [0.,0.,0.,0.,0.,0.,0.]
@@ -1189,6 +1369,15 @@ class hklCalculator():
             self.refl_refine_input_list_k6c[9] = [0.,0.,0.,0.,0.,0.,0.,0.,0.]
             self.curr_refl_index_k6c -= 1
 
+        elif (self.geom==5) and (i<=self.curr_refl_index_2c):
+            self.sample.del_reflection(the_refl_list[i])
+            self.refl_refine_input_list_2c[i] = [0.,0.,0.,0.,0.]
+            for j in range(i, 9):
+                self.refl_refine_input_list_2c[j] = self.refl_refine_input_list_2c[j+1]
+            self.refl_refine_input_list_e4c[9] = [0.,0.,0.,0.,0.]
+            self.curr_refl_index_2c -= 1
+
+
     def clear_all_reflections(self):
         '''
         if need to redo busing-levy
@@ -1197,11 +1386,13 @@ class hklCalculator():
         self.refl_refine_input_list_k4c = []
         self.refl_refine_input_list_e6c = []
         self.refl_refine_input_list_k6c = []
+        self.refl_refine_input_list_2c = []
         for i in range(self.num_reflections):
             self.refl_refine_input_list_e4c.append([0., 0., 0., 0., 0., 0., 0.])
             self.refl_refine_input_list_k4c.append([0., 0., 0., 0., 0., 0., 0.])
             self.refl_refine_input_list_e6c.append([0., 0., 0., 0., 0., 0., 0., 0., 0.])
             self.refl_refine_input_list_k6c.append([0., 0., 0., 0., 0., 0., 0., 0., 0.])
+            self.refl_refine_input_list_2c.append([0., 0., 0., 0., 0.])
         the_refl_list = self.sample.reflections_get()
         for item in the_refl_list:
             self.sample.del_reflection(item)
@@ -1213,6 +1404,8 @@ class hklCalculator():
             self.curr_refl_index_e6c = 0
         elif (self.geom==4):
             self.curr_refl_index_k6c = 0
+        elif (self.geom==5):
+            self.curr_refl_index_2c = 0
 
     def read_cif(self, givenpath):
         self.cif_path = givenpath
@@ -1220,7 +1413,7 @@ class hklCalculator():
     def run_cif(self):
         #TODO better error handling within intensities function
         try:
-            temp_intensities, templatt = intensities.intensity_calc(self.wavelength, self.cif_path)
+            self.hkl_path, temp_intensities, templatt = intensity_calc(self.wavelength, self.cif_path)
         except Exception as e:
             self.errors = f'run_cif error (input file): {e}'
             return
@@ -1265,6 +1458,156 @@ class hklCalculator():
     def get_latt_vol(self):
         self.lattice_vol = self.lattice.volume_get().value_get(0)
         print(self.lattice_vol)
+
+    def det_vis_lst(self):
+        # Assume 6-circle for now #TODO
+        # make hardcoded values into PVs #TODO
+        #geom = 'E6C'
+
+        geom = 'E4CV'
+
+        angle_deg = 20 # arbitrary, enough vertical space to move plot around
+        #TODO eventually, this range of motion should match instrument specs
+        self.zmax = self.detR*np.tan(np.deg2rad(angle_deg))
+        self.zmin = -self.zmax
+
+        #UB = self.sample.UB_get()
+
+        samp = self.sample.copy()
+
+        #self.visfulllst = intensities2detint_e6c(self.cif_path, self.hkl_path, self.wavelength, samp, self.min_intensity, self.detR, geom, self.zmin, self.zmax, self.detShape) #TODO cyl_center, ray_origin both 0's, gamma/delta axis hardcoded
+       #TODO incorrect, x positions depend on the center of rotation values 
+        if geom=='E4CV':
+            self.visfulllst = intensities2detint_e4c(self.cif_path, self.hkl_path, self.wavelength, samp, self.min_intensity, self.detR, geom, self.detShape) 
+        elif geom=='E6C':
+            self.visfulllst = intensities2detint_e6c(self.cif_path, self.hkl_path, self.wavelength, samp, self.min_intensity, self.detR, geom, self.detShape) 
+
+    def compute_heatmap(self):
+        geom='E4CV'
+        gauss_sig = 2
+        mult = 5
+
+        det_angle_deg = 7.5
+        det_zmax = self.detR*np.tan(np.deg2rad(det_angle_deg))
+        det_zmin = -det_zmax
+        det_height = det_zmax - det_zmin
+
+        y_range = 2*self.zmax
+        nx, ny = int(mult*360), int(mult*y_range)
+        theta_grid = np.linspace(0, 360, nx, endpoint=False)
+        z_grid = np.linspace(self.zmin, self.zmax, ny)
+        empty_heatmap = np.zeros((ny,nx))
+        heatmap = np.zeros((ny,nx))
+        
+        if self.visfulllst != []:
+            data = np.array(self.visfulllst)
+            if data.ndim==2:
+                if geom=='E4CV':
+                    theta, intensity, h, k, l, omega, chi, phi, tth = ( \
+                        data[:, 0], data[:, 1], data[:, 2], \
+                        data[:, 3], data[:, 4], data[:, 5], \
+                        data[:, 6], data[:, 7], data[:, 8]) 
+                elif geom=='E6C':
+                    theta, z, intensity, h, k, l, mu, omega, chi, phi, gamma, delta = ( \
+                        data[:, 0], data[:, 1], data[:, 2], \
+                        data[:, 3], data[:, 4], data[:, 5], \
+                        data[:, 6], data[:, 7], data[:, 8], \
+                        data[:, 9], data[:, 10], data[:, 11])
+                self.peaklist = []
+                if geom=='E4CV':
+                    for t,inten,o,hh,kk,ll,tth in zip(theta,intensity,omega,h,k,l,tth):
+                        zz = 0 #TODO temporary, only in-plane for E4CV, only 1 detector axis
+                        de = 0 #TODO temporary, only in-plane for E4CV, only 1 detector axis
+                        if (inten>self.min_intensity) and (self.det_pos_start <= self.det_pos_end):
+                            i = int((nx/2) + (nx*t/360))
+                            j = int(ny/2) # fix to in-plane
+                            if 0 <= j < ny:
+                                if heatmap[j,i] == 0: #don't count duplicate intensities 
+                                    heatmap[j,i] += inten #TODO which intensity goes here if multiple?
+                                for item in (hh,kk,ll,t,zz,inten,o,tth,de):
+                                    self.peaklist.append(float(item))
+                elif geom=='E6C':
+                    for t,zz,inten,o,hh,kk,ll,ga,de in zip(theta,z,intensity,omega,h,k,l,gamma,delta):
+                        if (inten>self.min_intensity) and (self.det_pos_start <= o <= self.det_pos_end):
+                            i = int((nx/2) + (nx*t/360))
+                            j = np.searchsorted(z_grid, zz)
+                            if 0 <= j < ny:
+                                if heatmap[j,i] == 0:
+                                    heatmap[j,i] += inten
+                                for item in (hh,kk,ll,t,zz,inten,o,ga,de):
+                                    self.peaklist.append(float(item))
+                global_max = np.max(intensity)  # from entire dataset before filtering
+
+                # slice heatmap
+                z_start = det_zmin - self.y_offset
+                z_end = z_start + (det_zmax - det_zmin)
+                j_start = int(ny*z_start / y_range) + int(ny/2)
+                j_end = j_start + int(ny*det_height / y_range)
+                i_start=int((nx/2)+(self.tth_start*nx/360)) # tth = 5-125degrees 
+                i_end = int(((nx/2)+(self.tth_start*nx/360))+nx*self.detWidth/360) #tth=5,125
+
+                heatmap_sliced = heatmap[j_start:j_end, i_start:i_end]
+                blurred_window = gaussian_filter(heatmap_sliced, sigma=gauss_sig)
+                if self.flip==1:
+                    blurred_window = blurred_window[:, ::-1]
+                heatmap_shape = np.shape(heatmap)
+                heatmap_sliced_shape = np.shape(heatmap_sliced)
+                heatmap_blurred_sliced_shape = np.shape(blurred_window)
+                #print(f'shape of original heatmap {heatmap_shape}')
+                #print(f'shape of sliced heatmap {heatmap_sliced_shape}')
+                #print(f'shape of blurred sliced heatmap {heatmap_blurred_sliced_shape}')
+                flat = blurred_window.flatten()
+                self.det2dvis = flat.astype(float).tolist()
+        else:
+            # slice heatmap
+            z_start = det_zmin + self.y_offset
+            z_end = z_start + (det_zmax - det_zmin)
+            j_start = int(ny*z_start / y_range) + int(ny/2)
+            j_end = j_start + int(ny*det_height / y_range)
+            i_start=0 # tth = -180,-60
+            i_end = int(nx*self.detWidth/360) #tth=-180,-60
+
+            print("NO DATA") #TODO add to error box
+            empty_heatmap = empty_heatmap[j_start:j_end, i_start:i_end]
+            flat = empty_heatmap.flatten()
+            self.det2dvis = flat.astype(float).tolist()
+            return
+
+    def trajectory(self):
+        hkl1 = [self.traj_h_1, self.traj_k_1, self.traj_l_1]
+        hkl2 = [self.traj_h_2, self.traj_k_2, self.traj_l_2]
+        n = int(self.traj_step_size)
+
+        h = np.linspace(hkl1[0], hkl2[0], n + 1)
+        k = np.linspace(hkl1[1], hkl2[1], n + 1)
+        l = np.linspace(hkl1[2], hkl2[2], n + 1)
+   
+        trajectories = []
+        for hh, kk, ll in zip(h, k, l):
+            #print(f'{hh}, {kk}, {ll}')
+            try:
+                solutions = self.engine_hkl.pseudo_axis_values_set([hh, kk, ll], Hkl.UnitEnum.USER)
+                first_solution = solutions.items()[0]
+                #for i, item in enumerate(solutions.items()):
+                #    read = item.geometry_get().axis_values_get(Hkl.UnitEnum.USER)
+                #    if i==0:  #TODO instead of this, select closest next position, first position at \vec{0}
+                #        trajectories.append(read)
+                #print(f'\n')
+                #print(f'{hh}, {kk}, {ll}')
+                for i, item in enumerate(solutions.items()):
+                    try:
+                        trajectories[i]
+                    except IndexError:
+                        trajectories.append([])
+                    values = item.geometry_get().axis_values_get(Hkl.UnitEnum.USER)
+                    #print(values)
+                    trajectories[i].append(values)
+                    #trajectories.append(values)
+                self.engines.select_solution(first_solution) # saving the current diffractometer position to list, then setting to next
+            except GLib.GError as err:
+                pass 
+        cols = self.engine_hkl.axis_names_get(Hkl.EngineAxisNamesGet.READ)
+        format_plot_save_txt(trajectories, cols, hkl1, hkl2)        
 
     def get_info(self):
         lines = []

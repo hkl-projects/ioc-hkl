@@ -1,3 +1,5 @@
 matplotlib
 numpy
-#pyepics
+pandas
+scipy
+tqdm

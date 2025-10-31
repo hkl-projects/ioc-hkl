@@ -79,6 +79,21 @@
     </rules>
   </widget>
   <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_11</name>
+    <file>../axis/TwoCpseudoAxes.bob</file>
+    <width>1170</width>
+    <height>355</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visible" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==5">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="embedded" version="2.0.0">
     <name>Embedded Display</name>
     <file>forward_input.bob</file>
     <x>300</x>

@@ -200,7 +200,7 @@
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_9</name>
-    <text>Current UB Matrix</text>
+    <text>current UB Matrix</text>
     <x>93</x>
     <y>500</y>
     <width>140</width>
@@ -462,238 +462,8 @@
     </border_color>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>Label_11</name>
-    <text>Input UB Matrix</text>
-    <x>101</x>
-    <y>361</y>
-    <width>124</width>
-  </widget>
-  <widget type="arc" version="2.0.0">
-    <name>Arc_1</name>
-    <x>138</x>
-    <y>441</y>
-    <width>1</width>
-    <height>1</height>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Input_26</name>
-    <pv_name>$(Sys)UBa11_input</pv_name>
-    <x>23</x>
-    <y>381</y>
-    <width>78</width>
-    <height>22</height>
-    <background_color>
-      <color red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <precision>4</precision>
-    <horizontal_alignment>1</horizontal_alignment>
-    <actions>
-    </actions>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Input_27</name>
-    <pv_name>$(Sys)UBa12_input</pv_name>
-    <x>113</x>
-    <y>381</y>
-    <width>78</width>
-    <height>22</height>
-    <background_color>
-      <color red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <precision>4</precision>
-    <horizontal_alignment>1</horizontal_alignment>
-    <actions>
-    </actions>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Input_29</name>
-    <pv_name>$(Sys)UBa13_input</pv_name>
-    <x>203</x>
-    <y>381</y>
-    <width>78</width>
-    <height>22</height>
-    <background_color>
-      <color red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <precision>4</precision>
-    <horizontal_alignment>1</horizontal_alignment>
-    <actions>
-    </actions>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Input_30</name>
-    <pv_name>$(Sys)UBa21_input</pv_name>
-    <x>23</x>
-    <y>403</y>
-    <width>78</width>
-    <height>22</height>
-    <background_color>
-      <color red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <precision>4</precision>
-    <horizontal_alignment>1</horizontal_alignment>
-    <actions>
-    </actions>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Input_32</name>
-    <pv_name>$(Sys)UBa22_input</pv_name>
-    <x>113</x>
-    <y>403</y>
-    <width>78</width>
-    <height>22</height>
-    <background_color>
-      <color red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <precision>4</precision>
-    <horizontal_alignment>1</horizontal_alignment>
-    <actions>
-    </actions>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Input_33</name>
-    <pv_name>$(Sys)UBa23_input</pv_name>
-    <x>203</x>
-    <y>403</y>
-    <width>78</width>
-    <height>22</height>
-    <background_color>
-      <color red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <precision>4</precision>
-    <horizontal_alignment>1</horizontal_alignment>
-    <actions>
-    </actions>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Input_34</name>
-    <pv_name>$(Sys)UBa31_input</pv_name>
-    <x>23</x>
-    <y>425</y>
-    <width>78</width>
-    <height>22</height>
-    <background_color>
-      <color red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <precision>4</precision>
-    <horizontal_alignment>1</horizontal_alignment>
-    <actions>
-    </actions>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Input_35</name>
-    <pv_name>$(Sys)UBa32_input</pv_name>
-    <x>113</x>
-    <y>425</y>
-    <width>78</width>
-    <height>22</height>
-    <background_color>
-      <color red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <precision>4</precision>
-    <horizontal_alignment>1</horizontal_alignment>
-    <actions>
-    </actions>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="textentry" version="3.0.0">
-    <name>Text Input_36</name>
-    <pv_name>$(Sys)UBa33_input</pv_name>
-    <x>203</x>
-    <y>425</y>
-    <width>78</width>
-    <height>22</height>
-    <background_color>
-      <color red="255" green="255" blue="255">
-      </color>
-    </background_color>
-    <format>1</format>
-    <precision>4</precision>
-    <horizontal_alignment>1</horizontal_alignment>
-    <actions>
-    </actions>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-    <border_color>
-      <color red="0" green="128" blue="255">
-      </color>
-    </border_color>
-  </widget>
-  <widget type="action_button" version="3.0.0">
-    <name>Action Button_6</name>
-    <actions>
-      <action type="write_pv">
-        <description>WritePV</description>
-        <pv_name>$(Sys)set_input_UB</pv_name>
-        <value>1</value>
-      </action>
-    </actions>
-    <pv_name>$(Sys)set_input_UB</pv_name>
-    <text>set input UB matrix</text>
-    <x>58</x>
-    <y>459</y>
-    <width>180</width>
-    <height>26</height>
-    <tooltip>$(actions)</tooltip>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-  </widget>
-  <widget type="label" version="2.0.0">
     <name>Label_12</name>
-    <text>Error status</text>
+    <text>error status</text>
     <x>395</x>
     <y>342</y>
     <width>90</width>
@@ -745,7 +515,7 @@
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_13</name>
-    <text>Neutron energy to wavelength </text>
+    <text>neutron energy to wavelength </text>
     <x>299</x>
     <y>20</y>
     <width>206</width>
@@ -896,5 +666,110 @@
     <x>176</x>
     <y>77</y>
     <width>97</width>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_34</name>
+    <pv_name>$(Sys)Uz</pv_name>
+    <x>121</x>
+    <y>416</y>
+    <width>78</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_35</name>
+    <pv_name>$(Sys)Uy</pv_name>
+    <x>121</x>
+    <y>394</y>
+    <width>78</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_36</name>
+    <pv_name>$(Sys)Ux</pv_name>
+    <x>121</x>
+    <y>372</y>
+    <width>78</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_11</name>
+    <text>Ux</text>
+    <x>101</x>
+    <y>372</y>
+    <width>20</width>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_9</name>
+    <actions>
+      <action type="write_pv">
+        <description>WritePV</description>
+        <pv_name>$(Sys)rotate_sample</pv_name>
+        <value>1</value>
+      </action>
+    </actions>
+    <pv_name>$(Sys)rotate_sample</pv_name>
+    <text>rotate sample</text>
+    <x>89</x>
+    <y>447</y>
+    <width>118</width>
+    <height>20</height>
+    <tooltip>$(actions)</tooltip>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_17</name>
+    <text>Uy</text>
+    <x>101</x>
+    <y>395</y>
+    <width>20</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_24</name>
+    <text>Uz</text>
+    <x>101</x>
+    <y>418</y>
+    <width>20</width>
   </widget>
 </display>

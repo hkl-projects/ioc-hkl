@@ -1,16 +1,19 @@
 *.swp
 __pycache__
 
+# history
+iocBoot/iocpydev/.iocsh_history
+
 # venv dependencies
 iochkl
 
+# cif files
+crystal/EntryWithCollCode55782.cif
+crystal/EntryWithCollCode55782.hkl
+
 # temporary
-python/plot_crystal.py
-python/plot_crystal_widget.py
-python/plot_crystal_widget_simple.py
-python/twocircle.py
-python/TAS.py
 hklApp/op/bob/axis/todelete
+tmp/
 
 # Files generated during build
 configure/CONFIG.PyDevice
@@ -23,3 +26,6 @@ db/
 dbd/
 include/
 *.pyc
+# pixi environments
+.pixi/*
+!.pixi/config.toml

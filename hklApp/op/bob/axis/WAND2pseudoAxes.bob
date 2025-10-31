@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <display version="2.0.0">
-  <name>TwoC PseudoInput</name>
+  <name>E4CV PseudoInput</name>
   <macros>
     <Ax1Name>pseudoaxes_h</Ax1Name>
     <Ax2Name>pseudoaxes_k</Ax2Name>
@@ -13,7 +13,7 @@
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
-    <text>TwoC PseudoAxes Input</text>
+    <text>E4CV PseudoAxes Input</text>
     <x use_class="true">0</x>
     <y use_class="true">0</y>
     <width>460</width>
@@ -333,7 +333,7 @@
   </widget>
   <widget type="combo" version="2.0.0">
     <name>Combo Box</name>
-    <pv_name>$(Sys)mode_2c</pv_name>
+    <pv_name>$(Sys)mode_4c</pv_name>
     <x>33</x>
     <y>259</y>
     <width>289</width>

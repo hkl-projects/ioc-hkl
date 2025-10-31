@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>HKL_trajectory</name>
+  <width>1000</width>
+  <height>810</height>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_3</name>
+    <file>../windows/trajectory.bob</file>
+    <width>980</width>
+    <height>800</height>
+  </widget>
+</display>

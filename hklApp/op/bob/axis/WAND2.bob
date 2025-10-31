@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-07-29 11:34:53 by l3b-->
 <display version="2.0.0">
-  <name>TwoC</name>
+  <name>E4CV</name>
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
-    <text>TwoC</text>
+    <text>E4CV</text>
     <x use_class="true">0</x>
     <y use_class="true">0</y>
     <width>60</width>
@@ -21,10 +22,16 @@
   </widget>
   <widget type="embedded" version="2.0.0">
     <name>Embedded Display</name>
-    <file>_2axes.bob</file>
+    <macros>
+      <Ax1Name>omega_e4c</Ax1Name>
+      <Ax2Name>chi_e4c</Ax2Name>
+      <Ax3Name>phi_e4c</Ax3Name>
+      <Ax4Name>tth_e4c</Ax4Name>
+    </macros>
+    <file>_4axes.bob</file>
     <y>25</y>
     <width>780</width>
-    <height>50</height>
+    <height>100</height>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_1</name>

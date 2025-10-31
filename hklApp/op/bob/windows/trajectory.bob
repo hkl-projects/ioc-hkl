@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Trajectory</name>
+  <width>870</width>
+  <height>800</height>
+  <widget type="label" version="2.0.0">
+    <name>Label_11</name>
+    <text>step size</text>
+    <x>230</x>
+    <y>170</y>
+    <width>80</width>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_30</name>
+    <pv_name>$(Sys)traj_h_1</pv_name>
+    <x>220</x>
+    <y>92</y>
+    <width>74</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>1</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_32</name>
+    <pv_name>$(Sys)traj_k_1</pv_name>
+    <x>310</x>
+    <y>92</y>
+    <width>74</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>1</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_18</name>
+    <text>start</text>
+    <x>170</x>
+    <y>92</y>
+    <width>32</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_19</name>
+    <text>end</text>
+    <x>170</x>
+    <y>130</y>
+    <width>32</width>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_33</name>
+    <pv_name>$(Sys)traj_l_1</pv_name>
+    <x>400</x>
+    <y>92</y>
+    <width>74</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>1</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_34</name>
+    <pv_name>$(Sys)traj_h_2</pv_name>
+    <x>220</x>
+    <y>130</y>
+    <width>74</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>1</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_35</name>
+    <pv_name>$(Sys)traj_k_2</pv_name>
+    <x>310</x>
+    <y>130</y>
+    <width>74</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>1</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_36</name>
+    <pv_name>$(Sys)traj_l_2</pv_name>
+    <x>400</x>
+    <y>130</y>
+    <width>74</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>1</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_20</name>
+    <text>h</text>
+    <x>240</x>
+    <y>70</y>
+    <width>32</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_21</name>
+    <text>k</text>
+    <x>330</x>
+    <y>70</y>
+    <width>32</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_22</name>
+    <text>l</text>
+    <x>420</x>
+    <y>70</y>
+    <width>32</width>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_37</name>
+    <pv_name>$(Sys)traj_step_size</pv_name>
+    <x>320</x>
+    <y>170</y>
+    <width>74</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>1</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_9</name>
+    <actions>
+      <action type="write_pv">
+        <description>WritePV</description>
+        <pv_name>$(Sys)compute_trajectory</pv_name>
+        <value>1</value>
+      </action>
+    </actions>
+    <pv_name>$(Sys)compute_trajectory</pv_name>
+    <text>compute trajectory</text>
+    <x>530</x>
+    <y>114</y>
+    <width>150</width>
+    <height>20</height>
+    <tooltip>$(actions)</tooltip>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+</display>

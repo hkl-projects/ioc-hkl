@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Visual</name>
+  <width>870</width>
+  <height>800</height>
+  <widget type="image" version="2.0.0">
+    <name>Image</name>
+    <pv_name>abtest:ioc-hkl:detimage</pv_name>
+    <x>16</x>
+    <y>10</y>
+    <width>800</width>
+    <x_axis>
+      <visible>true</visible>
+      <title>X</title>
+      <minimum>0.0</minimum>
+      <maximum>600.0</maximum>
+      <title_font>
+        <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+        </font>
+      </title_font>
+      <scale_font>
+        <font name="Default" family="Liberation Sans" style="REGULAR" size="14.0">
+        </font>
+      </scale_font>
+    </x_axis>
+    <y_axis>
+      <visible>true</visible>
+      <title>Y</title>
+      <minimum>0.0</minimum>
+      <maximum>91.0</maximum>
+      <title_font>
+        <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+        </font>
+      </title_font>
+      <scale_font>
+        <font name="Default" family="Liberation Sans" style="REGULAR" size="14.0">
+        </font>
+      </scale_font>
+    </y_axis>
+    <data_width>600</data_width>
+    <data_height>91</data_height>
+  </widget>
+  <widget type="scaledslider" version="2.0.0">
+    <name>Scaled Slider_1</name>
+    <pv_name>$(Sys)y_offset</pv_name>
+    <x>281</x>
+    <y>378</y>
+    <width>430</width>
+    <height>20</height>
+    <level_hihi>15.0</level_hihi>
+    <level_high>12.0</level_high>
+    <level_low>-12.0</level_low>
+    <level_lolo>-15.0</level_lolo>
+    <show_hihi>false</show_hihi>
+    <show_high>false</show_high>
+    <show_low>false</show_low>
+    <show_lolo>false</show_lolo>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <minimum>-15.0</minimum>
+    <maximum>15.0</maximum>
+    <limits_from_pv>false</limits_from_pv>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>setup</name>
+    <actions>
+      <action type="write_pv">
+        <description>Write PV</description>
+        <pv_name>$(Sys)setup_vis</pv_name>
+        <value>1</value>
+      </action>
+    </actions>
+    <pv_name>$(Sys)setup_vis</pv_name>
+    <text>start</text>
+    <x>30</x>
+    <y>320</y>
+    <width>86</width>
+    <height>22</height>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_11</name>
+    <text>sample rotation (omega)</text>
+    <x>159</x>
+    <y>334</y>
+    <width>166</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_12</name>
+    <text>detector elevation</text>
+    <x>144</x>
+    <y>378</y>
+    <width>120</width>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>Combo Box</name>
+    <pv_name>$(Sys)detShape</pv_name>
+    <x>150</x>
+    <y>473</y>
+    <width>120</width>
+    <height>20</height>
+    <items>
+      <item>curved</item>
+      <item>flat</item>
+    </items>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_13</name>
+    <text>detector settings</text>
+    <x>380</x>
+    <y>432</y>
+    <width>120</width>
+    <font>
+      <font name="Default Bold" family="Liberation Sans" style="BOLD" size="14.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_14</name>
+    <text>detector shape</text>
+    <x>162</x>
+    <y>453</y>
+    <width>108</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_15</name>
+    <text>detector radius (cm)</text>
+    <x>298</x>
+    <y>453</y>
+    <width>128</width>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_26</name>
+    <pv_name>$(Sys)detR</pv_name>
+    <x>306</x>
+    <y>473</y>
+    <width>98</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <enabled>false</enabled>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_16</name>
+    <text>detector width (degrees)</text>
+    <x>447</x>
+    <y>453</y>
+    <width>160</width>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_27</name>
+    <pv_name>$(Sys)detWidth</pv_name>
+    <x>465</x>
+    <y>473</y>
+    <width>98</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <enabled>false</enabled>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_17</name>
+    <text>min integrated intensity</text>
+    <x>638</x>
+    <y>441</y>
+    <width>111</width>
+    <height>36</height>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_28</name>
+    <pv_name>$(Sys)min_intensity</pv_name>
+    <x>637</x>
+    <y>477</y>
+    <width>98</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>4</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_30</name>
+    <pv_name>$(Sys)det_pos_start</pv_name>
+    <x>336</x>
+    <y>342</y>
+    <width>74</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>1</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_31</name>
+    <pv_name>$(Sys)y_offset</pv_name>
+    <x>724</x>
+    <y>378</y>
+    <width>56</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>1</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_32</name>
+    <pv_name>$(Sys)det_pos_end</pv_name>
+    <x>428</x>
+    <y>342</y>
+    <width>74</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>1</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_18</name>
+    <text>start</text>
+    <x>356</x>
+    <y>320</y>
+    <width>32</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_19</name>
+    <text>end</text>
+    <x>450</x>
+    <y>321</y>
+    <width>32</width>
+  </widget>
+  <widget type="table" version="2.0.0">
+    <name>Table</name>
+    <pv_name>$(Sys)peaklist</pv_name>
+    <x>16</x>
+    <y>520</y>
+    <width>800</width>
+    <height>220</height>
+    <columns>
+      <column>
+        <name>h</name>
+        <width>50</width>
+        <editable>false</editable>
+      </column>
+      <column>
+        <name>k</name>
+        <width>50</width>
+        <editable>false</editable>
+      </column>
+      <column>
+        <name>l</name>
+        <width>50</width>
+        <editable>false</editable>
+      </column>
+      <column>
+        <name>theta (x)</name>
+        <width>70</width>
+        <editable>false</editable>
+      </column>
+      <column>
+        <name>z (y)</name>
+        <width>70</width>
+        <editable>false</editable>
+      </column>
+      <column>
+        <name>intensity</name>
+        <width>100</width>
+        <editable>false</editable>
+      </column>
+      <column>
+        <name>omega</name>
+        <width>70</width>
+        <editable>false</editable>
+      </column>
+      <column>
+        <name>tth</name>
+        <width>100</width>
+        <editable>true</editable>
+      </column>
+      <column>
+        <name>delta</name>
+        <width>100</width>
+        <editable>true</editable>
+      </column>
+    </columns>
+    <actions>
+    </actions>
+    <scripts>
+      <script file="EmbeddedPy">
+        <text><![CDATA[from org.csstudio.display.builder.runtime.script import PVUtil, ScriptUtil
+import math
+
+data = []
+N_COLS = 9
+
+wf = list(PVUtil.getDoubleArray(pvs[0]))
+def fmt(x):
+    # NaN-safe -> empty string; else %.6g
+    try:
+        if x != x:           # NaN check (NaN != NaN)
+            return ""
+    except:
+        pass
+    return "%.6g" % x
+
+rows = [wf[i:i+N_COLS] for i in range(0, len(wf), N_COLS)]
+data = [[fmt(v) for v in row] for row in rows]
+
+widget.setValue(data)
+]]></text>
+        <pv_name>$(Sys)peaklist</pv_name>
+      </script>
+    </scripts>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <editable>false</editable>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_1</name>
+    <pv_name>$(Sys)peaklist</pv_name>
+    <y>830</y>
+    <width>819</width>
+    <height>450</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>6</format>
+    <wrap_words>true</wrap_words>
+    <multi_line>true</multi_line>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Input_33</name>
+    <pv_name>$(Sys)tth_start</pv_name>
+    <x>724</x>
+    <y>321</y>
+    <width>74</width>
+    <height>22</height>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <precision>1</precision>
+    <horizontal_alignment>1</horizontal_alignment>
+    <actions>
+    </actions>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color red="0" green="128" blue="255">
+      </color>
+    </border_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_21</name>
+    <text>detector position (tth start)</text>
+    <x>550</x>
+    <y>321</y>
+    <width>166</width>
+  </widget>
+  <widget type="checkbox" version="2.0.0">
+    <name>Check Box</name>
+    <pv_name>$(Sys)flip</pv_name>
+    <label>flip image</label>
+    <x>16</x>
+    <y>420</y>
+  </widget>
+</display>

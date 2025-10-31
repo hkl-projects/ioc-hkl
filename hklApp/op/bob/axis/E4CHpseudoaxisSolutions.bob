@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2024-07-31 09:48:37 by l3b-->
 <display version="2.0.0">
   <name>E4CH_PseudoAxSol</name>
   <width>320</width>
@@ -35,7 +34,7 @@
       <Ax8Name>sol:pseudoaxes_emergence</Ax8Name>
       <Ax9Name>sol:pseudoaxes_azimuthE</Ax9Name>
     </macros>
-    <file>_multi_pseudoaxis_solutions_E4CV.bob</file>
+    <file>_multi_pseudoaxis_solutions_e4c.bob</file>
     <y>31</y>
     <width>320</width>
     <height>219</height>

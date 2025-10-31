@@ -1,0 +1,59 @@
+record(ao, "$(P)$(R)traj_h_1") {
+    field(PINI, "NO")
+    field(DESC, "trajectory start refl h")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.traj_h_1=VAL")
+    #field(FLNK, "$(P)$(R)run_vis")
+}
+
+record(ao, "$(P)$(R)traj_k_1") {
+    field(PINI, "NO")
+    field(DESC, "trajectory start refl k")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.traj_k_1=VAL")
+}
+
+record(ao, "$(P)$(R)traj_l_1") {
+    field(PINI, "NO")
+    field(DESC, "trajectory start refl l")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.traj_l_1=VAL")
+}
+
+record(ao, "$(P)$(R)traj_h_2") {
+    field(PINI, "NO")
+    field(DESC, "trajectory end refl h")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.traj_h_2=VAL")
+}
+
+record(ao, "$(P)$(R)traj_k_2") {
+    field(PINI, "NO")
+    field(DESC, "trajectory end refl k")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.traj_k_2=VAL")
+}
+
+record(ao, "$(P)$(R)traj_l_2") {
+    field(PINI, "NO")
+    field(DESC, "trajectory end refl l")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.traj_l_2=VAL")
+}
+
+
+record(ao, "$(P)$(R)traj_step_size") {
+    field(PINI, "NO")
+    field(DESC, "trajectory step size")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(OUT, "@hkl_calc.traj_step_size=VAL")
+}
+
+

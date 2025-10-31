@@ -258,4 +258,45 @@ record(ai, "$(P)$(R)refl_refine_input_list_delta_k6c$(C)") {
     field(INP, "@hkl_calc.refl_refine_input_list_k6c[$(C)][6]")
     field(SCAN, "1 second")
 }
+
+# 2-circle
+record(ai, "$(P)$(R)refl_refine_input_list_h_2c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_2c[$(C)][0]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_k_2c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_2c[$(C)][1]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_l_2c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_2c[$(C)][2]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_omega_2c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_2c[$(C)][3]")
+    field(SCAN, "1 second")
+}
+
+record(ai, "$(P)$(R)refl_refine_input_list_tth_2c$(C)") {
+    field(DESC, "reflection $(C)")
+    field(PINI, "YES")
+    field(DTYP, "pydev")
+    field(INP, "@hkl_calc.refl_refine_input_list_2c[$(C)][4]")
+    field(SCAN, "1 second")
+}
                                                                                                                                                   

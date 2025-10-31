@@ -112,4 +112,23 @@
       </rule>
     </rules>
   </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_6</name>
+    <macros>
+      <Ax1Name>omega_2c</Ax1Name>
+      <Ax2Name>tth_2c</Ax2Name>
+    </macros>
+    <file>../axis/_multi_axis_solutions_twoc.bob</file>
+    <width>1200</width>
+    <height>235</height>
+    <visible>false</visible>
+    <rules>
+      <rule name="Visibility" prop_id="visible" out_exp="false">
+        <exp bool_exp="pv0==5">
+          <value>true</value>
+        </exp>
+        <pv_name>$(Sys)geom</pv_name>
+      </rule>
+    </rules>
+  </widget>
 </display>

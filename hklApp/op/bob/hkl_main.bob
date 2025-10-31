@@ -17,7 +17,7 @@
         <group_name></group_name>
       </tab>
       <tab>
-        <name>Reflections</name>
+        <name>Alignment</name>
         <file>tabs/hkl_reflections.bob</file>
         <macros>
         </macros>
@@ -33,6 +33,20 @@
       <tab>
         <name>Backward</name>
         <file>tabs/hkl_backward.bob</file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>Visual</name>
+        <file>tabs/hkl_vis.bob</file>
+        <macros>
+        </macros>
+        <group_name></group_name>
+      </tab>
+      <tab>
+        <name>Trajectory</name>
+        <file>tabs/hkl_trajectory.bob</file>
         <macros>
         </macros>
         <group_name></group_name>
