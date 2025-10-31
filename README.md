@@ -45,6 +45,7 @@ Download pixi
 curl -fsSL https://pixi.sh/install.sh | bash
 exec $SHELL
 pixi --version
+```
 
 Set up ioc-hkl environment from pixi
 ```bash 
