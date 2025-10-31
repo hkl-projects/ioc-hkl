@@ -4,6 +4,7 @@
 * EPICS - https://epics.anl.gov/
 * PyDevice - https://github.com/klemenv/PyDevice
 * hkl - https://repo.or.cz/hkl.git
+* cif2hkl https://gitlab.com/soleil-data-treatment/soleil-software-projects/cif2hkl
 
 <!--
 ## Basic PyDevice directory structure for EPICS IOCs
@@ -92,6 +93,10 @@ pip install numpy==1.26.4 --no-cache-dir --force-reinstall
 ```
 #TODO swap pip numpy version from force-install to version sepcification in requirements.txt
 
+## cif2hkl installation
+```bash
+sudo apt install cif2hkl
+```
 
 ## Install and run IOC
 ```bash
