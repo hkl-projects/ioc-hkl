@@ -2,7 +2,9 @@
 
 top=$(pwd)
 
-# ---- CHECK 1: cif2hkl installed in /usr/bin ----
+echo "Be sure to have the EPICS base installed, and point to its path in configure/RELEASE"
+
+# check if cif2hkl installed in /usr/bin
 if [[ ! -x /usr/bin/cif2hkl ]]; then
     echo ""
     echo " cif2hkl is not installed at /usr/bin/cif2hkl"
