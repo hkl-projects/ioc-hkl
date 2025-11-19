@@ -202,6 +202,13 @@ pixi init
 pixi add python=3.12 numpy=2.3.4 pandas scipy matplotlib tqdm pygobject hkl
 ```
 
+```bash
+rm pixi.toml
+rm pixi.lock
+pixi init
+pixi add python=3.12 numpy=2.3.4 pandas scipy matplotlib tqdm pygobject hkl
+```
+
 ### gi within a python environment (Ubuntu 24.04, venv environment)
 
 can test env with
