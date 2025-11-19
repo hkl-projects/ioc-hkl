@@ -32,6 +32,13 @@ cd base
 make
 ```
 
+## Pixi installation
+```bash
+curl -fsSL https://pixi.sh/install.sh | bash
+exec $SHELL
+pixi --version
+```
+
 ## IOC download
 Place this repo in /epics/iocs/
 ```bash
@@ -41,19 +48,10 @@ cd ioc-hkl
 ```
 
 ## hkl installation (from Python environment - recommended)
-Download pixi
-```bash
-curl -fsSL https://pixi.sh/install.sh | bash
-exec $SHELL
-pixi --version
-```
+## IOC & pixi environment install
+./run_HKL.sh
 
-Set up ioc-hkl environment from pixi
-```bash 
-cd /epics/iocs/ioc-hkl
-pixi init
-pixi add python=3.12 numpy=2.3.4 pandas scipy matplotlib tqdm pygobject hkl
-```
+
 
 ## hkl installation (from source - if creating new diffractometer geometry)
 hkl - https://repo.or.cz/hkl.git
@@ -81,17 +79,6 @@ If running hkl outside of this IOC, you will need to set the following environme
 export GI_TYPELIB_PATH=/usr/local/lib/girepository-1.0 
 export LD_LIBRARY_PATH=LD_LIBRARY_PATH:/usr/local/lib
 ```
-
-## Python (venv - If building hkl from source)
-Install the python venv environment (named iochkl) with access to system's site-packages via
-```
-cd /epics/iocs/ioc-hkl
-python3 -m venv --system-site-packages /epics/iocs/ioc-hkl/iochkl
-source iochkl/bin/activate
-pip install -r requirements.txt
-pip install numpy==1.26.4 --no-cache-dir --force-reinstall
-```
-#TODO swap pip numpy version from force-install to version sepcification in requirements.txt
 
 ## cif2hkl installation
 ```bash
