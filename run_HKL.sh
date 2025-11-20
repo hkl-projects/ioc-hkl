@@ -17,7 +17,8 @@ if [[ ! -x /usr/bin/cif2hkl ]]; then
     echo ""
     exit 1
 else
-echo "cif2hkl is installed, continuing..."
+    echo "cif2hkl is installed, continuing..."
+fi
 
 echo "Choose an option:"
 echo "1) pixi python environment (recommended)"
