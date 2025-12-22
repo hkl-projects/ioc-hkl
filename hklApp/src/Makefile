@@ -23,6 +23,13 @@ hklApp_DBD += pycalcRecord.dbd
 # Include dbd files from all support applications:
 #pydevioc_DBD += xxx.dbd
 
+## PVXS
+ifneq ($(strip $(PVXS)),)
+  hklApp_DBD  += pvxsIoc.dbd
+  hklApp_LIBS += pvxsIoc
+  hklApp_LIBS += pvxs
+endif
+
 # Add all the support libraries needed by this IOC
 hklApp_LIBS += pydev
 
