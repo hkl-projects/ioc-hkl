@@ -36,11 +36,15 @@ case $choice in
             exit 1
         fi
 
-echo "pixi is installed, continuing..."
+        echo "pixi is installed, continuing..."
     
         echo "Setting up pixi environment"
-        rm pixi.toml
-        rm pixi.lock
+        if [[ -f pixi.toml ]]; then
+            rm pixi.toml
+        fi
+        if [[ -f pixi.lock ]]; then
+            rm pixi.lock
+        fi
         pixi init
         pixi add python=3.12 numpy=2.3.4 pandas scipy matplotlib tqdm pygobject hkl
         rm configure/RELEASE.local
@@ -60,6 +64,23 @@ echo "pixi is installed, continuing..."
 esac
 
 echo "Done."
+
+
+echo "Choose an option:"
+echo "1) build with only channel access"
+echo "2) build with channel accecss and pvaccess (must have pvxs EPICS module)"
+echo -n "Enter choice [1/2]: "
+read choice
+
+case $choice in
+    1)
+        echo "Building with only channel access"
+        ;;
+    2)
+       echo "Building with pvaccess"
+       echo "PVXS=/epics/modules/pvxs" >> configure/RELEASE.local
+        ;;
+esac
 
 make clean
 make -j4
