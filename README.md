@@ -1,3 +1,8 @@
+
+## Overview
+
+This repository provides an EPICS Input/Output Controller (IOC) that performs real-time crystallographic HKL calculations for diffractometers and scattering instruments. It integrates the Python `hkl` library with EPICS via PyDevice, exposing HKL calculations and diffractometer geometry transformations as EPICS process variables. This allows control systems to convert between motor positions and reciprocal-space coordinates, configure diffractometer geometries, and drive scans directly in HKL space.
+
 # Installation instructions
 
 ## Dependencies
