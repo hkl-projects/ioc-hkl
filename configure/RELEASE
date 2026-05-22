@@ -35,6 +35,9 @@ EPICS_BASE = $(MODULES)/base/main
 
 TEMPLATE_TOP = $(EPICS_BASE)/templates/makeBaseApp/top
 
+# Pixi Python for PyDevice / hkl bindings (recommended)
+PYTHON_CONFIG = $(TOP)/.pixi/envs/default/bin/python3.12-config
+
 # Set RULES here if you want to use build rules from somewhere
 # other than EPICS_BASE:
 #RULES = $(MODULES)/build-rules
