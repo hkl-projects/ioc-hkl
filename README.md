@@ -3,103 +3,58 @@
 
 This repository provides an EPICS Input/Output Controller (IOC) that performs real-time crystallographic HKL calculations for diffractometers and scattering instruments. It integrates the Python `hkl` library with EPICS via PyDevice, exposing HKL calculations and diffractometer geometry transformations as EPICS process variables. This allows control systems to convert between motor positions and reciprocal-space coordinates, configure diffractometer geometries, and drive scans directly in HKL space.
 
-# Installation instructions
+## Installation
 
-## Dependencies
-* EPICS - https://epics.anl.gov/
-* PyDevice - https://github.com/klemenv/PyDevice
-* hkl - https://repo.or.cz/hkl.git
-* cif2hkl https://gitlab.com/soleil-data-treatment/soleil-software-projects/cif2hkl
+**Platform guides** (recommended): [documentation/install/README.md](documentation/install/README.md)
 
-<!--
-## Basic PyDevice directory structure for EPICS IOCs
-/epics \
-| \
-├── base \
-├── GUI \
-├── iocs \
-│   └── ioc-hkl \
-├── support \
-│   ├── hkl \
-│   └── PyDevice \
-└── util \
- \
-/epics/iocs/ioc-hkl
--->
+| OS | Guide |
+|----|--------|
+| Ubuntu 22.04 | [documentation/install/ubuntu-22.04.md](documentation/install/ubuntu-22.04.md) |
+| Ubuntu 24.04 | [documentation/install/ubuntu-24.04.md](documentation/install/ubuntu-24.04.md) |
+| RHEL 9 | [documentation/install/rhel-9.md](documentation/install/rhel-9.md) (draft) |
 
-## EPICS installation
-Download the EPICS base from https://epics.anl.gov/download/base/index.php and place tarball into /epics, then unpack and build. 
+**Quick start:** [documentation/ioc_quickstart.md](documentation/ioc_quickstart.md)
+
+### Dependencies
+
+* EPICS — https://epics.anl.gov/
+* PyDevice — bundled in this repo
+* Python 3.12 + `hkl` — via Pixi (`pixi.toml` in repo)
+* cif2hkl — https://gitlab.com/soleil-data-treatment/soleil-software-projects/cif2hkl
+
+### Minimal steps
+
+1. Install EPICS base; set `EPICS_BASE` in `configure/RELEASE`.
+2. Install Pixi: https://pixi.sh/latest/installation/
+3. Clone into `/epics/iocs/`, install `cif2hkl`, then:
 
 ```bash
-tar -xvzf base-7.0.8.tar.gz
-mv base-7.0.8 base
-cd base
-make
-```
-
-## Pixi installation
-```bash
-curl -fsSL https://pixi.sh/install.sh | bash
-exec $SHELL
-pixi --version
-```
-
-## IOC download
-Place this repo in /epics/iocs/
-```bash
-cd /epics/iocs
-git clone https://github.com/hkl-projects/ioc-hkl.git
-cd ioc-hkl
-```
-
-## hkl installation (from Python environment - recommended)
-## IOC & pixi environment install
+cd /epics/iocs/ioc-hkl
+pixi install
 ./run_HKL.sh
+```
 
+4. Run: `cd iocBoot/iocpydev && ./st_pixi.cmd`
 
+On **Ubuntu 22.04**, system `python3` is 3.10; the IOC uses **Pixi Python 3.12** — see the 22.04 guide if `.pixi/envs/default/bin/python` is missing.
 
-## hkl installation (from source - if creating new diffractometer geometry)
-hkl - https://repo.or.cz/hkl.git
+### hkl from source (optional)
+
+Only needed for new diffractometer geometries — https://repo.or.cz/hkl.git
 
 ```bash
 cd /epics/support
 git clone https://repo.or.cz/hkl.git
-git checkout tags/v5.0.0.3357 # optional
 cd hkl
-```
-
-```bash
 sudo apt install gtk-doc-tools autoconf libgtkmm-3.0-dev libyaml-dev gettext autopoint gobject-introspection libtool autoconf-archive debhelper gnuplot-nox gobject-introspection gtk-doc-tools libbullet-dev libg3d-dev libg3d-plugins libgirepository1.0-dev libgl-dev libgsl-dev libgtk-3-dev libgtkglext1-dev libhdf5-dev python3-gi python3-pip elpa-htmlize dvipng libhdf5-dev povray asymptote libhdf5-dev libcglm-dev libinih-dev
-```
-
-```bash
 ./autogen
 ./configure --enable-introspection --disable-binoculars
-make
-sudo make install
+make && sudo make install
 ```
 
-If running hkl outside of this IOC, you will need to set the following environmental variables in your shell/bashrc:
-```bash
-export GI_TYPELIB_PATH=/usr/local/lib/girepository-1.0 
-export LD_LIBRARY_PATH=LD_LIBRARY_PATH:/usr/local/lib
-```
+Use `./run_HKL.sh` option **2** for system Python when building this way.
 
-## cif2hkl installation
-```bash
-sudo apt install cif2hkl
-```
+### Test
 
-## Install and run IOC
-```bash
-cd /epics/iocs/ioc-hkl
-make -j4
-cd /epics/iocs/ioc-hkl/iocBoot/iocpydev
-./st.cmd
-```
-
-## To test communication and PV update
-in epics shell: pydev("hklApp.test()") \
-in epics shell: pydev("hklApp.get\_pseudoaxes()") \
-in bash: caget TAS:hb3:in:pseudoaxesh 
-
+In EPICS shell: `pydev("hklApp.test()")`  
+In bash: `caget TAS:hb3:in:pseudoaxesh`

@@ -1,4 +1,7 @@
-# Installation steps for EPICS, IOCs (hkl, motorSim) 
+# Installation steps for EPICS, IOCs (hkl, motorSim)
+
+> **Maintained platform guides:** [install/README.md](install/README.md) — Ubuntu 22.04, Ubuntu 24.04, RHEL 9 (draft). Use those for a fresh **ioc-hkl** install with Pixi. This file keeps extended lab notes (motorSim, Phoebus, venv/`gi` troubleshooting).
+
 ## Assumptions
 -Ubuntu
 
@@ -193,21 +196,17 @@ python3 -m venv iochkl && source iochkl/bin/activate && pip install -r requireme
 
 ### python environment (pixi)
 
+See [install/ubuntu-24.04.md](install/ubuntu-24.04.md) or [install/ubuntu-22.04.md](install/ubuntu-22.04.md). From the repo root:
+
 ```bash
 curl -fsSL https://pixi.sh/install.sh | bash
 exec $SHELL
-pixi --version
 cd /epics/iocs/ioc-hkl
-pixi init
-pixi add python=3.12 numpy=2.3.4 pandas scipy matplotlib tqdm pygobject hkl
+pixi install
+./run_HKL.sh
 ```
 
-```bash
-rm pixi.toml
-rm pixi.lock
-pixi init
-pixi add python=3.12 numpy=2.3.4 pandas scipy matplotlib tqdm pygobject hkl
-```
+Do not delete `pixi.toml` / `pixi.lock`; they are versioned for reproducible environments.
 
 ### gi within a python environment (Ubuntu 24.04, venv environment)
 

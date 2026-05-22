@@ -26,8 +26,6 @@ db/
 dbd/
 include/
 *.pyc
-# pixi environments
+# pixi environment (binaries); manifest and lock are committed
 .pixi/*
 !.pixi/config.toml
-pixi.lock
-pixi.toml
