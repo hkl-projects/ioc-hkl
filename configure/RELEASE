@@ -28,7 +28,7 @@
 MODULES = /home/controls/common
 
 # Optional: enable PVAccess in hklApp (see hklApp/src/Makefile)
-#PVXS = $(MODULES)/pvxs
+PVXS = $(MODULES)/pvxs/main
 
 # EPICS_BASE should appear last so earlier modules can override stuff:
 EPICS_BASE = $(MODULES)/base/main
