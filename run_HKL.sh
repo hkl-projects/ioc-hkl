@@ -4,7 +4,8 @@ set -euo pipefail
 top=$(pwd)
 RELEASE_LOCAL="${top}/configure/RELEASE.local"
 PIXI_PYTHON="${top}/.pixi/envs/default/bin/python"
-PIXI_PYCONFIG="${top}/.pixi/envs/default/bin/python3.12-config"
+PIXI_PYCONFIG_FS="${top}/.pixi/envs/default/bin/python3.12-config"
+PIXI_PYCONFIG_MAKE='$(TOP)/.pixi/envs/default/bin/python3.12-config'
 
 echo "Be sure to have the EPICS base installed, and point to its path in configure/RELEASE"
 echo "Platform guides: documentation/install/README.md"
@@ -60,13 +61,13 @@ setup_pixi_env() {
         exit 1
     fi
 
-    if [[ ! -x "${PIXI_PYCONFIG}" ]]; then
-        echo "Error: ${PIXI_PYCONFIG} not found."
+    if [[ ! -x "${PIXI_PYCONFIG_FS}" ]]; then
+        echo "Error: ${PIXI_PYCONFIG_FS} not found."
         exit 1
     fi
 
     echo "Using Pixi Python: $("${PIXI_PYTHON}" --version)"
-    set_python_config "${PIXI_PYCONFIG}"
+    set_python_config "${PIXI_PYCONFIG_MAKE}"
 }
 
 echo "Choose an option:"
@@ -111,7 +112,7 @@ case $choice in
         echo "Building with pvaccess"
         touch "${RELEASE_LOCAL}"
         if ! grep -q '^PVXS=' "${RELEASE_LOCAL}" 2>/dev/null; then
-            echo "PVXS=/epics/modules/pvxs" >> "${RELEASE_LOCAL}"
+            echo "PVXS=\$(MODULES)/pvxs" >> "${RELEASE_LOCAL}"
         fi
         ;;
     *)

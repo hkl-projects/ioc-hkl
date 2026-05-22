@@ -14,7 +14,7 @@
    pixi install
    ```
 
-4. **Install EPICS Base** and set its path in `configure/RELEASE` (absolute path to `EPICS_BASE`).
+4. **Install EPICS Base** — copy `configure/RELEASE.local.example` to `configure/RELEASE.local` and set `EPICS_BASE` (e.g. `/epics/epics-base`).
 
 5. **Install `cif2hkl`** — on Ubuntu: `sudo apt install cif2hkl`. Other platforms: [install/README.md](install/README.md).
 

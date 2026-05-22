@@ -9,7 +9,7 @@ sudo apt update
 sudo apt install -y build-essential git curl cif2hkl
 ```
 
-- **EPICS base** — e.g. `/epics/base`; set `EPICS_BASE` in `configure/RELEASE`.
+- **EPICS base** — e.g. `/epics/epics-base`; set paths in `configure/RELEASE.local` (see `RELEASE.local.example`).
 - **cif2hkl** — `/usr/bin/cif2hkl` via apt, or build from [cif2hkl](https://gitlab.com/soleil-data-treatment/soleil-software-projects/cif2hkl).
 
 ## Install Pixi

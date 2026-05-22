@@ -24,7 +24,7 @@ This repository provides an EPICS Input/Output Controller (IOC) that performs re
 
 ### Minimal steps
 
-1. Install EPICS base; set `EPICS_BASE` in `configure/RELEASE`.
+1. Install EPICS base; copy `configure/RELEASE.local.example` to `configure/RELEASE.local` and set `EPICS_BASE` / `MODULES`.
 2. Install Pixi: https://pixi.sh/latest/installation/
 3. Clone into `/epics/iocs/`, install `cif2hkl`, then:
 

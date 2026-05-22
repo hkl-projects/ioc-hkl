@@ -29,3 +29,7 @@ include/
 # pixi environment (binaries); manifest and lock are committed
 .pixi/*
 !.pixi/config.toml
+
+# Local EPICS path overrides (see configure/RELEASE.local.example)
+RELEASE.local
+configure/RELEASE.local

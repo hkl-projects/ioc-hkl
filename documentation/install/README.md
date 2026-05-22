@@ -20,7 +20,7 @@ See also [../ioc_quickstart.md](../ioc_quickstart.md) for a minimal end-to-end c
 ## EPICS `RELEASE` vs these docs
 
 - **`configure/RELEASE`** — EPICS module paths (e.g. `EPICS_BASE`). Edit for your site; do not confuse with this folder.
-- **`configure/RELEASE.local`** — Local overrides (e.g. `PYTHON_CONFIG` for Pixi). Created/updated by `run_HKL.sh` or manually per platform guide.
+- **`configure/RELEASE.local`** — Local overrides (not in git; copy from `configure/RELEASE.local.example`). Set `MODULES`, `EPICS_BASE`, optional `PVXS`, and `PYTHON_CONFIG` for Pixi. `run_HKL.sh` can update `PYTHON_CONFIG` / `PVXS` lines.
 
 ## Legacy / extended notes
 

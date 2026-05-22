@@ -9,7 +9,7 @@ sudo apt update
 sudo apt install -y build-essential git curl cif2hkl
 ```
 
-- **EPICS base** — build and install under e.g. `/epics/base`. Set `EPICS_BASE` in `configure/RELEASE` (absolute path).
+- **EPICS base** — e.g. `/epics/epics-base`. Copy `configure/RELEASE.local.example` to `configure/RELEASE.local` and set `EPICS_BASE` and `MODULES` there (not in git).
 - **cif2hkl** — must be on `PATH` at `/usr/bin/cif2hkl` (package above) or equivalent.
 
 ## Install Pixi

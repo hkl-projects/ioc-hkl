@@ -1,0 +1,15 @@
+# Copy to RELEASE.local (same directory) — not tracked by git.
+#
+# Makefile includes this file AFTER configure/RELEASE, so assignments
+# here override deployment defaults without editing RELEASE.
+
+# Typical dev workstation: flat support tree + EPICS base
+#MODULES = /epics/support2
+#EPICS_BASE = /epics/epics-base
+#PVXS = $(MODULES)/pvxs
+
+# Pixi Python for PyDevice / hkl bindings (recommended)
+#PYTHON_CONFIG = $(TOP)/.pixi/envs/default/bin/python3.12-config
+
+# System Python only when building hkl from source (run_HKL.sh option 2)
+#PYTHON_CONFIG = /usr/bin/python3-config
