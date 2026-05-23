@@ -1,3 +1,5 @@
+Command comparison: **SPEC** vs **hklpy/Bluesky** vs **hkl** (Picca Python) vs **hkl_ioc** (this EPICS IOC). See [related_software.md](related_software.md) for links and context.
+
 | SPEC                   | hklpy_bluesky           | hkl_picca                                                             | hkl_ioc                                      | description                                                                              |
 |------------------------|-------------------------|-----------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------|
 | information commands   |                         |                                                                       |                                              |                                                                                          |

@@ -1,5 +1,7 @@
 # HKL Library Architecture
 
+Upstream **hkl** is documented at [repo.or.cz/hkl.git](https://repo.or.cz/hkl.git) and [Picca’s hkl documentation](https://people.debian.org/~picca/hkl/hkl.html). Other related tools (SPEC, subhkl, neutron stacks) are listed in [related_software.md](related_software.md).
+
 ## Overview
 
 The HKL library is designed with a modular, object-oriented architecture in C, providing a clean separation between core crystallographic calculations, geometry management, and user interfaces.
