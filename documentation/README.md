@@ -5,6 +5,7 @@
 | **Install (by OS)** | [install/README.md](install/README.md) |
 | Quick start | [ioc_quickstart.md](ioc_quickstart.md) |
 | **Related software & engines** | [related_software.md](related_software.md) |
+| **WAND² Kappa geometry (HB-2C)** | [wand2_kappa_geometry.md](wand2_kappa_geometry.md) |
 | HKL library (this IOC) | [hkl_architecture.md](hkl_architecture.md), [hkl_user_guide.md](hkl_user_guide.md), [hkl_api_reference.md](hkl_api_reference.md) |
 | IOC design | [ioc_analysis.md](ioc_analysis.md) |
 | SPEC / hklpy / IOC comparison | [ioc_comparison_table.md](ioc_comparison_table.md) |
