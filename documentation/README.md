@@ -3,6 +3,7 @@
 | Topic | Document |
 |-------|----------|
 | **Install (by OS)** | [install/README.md](install/README.md) |
+| **Deploy (HB-2C procServ)** | [deploy/hb2c-procServ.md](deploy/hb2c-procServ.md) |
 | Quick start | [ioc_quickstart.md](ioc_quickstart.md) |
 | **Related software & engines** | [related_software.md](related_software.md) |
 | **WAND² Kappa geometry (HB-2C)** | [wand2_kappa_geometry.md](wand2_kappa_geometry.md) |

@@ -177,6 +177,8 @@ cd iocBoot/iocpydev
 
 Use **`st_pixi.cmd`**, not `st.cmd`, so the launcher sets `PYTHONHOME`, `LD_LIBRARY_PATH`, and `GI_TYPELIB_PATH` from the Pixi env.
 
+For **procServ** on **hb2c-dassrv1**, use a beamline `st.cmd` with fixed `IOC_TOP` (see [../deploy/hb2c-procServ.md](../deploy/hb2c-procServ.md) and `iocBoot/iocpydev/st.cmd.example`).
+
 ---
 
 ## Troubleshooting

@@ -1,0 +1,58 @@
+#!../../bin/linux-x86_64/hklApp
+#
+# Example EPICS startup for HB-2C / WAND² (K4CV).
+# Copy to beamline boot dir as st_base.cmd and customize.
+#
+#   cp st_base_hb2c.cmd.example /home/controls/hb2c/applications/hb2c-hkl/st_base.cmd
+#
+# PREFIX: recommended HB2C:hkl: (see documentation/deploy/hb2c-procServ.md)
+
+< envPaths
+
+epicsEnvSet("PYTHONPATH","$(TOP)/python")
+
+# Beamline:subsystem — confirm case with HB-2C controls (HB2C: vs hb2c:)
+epicsEnvSet("PREFIX", "HB2C:hkl:")
+
+cd ${TOP}
+
+dbLoadDatabase "${TOP}/dbd/hklApp.dbd"
+hklApp_registerRecordDeviceDriver pdbbase
+
+dbLoadRecords("db/hkl_main.db")
+
+cd ${TOP}/iocBoot/${IOC}
+
+pydev("import hklApp")
+pydev("hkl_calc = hklApp.hklCalcs()")
+
+iocInit
+
+epicsThreadSleep(1)
+
+# Geometry: 2 = K4CV (WAND² three-circle kappa). Stock hkl α=50° until patched.
+dbpf("$(PREFIX)geom","2")
+
+# Instrument defaults — set wavelength and lattice for your experiment
+dbpf("$(PREFIX)wlen","1.486")
+dbpf("$(PREFIX)latt_a","5.431")
+dbpf("$(PREFIX)latt_b","5.431")
+dbpf("$(PREFIX)latt_c","5.431")
+dbpf("$(PREFIX)latt_alpha","90.")
+dbpf("$(PREFIX)latt_beta","90.")
+dbpf("$(PREFIX)latt_gamma","90.")
+
+# K4CV axis soft limits (degrees)
+dbpf("$(PREFIX)komega_k4c_min","-180.")
+dbpf("$(PREFIX)kappa_k4c_min","-180.")
+dbpf("$(PREFIX)kphi_k4c_min","-180.")
+dbpf("$(PREFIX)tth_k4c_min","-180.")
+dbpf("$(PREFIX)komega_k4c_max","180.")
+dbpf("$(PREFIX)kappa_k4c_max","180.")
+dbpf("$(PREFIX)kphi_k4c_max","180.")
+dbpf("$(PREFIX)tth_k4c_max","180.")
+
+# Optional: link readbacks to WAND motor PVs, set UB matrix, reflections, etc.
+# dbpf("$(PREFIX)komega_k4c","$(HB2C_WAND_OMEGA)")
+
+dbl > pvlist.dbl

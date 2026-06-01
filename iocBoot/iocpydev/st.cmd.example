@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Example procServ launcher for HB-2C (beamline app directory).
+#
+# Copy to the beamline boot directory, e.g.:
+#   cp st.cmd.example /home/controls/hb2c/applications/hb2c-hkl/st.cmd
+#   chmod +x /home/controls/hb2c/applications/hb2c-hkl/st.cmd
+#
+# See documentation/deploy/hb2c-procServ.md
+
+set -euo pipefail
+
+IOC_TOP="${IOC_TOP:-/home/controls/common/ioc-hkl}"
+BOOT_DIR="${BOOT_DIR:-/home/controls/hb2c/applications/hb2c-hkl}"
+ST_BASE="${ST_BASE:-st_base.cmd}"
+
+# Pixi CLI must be on PATH for the procServ Unix user
+export PATH="${HOME}/.pixi/bin:/home/controls/bin:${PATH}"
+export PIXI_CACHE_DIR="${PIXI_CACHE_DIR:-/tmp/pixi-cache-${USER}}"
+
+cd "${IOC_TOP}"
+command -v pixi >/dev/null || { echo "pixi not on PATH"; exit 1; }
+eval "$(pixi shell-hook -s bash)"
+
+PIXI_ENV="${IOC_TOP}/.pixi/envs/default"
+PY_VER_DIR="$(ls -d "${PIXI_ENV}"/lib/python3.* | head -n1)"
+PY_VER="$(basename "${PY_VER_DIR}" | sed 's/python//')"
+
+export PYTHONHOME="${PIXI_ENV}"
+export LD_LIBRARY_PATH="${PIXI_ENV}/lib:${LD_LIBRARY_PATH:-}"
+export PYTHONPATH="${IOC_TOP}/python:${PIXI_ENV}/lib/python${PY_VER}/site-packages"
+if [[ -d "${PIXI_ENV}/lib/girepository-1.0" ]]; then
+  export GI_TYPELIB_PATH="${PIXI_ENV}/lib/girepository-1.0${GI_TYPELIB_PATH:+:$GI_TYPELIB_PATH}"
+fi
+
+cd "${BOOT_DIR}"
+exec "${IOC_TOP}/bin/linux-x86_64/hklApp" "${ST_BASE}"
