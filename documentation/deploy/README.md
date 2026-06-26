@@ -1,12 +1,11 @@
 # Deployment guides
 
-| Site / host | Document |
-|-------------|----------|
-| HB-2C, **hb2c-dassrv1** (procServ + Pixi) | [hb2c-procServ.md](hb2c-procServ.md) |
+| Topic | Document |
+|-------|----------|
+| procServ + Pixi (generic) | [procServ-pixi.md](procServ-pixi.md) |
+| Site-specific runbooks | [../local.example/README.md](../local.example/README.md) (templates; real hosts/paths stay local) |
 
-Build and Pixi setup: [../install/rhel-9.md](../install/rhel-9.md). WAND² κ geometry: [../wand2_kappa_geometry.md](../wand2_kappa_geometry.md).
+Example launch files:
 
-Example launch files (copy to the beamline app directory):
-
-- [`../../iocBoot/iocpydev/st.cmd.example`](../../iocBoot/iocpydev/st.cmd.example) — procServ entry (Pixi + fixed `IOC_TOP`)
-- [`../../iocBoot/iocpydev/st_base_hb2c.cmd.example`](../../iocBoot/iocpydev/st_base_hb2c.cmd.example) — EPICS startup with `HB2C:hkl:` and K4CV defaults
+- [`../../iocBoot/iocpydev/st.cmd.example`](../../iocBoot/iocpydev/st.cmd.example) — procServ entry (Pixi + `IOC_TOP` / `BOOT_DIR`)
+- [`../../iocBoot/iocpydev/st_base_site.cmd.example`](../../iocBoot/iocpydev/st_base_site.cmd.example) — EPICS startup with `BEAMLINE:hkl:` and K4CV defaults

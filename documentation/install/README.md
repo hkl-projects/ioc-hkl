@@ -6,11 +6,11 @@ These guides describe how to build and run **ioc-hkl** on specific Linux distrib
 |----------|-------|--------|
 | Ubuntu 24.04 | [ubuntu-24.04.md](ubuntu-24.04.md) | Primary reference environment |
 | Ubuntu 22.04 | [ubuntu-22.04.md](ubuntu-22.04.md) | Supported (system Python 3.10; use Pixi 3.12) |
-| RHEL 9 / Rocky 9 | [rhel-9.md](rhel-9.md) | SNS beamline (proxy, Pixi, NFS cache notes) |
+| RHEL 9 / Rocky 9 | [rhel-9.md](rhel-9.md) | Facility / corporate proxy, Pixi, NFS cache notes |
 
 ## Quick path (any supported Linux)
 
-1. Install [EPICS base](https://epics.anl.gov/) and set `EPICS_BASE` in `configure/RELEASE`.
+1. Install [EPICS base](https://epics.anl.gov/) and set paths in `configure/RELEASE.local`.
 2. Install [Pixi](https://pixi.sh/latest/installation/).
 3. Install `cif2hkl` (see your platform guide).
 4. From the repo root: `./run_HKL.sh` (Pixi env + build), then run `./iocBoot/iocpydev/st_pixi.cmd`.
@@ -19,9 +19,8 @@ See also [../ioc_quickstart.md](../ioc_quickstart.md) for a minimal end-to-end c
 
 ## EPICS `RELEASE` vs these docs
 
-- **`configure/RELEASE`** — EPICS module paths (e.g. `EPICS_BASE`). Edit for your site; do not confuse with this folder.
-- **`configure/RELEASE`** — Facility defaults include `PYTHON_CONFIG` for Pixi (after `pixi install`).
-- **`configure/RELEASE.local`** — Local overrides (not in git; copy from `configure/RELEASE.local.example`). Set `MODULES`, `EPICS_BASE`, optional `PVXS` on non-facility machines. `run_HKL.sh` can update `PYTHON_CONFIG` / `PVXS` in `RELEASE.local`.
+- **`configure/RELEASE`** — Generic dev defaults and `PYTHON_CONFIG` for Pixi.
+- **`configure/RELEASE.local`** — Site paths (not in git; copy from `configure/RELEASE.local.example`). Set `MODULES`, `EPICS_BASE`, optional `PVXS`. `run_HKL.sh` can update `PYTHON_CONFIG` / `PVXS` in `RELEASE.local`.
 
 ## Legacy / extended notes
 

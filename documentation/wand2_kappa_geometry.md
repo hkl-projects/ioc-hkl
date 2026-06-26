@@ -1,16 +1,16 @@
-# WAND² (HB-2C) Kappa geometry notes
+# WAND² Kappa geometry notes
 
-Notes for testing the **three-circle Kappa goniometer** on WAND² with **ioc-hkl** and the [hkl](https://repo.or.cz/hkl.git) library ([Picca documentation](https://people.debian.org/~picca/hkl/hkl.html)).
+Notes for the **three-circle Kappa goniometer** on WAND² with **ioc-hkl** and the [hkl](https://repo.or.cz/hkl.git) library ([Picca documentation](https://people.debian.org/~picca/hkl/hkl.html)).
 
 ## Hardware summary
 
-| Item | WAND² / beamline staff | hkl |
-|------|------------------------|-----|
+| Item | Instrument | hkl |
+|------|------------|-----|
 | Sample axes | ω, κ, φ (3 rotations) | **K4CV** (`komega`, `kappa`, `kphi`) |
 | Detector axis | 2θ (if driven) | `tth` |
-| Kappa tilt | **45°** from vertical ω (Mikhail) | Stock **K4CV** uses **α = 50°** |
-| Instrument frame | X → detector, Y ↑, Z → beam downstream (Matthias) | Beam along **+X**, sample axes in Y–Z plane |
-| Mount | Goniometer **pointing down** on beamline | hkl geometries defined at **all axes = 0** |
+| Kappa tilt | **45°** from vertical ω | Stock **K4CV** uses **α = 50°** |
+| Instrument frame | X → detector, Y ↑, Z → beam downstream | Beam along **+X**, sample axes in Y–Z plane |
+| Mount | Goniometer **pointing down** | hkl geometries defined at **all axes = 0** |
 
 **Use K4CV, not K6C.** The stage has three sample circles (ω, κ, φ). K6C adds μ, γ, δ and is for a different layout.
 
@@ -23,23 +23,23 @@ In K4CV, **α** is the angle between the κ rotation axis and **+Y**. The κ axi
 | α | κ axis | Notes |
 |---|--------|--------|
 | 50° | `[0, -0.643, -0.766]` | Default [K4CV in hkl docs](https://people.debian.org/~picca/hkl/hkl.html) |
-| **45°** | `[0, -0.707, -0.707]` | **WAND²** (confirmed by beamline staff) |
+| **45°** | `[0, -0.707, -0.707]` | **WAND²** (confirmed on instrument) |
 | 54.74° | ≈ arccos(1/√3) | Common on some commercial κ stages |
 | 60° | (custom) | Example only — not WAND² |
 
 Changing α requires editing **`hkl-engine-k4c.c`** (all κ-dependent mode math, not just the axis vector) and **rebuilding hkl from source**. The conda-forge / Pixi `hkl` package does not include a custom α.
 
-### Recommended hkl change (WAND²)
+### Recommended hkl change
 
-- Patch **`hkl-engine-k4c.c`** with **α = 45°** (see beamline copy under `k4cv_kappa45deg/`).
+- Patch **`hkl-engine-k4c.c`** with **α = 45°** (keep a site-local copy of the patched file; do not commit facility paths to public git).
 - Prefer `#define KAPPA_ALPHA (45.0 * HKL_DEGTORAD)` at the top of the file instead of scattered literals.
-- **WAND-only build:** keep registered name **`K4CV`** so existing IOC screens/PVs (`*_k4c`) work unchanged.
+- **Single-instrument build:** keep registered name **`K4CV`** so existing IOC screens/PVs (`*_k4c`) work unchanged.
 - **Multi-site repo:** register a separate geometry (e.g. `K4CV_kappa45`) in `Makefile.am` and select it in the IOC; keep stock K4CV at 50°.
 
 Build after patching hkl:
 
 ```bash
-cd /epics/support/hkl/hkl
+cd /path/to/hkl/hkl
 # apply patched hkl-engine-k4c.c
 cd ..
 make clean
@@ -57,7 +57,7 @@ Complete **before** trusting HKL scans. A correct κ angle alone does not fix fr
 
 ### Instrument coordinates (WAND²)
 
-Right-handed, from Matthias:
+Right-handed lab frame:
 
 - **X** — perpendicular to beam, toward detector  
 - **Y** — vertical up  
@@ -81,8 +81,8 @@ From [Picca K4CV](https://people.debian.org/~picca/hkl/hkl.html):
 
 ### Mapping table (verify on hardware)
 
-| WAND motor / axis | hkl K4CV | Verified? |
-|-------------------|----------|-----------|
+| Motor / axis | hkl K4CV | Verified? |
+|--------------|----------|-----------|
 | ω (vertical) | `komega` | ☐ |
 | κ (tilted) | `kappa` | ☐ |
 | φ | `kphi` | ☐ |
@@ -90,11 +90,11 @@ From [Picca K4CV](https://people.debian.org/~picca/hkl/hkl.html):
 | Beam +Z (downstream) | hkl +X beam | ☐ |
 | Y up | hkl Y (check sign) | ☐ |
 
-**Open items to resolve with beamline staff**
+**Open items to resolve with instrument staff**
 
 - [ ] Confirm physical **κ = 45°** (photo + vendor drawing).  
 - [ ] Confirm **beam direction** vs hkl +X (may need a fixed rotation of the lab frame, not only α).  
-- [ ] Resolve **rotation sense** (Matthias: all CW in hardware; Jens: mixed on some axes) — use motor **DIR**, negated readbacks, or offsets after geometry is correct.  
+- [ ] Resolve **rotation sense** (CW/CCW per axis on hardware) — use motor **DIR**, negated readbacks, or offsets after geometry is correct.  
 - [ ] Confirm **inverted mount** effects on ω and φ sign.  
 - [ ] Map EPICS motor names → `komega` / `kappa` / `kphi` / `tth` PVs (`*_k4c` in this IOC).
 
@@ -141,7 +141,7 @@ Confirm the factory loads and the IOC uses the rebuilt library (not an older Pix
 
 For each axis **ω, κ, φ** separately (others fixed):
 
-1. Apply a small **+1°** hardware move (CW positive per Matthias, noting inverted mount).  
+1. Apply a small **+1°** hardware move (document CW/CCW convention for your mount).  
 2. Observe change in computed **Q** / hkl or monitor intensity.  
 3. If direction is wrong, fix **one** layer: EPICS motor sign, axis offset in hkl, or geometry — do not mix fixes blindly.
 
@@ -149,7 +149,7 @@ For each axis **ω, κ, φ** separately (others fixed):
 
 ### 6. Document final conventions
 
-Record in beamline log or `RELEASE.local` notes:
+Record in your **local** beamline runbook (not public git):
 
 - Final α used (45°)  
 - Motor ↔ hkl axis map  
@@ -160,8 +160,8 @@ Record in beamline log or `RELEASE.local` notes:
 
 ## IOC configuration (this repo)
 
-| Setting | WAND² typical value |
-|---------|---------------------|
+| Setting | Typical value |
+|---------|----------------|
 | Geometry | `K4CV` (`geom_name` in Python; `TWST` in DB) |
 | PV suffix | `*_k4c` (axes, reflections, solutions) |
 | Screens | `hklApp/op/bob/reflections/*k4c*`, `*wand2*` |
@@ -176,10 +176,10 @@ Select K4CV in the IOC (e.g. `switch_geom()` / geometry index **2** in `python/h
 - [related_software.md](related_software.md) — hkl, SPEC, other engines  
 - [ioc_comparison_table.md](ioc_comparison_table.md) — SPEC vs hkl_ioc commands  
 - [hkl_architecture.md](hkl_architecture.md) — how this IOC uses hkl  
-- [install/rhel-9.md](install/rhel-9.md) — beamline build (Pixi, proxy)
+- [deploy/procServ-pixi.md](deploy/procServ-pixi.md) — procServ launcher pattern  
+- [local.example/README.md](local.example/README.md) — site-specific deployment notes
 
 ## References
 
 - [hkl source](https://repo.or.cz/hkl.git)  
-- [Picca hkl documentation — K4CV](https://people.debian.org/~picca/hkl/hkl.html)  
-- WAND² beamline correspondence (May 2026): κ = 45°; instrument frame X, Y, Z; inverted mount rotation senses
+- [Picca hkl documentation — K4CV](https://people.debian.org/~picca/hkl/hkl.html)

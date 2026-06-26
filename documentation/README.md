@@ -3,10 +3,11 @@
 | Topic | Document |
 |-------|----------|
 | **Install (by OS)** | [install/README.md](install/README.md) |
-| **Deploy (HB-2C procServ)** | [deploy/hb2c-procServ.md](deploy/hb2c-procServ.md) |
+| **Deploy (procServ + Pixi)** | [deploy/procServ-pixi.md](deploy/procServ-pixi.md) |
+| **Site runbooks (local only)** | [local.example/README.md](local.example/README.md) |
 | Quick start | [ioc_quickstart.md](ioc_quickstart.md) |
 | **Related software & engines** | [related_software.md](related_software.md) |
-| **WAND² Kappa geometry (HB-2C)** | [wand2_kappa_geometry.md](wand2_kappa_geometry.md) |
+| **WAND² Kappa geometry** | [wand2_kappa_geometry.md](wand2_kappa_geometry.md) |
 | HKL library (this IOC) | [hkl_architecture.md](hkl_architecture.md), [hkl_user_guide.md](hkl_user_guide.md), [hkl_api_reference.md](hkl_api_reference.md) |
 | IOC design | [ioc_analysis.md](ioc_analysis.md) |
 | SPEC / hklpy / IOC comparison | [ioc_comparison_table.md](ioc_comparison_table.md) |

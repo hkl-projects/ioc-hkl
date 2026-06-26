@@ -33,3 +33,8 @@ include/
 # Local EPICS path overrides (see configure/RELEASE.local.example)
 RELEASE.local
 configure/RELEASE.local
+
+# Site-specific ops (hostnames, proxy, procServ) — never commit
+documentation/local/*
+!documentation/local/README.md
+documentation/local/check-patterns.txt

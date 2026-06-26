@@ -4,34 +4,21 @@
 # any modules it refers to, you should do a "make rebuild" in
 # this application's top level directory.
 #
-# The EPICS build process does not check dependencies against
-# any files from outside the application, so it is safest to
-# rebuild it completely if any modules it depends on change.
-#
-# Host- or target-specific settings can be given in files named
-#  RELEASE.$(EPICS_HOST_ARCH).Common
-#  RELEASE.Common.$(T_A)
-#  RELEASE.$(EPICS_HOST_ARCH).$(T_A)
+# Host- or target-specific paths: configure/RELEASE.local (not in git).
+# Copy configure/RELEASE.local.example and set MODULES / EPICS_BASE for your site.
 #
 # This file is parsed by both GNUmake and an EPICS Perl script,
 # so it may ONLY contain definitions of paths to other support
 # modules, variable definitions that are used in module paths,
 # and include statements that pull in other RELEASE files.
-# Variables may be used before their values have been set.
-# Build variables that are NOT used in paths should be set in
-# the CONFIG_SITE file.
-#
-# ── Deployment defaults (facility layout) ───────────────────────────────
-# For laptop / alternate trees, override in configure/RELEASE.local only
-# (see RELEASE.local.example; that file is not used by Make until copied).
 
-MODULES = /home/controls/common
+# ── Default dev paths (override in RELEASE.local) ─────────────────────────
 
-# Optional: enable PVAccess in hklApp (see hklApp/src/Makefile)
-PVXS = $(MODULES)/pvxs/main
+MODULES = /epics/support
 
-# EPICS_BASE should appear last so earlier modules can override stuff:
-EPICS_BASE = $(MODULES)/base/main
+PVXS = $(MODULES)/pvxs
+
+EPICS_BASE = /epics/base
 
 TEMPLATE_TOP = $(EPICS_BASE)/templates/makeBaseApp/top
 
@@ -41,11 +28,7 @@ PYTHON_CONFIG = $(TOP)/.pixi/envs/default/bin/python3.12-config
 # System Python only when building hkl from source (run_HKL.sh option 2)
 #PYTHON_CONFIG = /usr/bin/python3-config
 
-# Set RULES here if you want to use build rules from somewhere
-# other than EPICS_BASE:
-#RULES = $(MODULES)/build-rules
-
-# ── Optional local overrides (preferred for developer machines) ────────
+# ── Local overrides (required at most facility sites) ───────────────────
 -include $(TOP)/../RELEASE.local
 -include $(TOP)/../RELEASE.$(EPICS_HOST_ARCH).local
 -include $(TOP)/configure/RELEASE.local

@@ -1,20 +1,21 @@
 #!/usr/bin/env bash
-# Example procServ launcher for HB-2C (beamline app directory).
+# Example procServ launcher (beamline app directory).
 #
-# Copy to the beamline boot directory, e.g.:
-#   cp st.cmd.example /home/controls/hb2c/applications/hb2c-hkl/st.cmd
-#   chmod +x /home/controls/hb2c/applications/hb2c-hkl/st.cmd
+# Copy to your beamline boot directory:
+#   cp st.cmd.example /path/to/beamline-app/st.cmd
+#   chmod +x /path/to/beamline-app/st.cmd
 #
-# See documentation/deploy/hb2c-procServ.md
+# Set IOC_TOP and BOOT_DIR below or export before starting procServ.
+# See documentation/deploy/procServ-pixi.md
 
 set -euo pipefail
 
-IOC_TOP="${IOC_TOP:-/home/controls/common/ioc-hkl}"
-BOOT_DIR="${BOOT_DIR:-/home/controls/hb2c/applications/hb2c-hkl}"
+IOC_TOP="${IOC_TOP:-/path/to/ioc-hkl}"
+BOOT_DIR="${BOOT_DIR:-/path/to/beamline-app}"
 ST_BASE="${ST_BASE:-st_base.cmd}"
 
 # Pixi CLI must be on PATH for the procServ Unix user
-export PATH="${HOME}/.pixi/bin:/home/controls/bin:${PATH}"
+export PATH="${HOME}/.pixi/bin:${PATH}"
 export PIXI_CACHE_DIR="${PIXI_CACHE_DIR:-/tmp/pixi-cache-${USER}}"
 
 cd "${IOC_TOP}"

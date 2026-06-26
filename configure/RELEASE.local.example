@@ -1,12 +1,17 @@
 # Copy to RELEASE.local (same directory) — not tracked by git.
 #
 # Makefile includes this file AFTER configure/RELEASE, so assignments
-# here override deployment defaults without editing RELEASE.
+# here override defaults. Required at facility deployments.
 
-# Typical dev workstation: flat support tree + EPICS base
+# ── Developer workstation (flat support tree) ─────────────────────────────
 #MODULES = /epics/support2
 #EPICS_BASE = /epics/epics-base
 #PVXS = $(MODULES)/pvxs
+
+# ── Facility example (uncomment and set paths for your site) ──────────────
+#MODULES = /path/to/facility/epics/modules
+#EPICS_BASE = $(MODULES)/base/main
+#PVXS = $(MODULES)/pvxs/main
 
 # Pixi Python for PyDevice / hkl bindings (recommended)
 #PYTHON_CONFIG = $(TOP)/.pixi/envs/default/bin/python3.12-config

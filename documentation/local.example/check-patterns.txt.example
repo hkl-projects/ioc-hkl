@@ -1,0 +1,9 @@
+# Copy to documentation/local/check-patterns.txt (gitignored).
+# One extended-regex per line; lines starting with # are ignored.
+#
+# Add patterns for YOUR facility only — do not commit the filled-in file.
+# Examples of what teams often block (replace with real regexes locally):
+#   internal beamline host naming
+#   corporate HTTP proxy hostname
+#   facility NFS home path prefix
+#   scp examples with user@internal.host
