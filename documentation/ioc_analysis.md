@@ -25,23 +25,23 @@ The ioc-hkl implementation follows a **layered architecture** pattern:
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                EPICS Control Layer                     │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐     │
-│  │   PVs       │  │  Database   │  │   Records   │     │
-│  │ Management  │  │ Definitions │  │   Support   │     │
-│  └─────────────┘  └─────────────┘  └─────────────┘     │
+│                   EPICS Control Layer                   │
+│ ┌───────────────┐  ┌───────────────┐  ┌───────────────┐ │
+│ │      PVs      │  │    Database   │  │    Records    │ │
+│ │   Management  │  │  Definitions  │  │    Support    │ │
+│ └───────────────┘  └───────────────┘  └───────────────┘ │
 ├─────────────────────────────────────────────────────────┤
-│                PyDevice Bridge                         │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐     │
-│  │ Python      │  │ GObject     │  │   HKL       │     │
-│  │ Bindings    │  │Introspection│  │  Library    │     │
-│  └─────────────┘  └─────────────┘  └─────────────┘     │
+│                     PyDevice Bridge                     │
+│ ┌───────────────┐  ┌───────────────┐  ┌───────────────┐ │
+│ │     Python    │  │    GObject    │  │      HKL      │ │
+│ │    Bindings   │  │ Introspection │  │    Library    │ │
+│ └───────────────┘  └───────────────┘  └───────────────┘ │
 ├─────────────────────────────────────────────────────────┤
-│              Crystallographic Layer                    │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐     │
-│  │ Geometry    │  │   Engine    │  │   Sample    │     │
-│  │ Management  │  │Calculations │  │ Orientation │     │
-│  └─────────────┘  └─────────────┘  └─────────────┘     │
+│                  Crystallographic Layer                 │
+│ ┌───────────────┐  ┌───────────────┐  ┌───────────────┐ │
+│ │    Geometry   │  │     Engine    │  │     Sample    │ │
+│ │   Management  │  │  Calculations │  │  Orientation  │ │
+│ └───────────────┘  └───────────────┘  └───────────────┘ │
 └─────────────────────────────────────────────────────────┘
 ```
 
